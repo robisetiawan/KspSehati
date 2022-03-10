@@ -64,11 +64,6 @@
                                     aria-controls="pills-datatambahan" aria-selected="false">Data
                                     Tambahan</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" id="pills-dataextra-tab"
-                                    data-bs-toggle="pill" href="#pills-dataextra" role="tab" aria-controls="pills-dataextra"
-                                    aria-selected="false">Data
-                                    Extra</a>
-                            </li>
                             <li class="nav-item"><a class="nav-link" id="pills-las-tab" data-bs-toggle="pill"
                                     href="#pills-las" role="tab" aria-controls="pills-las" aria-selected="false">LAS</a>
                             </li>
@@ -122,15 +117,7 @@
                             </p>
                             <!-- Endisi -->
                         </div>
-                        <!-- *******************Data Extra*******************-->
-                        <div class="tab-pane fade" id="pills-dataextra" role="tabpanel"
-                            aria-labelledby="pills-dataextra-tab">
-                            <!-- isi -->
-                            <p>
-                                @include('fo.editorder.dataextra-VFO')
-                            </p>
-                            <!-- Endisi -->
-                        </div>
+
                         <!-- *******************LAS*******************-->
                         <div class="tab-pane fade" id="pills-las" role="tabpanel" aria-labelledby="pills-las-tab">
                             <!-- isi -->

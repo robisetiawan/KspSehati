@@ -148,9 +148,12 @@
                                 <div class="col-sm-4 p-l-0">
                                     <select class="form-select form-select-sm">
                                         <option>Islam</option>
-                                        <option>Kristen</option>
+                                        <option>Protestan</option>
+                                        <option>Katholik</option>
                                         <option>Budha</option>
                                         <option>Hindu</option>
+                                        <option>Kong Hu cu</option>
+                                        <option>Others</option>
                                     </select>
                                 </div>
                             </div>
@@ -162,7 +165,13 @@
                                         <option>SD</option>
                                         <option>SMP</option>
                                         <option>SMA/SMK</option>
-                                        <option>Sarjana</option>
+                                        <option>Diploma 1</option>
+                                        <option>Diploma 2</option>
+                                        <option>Diploma 3</option>
+                                        <option>Diploma 4</option>
+                                        <option>Sarjana S1</option>
+                                        <option>Master</option>
+                                        <option>Doktor</option>
                                     </select>
                                 </div>
                             </div>
@@ -174,7 +183,11 @@
                                     <select class="form-select form-select-sm">
                                         <option>Rumah Sendiri</option>
                                         <option>Rumah Orang Tua</option>
-                                        <option>Kontrakan</option>
+                                        <option>Rumah Dinas</option>
+                                        <option>Rumah Sewa/Kontrak</option>
+                                        <option>Kost</option>
+                                        <option>Rumah Status Kredit</option>
+                                        <option>Rumah Keluarga</option>
                                     </select>
                                 </div>
                             </div>

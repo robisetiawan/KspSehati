@@ -254,20 +254,21 @@
                         <select class="form-select form-select-sm">
                             <option>Atas Nama Orang lain</option>
                             <option>Atas Nama Sendiri</option>
+                            <Option>Atas Nama Suami/Istri/Keluarga</Option>
                         </select>
                     </div>
                     <label class="col-sm-1 col-form-label text-end" for="nama">Faktur</label>
                     <div class="col-sm-2 p-l-0">
                         <select class="form-select form-select-sm">
                             <option>Ada</option>
-                            <option>Tidak</option>
+                            <option>Tidak Ada</option>
                         </select>
                     </div>
                     <label class="col-sm-2 col-form-label text-end" for="nama">Surat Jual Beli</label>
                     <div class="col-sm-2 p-l-0">
                         <select class="form-select form-select-sm">
-                            <option>Tidak</option>
-                            <option></option>
+                            <option>Ada</option>
+                            <option>Tidak Ada</option>
                         </select>
                     </div>
                 </div>

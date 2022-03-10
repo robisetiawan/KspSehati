@@ -50,6 +50,7 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/responsive.css ') }}">
 
+
 </head>
 
 <body>

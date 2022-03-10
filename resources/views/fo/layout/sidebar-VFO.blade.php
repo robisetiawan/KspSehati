@@ -27,13 +27,13 @@
                              </div>
                          </li> --}}
 
-                         <li class="dropdown">
-                             <a href="/dashboard"
-                                 class="menu-title link-nav nav-link {{ $title === 'Dashboard' ? 'active' : '' }}">
-                                 <i data-feather="home"></i>
-                                 <span>Dashboard</span>
+                         {{-- <li class="dropdown">
+                             <a href="/anggota"
+                                 class="menu-title link-nav nav-link {{ $title === 'Anggota' ? 'active' : '' }}">
+                                 <i data-feather="users"></i>
+                                 <span>Anggota</span>
                              </a>
-                         </li>
+                         </li> --}}
 
                          <li class="dropdown">
                              <a href="/pooling-order"
@@ -45,7 +45,7 @@
 
                          <li class="dropdown">
                              <a href="/order" {{-- class="menu-title link-nav nav-link {{ Request::path() === '/order' ? 'active' : '' }}" --}}
-                                 class="menu-title link-nav nav-link {{ $title === 'Order' ? 'active' : $title === 'Edit Order' ? 'active' : '' }}">
+                                 class="menu-title link-nav nav-link {{ $title === 'Order' or ($title === 'Edit Order' ? 'active' : '') }}">
                                  <i data-feather="layers"></i>
                                  <span>Order</span>
                              </a>

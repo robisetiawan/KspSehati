@@ -48,8 +48,10 @@
                                 <div class="col-sm-4 p-l-0">
                                     <select class="form-select form-select-sm">
                                         <option>Milik Sendiri</option>
-                                        <option>Milik Orang tua</option>
-                                        <option>Milik Kerabat</option>
+                                        <option>Milik Suami</option>
+                                        <option>Milik Istri</option>
+                                        <option>Milik Keluarga</option>
+                                        <option>Milik Orang lain</option>
                                     </select>
                                 </div>
                             </div>
@@ -219,7 +221,8 @@
                                 <div class="col-sm-4 p-l-0">
                                     <select class="form-select form-select-sm">
                                         <option>Sendiri</option>
-                                        <option></option>
+                                        <option>Keluarga</option>\
+                                        <Option>Orang Lain</Option>
                                     </select>
                                 </div>
 
@@ -305,20 +308,14 @@
                             </div>
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
-                                <label class="col-sm-3 col-form-label" for="nama">Kode Brg</label>
-                                <div class="col-sm-3 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                </div>
+                                <label class="col-sm-3 col-form-label" for="nama">Barang</label>
                                 <div class="col-sm-4 p-l-0">
                                     <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                 </div>
                             </div>
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
-                                <label class="col-sm-3 col-form-label" for="nama">Id Tipe</label>
-                                <div class="col-sm-3 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                </div>
+                                <label class="col-sm-3 col-form-label" for="nama">Tipe</label>
                                 <div class="col-sm-4 p-l-0">
                                     <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                 </div>

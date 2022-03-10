@@ -13,7 +13,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header pb-0">
-                            <h5>Order</h5>
+                            <h5>Anggota</h5>
                         </div>
                         <div class="table-responsive card-body pt-3 f-12">
                             <table class="table table-bordered table-xxs text-center">
@@ -39,11 +39,7 @@
                                         <td>Jl.Blablalalal</td>
                                         <td></td>
                                         <td><a class="btn btn-pill btn-primary btn-sm" href="/edit-order"
-                                                data-toggle="tooltip" role="button"><i class="fa fa-pencil-square-o fa-2x"
-                                                    aria-hidden="true"></i></a>
-                                            <a class="btn btn-pill btn-danger btn-sm" href="/edit-order"
-                                                data-toggle="tooltip" role="button"><i class="fa fa-trash-o fa-2x"
-                                                    aria-hidden="true"></i></a>
+                                                data-toggle="tooltip" role="button">Edit Anggota</a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -55,11 +51,7 @@
                                         <td>Jl.Asdsad</td>
                                         <td></td>
                                         <td><a class="btn btn-pill btn-primary btn-sm" href="/edit-order"
-                                                data-toggle="tooltip" role="button"><i class="fa fa-pencil-square-o fa-2x"
-                                                    aria-hidden="true"></i></a>
-                                            <a class="btn btn-pill btn-danger btn-sm" href="/edit-order"
-                                                data-toggle="tooltip" role="button"><i class="fa fa-trash-o fa-2x"
-                                                    aria-hidden="true"></i></a>
+                                                data-toggle="tooltip" role="button">Edit Anggota</a>
                                         </td>
                                     </tr>
 

@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 
 class FoController extends Controller
 {
-    public function dashboard()
+    public function anggota()
     {
-        return view('fo.dashboard-VFO', [
-            "title" => "Dashboard"
+        return view('fo.anggota-VFO', [
+            "title" => "Anggota"
         ]);
     }
 

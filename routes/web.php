@@ -32,6 +32,7 @@ Route::get('/order', [FoController::class, 'order']);
 Route::get('/edit-order', [FoController::class, 'editorder']);
 Route::get('/struktur-kredit', [FoController::class, 'strukturkredit']);
 Route::get('/penerimaan-uang', [FoController::class, 'penerimaanuang']);
+Route::get('/pembayaran', [FoController::class, 'pembayaran']);
 Route::get('/cetak-buku-anggota', [FoController::class, 'cetakbukuanggota']);
 Route::get('/profil-fo', [FoController::class, 'profilfo']);
 //endrouteFO
@@ -50,8 +51,8 @@ Route::get('/lap-keuangan', [BmController::class, 'lapkeuangan']);
 Route::get('/profil-bm', [BmController::class, 'profilbm']);
 //endrouteBM
 
-// Route::get('/', function () {
-//     return view('fo.pooling-order-VFO',[
-//         "title" => "Pooling Order"
-//     ]);
-// });
+Route::get('/ss', function () {
+    return view('templatebaru', [
+        "title" => "Pooling Order"
+    ]);
+});

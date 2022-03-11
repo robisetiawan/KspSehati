@@ -50,6 +50,10 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/responsive.css ') }}">
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/cssadd/bootsrap.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('templates/assets/cssadd/dataTables.bootstrap4.min.css') }}">
+
 
 </head>
 
@@ -111,7 +115,17 @@
     <!-- Theme js-->
     <script src="{{ asset('templates/assets/js/script.js ') }}"></script>
 
-    <!-- Plugin used-->
+    <!-- dataTable.js-->
+
+    <script src="{{ asset('templates/assets/jsadd/jquery-3.5.1.js') }}"></script>
+    <script src="{{ asset('templates/assets/jsadd/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('templates/assets/jsadd/dataTables.bootstrap4.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.example').DataTable();
+        });
+    </script>
 </body>
 
 </html>

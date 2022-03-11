@@ -76,6 +76,14 @@
                          </li>
 
                          <li class="dropdown">
+                             <a href="/penerimaan-uang"
+                                 class="menu-title link-nav nav-link {{ $title === 'Pembayaran' ? 'active' : '' }}">
+                                 <i data-feather="dollar-sign"></i>
+                                 <span>Pembayaran</span>
+                             </a>
+                         </li>
+
+                         <li class="dropdown">
                              <a href="/cetak-buku-anggota"
                                  class="menu-title link-nav nav-link {{ $title === 'Cetak Buku Anggota' ? 'active' : '' }}">
                                  <i data-feather="printer"></i>

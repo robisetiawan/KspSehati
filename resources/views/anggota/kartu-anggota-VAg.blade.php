@@ -4,13 +4,24 @@
     <div class="page-body">
         <!-- Container-fluid starts-->
         <div class="container-fluid">
-            <div class="page-header">
+            <div class="page-header pt-4 pb-3">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Kartu Anggota</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">KSP Sehati
+                            </li>
+                            <li class="breadcrumb-item">Kartu Anggota</li>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
-
+        <!-- Container-fluid starts-->
         <div class="card">
-            <div class="card-header pb-0">
-                <h5>Cetak Buku Anggota</h5>
+            <div class="card-header pb-0 text-center">
+                <h5>Buku Anggota</h5>
+                <h6>Koperasi Sehati Makmur Abadi</h6>
             </div>
             <form class="form theme-form">
                 <div class="card-body pt-3 f-12">
@@ -18,7 +29,6 @@
                         <div class="col">
                             <!-- *************** -->
                             <!-- *************** -->
-
                             <div class="mb-1 row">
                                 <label class="col-sm-2 col-form-label">No Anggota</label>
                                 <div class="col-sm-5">
@@ -65,16 +75,12 @@
                             <!-- *************** -->
                             <!-- *************** -->
                             <div class="mb-1 row">
-                                <label class="col-sm-2 col-form-label">RT</label>
-                                <div class="col-sm-2">
+                                <label class="col-sm-2 col-form-label">RT / RW</label>
+                                <div class="col-sm-5">
                                     <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                        value=": {{ $title }}">
+                                        value=": {{ $title }} / {{ $title }}">
                                 </div>
-                                <label class="col-sm-1 col-form-label">RW</label>
-                                <div class="col-sm-2">
-                                    <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                        value=": {{ $title }}">
-                                </div>
+
                             </div>
                             <!-- *************** -->
                             <!-- *************** -->

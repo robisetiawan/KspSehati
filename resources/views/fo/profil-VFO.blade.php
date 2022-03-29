@@ -2,155 +2,83 @@
 
 @section('content')
     <div class="page-body">
-        <!-- Container-fluid starts-->
         <div class="container-fluid">
-            <div class="page-header">
+            <div class="page-header pt-4 pb-3">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Setting</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">KSP Sehati
+                            </li>
+                            <li class="breadcrumb-item">Setting</li>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- Container-fluid starts-->
 
         <div class="card">
-            <div class="card-header">
-                <h5>Cetak Buku Anggota</h5>
-            </div>
             <!-- *************** -->
             <!-- *************** -->
 
-            <div class="container-fluid">
-                <div class="edit-profile">
-                    <div class="row">
-                        <div class="col-xl-4">
-                            <div class="card">
-                                <div class="card-header pb-0">
-                                    <h4 class="card-title mb-0">My Profile</h4>
-                                    <div class="card-options">
-                                        <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i
-                                                class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#"
-                                            data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <form>
-                                        <div class="row mb-2">
-                                            <div class="profile-title">
-                                                <div class="media">
-                                                    <img class="img-70 rounded-circle" alt=""
-                                                        src="https://laravel.pixelstrap.com/viho/assets/images/user/7.jpg" />
-                                                    <div class="media-body">
-                                                        <h3 class="mb-1 f-20 txt-primary">MARK JECNO</h3>
-                                                        <p class="f-12">DESIGNER</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <h6 class="form-label">Bio</h6>
-                                            <textarea class="form-control"
-                                                rows="5">On the other hand, we denounce with righteous indignation</textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Email-Address</label>
-                                            <input class="form-control" placeholder="your-email@domain.com" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Password</label>
-                                            <input class="form-control" type="password" value="password" />
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Website</label>
-                                            <input class="form-control" placeholder="http://Uplor .com" />
-                                        </div>
-                                        <div class="form-footer">
-                                            <button class="btn btn-primary btn-block">Save</button>
-                                        </div>
-                                    </form>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3 d-flex align-items-center">
+                        <div class="card-body avatar-showcase">
+                            <div class="avatars ">
+                                {{-- <div class="avatar">
+                                    <img class="img-200 rounded-circle"
+                                        src="https://laravel.pixelstrap.com/viho/assets/images/user/1.jpg" alt="#">
+                                </div> --}}
+                                <div class="text-center">
+                                    <img src="https://laravel.pixelstrap.com/viho/assets/images/user/1.jpg"
+                                        class="img-200 rounded-circle">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-8">
-                            <form class="card">
-                                <div class="card-header pb-0">
-                                    <h4 class="card-title mb-0">Edit Profile</h4>
-                                    <div class="card-options">
-                                        <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i
-                                                class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="#"
-                                            data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+                    </div>
+
+                    <div class="col-sm-8 needs-validation was-validated" novalidate="">
+                        <div class="card-body">
+
+                            <div class="mb-3 row">
+                                <label class="col-sm-4 col-form-label">Users Id</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="text" required="">
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label class="col-sm-4 col-form-label">Password Lama</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="password" required="">
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3 row">
+                                <label class="col-sm-4 col-form-label">Password Baru</label>
+                                <div class="col-sm-8" id="show_hide_password">
+                                    <input class="form-control" type="password" required="">
+
+                                    <div class="show-hide">
+                                        <a href=""><i class="fa fa-eye-slash px-3" aria-hidden="true"></i></a>
                                     </div>
+
                                 </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="mb-3">
-                                                <label class="form-label">Company</label>
-                                                <input class="form-control" type="text" placeholder="Company" />
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-3">
-                                            <div class="mb-3">
-                                                <label class="form-label">Username</label>
-                                                <input class="form-control" type="text" placeholder="Username" />
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-4">
-                                            <div class="mb-3">
-                                                <label class="form-label">Email address</label>
-                                                <input class="form-control" type="email" placeholder="Email" />
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label">First Name</label>
-                                                <input class="form-control" type="text" placeholder="Company" />
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6">
-                                            <div class="mb-3">
-                                                <label class="form-label">Last Name</label>
-                                                <input class="form-control" type="text" placeholder="Last Name" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Address</label>
-                                                <input class="form-control" type="text" placeholder="Home Address" />
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-4">
-                                            <div class="mb-3">
-                                                <label class="form-label">City</label>
-                                                <input class="form-control" type="text" placeholder="City" />
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-3">
-                                            <div class="mb-3">
-                                                <label class="form-label">Postal Code</label>
-                                                <input class="form-control" type="number" placeholder="ZIP Code" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="mb-3">
-                                                <label class="form-label">Country</label>
-                                                <select class="form-control btn-square">
-                                                    <option value="0">--Select--</option>
-                                                    <option value="1">Germany</option>
-                                                    <option value="2">Canada</option>
-                                                    <option value="3">Usa</option>
-                                                    <option value="4">Aus</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div>
-                                                <label class="form-label">About Me</label>
-                                                <textarea class="form-control" rows="5"
-                                                    placeholder="Enter About your description"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label class="col-sm-4 col-form-label">Konfirm Password Baru</label>
+                                <div class="col-sm-8">
+                                    <input class="form-control" type="password" required="">
                                 </div>
-                                <div class="card-footer text-end">
-                                    <button class="btn btn-primary" type="submit">Update Profile</button>
-                                </div>
-                            </form>
+                            </div>
+
+                            <div class="form-group text-end">
+                                <button class="btn btn-primary btn-block" type="submit">Simpan</button>
+                            </div>
+
                         </div>
                     </div>
                 </div>

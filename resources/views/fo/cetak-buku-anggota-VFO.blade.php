@@ -4,16 +4,28 @@
     <div class="page-body">
         <!-- Container-fluid starts-->
         <div class="container-fluid">
-            <div class="page-header">
+            <div class="page-header pt-4 pb-3">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Cetak Buku Anggota</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">KSP Sehati
+                            </li>
+                            <li class="breadcrumb-item">Cetak Buku Anggota</li>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- Container-fluid starts-->
 
         <div class="card">
-            <div class="card-header pb-0">
-                <h5>Cetak Buku Anggota</h5>
+            <div class="card-header pb-0 text-center">
+                <h5>Buku Anggota</h5>
+                <h6>Koperasi Sehati Makmur Abadi</h6>
             </div>
             <form class="form theme-form">
-                <div class="card-body pt-3 f-12">
+                <div class="card-body f-12">
                     <div class="row">
                         <div class="col">
                             <!-- *************** -->
@@ -117,7 +129,8 @@
             </form>
             <div class="card-footer f-12">
                 <div>
-                    <button class="btn btn-primary" type="submit">Cetak</button>
+                    <a href="/print-buku-anggota">
+                        <button class="btn btn-primary" type="submit">Cetak</button></a>
                 </div>
             </div>
         </div>

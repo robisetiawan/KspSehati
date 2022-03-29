@@ -4,18 +4,27 @@
     <div class="page-body">
         <!-- Container-fluid starts-->
         <div class="container-fluid">
-            <div class="page-header">
+            <div class="page-header pt-4 pb-3">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Order</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">KSP Sehati
+                            </li>
+                            <li class="breadcrumb-item">Order</li>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- Container-fluid starts-->
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-                        <div class="card-header pb-0">
-                            <h5>Order</h5>
-                        </div>
-                        <div class="table-responsive card-body pt-3 f-12">
+
+                        <div class="table-responsive card-body f-12">
                             <table class="table table-bordered table-xxs text-center">
                                 <thead class="table-primary">
                                     <tr>
@@ -38,12 +47,14 @@
                                         <td>Motor</td>
                                         <td>Jl.Blablalalal</td>
                                         <td></td>
-                                        <td><a class="btn btn-pill btn-primary btn-sm" href="/edit-order"
-                                                data-toggle="tooltip" role="button"><i class="fa fa-pencil-square-o fa-2x"
-                                                    aria-hidden="true"></i></a>
-                                            <a class="btn btn-pill btn-danger btn-sm" href="/edit-order"
-                                                data-toggle="tooltip" role="button"><i class="fa fa-trash-o fa-2x"
-                                                    aria-hidden="true"></i></a>
+                                        <td><button type="button" class="btn btn-pill btn-primary btn-sm"
+                                                data-bs-toggle="modal" data-bs-target="#editOrder">
+                                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-pill btn-danger btn-sm"
+                                                data-bs-toggle="modal" data-bs-target="#editOrder">
+                                                <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -54,18 +65,25 @@
                                         <td>Motor</td>
                                         <td>Jl.Asdsad</td>
                                         <td></td>
-                                        <td><a class="btn btn-pill btn-primary btn-sm" href="/edit-order"
-                                                data-toggle="tooltip" role="button"><i class="fa fa-pencil-square-o fa-2x"
-                                                    aria-hidden="true"></i></a>
-                                            <a class="btn btn-pill btn-danger btn-sm" href="/edit-order"
-                                                data-toggle="tooltip" role="button"><i class="fa fa-trash-o fa-2x"
-                                                    aria-hidden="true"></i></a>
+                                        <td><button type="button" class="btn btn-pill btn-primary btn-sm"
+                                                data-bs-toggle="modal" data-bs-target="#editOrder">
+                                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-pill btn-danger btn-sm"
+                                                data-bs-toggle="modal" data-bs-target="#editOrder">
+                                                <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
+                                            </button>
                                         </td>
                                     </tr>
 
                                 </tbody>
                             </table>
                         </div>
+
+                        <!-- Modal -->
+                        @include('fo.edit-order-VFO')
+                        <!-- endModal -->
+
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@
                  class="img-90 rounded-circle" src="{{ asset('templates/assets/images/dashboard/1.png ') }} " alt="" />
              <div class="badge-bottom"><span class="badge badge-primary">BM</span></div>
              <a href="/profil-fo">
-                 <h6 class="mt-3 f-14 f-w-600">Branch Manager</h6>
+                 <h6 class="mt-3 f-14 f-w-600">BRANCH MANAGER</h6>
              </a>
              {{-- <p class="mb-0 font-roboto">FINANCE OFFICER</p> --}}
 
@@ -36,15 +36,7 @@
                          </li>
 
                          <li class="dropdown">
-                             <a href="/la-peng-pinj"
-                                 class="menu-title link-nav nav-link {{ $title === 'Pooling Order' ? 'active' : '' }}">
-                                 <i data-feather="book-open"></i>
-                                 <span>Lap Pengajuan Pinjaman</span>
-                             </a>
-                         </li>
-
-                         <li class="dropdown">
-                             <a href="/lap-peng-pinj"
+                             <a href="/lap-keuangan"
                                  class="menu-title link-nav nav-link {{ $title === 'Order' ? 'active' : '' }}">
                                  <i data-feather="book"></i>
                                  <span>Laporan Keuangan</span>

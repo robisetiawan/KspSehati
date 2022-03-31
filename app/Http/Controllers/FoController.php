@@ -64,6 +64,9 @@ class FoController extends Controller
 
     public function printbukuag()
     {
-        return view('fo.print-buku-anggota');
+
+        return view('fo.print-buku-anggota', [
+            "title" => "Cetak"
+        ]);
     }
 }

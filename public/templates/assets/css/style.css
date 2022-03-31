@@ -55119,8 +55119,14 @@ span.twitter-typeahead .tt-suggestion:active {
     }
 }
 
+/* css tambahan */
+hr.new4 {
+    border: 2px solid black;
+    backgroud-color: black;
+}
+
 /**=====================
-    60. RTL CSS Ends
+\    60. RTL CSS Ends
 ==========================**/
 /*# sourceMappingURL=style.css.map */
 /**CSS Tambahan**/

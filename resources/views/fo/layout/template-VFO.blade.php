@@ -120,6 +120,8 @@
     <script src="{{ asset('templates/assets/jsadd/jquery-3.5.1.js') }}"></script>
     <script src="{{ asset('templates/assets/jsadd/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('templates/assets/jsadd/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('templates/assets/jsadd/jsshowhide.js') }}"></script>
+
 
     <script>
         $(document).ready(function() {

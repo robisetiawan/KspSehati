@@ -32,9 +32,10 @@ Route::get('/order', [FoController::class, 'order']);
 Route::get('/edit-order', [FoController::class, 'editorder']);
 Route::get('/struktur-kredit', [FoController::class, 'strukturkredit']);
 Route::get('/penerimaan-uang', [FoController::class, 'penerimaanuang']);
-Route::get('/pembayaran', [FoController::class, 'pembayaran']);
+// Route::get('/pembayaran', [FoController::class, 'pembayaran']);
 Route::get('/cetak-buku-anggota', [FoController::class, 'cetakbukuanggota']);
 Route::get('/profil-fo', [FoController::class, 'profilfo']);
+Route::get('/print-buku-anggota', [FoController::class, 'printbukuag']);
 //endrouteFO
 
 //RouteAnggota
@@ -46,11 +47,16 @@ ROute::get('/profil-ag', [AnggotaController::class, "profilag"]);
 
 //RouteBM
 Route::get('/lap-dt-ag', [BmController::class, 'lapdtag']);
-Route::get('/lap-peng-pinj', [BmController::class, 'lappengpinj']);
 Route::get('/lap-keuangan', [BmController::class, 'lapkeuangan']);
 Route::get('/profil-bm', [BmController::class, 'profilbm']);
+Route::get('/detail-ag', [BmController::class, 'detailag']);
 //endrouteBM
 
+Route::get('/login', function () {
+    return view('login', [
+        "title" => "Login"
+    ]);
+});
 Route::get('/ss', function () {
     return view('templatebaru', [
         "title" => "Pooling Order"

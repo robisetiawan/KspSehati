@@ -54,16 +54,17 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('templates/assets/cssadd/dataTables.bootstrap4.min.css') }}">
 
+
 </head>
 
 <body>
 
     <!--  Navbar  -->
-    @include('anggota.layout.navbar-VAg')
+    @include('bm.layout.navbar-VBM')
     <!--  EndNavbar  -->
 
     <!--  Sidebar  -->
-    @include('anggota.layout.sidebar-VAg')
+    @include('bm.layout.sidebar-VBM')
     <!--  EndSidebar -->
 
     <!-- content -->
@@ -73,11 +74,11 @@
             <div class="page-header pt-4 pb-3">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3>Simpanan</h3>
+                        <h3>Laporan Data Anggota</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">KSP Sehati
                             </li>
-                            <li class="breadcrumb-item">Simpanan</li>
+                            <li class="breadcrumb-item">Laporan Data Anggota</li>
                         </ol>
                     </div>
                 </div>
@@ -89,26 +90,116 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-                        {{-- <div class="card-header pb-0">
-                            <h5>Simpanan</h5>
-                        </div> --}}
+
+                        <div class="table-responsive card-body f-12">
+                            <table class="table table-bordered table-xxs text-center">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">No Anggota</th>
+                                        <th scope="col">Tanggal Order</th>
+                                        <th scope="col">Nama Pelanggan</th>
+                                        <th scope="col">Alamat</th>
+                                        <th scope="col">Simpanan</th>
+                                        <th scope="col">Pinjaman</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>1029384920</td>
+                                        <td>01-01-2020</td>
+                                        <td>Anton</td>
+                                        <td>Jl.Blablalalal</td>
+                                        <td>Rp. 1000.000</td>
+                                        <td>Rp. 500.000</td>
+                                        <td>
+                                            <button type="button" class="btn btn-pill btn-primary btn-sm"
+                                                data-bs-toggle="modal" data-bs-target="#detailAnggota">
+                                                Detail
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>82647284728</td>
+                                        <td>12-03-2021</td>
+                                        <td>AB</td>
+                                        <td>Motor</td>
+                                        <td>Jl.Asdsad</td>
+                                        <td></td>
+                                        <td><button type="button" class="btn btn-pill btn-primary btn-sm"
+                                                data-bs-toggle="modal" data-bs-target="#detailAnggota">
+                                                Detail
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Modal -->
+                        @include('bm.detail-ag-VBM')
+                        <!-- endModal -->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-body">
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="page-header pt-4 pb-3">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Laporan Keuangan</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">KSP Sehati
+                            </li>
+                            <li class="breadcrumb-item">Laporan Keuangan</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid starts-->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+
+                        <!-- ***************************-->
+                        <!-- ********* Cash Out ********-->
+                        <!-- ***************************-->
+
+                        <div class="card-header pb-0">
+                            <h5>Cash Out</h5>
+                        </div>
 
                         <div class="card-body pt-3 pb-1 f-12">
                             <div class="row">
                                 <div class="col">
-
                                     <!-- ***************************-->
                                     <!-- ***************************-->
                                     <div class="mb-1 row">
-                                        <label class="col-sm-2 col-form-label">Jumlah Simpanan</label>
+                                        <label class="col-sm-2 col-form-label">Jumlah Pinjaman</label>
                                         <div class="col-sm-3">
                                             <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value=": Rp. {{ $title }}">
+                                                value=": {{ $title }}">
+                                        </div>
+                                        <label class="col-sm-2 col-form-label">Periode Pinjaman</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                                                value=": {{ $title }}">
                                         </div>
                                     </div>
                                     <!-- ***************************-->
                                     <!-- ***************************-->
-
                                 </div>
                             </div>
                         </div>
@@ -117,22 +208,28 @@
                             <table class="table table-striped table-bordered example" style="width:100%">
                                 <thead>
                                     <tr>
-
+                                        <th scope="row">No</th>
                                         <th scope="row">Tanggal</th>
-                                        <th scope="row">Jumlah Simpanan</th>
+                                        <th scope="row">No Anggota</th>
+                                        <th scope="row">Nama</th>
+                                        <th scope="row">Jumlah</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-
+                                        <th scope="row">1</th>
                                         <td>12-12-2022</td>
-                                        <td>Rp. 230.000</td>
-
+                                        <td>122314211</td>
+                                        <td>Anton</td>
+                                        <td>Rp. 2.000.000</td>
                                     </tr>
                                     <tr>
+                                        <th scope="row">2</th>
                                         <td>12-03-2022</td>
-                                        <td>Rp. 230.000</td>
-
+                                        <td>81261867381</td>
+                                        <td>Sudin</td>
+                                        <td>Rp. 2.000.000</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -141,11 +238,13 @@
                 </div>
             </div>
         </div>
+
     </div>
+
     <!-- EndContent -->
 
     <!-- Footer -->
-    @include('anggota.layout.footer-VAg')
+    @include('bm.layout.footer-VBM')
     <!-- EndFooter -->
 
     <script type="text/javascript">

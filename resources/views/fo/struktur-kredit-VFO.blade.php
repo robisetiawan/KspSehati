@@ -4,18 +4,26 @@
     <div class="page-body">
         <!-- Container-fluid starts-->
         <div class="container-fluid">
-            <div class="page-header">
+            <div class="page-header pt-4 pb-3">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Struktur Kredit By Angsuran</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">KSP Sehati
+                            </li>
+                            <li class="breadcrumb-item">Struktur Kredit By Angsuran</li>
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- Container-fluid starts-->
 
 
         <div class="card">
-            <div class="card-header pb-0">
-                <h5>Struktur Kredit by Angsuran</h5>
-            </div>
 
             <form class="form theme-form">
-                <div class="card-body pt-3 f-12">
+                <div class="card-body f-12">
                     <div class="row">
                         <div class="col">
 

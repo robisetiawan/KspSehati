@@ -48,13 +48,6 @@ class FoController extends Controller
         ]);
     }
 
-    public function pembayaran()
-    {
-        return view('fo.pembayaran-VFO', [
-            "title" => "Pembayaran"
-        ]);
-    }
-
     public function cetakbukuanggota()
     {
         return view('fo.cetak-buku-anggota-VFO', [
@@ -67,5 +60,10 @@ class FoController extends Controller
         return view('fo.profil-VFO', [
             "title" => "Profile"
         ]);
+    }
+
+    public function printbukuag()
+    {
+        return view('fo.print-buku-anggota');
     }
 }

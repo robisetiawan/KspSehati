@@ -92,10 +92,9 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+                <a href="#" class="btn btn-primary" type="submit">Sign in</a>
             </div>
-            <p>Don't have account?<a class="ms-2" href="https://laravel.pixelstrap.com/viho/sign-up">Create
-                    Account</a></p>
+
         </form>
     </div>
 

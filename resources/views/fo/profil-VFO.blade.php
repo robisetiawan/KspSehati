@@ -26,14 +26,16 @@
                 <div class="row">
                     <div class="col-sm-3 d-flex align-items-center">
                         <div class="card-body avatar-showcase">
-                            <div class="avatars ">
+                            <div class="avatars">
                                 {{-- <div class="avatar">
                                     <img class="img-200 rounded-circle"
                                         src="https://laravel.pixelstrap.com/viho/assets/images/user/1.jpg" alt="#">
                                 </div> --}}
                                 <div class="text-center">
-                                    <img src="https://laravel.pixelstrap.com/viho/assets/images/user/1.jpg"
-                                        class="img-200 rounded-circle">
+                                    <a href="#">
+                                        <img src="https://laravel.pixelstrap.com/viho/assets/images/user/1.jpg"
+                                            class="img-200 rounded-circle">
+                                    </a>
                                 </div>
                             </div>
                         </div>

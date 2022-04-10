@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\Pooling;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BmController;
 use App\Http\Controllers\FoController;
 use App\Http\Controllers\AnggotaController;
-use App\Http\Controllers\BmController;
-use App\Http\Controllers\EditOrderControllerFO;
+
 
 
 /*
@@ -25,9 +26,15 @@ use App\Http\Controllers\EditOrderControllerFO;
 //         "title" => "Pooling Order"
 //     ]);
 // });
-Route::get('/', [FoController::class, 'poolingorder']);
-Route::get('/anggota', [FoController::class, 'anggota']);
-Route::get('/pooling-order', [FoController::class, 'poolingorder']);
+// Route::get('/', [FoController::class, 'poolingorder']);
+// Route::get('/anggota', [FoController::class, 'anggota']);
+Route::get('/pooling-order/{id}', function ($id) {
+    return view('fo.pooling-order-VFO', [
+        "title" => "single post",
+        "pooling" => Pooling::find($id)
+    ]);
+});
+// Route::get('/pooling-order', [FoController::class, 'poolingorder']);
 Route::get('/order', [FoController::class, 'order']);
 Route::get('/edit-order', [FoController::class, 'editorder']);
 Route::get('/struktur-kredit', [FoController::class, 'strukturkredit']);

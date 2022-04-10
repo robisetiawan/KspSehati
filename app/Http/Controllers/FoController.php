@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pooling;
 use Illuminate\Http\Request;
 
 class FoController extends Controller
 {
-    public function anggota()
-    {
-        return view('fo.anggota-VFO', [
-            "title" => "Anggota"
-        ]);
-    }
+    // public function anggota()
+    // {
+    //     return view('fo.anggota-VFO', [
+    //         "title" => "Anggota"
+    //     ]);
+    // }
 
     public function poolingorder()
     {
         return view('fo.pooling-order-VFO', [
-            "title" => "Pooling Order"
+            "title" => "Pooling Order",
+            "pooling" => Pooling::all()
         ]);
     }
 

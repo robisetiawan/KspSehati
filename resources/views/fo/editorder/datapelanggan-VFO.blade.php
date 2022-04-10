@@ -246,63 +246,63 @@
                     <div class="card border-0">
                         <!-- **************************************************************************************************8******  -->
                         <div class="card-body p-1 ">
-                            <form class="theme-form">
-                                <!-- **************************************************************************************************8******  -->
-                                <div class="row mb-1">
-                                    <label class="col-sm-3 col-form-label" for="nama">Alamat</label>
-                                    <div class="col-sm-9 p-l-0">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                    </div>
 
+                            <!-- **************************************************************************************************8******  -->
+                            <div class="row mb-1">
+                                <label class="col-sm-3 col-form-label" for="nama">Alamat</label>
+                                <div class="col-sm-9 p-l-0">
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                 </div>
-                                <!-- **************************************************************************************************8******  -->
-                                <div class="row mb-1">
-                                    <label class="col-sm-3 col-form-label " for="nama">RT</label>
-                                    <div class="col-sm-2 p-l-0">
-                                        <input type="text" class="form-control form-control-sm " id="colFormLabelSm" />
-                                    </div>
-                                    <label class="col-sm-3 col-form-label " for="nama">RW</label>
-                                    <div class="col-sm-2 p-l-0">
-                                        <input type="text" class="form-control form-control-sm " id="colFormLabelSm" />
-                                    </div>
+
+                            </div>
+                            <!-- **************************************************************************************************8******  -->
+                            <div class="row mb-1">
+                                <label class="col-sm-3 col-form-label " for="nama">RT</label>
+                                <div class="col-sm-2 p-l-0">
+                                    <input type="text" class="form-control form-control-sm " id="colFormLabelSm" />
                                 </div>
-                                <!-- **************************************************************************************************8******  -->
-                                <div class="row mb-1">
-                                    <label class="col-sm-3 col-form-label" for="nama">Desa / Kel</label>
-                                    <div class="col-sm-9 p-l-0">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                    </div>
+                                <label class="col-sm-3 col-form-label " for="nama">RW</label>
+                                <div class="col-sm-2 p-l-0">
+                                    <input type="text" class="form-control form-control-sm " id="colFormLabelSm" />
                                 </div>
-                                <!-- **************************************************************************************************8******  -->
-                                <div class="row mb-1">
-                                    <label class="col-sm-3 col-form-label" for="nama">Provinsi</label>
-                                    <div class="col-sm-9 p-l-0">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                    </div>
+                            </div>
+                            <!-- **************************************************************************************************8******  -->
+                            <div class="row mb-1">
+                                <label class="col-sm-3 col-form-label" for="nama">Desa / Kel</label>
+                                <div class="col-sm-9 p-l-0">
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                 </div>
-                                <!-- **************************************************************************************************8******  -->
-                                <div class="row mb-1">
-                                    <label class="col-sm-3 col-form-label" for="nama">Kab / Kota</label>
-                                    <div class="col-sm-9 p-l-0">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                    </div>
+                            </div>
+                            <!-- **************************************************************************************************8******  -->
+                            <div class="row mb-1">
+                                <label class="col-sm-3 col-form-label" for="nama">Provinsi</label>
+                                <div class="col-sm-9 p-l-0">
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                 </div>
-                                <!-- **************************************************************************************************8******  -->
-                                <div class="row mb-1">
-                                    <label class="col-sm-3 col-form-label" for="nama">Kecamatan</label>
-                                    <div class="col-sm-9 p-l-0">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                    </div>
+                            </div>
+                            <!-- **************************************************************************************************8******  -->
+                            <div class="row mb-1">
+                                <label class="col-sm-3 col-form-label" for="nama">Kab / Kota</label>
+                                <div class="col-sm-9 p-l-0">
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                 </div>
-                                <!-- **************************************************************************************************8******  -->
-                                <div class="row mb-1">
-                                    <label class="col-sm-3 col-form-label" for="nama">Kode Pos</label>
-                                    <div class="col-sm-2 p-l-0">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                    </div>
+                            </div>
+                            <!-- **************************************************************************************************8******  -->
+                            <div class="row mb-1">
+                                <label class="col-sm-3 col-form-label" for="nama">Kecamatan</label>
+                                <div class="col-sm-9 p-l-0">
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                 </div>
-                                <!-- **************************************************************************************************8******  -->
-                            </form>
+                            </div>
+                            <!-- **************************************************************************************************8******  -->
+                            <div class="row mb-1">
+                                <label class="col-sm-3 col-form-label" for="nama">Kode Pos</label>
+                                <div class="col-sm-2 p-l-0">
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                </div>
+                            </div>
+                            <!-- **************************************************************************************************8******  -->
+
                         </div>
 
                     </div>

@@ -38,13 +38,8 @@
                                                         <div class="row mb-1">
                                                             <label class="col-sm-3 col-form-label" for="nama">Buss
                                                                 Unit</label>
-                                                            <div class="col-sm-3 p-l-0">
-                                                                <select class="form-select form-select-sm">
-                                                                    <option>Motor</option>
-                                                                    <option>Mobil</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-sm-6 p-l-0">
+
+                                                            <div class="col-sm-9 p-l-0">
                                                                 <select class="form-select form-select-sm">
                                                                     <option>01 - Pinjaman Jaminan Motor</option>
                                                                     <option>02 - Pinjaman Jaminan Mobil</option>
@@ -57,7 +52,7 @@
                                                                 Order</label>
                                                             <div class="col-sm-9 p-l-0">
                                                                 <input type="text" class="form-control form-control-sm"
-                                                                    id="colFormLabelSm" />
+                                                                    id="colFormLabelSm" value="{{ $pooling['id'] }}" />
                                                             </div>
 
                                                         </div>

@@ -9,9 +9,8 @@
      <div class="page-main-header">
          <div class="main-header-right row m-0">
              <div class="main-header-left">
-                 <div class="logo-wrapper"><a href="{{ asset('templates/dashboard ') }}"><img class="img-fluid"
-                             src="{{ asset('templates/assets/images/logo/logo-sehati.png ') }}" alt=""
-                             width="150"></a></div>
+                 <div class="logo-wrapper"><a href="#"><img class="img-fluid"
+                             src="{{ asset('templates/assets/images/logo/logo-sehati.png ') }}"></div>
                  <div class="dark-logo-wrapper"><a href="{{ asset('templates/dashboard ') }}"><img
                              class="img-fluid" src="{{ asset('templates/assets/images/logo/logo-sehati.png ') }}"
                              alt="" width="150"></a>

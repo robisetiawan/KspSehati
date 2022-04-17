@@ -71,6 +71,8 @@
     @yield('content')
     <!-- EndContent -->
 
+    <!-- Container-fluid Ends-->
+
     <!-- Footer -->
     @include('fo.layout.footer-VFO')
     <!-- EndFooter -->
@@ -121,7 +123,9 @@
     <script src="{{ asset('templates/assets/jsadd/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('templates/assets/jsadd/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('templates/assets/jsadd/jsshowhide.js') }}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+    </script>
 
     <script>
         $(document).ready(function() {

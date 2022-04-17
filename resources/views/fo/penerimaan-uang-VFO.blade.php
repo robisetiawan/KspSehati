@@ -41,7 +41,7 @@
                                                                 Terima</label>
                                                             <div class="col-sm-4 p-l-0">
                                                                 <input type="text" class="form-control form-control-sm"
-                                                                    id="colFormLabelSm" />
+                                                                    id="colFormLabelSm" readonly />
                                                             </div>
                                                             <label class="col-sm-2 col-form-label" for="nama">Tipe
                                                                 Trx</label>
@@ -58,7 +58,7 @@
                                                                 Anggota</label>
                                                             <div class="col-sm-4 p-l-0">
                                                                 <input type="text" class="form-control form-control-sm"
-                                                                    id="colFormLabelSm" />
+                                                                    id="colFormLabelSm" autofocus />
                                                             </div>
                                                             <label class="col-sm-2 col-form-label" for="nama">Status</label>
                                                             <div class="col-sm-3 p-l-0">

@@ -19,22 +19,29 @@ use App\Http\Controllers\AnggotaController;
 |
 */
 
+Route::get('/', [AnggotaController::class, 'kartuanggota']);
+
 //Route FO
 
 // Route::get('/', function () {
-//     return view('fo.pooling-order-VFO',[
+//     return view('fo.pooling-order-VFO', [
 //         "title" => "Pooling Order"
 //     ]);
 // });
+
 // Route::get('/', [FoController::class, 'poolingorder']);
-// Route::get('/anggota', [FoController::class, 'anggota']);
-Route::get('/pooling-order/{id}', function ($id) {
-    return view('fo.pooling-order-VFO', [
-        "title" => "single post",
-        "pooling" => Pooling::find($id)
-    ]);
-});
-// Route::get('/pooling-order', [FoController::class, 'poolingorder']);
+
+// Route::get('/pooling-order/{id}', function ($id) {
+//     return view('fo.pooling-order-VFO', [
+//         "title" => "single post",
+//         "pooling" => Pooling::find($id)
+//     ]);
+// });
+
+
+Route::get('/pooling-order', [FoController::class, 'poolingorder']);
+
+
 Route::get('/order', [FoController::class, 'order']);
 Route::get('/edit-order', [FoController::class, 'editorder']);
 Route::get('/struktur-kredit', [FoController::class, 'strukturkredit']);

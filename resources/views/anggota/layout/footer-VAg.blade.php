@@ -1,5 +1,3 @@
- <!-- Container-fluid Ends-->
- </div>
  <!-- footer start-->
  <footer class="footer">
      <div class="container-fluid">
@@ -10,6 +8,5 @@
          </div>
      </div>
  </footer>
- </div>
- </div>
+
  <!-- latest jquery-->

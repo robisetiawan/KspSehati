@@ -24,7 +24,7 @@
                 <div class="col-sm-12">
                     <div class="card">
 
-                        <div class="table-responsive card-body f-12">
+                        <div class="table-responsive-sm card-body f-12">
                             <table class="table table-bordered table-xxs text-center">
                                 <thead class="table-primary">
                                     <tr>
@@ -40,24 +40,6 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>1029384920</td>
-                                        <td>01-01-2020</td>
-                                        <td>Anton</td>
-                                        <td>Motor</td>
-                                        <td>Jl.Blablalalal</td>
-                                        <td></td>
-                                        <td><button type="button" class="btn btn-pill btn-primary btn-sm"
-                                                data-bs-toggle="modal" data-bs-target="#editOrder">
-                                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-pill btn-danger btn-sm"
-                                                data-bs-toggle="modal" data-bs-target="#editOrder">
-                                                <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <th scope="row">2</th>
                                         <td>82647284728</td>
                                         <td>12-03-2021</td>
@@ -65,14 +47,15 @@
                                         <td>Motor</td>
                                         <td>Jl.Asdsad</td>
                                         <td></td>
-                                        <td><button type="button" class="btn btn-pill btn-primary btn-sm"
+                                        <td><button type="button" class="badge bg-primary bg-sm border-0"
                                                 data-bs-toggle="modal" data-bs-target="#editOrder">
-                                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                                                <i class="fa fa-pencil fa-2x"></i>
                                             </button>
-                                            <button type="button" class="btn btn-pill btn-danger btn-sm"
+                                            <button type="button" class="badge bg-danger bg-sm border-0"
                                                 data-bs-toggle="modal" data-bs-target="#editOrder">
                                                 <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
                                             </button>
+
                                         </td>
                                     </tr>
 

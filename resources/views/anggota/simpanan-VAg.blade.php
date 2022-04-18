@@ -67,7 +67,7 @@
     <!--  EndSidebar -->
 
     <!-- content -->
-    <div class="page-body">
+    <div class="page-body p-t-0">
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="page-header pt-4 pb-3">

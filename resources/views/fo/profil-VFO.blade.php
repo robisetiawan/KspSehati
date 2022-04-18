@@ -1,7 +1,7 @@
 @extends('fo.layout.template-VFO')
 
 @section('content')
-    <div class="page-body">
+    <div class="page-body p-t-0">
         <div class="container-fluid">
             <div class="page-header pt-4 pb-3">
                 <div class="row">

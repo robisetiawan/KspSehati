@@ -14,7 +14,7 @@ class FoController extends Controller
     //     ]);
     // }
 
-    public function poolingorder()
+    public function index()
     {
         return view('fo.pooling-order-VFO', [
             "title" => "Pooling Order",

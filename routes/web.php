@@ -38,8 +38,9 @@ Route::get('/', [AnggotaController::class, 'kartuanggota']);
 //     ]);
 // });
 
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
-Route::get('/pooling-order', [FoController::class, 'poolingorder']);
+Route::get('/pooling-order', [FoController::class, 'index']);
 
 
 Route::get('/order', [FoController::class, 'order']);

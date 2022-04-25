@@ -16,7 +16,7 @@ class AnggotaFactory extends Factory
         return [
             'nama' => $this->faker->name,
             'nama_panggilan' => $this->faker->name(mt_rand(2, 7)),
-            'jenis_kelamin' => $this->faker->randomElement('Laki-laki', 'Perempuan'),
+            'jenis_kelamin' => $this->faker->randomElement(['Laki-laki', 'Perempuan']),
             'tempat_lahir' => $this->faker->city,
             'tanggal_lahir' => $this->faker->date,
             'nama_ibu' => $this->faker->name,

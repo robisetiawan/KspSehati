@@ -11,9 +11,10 @@
 
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
-                                <label class="col-sm-3 col-form-label" for="nama">No Order</label>
+                                <label class="col-sm-3 col-form-label" for="nama">No Anggota</label>
                                 <div class="col-sm-9 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                        readonly />
                                 </div>
 
                             </div>
@@ -27,10 +28,7 @@
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
                                 <label class="col-sm-3 col-form-label" for="nama">Pelanggan</label>
-                                <div class="col-sm-4 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                </div>
-                                <div class="col-sm-5 p-l-0">
+                                <div class="col-sm-9 p-l-0">
                                     <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                 </div>
 
@@ -112,7 +110,13 @@
                     <div class="card border-0">
                         <!-- **************************************************************************************************8******  -->
                         <div class="card-body p-1">
-
+                            <!-- **************************************************************************************************8******  -->
+                            <div class="row mb-1">
+                                <label class="col-sm-3 col-form-label" for="nama">Nama Ibu</label>
+                                <div class="col-sm-8 p-l-0">
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                </div>
+                            </div>
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
                                 <label class="col-sm-3 col-form-label" for="nama">Warganegara</label>

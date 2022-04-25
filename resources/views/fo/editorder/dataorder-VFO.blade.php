@@ -9,9 +9,8 @@
                         <!-- **************************************************************************************************8******  -->
                         <div class="card-body p-1 ">
 
-                            <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="nama">Nama Ibu</label>
+                                <label class="col-sm-4 col-form-label" for="nama">No Order</label>
                                 <div class="col-sm-8 p-l-0">
                                     <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                 </div>
@@ -118,7 +117,7 @@
                                 </div>
                             </div>
                             <!-- **************************************************************************************************8******  -->
-                            <div class="row mb-1">
+                            {{-- <div class="row mb-1">
                                 <label class="col-sm-4 col-form-label" for="nama">Src Of Order</label>
                                 <div class="col-sm-3 p-l-0">
                                     <input type="number" class="form-control form-control-sm" id="colFormLabelSm" />
@@ -161,7 +160,7 @@
                                     <input type="number" class="form-control form-control-sm" id="colFormLabelSm" />
                                 </div>
                             </div>
-                            <!-- **************************************************************************************************8******  -->
+                            <!-- **************************************************************************************************8******  --> --}}
 
 
                         </div>

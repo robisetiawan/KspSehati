@@ -9,7 +9,7 @@ class AnggotaController extends Controller
 {
     public function index()
     {
-        return view('tampilanggota', [
+        return view('fo.anggota-VFO', [
             "title" => "Tampil Anggota",
             "anggotas" => Anggota::all()
         ]);
@@ -19,7 +19,7 @@ class AnggotaController extends Controller
     {
         return view('anggota', [
             "title" => "Single Anggota",
-            "anggota" => Anggota::find($id)
+            "anggaota" => Anggota::find($id)
         ]);
     }
 

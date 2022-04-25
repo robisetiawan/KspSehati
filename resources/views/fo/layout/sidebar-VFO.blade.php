@@ -51,6 +51,14 @@
                              </a>
                          </li>
 
+                         <li class="dropdown">
+                             <a href="/anggotas" {{-- class="menu-title link-nav nav-link {{ Request::path() === '/order' ? 'active' : '' }}" --}}
+                                 class="menu-title link-nav nav-link {{ Request::is('anggotas*') ? 'active' : '' }}">
+                                 <i data-feather="users"></i>
+                                 <span>Anggota</span>
+                             </a>
+                         </li>
+
 
                          {{-- <li class="dropdown">
                              <a href="/edit-order"

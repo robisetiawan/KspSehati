@@ -372,13 +372,13 @@
                                                 </div>
                                             </div>
                                             <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
+                                            {{-- <div class="row mb-1">
                                                 <label class="col-sm-4 col-form-label" for="nama">Referensi</label>
                                                 <div class="col p-l-0">
                                                     <input type="text" class="form-control form-control-sm"
                                                         id="colFormLabelSm" />
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <!-- **************************************************************************************************8******  -->
                                             <div class="row mb-1">
                                                 <label class="col-sm-4 col-form-label" for="nama">No

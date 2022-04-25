@@ -213,7 +213,7 @@
                             </div>
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
-                                <label class="col-sm-3 col-form-label" for="nama">Telp Rumah</label>
+                                <label class="col-sm-3 col-form-label" for="nama">Telp Kantor</label>
                                 <div class="col-sm-2 p-l-0">
                                     <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                 </div>

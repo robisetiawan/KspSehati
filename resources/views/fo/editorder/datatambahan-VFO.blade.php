@@ -46,15 +46,7 @@
                                     <!-- *************** -->
                                     <!-- *************** -->
                                     <div class="mb-1 row">
-                                        <label class="col-sm-2 col-form-label">Kelurahan</label>
-                                        <div class="col-sm-5">
-                                            <input class="form-control digits" type="text" />
-                                        </div>
-                                    </div>
-                                    <!-- *************** -->
-                                    <!-- *************** -->
-                                    <div class="mb-1 row">
-                                        <label class="col-sm-2 col-form-label">Kelurahan</label>
+                                        <label class="col-sm-2 col-form-label">Desa / Kel</label>
                                         <div class="col-sm-5">
                                             <input class="form-control m-input digits" type="text" />
                                         </div>

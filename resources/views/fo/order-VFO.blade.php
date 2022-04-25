@@ -34,7 +34,6 @@
                                         <th scope="col">Nama Pelanggan</th>
                                         <th scope="col">UB</th>
                                         <th scope="col">Alamat</th>
-                                        <th scope="col">Supplier Reff</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -46,7 +45,6 @@
                                         <td>AB</td>
                                         <td>Motor</td>
                                         <td>Jl.Asdsad</td>
-                                        <td></td>
                                         <td><button type="button" class="badge bg-primary bg-sm border-0"
                                                 data-bs-toggle="modal" data-bs-target="#editOrder">
                                                 <i class="fa fa-pencil fa-2x"></i>

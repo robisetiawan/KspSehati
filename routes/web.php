@@ -53,6 +53,8 @@ Route::get('/print-buku-anggota', [FoController::class, 'printbukuag']);
 //endrouteFO
 
 //RouteAnggota
+Route::get('/anggotas', [AnggotaController::class, 'index']);
+Route::get('/anggotas/{id}', [AnggotaController::class, 'show']);
 Route::get('/kartu-anggota', [AnggotaController::class, 'kartuanggota']);
 Route::get('/pinjaman', [AnggotaController::class, 'pinjaman']);
 Route::get('/simpanan', [AnggotaController::class, 'simpanan']);

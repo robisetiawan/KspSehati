@@ -231,20 +231,19 @@
                             <div class="row mb-1">
                                 <label class="col-sm-3 col-form-label" for="nama">Catatan Keperluan Pinjaman</label>
                                 <div class="col-sm-9 p-l-0">
-                                    <textarea class="form-control" id="exampleFormControlTextarea4"
-                                        rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
                                 </div>
                             </div>
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
-                                <label class="col-sm-3 col-form-label" for="nama">Unit Bisnis</label>
+                                <label class="col-sm-3 col-form-label" for="nama">Buss Unit</label>
                                 <div class="col-sm-3 p-l-0">
                                     <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                 </div>
                                 <div class="col-sm-6 p-l-0">
                                     <select class="form-select form-select-sm">
-                                        <option>Pinjaman Jaminan Motor</option>
-                                        <option>Pinjaman Jaminan Mobil</option>
+                                        <option>01. Pinjaman Jaminan Motor</option>
+                                        <option>02. Pinjaman Jaminan Mobil</option>
                                     </select>
                                 </div>
                             </div>

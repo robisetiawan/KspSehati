@@ -66,7 +66,7 @@
                                             </div>
                                             <!-- **************************************************************************************************8******  -->
                                             <div class=" row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Konsumen</label>
+                                                <label class="col-sm-4 col-form-label" for="nama">Nama</label>
                                                 <div class="col p-l-0">
                                                     <input type="text" class="form-control form-control-sm"
                                                         id="colFormLabelSm" disabled />
@@ -76,9 +76,12 @@
                                             <div class="row mb-1">
                                                 <label class="col-sm-4 col-form-label" for="nama">Buss
                                                     Unit</label>
-
+                                                <div class="col-sm-2 p-l-0">
+                                                    <input type="text" class="form-control form-control-sm"
+                                                        id="colFormLabelSm" disabled />
+                                                </div>
                                                 <div class="col p-l-0">
-                                                    <select class="form-select form-select-sm" disabled>
+                                                    <select class="form-select form-select-sm">
                                                         <option>01 - Pinjaman Jaminan Motor</option>
                                                         <option>02 - Pinjaman Jaminan Mobil</option>
                                                     </select>
@@ -181,13 +184,13 @@
                                                 </div>
                                             </div>
                                             <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
+                                            {{-- <div class="row mb-1">
                                                 <label class="col-sm-4 col-form-label" for="nama">Referensi</label>
                                                 <div class="col p-l-0">
                                                     <input type="text" class="form-control form-control-sm"
                                                         id="colFormLabelSm" disabled />
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <!-- **************************************************************************************************8******  -->
                                             <div class="row mb-1">
                                                 <label class="col-sm-4 col-form-label" for="nama">No

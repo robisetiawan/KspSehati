@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Anggota;
 use Illuminate\Http\Request;
 
@@ -9,9 +10,9 @@ class AnggotaController extends Controller
 {
     public function index()
     {
-        return view('fo.anggota-VFO', [
+        return view('dashboard.fo.anggotas', [
             "title" => "Tampil Anggota",
-            "anggotas" => Anggota::all()
+            "anggotas" => Anggota::all(),
         ]);
     }
 
@@ -19,7 +20,7 @@ class AnggotaController extends Controller
     {
         return view('anggota', [
             "title" => "Single Anggota",
-            "anggaota" => Anggota::find($id)
+            "anggota" => Anggota::find($id)
         ]);
     }
 

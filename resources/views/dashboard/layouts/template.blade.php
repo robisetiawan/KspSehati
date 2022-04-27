@@ -10,8 +10,9 @@
     <meta name="keywords"
         content="admin template, viho admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('templates/assets/images/favicon.ico ') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('templates/assets/images/favicon.ico ') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('templates/assets/images/logo/logo-sehati2.png ') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('templates/assets/images/logo/logo-sehati2.png ') }}"
+        type="image/x-icon">
     <title>Sehati | {{ $title }}
     </title>
     <!-- Google font-->
@@ -51,33 +52,32 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/responsive.css ') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/cssadd/bootsrap.css') }}">
+    {{-- dataTables --}}
     <link rel="stylesheet" type="text/css"
         href="{{ asset('templates/assets/cssadd/dataTables.bootstrap4.min.css') }}">
-
-
-    <script src="{{ asset('templates/assets/jsadd/jquery-3.5.1.js') }}"></script>
-    <script src="{{ asset('templates/assets/jsadd/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('templates/assets/jsadd/dataTables.bootstrap4.min.js') }}"></script>
+    {{-- endDataTabels --}}
 
 </head>
 
 <body>
 
     <!--  Navbar  -->
-    @include('anggota.layout.navbar-VAg')
+    @include('dashboard.layouts.navbar')
     <!--  EndNavbar  -->
 
     <!--  Sidebar  -->
-    @include('anggota.layout.sidebar-VAg')
+    @include('dashboard.layouts.sidebar')
     <!--  EndSidebar -->
 
     <!-- content -->
     @yield('content')
     <!-- EndContent -->
 
-    <!-- Footer -->
-    @include('anggota.layout.footer-VAg')
-    <!-- EndFooter -->
+    <!-- Container-fluid Ends-->
+
+    <!-- dashboardoter -->
+    @include('dashboard.layouts.footer')
+    <!-- Enddashboardoter -->
 
     <script type="text/javascript">
         // localStorage.clear();
@@ -119,8 +119,24 @@
     <!-- Theme js-->
     <script src="{{ asset('templates/assets/js/script.js ') }}"></script>
 
-    <!-- Plugin used-->
+    <!-- dataTable.js-->
 
+    <script src="{{ asset('templates/assets/jsadd/jquery-3.5.1.js') }}"></script>
+    <script src="{{ asset('templates/assets/jsadd/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('templates/assets/jsadd/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('templates/assets/jsadd/jsshowhide.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
+    </script>
+
+    {{-- dataTables --}}
+    @stack('prepend-script')
+    <script src="{{ asset('vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @stack('scripts')
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
+    {{-- end_dataTables --}}
 </body>
 
 </html>

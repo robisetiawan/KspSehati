@@ -15,7 +15,7 @@ class CreateAnggotasTable extends Migration
     {
         Schema::create('anggotas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->foreignId('user_id');
             $table->string('nama_panggilan');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->string('tempat_lahir');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Order;
 use App\Models\Pooling;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BmController;
@@ -38,7 +39,34 @@ Route::get('/', [AnggotaController::class, 'kartuanggota']);
 //     ]);
 // });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+//=======================
+Route::get('/dashboard', function () {
+    return view('dashboard.layouts.dashboard', [
+        "title" => "Dashboard"
+    ]);
+});
+Route::get('/dashboard/anggotas', [AnggotaController::class, 'index']);
+Route::get('/dashboard/anggotas/{id}', [AnggotaController::class, 'show']);
+
+Route::get('/dashboard/orders', function () {
+    return view('dashboard.fo.orders', [
+        "title" => "Orders",
+        "orders" => Order::all()
+    ]);
+});
+
+Route::get('/dashboard/orders/{order:id}', function (Order $order) {
+    return view('anggota', [
+        "title" => "Edit Order",
+        "anggotas" => $order->anggota,
+        "order" => $order->status,
+    ]);
+});
+//=======================
+
+
+
+
 
 Route::get('/pooling-order', [FoController::class, 'index']);
 
@@ -54,8 +82,7 @@ Route::get('/print-buku-anggota', [FoController::class, 'printbukuag']);
 //endrouteFO
 
 //RouteAnggota
-Route::get('/anggotas', [AnggotaController::class, 'index']);
-Route::get('/anggotas/{id}', [AnggotaController::class, 'show']);
+
 Route::get('/kartu-anggota', [AnggotaController::class, 'kartuanggota']);
 Route::get('/pinjaman', [AnggotaController::class, 'pinjaman']);
 Route::get('/simpanan', [AnggotaController::class, 'simpanan']);

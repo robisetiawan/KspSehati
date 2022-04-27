@@ -15,6 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('anggota_id');
+            $table->enum('tipe_order', ['Retail', 'coming soon']);
+            $table->enum('status', ['verify', 'coming soon']);
+            $table->enum('platform', ['Konvensional', 'coming soon']);
+            $table->enum('keperluan', ['Sendiri', 'coming soon']);
+            $table->text('catatan');
             $table->timestamps();
         });
     }

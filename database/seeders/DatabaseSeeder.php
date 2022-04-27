@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Anggota;
 use Illuminate\Database\Seeder;
 
@@ -27,6 +28,23 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('12345')
         ]);
 
-        Anggota::factory(5)->create();
+        Anggota::factory(20)->create();
+
+        Order::create([
+            'anggota_id' => 2,
+            'tipe_order' => 'Retail',
+            'status' => 'verify',
+            'platform' => 'Konvensional',
+            'keperluan' => 'Sendiri',
+            'catatan' => 'Modal Sawah'
+        ]);
+        Order::create([
+            'anggota_id' => 1,
+            'tipe_order' => 'coming soon',
+            'status' => 'verify',
+            'platform' => 'Konvensional',
+            'keperluan' => 'Sendiri',
+            'catatan' => 'Modal Sawah'
+        ]);
     }
 }

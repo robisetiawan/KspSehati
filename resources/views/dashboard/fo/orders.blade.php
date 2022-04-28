@@ -28,7 +28,7 @@
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">No</th>
+                                        {{-- <th scope="col">No</th> --}}
                                         <th scope="col">No Order</th>
                                         <th scope="col">Tanggal Order</th>
                                         <th scope="col">Nama Pelanggan</th>
@@ -40,7 +40,7 @@
                                 <tbody>
                                     @foreach ($orders as $o)
                                         <tr>
-                                            <th>{{ $loop->iteration }}</th>
+                                            {{-- <th>{{ $loop->iteration }}</th> --}}
                                             <td>{{ $o->id }}</td>
                                             <td>{{ $o->created_at }}</td>
                                             <td>{{ $o->anggota->user->name }}</td>

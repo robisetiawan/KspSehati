@@ -26,7 +26,7 @@
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">No</th>
+                                        {{-- <th scope="col">No</th> --}}
                                         <th scope="col">No Anggota</th>
                                         <th scope="col">Nama</th>
                                         <th scope="col">TTL</th>
@@ -37,24 +37,28 @@
                                 <tbody>
                                     @foreach ($anggotas as $a)
                                         <tr>
-                                            <th>{{ $loop->iteration }}</th>
+                                            {{-- <th>{{ $loop->iteration }}</th> --}}
                                             <td>{{ $a->id }}</td>
                                             <td>{{ $a->user->name }}</td>
                                             <td>{{ $a->tempat_lahir }}, {{ $a->tanggal_lahir }}</td>
                                             <td>{{ $a->telepon_seluler }}</td>
                                             <td>
-                                                <button type="button" class="badge bg-success bg-sm border-0"
-                                                    data-bs-toggle="modal" data-bs-target="#editOrder">
-                                                    <i class="fa fa-eye fa-xs" aria-hidden="true"></i>
-                                                </button>
-                                                <button type="button" class="badge bg-primary bg-sm border-0"
-                                                    data-bs-toggle="modal" data-bs-target="#editOrder">
-                                                    <i class="fa fa-pencil fa-xs"></i>
-                                                </button>
-                                                <button type="button" class="badge bg-danger bg-sm border-0"
-                                                    data-bs-toggle="modal" data-bs-target="#editOrder">
-                                                    <i class="fa fa-trash-o fa-xs" aria-hidden="true"></i>
-                                                </button>
+                                                <div class="d-inline">
+                                                    <a href="/dashboard/orders/{{ $a->id }}"
+                                                        class="badge bg-success">
+                                                        <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="d-inline">
+                                                    <a href="/dashboard/orders/{{ $a->id }}"
+                                                        class="badge bg-primary"><i class="fa fa-pencil fa-2x"
+                                                            aria-hidden="true"></i></a>
+                                                </div>
+                                                <div class="d-inline">
+                                                    <a href="/dashboard/orders/{{ $a->id }}"
+                                                        class="badge bg-danger"><i class="fa fa-trash-o fa-2x"
+                                                            aria-hidden="true"></i></span></a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

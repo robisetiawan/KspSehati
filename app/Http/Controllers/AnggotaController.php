@@ -12,7 +12,10 @@ class AnggotaController extends Controller
     {
         return view('dashboard.fo.anggotas', [
             "title" => "Tampil Anggota",
-            "anggotas" => Anggota::all(),
+            // "anggotas" => Anggota::all(),
+            // "anggotas" => Anggota::latest()->get()
+            "anggotas" => Anggota::with(['user', 'order'])->latest()->get() //tambahkn with agar tidk bnyk melakukan query (fiture=eager loading)
+
         ]);
     }
 

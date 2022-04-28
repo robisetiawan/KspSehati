@@ -36,8 +36,8 @@
                          </li> --}}
 
                          <li class="dropdown">
-                             <a href="/pooling-order"
-                                 class="menu-title link-nav nav-link {{ $title === 'Pooling Order' ? 'active' : '' }}">
+                             <a href="/dashboard/pooling-order"
+                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/pooling-order*') ? 'active' : '' }}">
                                  <i data-feather="monitor"></i>
                                  <span>Pooling Order</span>
                              </a>

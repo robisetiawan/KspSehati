@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('12345')
         ]);
 
+        User::factory(18)->create();
+
         Anggota::factory(20)->create();
 
         Order::create([
@@ -46,5 +48,7 @@ class DatabaseSeeder extends Seeder
             'keperluan' => 'Sendiri',
             'catatan' => 'Modal Sawah'
         ]);
+
+        Order::factory(18)->create();
     }
 }

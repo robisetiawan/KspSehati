@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BmController;
 use App\Http\Controllers\FoController;
 use App\Http\Controllers\AnggotaController;
-
-
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,23 +44,14 @@ Route::get('/dashboard', function () {
         "title" => "Dashboard"
     ]);
 });
+
+Route::get('/dashboard/pooling-order', [OrderController::class, 'poolingorder']);
+
 Route::get('/dashboard/anggotas', [AnggotaController::class, 'index']);
 Route::get('/dashboard/anggotas/{id}', [AnggotaController::class, 'show']);
 
-Route::get('/dashboard/orders', function () {
-    return view('dashboard.fo.orders', [
-        "title" => "Orders",
-        "orders" => Order::all()
-    ]);
-});
-
-Route::get('/dashboard/orders/{order:id}', function (Order $order) {
-    return view('anggota', [
-        "title" => "Edit Order",
-        "anggotas" => $order->anggota,
-        "order" => $order->status,
-    ]);
-});
+Route::get('/dashboard/orders', [OrderController::class, 'index']);
+Route::get('/dashboard/orders/{order:id}', [OrderController::class, 'show']);
 //=======================
 
 

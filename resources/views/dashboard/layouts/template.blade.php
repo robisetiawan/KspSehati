@@ -51,7 +51,7 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/responsive.css ') }}">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/cssadd/bootsrap.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/cssadd/bootsrap.css') }}"> --}}
     {{-- dataTables --}}
     <link rel="stylesheet" type="text/css"
         href="{{ asset('templates/assets/cssadd/dataTables.bootstrap4.min.css') }}">
@@ -131,8 +131,6 @@
 
     {{-- dataTables --}}
     @stack('prepend-script')
-    <script src="{{ asset('vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('vendor/datatables/js/dataTables.bootstrap5.min.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @stack('scripts')
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>

@@ -1,12 +1,12 @@
 <?php
 
-use App\Models\Order;
-use App\Models\Pooling;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BmController;
 use App\Http\Controllers\FoController;
-use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,7 @@ use App\Http\Controllers\OrderController;
 |
 */
 
-Route::get('/', [AnggotaController::class, 'kartuanggota']);
+// Route::get('/', [AnggotaController::class, 'kartuanggota']);
 
 //Route FO
 
@@ -39,6 +39,10 @@ Route::get('/', [AnggotaController::class, 'kartuanggota']);
 // });
 
 //=======================
+Route::get('/', [LoginController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
+
 Route::get('/dashboard', function () {
     return view('dashboard.layouts.dashboard', [
         "title" => "Dashboard"

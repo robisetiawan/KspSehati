@@ -11,6 +11,8 @@ class Order extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    protected $with = ['anggota', 'anggota.user'];
+
     public function anggota()
     {
         return $this->belongsTo(Anggota::class);

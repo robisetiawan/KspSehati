@@ -17,7 +17,7 @@ class OrderController extends Controller
     {
         return view('dashboard.fo.orders', [
             "title" => "Orders",
-            "orders" => Order::with('anggota', 'anggota.user')->latest()->get(),
+            "orders" => Order::latest()->get(),
             // "anggotas" => Anggota::with(['user', 'order'])->latest()->get()
         ]);
     }

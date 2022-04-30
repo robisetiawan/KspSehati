@@ -39,15 +39,18 @@ use App\Http\Controllers\RegisterController;
 // });
 
 //=======================
-Route::get('/', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->middleware('auth');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard.layouts.dashboard', [
         "title" => "Dashboard"
     ]);
-});
+})->middleware('auth');
 
 Route::get('/dashboard/pooling-order', [OrderController::class, 'poolingorder']);
 

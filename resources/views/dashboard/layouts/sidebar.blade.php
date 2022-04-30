@@ -7,7 +7,8 @@
                  class="img-90 rounded-circle" src="{{ asset('templates/assets/images/dashboard/1.png ') }} " alt="" />
              <div class="badge-bottom"><span class="badge badge-primary">FO</span></div>
              <a href="/profil-fo">
-                 <h6 class="mt-3 f-14 f-w-600">FINANCE OFFICER</h6>
+                 {{-- <h6 class="mt-3 f-14 f-w-600">FINANCE OFFICER</h6> --}}
+                 <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->name }}</h6> {{-- auth otomatis sdh ad di laravel --}}
              </a>
              {{-- <p class="mb-0 font-roboto">FINANCE OFFICER</p> --}}
 

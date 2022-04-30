@@ -52,31 +52,43 @@
 <body>
 
     <div class="login-card">
-        <form class="theme-form login-form">
+        <form class="theme-form login-form" action="/" method="POST">
+            @csrf
             <div class="text-center mb-3">
                 <img class="img-fluid" src="{{ asset('templates/assets/images/logo/logo-sehati-old.png ') }}"
                     alt="" width="250">
             </div>
 
+            @if (session()->has('loginError'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('loginError') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <div class="form-group">
                 <div class="form-group">
-                    <label>Email Address</label>
+                    <label for="email">Email Address</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
-                        <input class="form-control" type="email" required="" autofocus>
+                        <input class="form-control @error('email') is-invalid @enderror" type="email" name="email"
+                            id="email" required autofocus value="{{ old('email') }}">
+                        @error('email')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
-                <label>Password</label>
+                <label for="password">Password</label>
                 <div class="input-group" id="show_hide_password">
                     <span class="input-group-text"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
-                    <input class="form-control" type="password" name="login[password]" required="">
+                    <input class="form-control" type="password" id="password" name="password" required>
                 </div>
             </div>
 
-            <div class="form-group">
-                <a href="#" class="btn btn-primary" type="submit">Sign in</a>
-            </div>
-            <small class="d-flex justify-content-center">
+            <button class="w-100 btn btn-primary btn-sm" type="submit">Login</button>
+            <small class="d-flex justify-content-center mt-4">
                 Copyright 2022 © Sehati Makmur Abadi
             </small>
         </form>

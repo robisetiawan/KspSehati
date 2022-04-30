@@ -42,7 +42,7 @@
                                     <div class="title">
                                         <a target="_blank" href="">
                                             <h4>Welcome Back,</h4>
-                                            <h6>Robi Setiawan</h6>
+                                            <h6>{{ auth()->user()->name }}</h6>{{-- method auth ototmatis ada di laravel --}}
                                         </a>
                                     </div>
 

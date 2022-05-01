@@ -6,7 +6,7 @@ use App\Models\Order;
 use App\Models\Anggota;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class FoOrderController extends Controller
 {
     /**
      * Display a listing of the resource.

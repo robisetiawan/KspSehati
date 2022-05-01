@@ -43,19 +43,20 @@
                                             <td>{{ $a->tempat_lahir }}, {{ $a->tanggal_lahir }}</td>
                                             <td>{{ $a->telepon_seluler }}</td>
                                             <td>
+
                                                 <div class="d-inline">
-                                                    <a href="/dashboard/orders/{{ $a->id }}"
+                                                    <a href="/dashboard/anggotas/{{ $a->id }}"
                                                         class="badge bg-success">
                                                         <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
                                                     </a>
                                                 </div>
                                                 <div class="d-inline">
-                                                    <a href="/dashboard/orders/{{ $a->id }}"
+                                                    <a href="/dashboard/anggotas/{{ $a->id }}"
                                                         class="badge bg-primary"><i class="fa fa-pencil fa-2x"
                                                             aria-hidden="true"></i></a>
                                                 </div>
                                                 <div class="d-inline">
-                                                    <a href="/dashboard/orders/{{ $a->id }}"
+                                                    <a href="/dashboard/anggotas/{{ $a->id }}"
                                                         class="badge bg-danger"><i class="fa fa-trash-o fa-2x"
                                                             aria-hidden="true"></i></span></a>
                                                 </div>

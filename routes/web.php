@@ -1,12 +1,14 @@
 <?php
 
+use App\Models\Pooling;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BmController;
 use App\Http\Controllers\FoController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\AnggotaController;
+use App\Http\Controllers\FoOrderController;
+use App\Http\Controllers\AgAnggotaController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\FoAnggotaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,20 +48,31 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('auth');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard/home', function () {
     return view('dashboard.layouts.dashboard', [
-        "title" => "Dashboard"
+        "title" => "Dashboard",
     ]);
 })->middleware('auth');
 
-Route::get('/dashboard/pooling-order', [OrderController::class, 'poolingorder']);
+//Finance Officer Route
+Route::get('/dashboard/pooling-order', [FoOrderController::class, 'poolingorder']);
 
-Route::get('/dashboard/anggotas', [AnggotaController::class, 'index']);
-Route::get('/dashboard/anggotas/{id}', [AnggotaController::class, 'show']);
+Route::resource('/dashboard/anggotas', FoAnggotaController::class)->middleware('auth');
+// Route::get('/dashboard/anggotas/{id}', [FoAnggotaController::class, 'show']);
 
-Route::get('/dashboard/orders', [OrderController::class, 'index']);
-Route::get('/dashboard/orders/{order:id}', [OrderController::class, 'show']);
-//=======================
+Route::get('/dashboard/orders', [FoOrderController::class, 'index']);
+Route::get('/dashboard/orders/{order:id}', [FoOrderController::class, 'show']);
+//endRoute FO
+
+//ANggota Route
+Route::resource('/dashboard/kartu-anggota', AgAnggotaController::class)->middleware('auth');
+
+// Route::get('/dashboard/kartu-anggota', [FoController::class, 'kartuanggota']);
+//endRoute Anggota
+
+
+
+
 
 
 
@@ -80,10 +93,9 @@ Route::get('/print-buku-anggota', [FoController::class, 'printbukuag']);
 
 //RouteAnggota
 
-Route::get('/kartu-anggota', [AnggotaController::class, 'kartuanggota']);
-Route::get('/pinjaman', [AnggotaController::class, 'pinjaman']);
-Route::get('/simpanan', [AnggotaController::class, 'simpanan']);
-ROute::get('/profil-ag', [AnggotaController::class, "profilag"]);
+Route::get('/pinjaman', [FoController::class, 'pinjaman']);
+Route::get('/simpanan', [FoController::class, 'simpanan']);
+ROute::get('/profil-ag', [FoController::class, "profilag"]);
 //endrouteAnggota
 
 //RouteBM

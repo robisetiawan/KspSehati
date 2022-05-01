@@ -56,6 +56,8 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('templates/assets/cssadd/dataTables.bootstrap4.min.css') }}">
     {{-- endDataTabels --}}
+    {{-- heroes.css-bootstrap --}}
+    <link rel="stylesheet" href="/css/heroes.css">
 
 </head>
 

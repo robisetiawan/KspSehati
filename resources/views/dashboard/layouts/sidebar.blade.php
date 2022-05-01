@@ -22,11 +22,11 @@
                              <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
                                      aria-hidden="true"></i></div>
                          </li>
-                         {{-- <li class="sidebar-main-title">
+                         <li class="sidebar-main-title">
                              <div>
-                                 <h6>Menu</h6>
+                                 <h6>FO</h6>
                              </div>
-                         </li> --}}
+                         </li>
 
                          {{-- <li class="dropdown">
                              <a href="/anggota"
@@ -36,6 +36,13 @@
                              </a>
                          </li> --}}
 
+                         <li class="dropdown">
+                             <a href="/dashboard/home"
+                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/home') ? 'active' : '' }}">
+                                 <i data-feather="home"></i>
+                                 <span>Dashboard</span>
+                             </a>
+                         </li>
                          <li class="dropdown">
                              <a href="/dashboard/pooling-order"
                                  class="menu-title link-nav nav-link {{ Request::is('/dashboard/pooling-order*') ? 'active' : '' }}">
@@ -94,7 +101,19 @@
                              </a>
                          </li>
 
+                         <li class="sidebar-main-title">
+                             <div>
+                                 <h6>Anggota</h6>
+                             </div>
+                         </li>
 
+                         <li class="dropdown">
+                             <a href="/dashboard/kartu-anggota"
+                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/kartu-anggotas*') ? 'active' : '' }}">
+                                 <i data-feather="users"></i>
+                                 <span>Kartu Anggota</span>
+                             </a>
+                         </li>
 
                      </ul>
                  </div>

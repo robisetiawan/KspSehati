@@ -20,4 +20,19 @@ class Anggota extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function identity()
+    {
+        return $this->belongsTo(Identity::class);
+    }
+
+    public function profession()
+    {
+        return $this->belongsTo(Profession::class);
+    }
+
+    public function adddata()
+    {
+        return $this->belongsTo(Adddata::class);
+    }
 }

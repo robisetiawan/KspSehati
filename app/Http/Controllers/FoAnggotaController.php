@@ -53,7 +53,8 @@ class FoAnggotaController extends Controller
     public function show(Anggota $anggota)
     {
         return view('dashboard.fo.anggotas.show-anggota', [
-            "title" => "Detail Anggota"
+            "title" => "Detail Anggota",
+            "anggotas" => $anggota
         ]);
     }
 

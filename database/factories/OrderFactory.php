@@ -14,7 +14,7 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'anggota_id' => $this->faker->numberBetween(0, 20),
+            'anggota_id' => $this->faker->numberBetween(1, 20),
             'tipe_order' => $this->faker->randomElement(['Retail', 'coming soon']),
             'status' => $this->faker->randomElement(['verify', 'coming soon']),
             'platform' => $this->faker->randomElement(['Konvensional', 'coming soon']),

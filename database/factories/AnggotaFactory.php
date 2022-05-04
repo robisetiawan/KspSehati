@@ -14,7 +14,10 @@ class AnggotaFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween(0, 20),
+            'user_id' => $this->faker->numberBetween(1, 20),
+            'identity_id' => $this->faker->numberBetween(1, 1),
+            'profession_id' => $this->faker->numberBetween(1, 1),
+            'adddata_id' => $this->faker->numberBetween(1, 1),
             'nama_panggilan' => $this->faker->name(mt_rand(2, 7)),
             'jenis_kelamin' => $this->faker->randomElement(['Laki-laki', 'Perempuan']),
             'tempat_lahir' => $this->faker->city,

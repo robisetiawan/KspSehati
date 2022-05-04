@@ -1946,8 +1946,8 @@ a:hover {
 .btn-outline-primary-2x:active,
 .btn-outline-primary-2x.active {
     color: white;
-    background-color: #17433b !important;
-    border-color: #17433b !important;
+    background-color: #008199 !important;
+    border-color: #008199 !important;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
@@ -2084,8 +2084,8 @@ a:hover {
 .btn-outline-primary:active,
 .btn-outline-primary.active {
     color: white;
-    background-color: #17433b !important;
-    border-color: #17433b !important;
+    background-color: #008199 !important;
+    border-color: #008199 !important;
 }
 
 .btn-outline-secondary {
@@ -2209,8 +2209,8 @@ a:hover {
 }
 
 .btn-primary:not([disabled]):not(.disabled).active {
-    background-color: #17433b;
-    border-color: #17433b;
+    background-color: #008199;
+    border-color: #008199;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
@@ -2219,8 +2219,8 @@ a:hover {
 .btn-primary:not([disabled]):not(.disabled).active:active,
 .btn-primary:not([disabled]):not(.disabled).active.active {
     color: white;
-    background-color: #17433b;
-    border-color: #17433b;
+    background-color: #008199;
+    border-color: #008199;
 }
 
 .btn-secondary:not([disabled]):not(.disabled).active {
@@ -2342,8 +2342,8 @@ a:hover {
     color: white;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    background-color: #17433b !important;
-    border-color: #17433b !important;
+    background-color: #008199 !important;
+    border-color: #008199 !important;
 }
 
 .btn-outline-secondary-2x:not([disabled]):not(.disabled).active {
@@ -2531,8 +2531,8 @@ table tbody .border-bottom-warning td {
 }
 .table-styling .table-primary thead,
 .table-styling.table-primary thead {
-    background-color: #17433b;
-    border: 3px solid #17433b;
+    background-color: #008199;
+    border: 3px solid #008199;
 }
 .table-styling .table-primary tr th,
 .table-styling .table-primary tr td,
@@ -8963,8 +8963,8 @@ table tbody .border-bottom-warning td {
 .btn-air-primary:hover,
 .btn-air-primary:active,
 .btn-air-primary:not([disabled]):not(.disabled):active {
-    background-color: #17433b;
-    border-color: #17433b;
+    background-color: #008199;
+    border-color: #008199;
 }
 
 .btn-air-secondary {
@@ -14751,7 +14751,7 @@ strong ~ p {
     padding: 2px 6px !important;
     margin-top: 0 !important;
     background-color: #008199 !important;
-    border-color: #17433b !important;
+    border-color: #008199 !important;
     color: #fff;
     margin-right: 8px !important;
 }
@@ -14789,7 +14789,7 @@ strong ~ p {
     padding: 2px 6px !important;
     margin-top: 0 !important;
     background-color: #008199 !important;
-    border-color: #17433b !important;
+    border-color: #008199 !important;
     color: #fff;
     margin-right: 8px !important;
 }
@@ -40764,27 +40764,27 @@ body.dark-sidebar .main-navbar ul.nav-pills .nav-item .nav-link {
 
 .ribbon-primary.ribbon-clip:before {
     border-color: transparent;
-    border-top-color: #17433b;
-    border-right-color: #17433b;
+    border-top-color: #008199;
+    border-right-color: #008199;
 }
 
 .ribbon-primary.ribbon-clip-right:before {
     border-right-color: transparent;
-    border-top-color: #17433b;
-    border-left-color: #17433b;
+    border-top-color: #008199;
+    border-left-color: #008199;
 }
 
 .ribbon-primary.ribbon-clip-bottom:before {
     border-top-color: transparent;
-    border-bottom-color: #17433b;
-    border-right-color: #17433b;
+    border-bottom-color: #008199;
+    border-right-color: #008199;
 }
 
 .ribbon-primary.ribbon-clip-bottom-right:before {
     border-top-color: transparent;
-    border-bottom-color: #17433b;
+    border-bottom-color: #008199;
     border-right-color: transparent;
-    border-left-color: #17433b;
+    border-left-color: #008199;
 }
 
 .ribbon-secondary {
@@ -48908,7 +48908,7 @@ span.twitter-typeahead .tt-suggestion:active {
     -ms-flex-pack: center;
     justify-content: center;
     background-blend-mode: overlay;
-    background-color: #17433b;
+    background-color: #008199;
     position: relative;
 }
 .mobile-clock-widget .bg-svg {

@@ -30,7 +30,10 @@ class FoAnggotaController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.fo.anggotas.create-anggota', [
+            'title' => 'Tambah Anggota',
+            'anggotas' => Anggota::all()
+        ]);
     }
 
     /**
@@ -41,7 +44,10 @@ class FoAnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request['user_id'] = auth()->user()->id;
+        Anggota::create($request->all());
+
+        return redirect('/dashboard/anggotas')->with('success', 'Berhasil menambahkan anggota');
     }
 
     /**
@@ -97,6 +103,8 @@ class FoAnggotaController extends Controller
      */
     public function destroy(Anggota $anggota)
     {
-        //
+        Anggota::destroy($anggota->id);
+
+        return redirect('/dashboard/anggotas')->with('success', 'Anggota Berhasil dihapus');
     }
 }

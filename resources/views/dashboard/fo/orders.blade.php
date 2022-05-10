@@ -43,7 +43,7 @@
                                             {{-- <th>{{ $loop->iteration }}</th> --}}
                                             <td>{{ $o->id }}</td>
                                             <td>{{ $o->created_at }}</td>
-                                            <td>{{ $o->anggota->user->name }}</td>
+                                            <td>{{ $o->tipe_order }}</td>
                                             <td>Motor</td>
                                             <td>
                                                 <a href="/dashboard/orders/{{ $o->id }}" class="badge bg-success">

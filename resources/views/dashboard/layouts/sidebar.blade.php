@@ -3,7 +3,7 @@
      <!-- Page Sidebar Start-->
      <header class="main-nav">
          <div class="sidebar-user text-center">
-             <a class="setting-primary" href="/profil-fo"><i data-feather="settings"></i></a><img
+             <a class="setting-primary" href="/dashboard/setting"><i data-feather="settings"></i></a><img
                  class="img-90 rounded-circle" src="{{ asset('templates/assets/images/dashboard/1.png ') }} " alt="" />
              <div class="badge-bottom"><span class="badge badge-primary">FO</span></div>
              <a href="/profil-fo">
@@ -21,6 +21,13 @@
                          <li class="back-btn">
                              <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
                                      aria-hidden="true"></i></div>
+                         </li>
+                         <li class="dropdown">
+                             <a href="/dashboard/profile"
+                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/profile*') ? 'active' : '' }}">
+                                 <i data-feather="gear"></i>
+                                 <span>Profile</span>
+                             </a>
                          </li>
                          <li class="sidebar-main-title">
                              <div>
@@ -114,6 +121,45 @@
                                  <span>Kartu Anggota</span>
                              </a>
                          </li>
+
+                         <li class="dropdown">
+                             <a href="/dashboard/pinjaman"
+                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/pinjaman*') ? 'active' : '' }}">
+                                 <i data-feather="book-open"></i>
+                                 <span>Pinjaman</span>
+                             </a>
+                         </li>
+
+                         <li class="dropdown">
+                             <a href="/dashboard/simpanan"
+                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/simpanan*') ? 'active' : '' }}">
+                                 <i data-feather="book"></i>
+                                 <span>Simpanan</span>
+                             </a>
+                         </li>
+
+                         <li class="sidebar-main-title">
+                             <div>
+                                 <h6>Branch Manager</h6>
+                             </div>
+                         </li>
+
+                         <li class="dropdown">
+                             <a href="/dashboard/lap-dt-ag"
+                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/lap-dt-ag*') ? 'active' : '' }}">
+                                 <i data-feather="users"></i>
+                                 <span>Laporan Data Anggota</span>
+                             </a>
+                         </li>
+
+                         <li class="dropdown">
+                             <a href="/dashboard/lap-keuangan"
+                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/lap-keuangan*') ? 'active' : '' }}">
+                                 <i data-feather="file-text"></i>
+                                 <span>Laporan Keuangan</span>
+                             </a>
+                         </li>
+
 
                      </ul>
                  </div>

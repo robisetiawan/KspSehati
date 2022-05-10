@@ -23,14 +23,33 @@
                      <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i
                                  data-feather="maximize"></i></a></li>
 
+                     <div class="dropdown">
+                         <button class="btn btn-primary-light dropdown-toggle" type="button" id="dropdownMenu2"
+                             data-bs-toggle="dropdown" aria-expanded="false">
+                             Dropdown
+                         </button>
+                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                             <li><button class="dropdown-item" type="button">Action</button></li>
+                             <li><button class="dropdown-item" type="button">Another action</button></li>
+                             <li>
+                                 <form action="/logout" method="POST">
+                                     @csrf
+                                     <button class="dropdown-item" type="submit"><i data-feather="log-out"></i>Log
+                                         out</button>
+                                 </form>
+                             </li>
+                         </ul>
+                     </div>
                      <li class="onhover-dropdown p-0">
                          {{-- <a href="/" class="btn btn-primary-light"><i data-feather="log-out"></i>Logout</span></a> --}}
+
                          <form action="/logout" method="POST">
                              @csrf
                              <button class="btn btn-primary-light" type="submit"><i data-feather="log-out"></i>Log
                                  out</button>
                          </form>
                      </li>
+
                  </ul>
              </div>
              <div class="d-lg-none mobile-toggle pull-right w-auto"><i data-feather="more-horizontal"></i></div>

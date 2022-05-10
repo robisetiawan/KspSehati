@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pooling;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class FoController extends Controller
+class ProfilController extends Controller
 {
     // public function anggota()
     // {
@@ -16,10 +17,43 @@ class FoController extends Controller
 
     public function index()
     {
-        return view('fo.pooling-order-VFO', [
-            "title" => "Pooling Order",
-            "pooling" => Pooling::all()
+        // $data = User::find($id);
+        // dd($data);
+        return view('dashboard.profile', [
+            "title" => "Profile",
         ]);
+    }
+
+    public function updateprofile(Request $request, User $user)
+    {
+        $request->validate([
+            'name'  => 'required|min:3|max:100',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+        ]);
+
+        $data = $request->all();
+        $user->update($data);
+        return redirect()->back()->with([
+            'status' => 'Profile Berhasil Disimpan'
+        ]);
+    }
+
+    public function setting()
+    {
+        return view('dashboard.setting', [
+            "title" => "Setting"
+        ]);
+    }
+
+    public function updatesetting(Request $request, User $user)
+    {
+        $request->validate([
+            'password' => ['required', 'min:3'],
+            'konfirmasi_password' => ['same:password'],
+        ]);
+
+        $user->update(['password' => Hash::make($request->password)]);
+        return redirect()->back()->with(['success' => 'Password berhasil diupdate!']);
     }
 
     public function order()

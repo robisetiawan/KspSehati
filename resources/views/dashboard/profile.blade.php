@@ -1,4 +1,4 @@
-@extends('fo.layout.template-VFO')
+@extends('dashboard.layouts.template')
 
 @section('content')
     <div class="page-body p-t-0">
@@ -6,11 +6,11 @@
             <div class="page-header pt-4 pb-3">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3>Profil</h3>
+                        <h3>Profile</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">KSP Sehati
                             </li>
-                            <li class="breadcrumb-item">Setting</li>
+                            <li class="breadcrumb-item">Profile</li>
                         </ol>
                     </div>
                 </div>
@@ -23,7 +23,10 @@
             <!-- *************** -->
 
             <div class="container">
-                <form action="" method="POST">
+                @if (session('status'))
+                    <div class="alert alert-success text-light">{{ session('status') }}</div>
+                @endif
+                <form action="{{ route('update-profile', Auth::id()) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -48,31 +51,33 @@
                             <div class="card-body">
 
                                 <div class="row mb-3">
-                                    <div>
-                                        <label for="name">Nama</label>
+                                    <label class="col-sm-4 col-form-label" for="name">Nama</label>
+                                    <div class="col-sm-8">
                                         <input class="form-control {{ $errors->first('name') ? 'is-invalid' : '' }}"
                                             name="name" type="text" value="{{ auth()->user()->name }}" required>
-                                        <div class="invalid-feedback">
-                                            {{ $errors->first('name') }}
-                                        </div>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('name') }}
                                     </div>
                                 </div>
 
-                                <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Users Id</label>
+                                <div class="row mb-3">
+                                    <label class="col-sm-4 col-form-label" for="email">Email</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" type="text" required="">
+                                        <input class="form-control {{ $errors->first('email') ? 'is-invalid' : '' }}"
+                                            name="email" type="text" value="{{ auth()->user()->email }}" required>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('email') }}
                                     </div>
                                 </div>
 
-                                <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Password Lama</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="password" required="">
-                                    </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                                 </div>
 
-                                <div class="form-group mb-3 row">
+
+                                {{-- <div class="form-group mb-3 row">
                                     <label class="col-sm-4 col-form-label">Password Baru</label>
                                     <div class="col-sm-8" id="show_hide_password">
                                         <input class="form-control" type="password" required="">
@@ -93,12 +98,13 @@
 
                                 <div class="form-group text-end">
                                     <button class="btn btn-primary btn-block" type="submit">Simpan</button>
-                                </div>
+                                </div> --}}
 
                             </div>
                         </div>
                     </div>
                 </form>
+
             </div>
 
             <!-- *************** -->

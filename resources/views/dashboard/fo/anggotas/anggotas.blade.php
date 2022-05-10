@@ -23,6 +23,14 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="table-responsive card-body pt-3 f-12">
+                            <a href="/dashboard/anggotas/create" class="btn btn-primary mb-2">Tambah anggota</a>
+                            @if (session()->has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
@@ -55,11 +63,14 @@
                                                         class="badge bg-primary"><i class="fa fa-pencil fa-2x"
                                                             aria-hidden="true"></i></a>
                                                 </div>
-                                                <div class="d-inline">
-                                                    <a href="/dashboard/anggotas/{{ $a->id }}"
-                                                        class="badge bg-danger"><i class="fa fa-trash-o fa-2x"
-                                                            aria-hidden="true"></i></span></a>
-                                                </div>
+                                                <form action="/dashboard/anggotas/{{ $a->id }}" method="POST"
+                                                    class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button class="badge bg-danger border-0"
+                                                        onclick="return confirm('Are you sure !!')"><i
+                                                            class="fa fa-trash-o fa-1" aria-hidden="true"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

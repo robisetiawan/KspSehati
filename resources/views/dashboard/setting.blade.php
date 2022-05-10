@@ -1,4 +1,4 @@
-@extends('fo.layout.template-VFO')
+@extends('dashboard.layouts.template')
 
 @section('content')
     <div class="page-body p-t-0">
@@ -6,7 +6,7 @@
             <div class="page-header pt-4 pb-3">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3>Profil</h3>
+                        <h3>Setting</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">KSP Sehati
                             </li>
@@ -23,7 +23,10 @@
             <!-- *************** -->
 
             <div class="container">
-                <form action="" method="POST">
+                @if (session('success'))
+                    <div class="alert alert-success text-light">{{ session('success') }}</div>
+                @endif
+                <form action="{{ route('update-setting', Auth::id()) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="row">
@@ -48,31 +51,39 @@
                             <div class="card-body">
 
                                 <div class="row mb-3">
-                                    <div>
-                                        <label for="name">Nama</label>
-                                        <input class="form-control {{ $errors->first('name') ? 'is-invalid' : '' }}"
-                                            name="name" type="text" value="{{ auth()->user()->name }}" required>
+                                    <label class="col-sm-4 col-form-label" for="password">Password</label>
+                                    <div class="col-sm-8" id="show_hide_password">
+                                        <input type="password"
+                                            class="form-control {{ $errors->first('password') ? 'is-invalid' : '' }}"
+                                            name="password" id="password" value="" placeholder="Password">
+                                        <div class="show-hide">
+                                            <a href=""><i class="fa fa-eye-slash px-3" aria-hidden="true"></i></a>
+                                        </div>
                                         <div class="invalid-feedback">
-                                            {{ $errors->first('name') }}
+                                            {{ $errors->first('password') }}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Users Id</label>
+                                <div class="row mb-3">
+                                    <label class="col-sm-4 col-form-label" for="password">Konfirmasi Password</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" type="text" required="">
+                                        <input type="password"
+                                            class="form-control {{ $errors->first('konfirmasi_password') ? 'is-invalid' : '' }}"
+                                            name="konfirmasi_password" id="password" value=""
+                                            placeholder="Konfirmasi Password">
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('konfirmasi_password') }}
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Password Lama</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="password" required="">
-                                    </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                                 </div>
 
-                                <div class="form-group mb-3 row">
+                                {{-- <div class="form-group mb-3 row">
                                     <label class="col-sm-4 col-form-label">Password Baru</label>
                                     <div class="col-sm-8" id="show_hide_password">
                                         <input class="form-control" type="password" required="">
@@ -93,7 +104,7 @@
 
                                 <div class="form-group text-end">
                                     <button class="btn btn-primary btn-block" type="submit">Simpan</button>
-                                </div>
+                                </div> --}}
 
                             </div>
                         </div>

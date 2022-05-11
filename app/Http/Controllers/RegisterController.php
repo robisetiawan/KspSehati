@@ -20,8 +20,13 @@ class RegisterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|email:dns|unique:users',
+            'image' => 'image|file|max:10000',
             'password' => 'required|min:5|max:100'
         ]);
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('profile-image');
+        }
         //jika code diatas lolos jalankan yg dibawah
         // dd('registrasi berhasil');
 

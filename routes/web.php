@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BmController;
-use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FoOrderController;
 use App\Http\Controllers\AgAnggotaController;
@@ -53,10 +53,10 @@ Route::get('/dashboard/home', function () {
     ]);
 })->middleware('auth');
 
-Route::get('/dashboard/profile', [ProfilController::class, 'index'])->middleware('auth');
-Route::put('/dashboard/update-profile/{user}', [ProfilController::class, 'updateprofile'])->name('update-profile');
-Route::get('/dashboard/setting', [ProfilController::class, 'setting'])->middleware('auth');
-Route::put('/dashboard/update-setting/{user}', [ProfilController::class, 'updatesetting'])->name('update-setting');
+Route::get('/dashboard/profile', [ProfileController::class, 'index'])->middleware('auth');
+Route::put('/dashboard/update-profile/{user}', [ProfileController::class, 'updateprofile'])->name('update-profile');
+Route::get('/dashboard/setting', [ProfileController::class, 'setting'])->middleware('auth');
+Route::put('/dashboard/update-setting/{user}', [ProfileController::class, 'updatesetting'])->name('update-setting');
 
 // Route::resource('/dashboard/profile', ProfileController::class)->middleware('auth');
 

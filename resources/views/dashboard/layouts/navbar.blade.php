@@ -23,32 +23,36 @@
                      <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i
                                  data-feather="maximize"></i></a></li>
 
-                     <div class="dropdown">
-                         <button class="btn btn-primary-light dropdown-toggle" type="button" id="dropdownMenu2"
-                             data-bs-toggle="dropdown" aria-expanded="false">
-                             Dropdown
-                         </button>
-                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                             <li><button class="dropdown-item" type="button">Action</button></li>
-                             <li><button class="dropdown-item" type="button">Another action</button></li>
-                             <li>
-                                 <form action="/logout" method="POST">
-                                     @csrf
-                                     <button class="dropdown-item" type="submit"><i data-feather="log-out"></i>Log
-                                         out</button>
-                                 </form>
-                             </li>
-                         </ul>
-                     </div>
-                     <li class="onhover-dropdown p-0">
-                         {{-- <a href="/" class="btn btn-primary-light"><i data-feather="log-out"></i>Logout</span></a> --}}
+                     <li class="dropdown-basic">
+                         <div class="dropdown">
+                             <button class="dropbtn btn btn-primary btn-sm" type="button">
+                                 {{ auth()->user()->name }} <span><i class="fa fa-angle-down"
+                                         aria-hidden="true"></i></span>
+                             </button>
+                             <div class="dropdown-content">
+                                 <a href="/dashboard/profile"><i class="fa fa-user" aria-hidden="true"></i>
+                                     Profile</a>
+                                 <a href="/dashboard/setting"><i class="fa fa-cog" aria-hidden="true"></i>
+                                     Setting</a>
+                                 <a href="#">
+                                     <form action="/logout" method="POST" class="text-center">@csrf
+                                         <button class="btn btn-primary-light btn-sm" type="submit"><i
+                                                 class="fa fa-sign-out" aria-hidden="true"></i> Log
+                                             out</button>
+                                     </form>
+                                 </a>
+                             </div>
+                         </div>
+                     </li>
+
+                     {{-- <li class="onhover-dropdown p-0">
 
                          <form action="/logout" method="POST">
                              @csrf
                              <button class="btn btn-primary-light" type="submit"><i data-feather="log-out"></i>Log
                                  out</button>
                          </form>
-                     </li>
+                     </li> --}}
 
                  </ul>
              </div>

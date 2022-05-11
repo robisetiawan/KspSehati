@@ -95,7 +95,7 @@ class FoOrderController extends Controller
 
     public function poolingorder()
     {
-        return view('fo.pooling-order-VFO', [
+        return view('dashboard.fo.pooling-order', [
             "title" => "Pooling Order",
             "pooling" => Order::all()
         ]);

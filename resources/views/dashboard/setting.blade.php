@@ -24,35 +24,24 @@
 
             <div class="container">
                 @if (session('success'))
-                    <div class="alert alert-success text-light">{{ session('success') }}</div>
+                    <div class="row justify-content-center">
+                        <div class="alert alert-success alert-dismissible fade show mt-4 mb-1 col-sm-8" role="alert">
+                            <strong>{{ session('success') }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    </div>
                 @endif
                 <form action="{{ route('update-setting', Auth::id()) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <div class="row">
-                        <div class="col-sm-3 d-flex align-items-center">
-                            <div class="card-body avatar-showcase">
-                                <div class="avatars">
-                                    {{-- <div class="avatar">
-                                    <img class="img-200 rounded-circle"
-                                        src="https://laravel.pixelstrap.com/viho/assets/images/user/1.jpg" alt="#">
-                                </div> --}}
-                                    <div class="text-center">
-                                        <a href="#">
-                                            <img src="https://laravel.pixelstrap.com/viho/assets/images/user/1.jpg"
-                                                class="img-200 rounded-circle">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="row justify-content-center">
                         <div class="col-sm-8 needs-validation was-validated" novalidate="">
                             <div class="card-body">
 
                                 <div class="row mb-3">
                                     <label class="col-sm-4 col-form-label" for="password">Password</label>
-                                    <div class="col-sm-8" id="show_hide_password">
+                                    <div class="col" id="show_hide_password">
                                         <input type="password"
                                             class="form-control {{ $errors->first('password') ? 'is-invalid' : '' }}"
                                             name="password" id="password" value="" placeholder="Password">

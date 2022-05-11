@@ -27,7 +27,7 @@ class LoginController extends Controller
         }
         // dd('berhasil login');
 
-        return back()->with('loginError', 'Login failed !'); //jika perintah diatas gagal maka akan diarahkan kembali dengan membawa pesan error
+        return back()->with('loginError', 'Login failed !!!'); //jika perintah diatas gagal maka akan diarahkan kembali dengan membawa pesan error
     }
 
     public function logout(Request $request)

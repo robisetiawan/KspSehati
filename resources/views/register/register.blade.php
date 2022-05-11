@@ -26,10 +26,7 @@
                 <div class="row">
                     <div class="theme-form login-form">
                         <div class="text-center mb-3">
-                            <a href="#">
-                                <img src="https://laravel.pixelstrap.com/viho/assets/images/user/1.jpg"
-                                    class="img-fluid img-200 rounded-circle">
-                            </a>
+                            <img class="img-preview img-100 rounded-circle">
                         </div>
 
                         @if (session()->has('status'))
@@ -40,7 +37,7 @@
                             </div>
                         @endif
 
-                        <form action="/register" method="post">
+                        <form action="/register" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="text">No Anggota</label>
@@ -60,6 +57,7 @@
                                         </div>
                                     @enderror
                                 </div>
+
                                 <label for="email">Email Address</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
@@ -71,6 +69,19 @@
                                         </div>
                                     @enderror
                                 </div>
+
+                                <label for="image">Foto</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
+                                        name="image" onchange="previewImage()">
+                                    @error('image')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
                                 <label for="password">Password</label>
                                 <div class="input-group" id="show_hide_password">
                                     <span class="input-group-text"><i class="fa fa-unlock-alt"
@@ -100,4 +111,21 @@
             <!-- *************** -->
         </div>
     </div>
+
+    <script>
+        // preview image
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.height = '100px';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
 @endsection

@@ -3,8 +3,17 @@
      <!-- Page Sidebar Start-->
      <header class="main-nav">
          <div class="sidebar-user text-center">
-             <a class="setting-primary" href="/dashboard/setting"><i data-feather="settings"></i></a><img
-                 class="img-90 rounded-circle" src="{{ asset('templates/assets/images/dashboard/1.png ') }} " alt="" />
+             <a class="setting-primary" href="/dashboard/setting"><i data-feather="settings"></i></a>
+
+             @if (auth()->user()->image)
+                 <div style="overflow: hidden">
+                     <img class="img-90 rounded-circle" src="{{ asset('storage/' . auth()->user()->image) }}"
+                         height="90px" />
+                 </div>
+             @else
+                 <img class="img-90 rounded-circle" src="{{ asset('templates/assets/images/dashboard/2.png ') }} " />
+             @endif
+
              <div class="badge-bottom"><span class="badge badge-primary">FO</span></div>
              <a href="/profil-fo">
                  {{-- <h6 class="mt-3 f-14 f-w-600">FINANCE OFFICER</h6> --}}
@@ -21,13 +30,6 @@
                          <li class="back-btn">
                              <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
                                      aria-hidden="true"></i></div>
-                         </li>
-                         <li class="dropdown">
-                             <a href="/dashboard/profile"
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/profile*') ? 'active' : '' }}">
-                                 <i data-feather="gear"></i>
-                                 <span>Profile</span>
-                             </a>
                          </li>
                          <li class="sidebar-main-title">
                              <div>
@@ -105,6 +107,14 @@
                                  class="menu-title link-nav nav-link {{ $title === 'Cetak Buku Anggota' ? 'active' : '' }}">
                                  <i data-feather="printer"></i>
                                  <span>Cetak Buku Anggota</span>
+                             </a>
+                         </li>
+
+                         <li class="dropdown">
+                             <a href="/register"
+                                 class="menu-title link-nav nav-link {{ Request::is('/register') ? 'active' : '' }}">
+                                 <i data-feather="user-plus"></i>
+                                 <span>Register</span>
                              </a>
                          </li>
 

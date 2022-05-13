@@ -29,7 +29,10 @@ class FoOrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.fo.pooling-order', [
+            'title' => 'Tambah Anggota',
+            'anggotas' => Order::all()
+        ]);
     }
 
     /**

@@ -75,12 +75,28 @@
                                                         </div>
                                                         <!-- **************************************************************************************************8******  -->
 
+                                                        {{-- <div class="row mb-1">
+                                                            <label class="col-sm-4 col-form-label" for="name">Nama</label>
+                                                            <div class="col">
+                                                                <input type="text" class="form-control form-control-sm"
+                                                                    name="name" id="name">
+                                                            </div>
+                                                        </div> --}}
+                                                        <!-- **************************************************************************************************8******  -->
+
                                                         <div class="row mb-1">
                                                             <label class="col-sm-4 col-form-label"
                                                                 for="nama_panggilan">Panggilan</label>
                                                             <div class="col">
-                                                                <input type="text" class="form-control form-control-sm"
-                                                                    name="nama_panggilan" id="nama_panggilan">
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm @error('nama_panggilan') is-invalid @enderror"
+                                                                    name="nama_panggilan" id="nama_panggilan"
+                                                                    value="{{ old('nama_panggilan') }}">
+                                                                @error('nama_panggilan')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <!-- **************************************************************************************************8******  -->
@@ -88,8 +104,14 @@
                                                         <div class="row mb-1">
                                                             <label class="col-sm-4 col-form-label" for="email">Email</label>
                                                             <div class="col">
-                                                                <input type="text" class="form-control form-control-sm"
-                                                                    name="email" id="email">
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm @error('email') is-invalid @enderror"
+                                                                    name="email" id="email" value="{{ old('email') }}">
+                                                                @error('email')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <!-- **************************************************************************************************8******  -->
@@ -116,12 +138,26 @@
                                                             <label class="col-sm-4 col-form-label visually-hidden"
                                                                 for="tanggal_lahit">TTL</label>
                                                             <div class="col">
-                                                                <input type="text" class="form-control form-control-sm"
-                                                                    name="tempat_lahir" id="tempat_lahir">
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm @error('tempat_lahir') is-invalid @enderror"
+                                                                    name="tempat_lahir" id="tempat_lahir"
+                                                                    value="{{ old('tempat_lahir') }}">
+                                                                @error('tempat_lahir')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
                                                             <div class="col">
-                                                                <input type="date" class="form-control form-control-sm"
-                                                                    name="tanggal_lahir" id="tanggal_lahir">
+                                                                <input type="date"
+                                                                    class="form-control form-control-sm @error('tanggal_lahir') is-invalid @enderror"
+                                                                    name="tanggal_lahir" id="tanggal_lahir"
+                                                                    value="{{ old('tanggal_lahir') }}">
+                                                                @error('tanggal_lahir')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <!-- **************************************************************************************************8******  -->
@@ -130,8 +166,15 @@
                                                             <label class="col-sm-4 col-form-label" for="nama_ibu">Nama
                                                                 Ibu</label>
                                                             <div class="col">
-                                                                <input type="text" class="form-control form-control-sm"
-                                                                    name="nama_ibu" id="nama_ibu">
+                                                                <input type="text"
+                                                                    class="form-control form-control-sm @error('nama_ibu') is-invalid @enderror"
+                                                                    name="nama_ibu" id="nama_ibu"
+                                                                    value="{{ old('nama_ibu') }}">
+                                                                @error('nama_ibu')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <!-- **************************************************************************************************8******  -->
@@ -140,8 +183,15 @@
                                                             <label class="col-sm-4 col-form-label" for="telepon_rumah">Telp
                                                                 Rumah</label>
                                                             <div class="col">
-                                                                <input type="number" class="form-control form-control-sm"
-                                                                    name="telepon_rumah" id="telepon_rumah">
+                                                                <input type="number"
+                                                                    class="form-control form-control-sm @error('telepon_rumah') is-invalid @enderror"
+                                                                    name="telepon_rumah" id="telepon_rumah" minlength="10"
+                                                                    maxlength="12" value="{{ old('telepon_rumah') }}">
+                                                                @error('telepon_rumah')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <!-- **************************************************************************************************8******  -->
@@ -150,8 +200,15 @@
                                                             <label class="col-sm-4 col-form-label"
                                                                 for="telepon_seluler">Telp Seluler</label>
                                                             <div class="col">
-                                                                <input type="number" class="form-control form-control-sm"
-                                                                    name="telepon_seluler" id="telepon_seluler">
+                                                                <input type="number"
+                                                                    class="form-control form-control-sm @error('telepon_seluler') is-invalid @enderror"
+                                                                    name="telepon_seluler" id="telepon_seluler"
+                                                                    value="{{ old('telepon_seluler') }}">
+                                                                @error('telepon_seluler')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <!-- **************************************************************************************************8******  -->
@@ -160,8 +217,15 @@
                                                             <label class="col-sm-4 col-form-label" for="telepon_kantor">Telp
                                                                 Kantor</label>
                                                             <div class="col">
-                                                                <input type="number" class="form-control form-control-sm"
-                                                                    name="telepon_kantor" id="telepon_kantor">
+                                                                <input type="number"
+                                                                    class="form-control form-control-sm @error('telepon_kantor') is-invalid @enderror"
+                                                                    name="telepon_kantor" id="telepon_kantor"
+                                                                    value="{{ old('telepon_kantor') }}">
+                                                                @error('telepon_kantor')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
                                                         </div>
                                                         <button type="submit" class="btn btn-primary">Submit</button>

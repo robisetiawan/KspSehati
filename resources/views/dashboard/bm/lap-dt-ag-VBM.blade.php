@@ -27,49 +27,32 @@
 
                         <div class="table-responsive card-body f-12">
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
-                                <thead class="table-primary">
+                                <thead>
                                     <tr>
-                                        <th scope="col">No</th>
                                         <th scope="col">No Anggota</th>
-                                        <th scope="col">Tanggal Order</th>
-                                        <th scope="col">Nama Pelanggan</th>
-                                        <th scope="col">Alamat</th>
+                                        <th scope="col">Tanggal Gabung</th>
+                                        <th scope="col">Nama Anggota</th>
                                         <th scope="col">Simpanan</th>
                                         <th scope="col">Pinjaman</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>1029384920</td>
-                                        <td>01-01-2020</td>
-                                        <td>Anton</td>
-                                        <td>Jl.Blablalalal</td>
-                                        <td>Rp. 1000.000</td>
-                                        <td>Rp. 500.000</td>
-                                        <td>
-                                            <button type="button" class="btn btn-pill btn-primary btn-sm"
-                                                data-bs-toggle="modal" data-bs-target="#detailAnggota">
-                                                Detail
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>82647284728</td>
-                                        <td>12-03-2021</td>
-                                        <td>AB</td>
-                                        <td>Motor</td>
-                                        <td>Jl.Asdsad</td>
-                                        <td></td>
-                                        <td><button type="button" class="btn btn-pill btn-primary btn-sm"
-                                                data-bs-toggle="modal" data-bs-target="#detailAnggota">
-                                                Detail
-                                            </button>
-                                        </td>
-                                    </tr>
-
+                                    @foreach ($anggotas as $a)
+                                        <tr>
+                                            <td>{{ $a->no_anggota }}</td>
+                                            <td>{{ $a->created_at->format('d M Y') }}</td>
+                                            <td>{{ $a->user->name }}</td>
+                                            <td>Rp. 1000.000</td>
+                                            <td>Rp. 500.000</td>
+                                            <td>
+                                                <button type="button" class="btn btn-pill btn-primary btn-sm"
+                                                    data-bs-toggle="modal" data-bs-target="#detailAnggota">
+                                                    Detail
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

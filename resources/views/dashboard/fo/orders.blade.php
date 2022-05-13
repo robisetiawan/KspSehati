@@ -42,7 +42,7 @@
                                         <tr>
                                             {{-- <th>{{ $loop->iteration }}</th> --}}
                                             <td>{{ $o->id }}</td>
-                                            <td>{{ $o->created_at }}</td>
+                                            <td>{{ $o->created_at->format('d M Y') }}</td>
                                             <td>{{ $o->tipe_order }}</td>
                                             <td>Motor</td>
                                             <td>

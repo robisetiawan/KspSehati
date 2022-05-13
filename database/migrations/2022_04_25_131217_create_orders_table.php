@@ -16,11 +16,11 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('anggota_id');
-            $table->enum('tipe_order', ['Retail', 'coming soon']);
+            $table->enum('tipe_order', ['Retail', 'coming soon'])->nullable();
             $table->enum('status', ['verify', 'coming soon']);
-            $table->enum('platform', ['Konvensional', 'coming soon']);
-            $table->enum('keperluan', ['Sendiri', 'coming soon']);
-            $table->text('catatan');
+            $table->enum('platform', ['Konvensional', 'coming soon'])->nullable();
+            $table->enum('keperluan', ['Sendiri', 'coming soon'])->nullable();
+            $table->text('catatan')->nullable();
             $table->timestamps();
         });
     }

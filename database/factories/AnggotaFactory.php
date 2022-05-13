@@ -18,6 +18,7 @@ class AnggotaFactory extends Factory
             'identity_id' => $this->faker->numberBetween(1, 1),
             'profession_id' => $this->faker->numberBetween(1, 1),
             'adddata_id' => $this->faker->numberBetween(1, 1),
+            'no_anggota' => $this->faker->numerify('AKS-######'),
             'nama_panggilan' => $this->faker->name(mt_rand(2, 7)),
             'jenis_kelamin' => $this->faker->randomElement(['Laki-laki', 'Perempuan']),
             'tempat_lahir' => $this->faker->city,

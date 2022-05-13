@@ -69,8 +69,9 @@ Route::name('allusers')->middleware('auth')->group(
         Route::resource('/dashboard/anggotas', FoAnggotaController::class);
         // Route::get('/dashboard/anggotas/{id}', [FoAnggotaController::class, 'show']);
 
-        Route::get('/dashboard/orders', [FoOrderController::class, 'index']);
-        Route::get('/dashboard/orders/{order:id}', [FoOrderController::class, 'show']);
+        Route::resource('/dashboard/orders', FoOrderController::class);
+        // Route::get('/dashboard/orders', [FoOrderController::class, 'index']);
+        // Route::get('/dashboard/orders/{order:id}', [FoOrderController::class, 'show']);
         //endRoute FO
 
         //Anggota Route
@@ -80,7 +81,8 @@ Route::name('allusers')->middleware('auth')->group(
         //endRoute Anggota
 
         //BM Route
-        Route::get('/dashboard/lap-dt-ag', [BmController::class, 'lapdtag']);
+        Route::get('/dashboard/lap-dt-ag', [BmController::class, 'index']);
+        Route::get('/dashboard/lap-dt-ag/{anggota:id}', [BmController::class, 'show']);
         Route::get('/dashboard/lap-keuangan', [BmController::class, 'lapkeuangan']);
         //endRoute BM
     }

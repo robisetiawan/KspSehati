@@ -42,8 +42,8 @@
                                                                 <label class="col-sm-4 col-form-label">No Anggota</label>
                                                                 <div class="col">
                                                                     <input type="text" class="form-control-plaintext"
-                                                                        name="id" value=": {{ $anggotas->id }}" readonly
-                                                                        disabled>
+                                                                        name="id" value=": {{ $anggotas->no_anggota }}"
+                                                                        readonly disabled>
                                                                 </div>
                                                             </div>
 

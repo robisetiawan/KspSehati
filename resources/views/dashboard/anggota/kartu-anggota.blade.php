@@ -35,7 +35,7 @@
                                     <label class="col-sm-2 col-form-label">No Anggota</label>
                                     <div class="col-sm-5">
                                         <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                            value=": {{ $anggota->id }}">
+                                            value=": {{ $anggota->no_anggota }}">
                                     </div>
                                 </div>
                                 <!-- *************** -->
@@ -53,7 +53,7 @@
                                     <label class="col-sm-2 col-form-label">No KTP</label>
                                     <div class="col-sm-5">
                                         <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                            value=": {{ $anggota->nama_panggilan }}">
+                                            value=": {{ $anggota->identity->no_identitas }}">
                                     </div>
                                 </div>
                                 <!-- *************** -->
@@ -62,7 +62,7 @@
                                     <label class="col-sm-2 col-form-label">Pekerjaan</label>
                                     <div class="col-sm-5">
                                         <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                            value=": {{ $anggota->nama_panggilan }}">
+                                            value=": {{ $anggota->profession->pekerjaan }}">
                                     </div>
                                 </div>
                                 <!-- *************** -->
@@ -71,7 +71,7 @@
                                     <label class="col-sm-2 col-form-label">Alamat</label>
                                     <div class="col-sm-5">
                                         <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                            value=": {{ $anggota->nama_panggilan }}">
+                                            value=": {{ $anggota->identity->alamat }}">
                                     </div>
                                 </div>
                                 <!-- *************** -->
@@ -80,17 +80,17 @@
                                     <label class="col-sm-2 col-form-label">RT / RW</label>
                                     <div class="col-sm-5">
                                         <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                            value=": {{ $anggota->nama_panggilan }} / {{ $anggota->nama_panggilan }}">
+                                            value=": {{ $anggota->identity->rt }} / {{ $anggota->identity->rw }}">
                                     </div>
 
                                 </div>
                                 <!-- *************** -->
                                 <!-- *************** -->
                                 <div class="mb-1 row">
-                                    <label class="col-sm-2 col-form-label">Kelurahan</label>
+                                    <label class="col-sm-2 col-form-label">Desa / Kelurahan</label>
                                     <div class="col-sm-5">
                                         <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                            value=": {{ $anggota->nama_panggilan }}">
+                                            value=": {{ $anggota->identity->desa_kel }}">
                                     </div>
                                 </div>
                                 <!-- *************** -->
@@ -99,7 +99,7 @@
                                     <label class="col-sm-2 col-form-label">Kecamatan</label>
                                     <div class="col-sm-5">
                                         <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                            value=": {{ $anggota->nama_panggilan }}">
+                                            value=": {{ $anggota->identity->kec }}">
                                     </div>
                                 </div>
                                 <!-- *************** -->
@@ -108,7 +108,7 @@
                                     <label class="col-sm-2 col-form-label">Kab / Kota</label>
                                     <div class="col-sm-5">
                                         <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                            value=": {{ $anggota->nama_panggilan }}">
+                                            value=": {{ $anggota->identity->kab_kota }}">
                                     </div>
                                 </div>
                                 <!-- *************** -->

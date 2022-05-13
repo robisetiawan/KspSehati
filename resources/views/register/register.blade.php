@@ -26,7 +26,8 @@
                 <div class="row">
                     <div class="theme-form login-form">
                         <div class="text-center mb-3">
-                            <img class="img-preview img-100 rounded-circle">
+                            <img class="img-100 rounded-circle"
+                                src="{{ asset('templates/assets/images/dashboard/2.png ') }} " />
                         </div>
 
                         @if (session()->has('status'))
@@ -112,7 +113,7 @@
         </div>
     </div>
 
-    <script>
+    {{-- <script>
         // preview image
         function previewImage() {
             const image = document.querySelector('#image');
@@ -127,5 +128,5 @@
                 imgPreview.src = oFREvent.target.result;
             }
         }
-    </script>
+    </script> --}}
 @endsection

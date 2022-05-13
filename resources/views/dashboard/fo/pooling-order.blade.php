@@ -21,41 +21,30 @@
 
         <div class="card">
             <div class="card-body">
-                <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab"
-                            aria-controls="pills-home" aria-selected="true">
-                            Anggota Lama
-                            <div class="media"></div>
-                        </a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                            href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Anggota
-                            Baru</a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <p class="mb-0 m-t-3">
-                            {{-- form anggota lama --}}
-                            {{-- Card --}}
-                        <form class="form theme-form">
 
-                            <div class="card">
-                                <div class="card-body f-12">
-                                    <div class="row">
-                                        {{-- Left Coloum --}}
-                                        <div class="col">
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">No Anggota</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" autofocus />
+                <form class="form theme-form">
+
+                    <div class="card">
+                        <div class="card-body f-12">
+                            <div class="row">
+                                {{-- Left Coloum --}}
+                                <div class="col">
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class=" row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="id">No Anggota</label>
+                                        <div class="col p-l-0">
+                                            <input class="form-control form-control-sm @error('id ') is-invalid @enderror"
+                                                name="id" type="text" id="id" value="{{ auth()->user()->anggota->id }}"
+                                                autofocus>
+                                            @error('id')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
                                                 </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    {{-- <div class="row mb-1">
                                                 <label class="col-sm-4 col-form-label" for="nama">No
                                                     Order</label>
                                                 <div class="col p-l-0">
@@ -63,364 +52,214 @@
                                                         id="colFormLabelSm" readonly value="{{ $title }}" />
                                                 </div>
 
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class=" row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Nama</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" disabled />
+                                            </div> --}}
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class=" row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="name">Nama</label>
+                                        <div class="col p-l-0">
+                                            <input class="form-control form-control-sm @error('name ') is-invalid @enderror"
+                                                name="name" type="text" id="name" value="{{ auth()->user()->name }}"
+                                                required>
+                                            @error('name')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
                                                 </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Buss
-                                                    Unit</label>
-                                                <div class="col-sm-2 p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" disabled />
-                                                </div>
-                                                <div class="col p-l-0">
-                                                    <select class="form-select form-select-sm">
-                                                        <option>01 - Pinjaman Jaminan Motor</option>
-                                                        <option>02 - Pinjaman Jaminan Mobil</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">TTL</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" disabled />
-                                                </div>
-                                                <div class="col p-l-0">
-                                                    <input type="date" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" disabled />
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Nama
-                                                    Ibu</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" disabled />
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Jenis
-                                                    Kelamin</label>
-                                                <div class="col p-l-0">
-                                                    <select class="form-select form-select-sm" disabled>
-                                                        <option>Laki-Laki</option>
-                                                        <option>Perempuan</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Status</label>
-                                                <div class="col p-l-0">
-                                                    <select class="form-select form-select-sm" disabled>
-                                                        <option>Kawin</option>
-                                                        <option>Belum Kawin </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <!-- ****************************************************************************************** -->
-
+                                            @enderror
                                         </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="buss_unit">Buss
+                                            Unit</label>
+                                        <div class="col-sm-2 p-l-0">
+                                            <input type="text"
+                                                class="form-control form-control-sm
+                                                        @error('buss_unit ') is-invalid @enderror"
+                                                name="buss_unit" id="buss_unit" value="" />
+                                            @error('buss_unit')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col p-l-0">
+                                            <select class="form-select form-select-sm">
+                                                <option>01 - Pinjaman Jaminan Motor</option>
+                                                <option>02 - Pinjaman Jaminan Mobil</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="tempat_lahir">TTL</label>
+                                        <label class="col-sm-1 visually-hidden" for="tanggal_lahir"></label>
+                                        <div class="col p-l-0">
+                                            <input type="text"
+                                                class="form-control form-control-sm @error('tempat_lahir ') is-invalid @enderror"
+                                                id="tempat_lahir" name="tempat_lahir"
+                                                value="{{ auth()->user()->anggota->tempat_lahir }}" />
+                                        </div>
+                                        <div class="col p-l-0">
+                                            <input type="date"
+                                                class="form-control form-control-sm @error('tanggal_lahir ') is-invalid @enderror"
+                                                id="tanggal_lahir" name="tanggal_lahir"
+                                                value="{{ auth()->user()->anggota->tanggal_lahir }}" />
+                                        </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class=" row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="nama_ibu">Nama Ibu</label>
+                                        <div class="col p-l-0">
+                                            <input
+                                                class="form-control form-control-sm @error('nama_ibu ') is-invalid @enderror"
+                                                name="nama_ibu" type="text" id="nama_ibu"
+                                                value="{{ auth()->user()->anggota->nama_ibu }}" required>
+                                            @error('nama_ibu')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="nama">Jenis
+                                            Kelamin</label>
+                                        <div class="col p-l-0">
+                                            <select class="form-select form-select-sm" disabled>
+                                                <option>Laki-Laki</option>
+                                                <option>Perempuan</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="nama">Status</label>
+                                        <div class="col p-l-0">
+                                            <select class="form-select form-select-sm" disabled>
+                                                <option>Kawin</option>
+                                                <option>Belum Kawin </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
 
-                                        <div class="col">
-                                            {{-- Right Coloum --}}
+                                </div>
 
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Type
-                                                    Identitas</label>
-                                                <div class="col p-l-0">
-                                                    <select class="form-select form-select-sm" disabled>
-                                                        <option>KTP</option>
-                                                        <option>Kartu Keluarga</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">No
-                                                    Identitas</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" disabled />
-                                                </div>
+                                <div class="col">
+                                    {{-- Right Coloum --}}
 
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Telepon</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" disabled />
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="nama">Type
+                                            Identitas</label>
+                                        <div class="col p-l-0">
+                                            <select class="form-select form-select-sm" disabled>
+                                                <option>KTP</option>
+                                                <option>Kartu Keluarga</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class=" row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="no_identitas">No
+                                            Identitas</label>
+                                        <div class="col p-l-0">
+                                            <input
+                                                class="form-control form-control-sm @error('no_identitas ') is-invalid @enderror"
+                                                name="no_identitas" type="number" id="no_identitas"
+                                                value="{{ auth()->user()->anggota->identity->no_identitas }}" required>
+                                            @error('no_identitas')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
                                                 </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Pekerjaan</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" disabled />
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class=" row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="telepon_seluler">Telepon</label>
+                                        <div class="col p-l-0">
+                                            <input
+                                                class="form-control form-control-sm @error('telepon_seluler ') is-invalid @enderror"
+                                                name="telepon_seluler" type="text" id="telepon_seluler"
+                                                value="{{ auth()->user()->anggota->telepon_seluler }}" required>
+                                            @error('telepon_seluler')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
                                                 </div>
-                                            </div>
-
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Jaminan</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" disabled />
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class=" row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="pekerjaan">Pekerjaan</label>
+                                        <div class="col p-l-0">
+                                            <input
+                                                class="form-control form-control-sm @error('pekerjaan ') is-invalid @enderror"
+                                                name="pekerjaan" type="text" id="pekerjaan"
+                                                value="{{ auth()->user()->anggota->profession->pekerjaan }}" required>
+                                            @error('pekerjaan')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
                                                 </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            {{-- <div class="row mb-1">
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="nama">Jaminan</label>
+                                        <div class="col p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                                disabled />
+                                        </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    {{-- <div class="row mb-1">
                                                 <label class="col-sm-4 col-form-label" for="nama">Referensi</label>
                                                 <div class="col p-l-0">
                                                     <input type="text" class="form-control form-control-sm"
                                                         id="colFormLabelSm" disabled />
                                                 </div>
                                             </div> --}}
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">No
-                                                    Polisi</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" disabled />
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">No
-                                                    Mesin</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" disabled />
-                                                </div>
-                                            </div>
-                                            <!-- ****************************************************************************************** -->
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="nama">No
+                                            Polisi</label>
+                                        <div class="col p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                                disabled />
                                         </div>
-                                        {{-- EndRight Coloum --}}
                                     </div>
-                                </div>
-                                {{-- cardFooter --}}
-                                <div class="card-footer text-end">
-                                    <button class="btn btn-primary" type="submit">Submit</button>
-                                    <input class="btn btn-light" type="reset" value="Cancel" />
-                                </div>
-                                {{-- endCardFooter --}}
-                            </div>
-                            {{-- endCardBody --}}
-
-
-
-                        </form>
-                        {{-- endCard & end form anggota lama --}}
-
-                        </p>
-                    </div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <p class="mb-0 m-t-3">
-                            {{-- form anggota baru --}}
-                            {{-- Card --}}
-                        <form class="form theme-form">
-
-                            <div class="card">
-                                <div class="card-body f-12">
-                                    <div class="row">
-                                        {{-- Left Coloum --}}
-                                        <div class="col">
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">No
-                                                    Order</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" readonly value="{{ $title }}" />
-                                                </div>
-
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Konsumen</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" readonly value="{{ $title }}" />
-                                                </div>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" autofocus />
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Buss
-                                                    Unit</label>
-
-                                                <div class="col p-l-0">
-                                                    <select class="form-select form-select-sm">
-                                                        <option>01 - Pinjaman Jaminan Motor</option>
-                                                        <option>02 - Pinjaman Jaminan Mobil</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">TTL</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" />
-                                                </div>
-                                                <div class="col p-l-0">
-                                                    <input type="date" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" />
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Nama
-                                                    Ibu</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" />
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Jenis
-                                                    Kelamin</label>
-                                                <div class="col p-l-0">
-                                                    <select class="form-select form-select-sm">
-                                                        <option>Laki-Laki</option>
-                                                        <option>Perempuan</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Status</label>
-                                                <div class="col p-l-0">
-                                                    <select class="form-select form-select-sm">
-                                                        <option>Kawin</option>
-                                                        <option>Belum Kawin </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <!-- ****************************************************************************************** -->
-
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="nama">No
+                                            Mesin</label>
+                                        <div class="col p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                                disabled />
                                         </div>
-
-                                        <div class="col">
-                                            {{-- Right Coloum --}}
-
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Type
-                                                    Identitas</label>
-                                                <div class="col p-l-0">
-                                                    <select class="form-select form-select-sm">
-                                                        <option>KTP</option>
-                                                        <option>Kartu Keluarga</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">No
-                                                    Identitas</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" />
-                                                </div>
-
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Telepon</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" />
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Pekerjaan</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" />
-                                                </div>
-                                            </div>
-
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Jaminan</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" />
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            {{-- <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">Referensi</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" />
-                                                </div>
-                                            </div> --}}
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">No
-                                                    Polisi</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" />
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-4 col-form-label" for="nama">No
-                                                    Mesin</label>
-                                                <div class="col p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" />
-                                                </div>
-                                            </div>
-                                            <!-- ****************************************************************************************** -->
-                                        </div>
-                                        {{-- EndRight Coloum --}}
                                     </div>
+                                    <!-- ****************************************************************************************** -->
                                 </div>
-                                {{-- cardFooter --}}
-                                <div class="card-footer text-end">
-                                    <button class="btn btn-primary" type="submit">Submit</button>
-                                    <input class="btn btn-light" type="reset" value="Cancel" />
-                                </div>
-                                {{-- endCardFooter --}}
+                                {{-- EndRight Coloum --}}
                             </div>
-                            {{-- endCardBody --}}
-
-
-
-                        </form>
-                        {{-- endCard & end form anggota baru --}}
-                        </p>
+                        </div>
+                        {{-- cardFooter --}}
+                        <div class="card-footer text-end">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <input class="btn btn-light" type="reset" value="Cancel" />
+                        </div>
+                        {{-- endCardFooter --}}
                     </div>
-                </div>
+                    {{-- endCardBody --}}
+
+
+
+                </form>
+                {{-- endCard & end form anggota lama --}}
+
             </div>
         </div>
-
-
     </div>
 @endsection

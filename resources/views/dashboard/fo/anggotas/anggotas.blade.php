@@ -22,8 +22,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-                        <div class="table-responsive card-body pt-3 f-12">
-                            <a href="/dashboard/anggotas/create" class="btn btn-primary mb-2">Tambah anggota</a>
+                        <div class="table-responsive card-body py-3 f-12">
+                            <a href="/dashboard/anggotas/create" class="btn btn-primary mb-2"><i class="fa fa-plus"
+                                    aria-hidden="true"></i> Tambah anggota</a>
                             @if (session()->has('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     {{ session('success') }}
@@ -46,13 +47,13 @@
                                     @foreach ($anggotas as $a)
                                         <tr>
                                             {{-- <th>{{ $loop->iteration }}</th> --}}
-                                            <td>{{ $a->id }}</td>
-                                            <td>{{ $a->user->name }}</td>
+                                            <td>{{ $a->no_anggota }}</td>
+                                            <td>{{ $a->nama_panggilan }}</td>
                                             <td>{{ $a->tempat_lahir }}, {{ $a->tanggal_lahir }}</td>
                                             <td>{{ $a->telepon_seluler }}</td>
                                             <td>
 
-                                                <div class="d-inline">
+                                                {{-- <div class="d-inline">
                                                     <a href="/dashboard/anggotas/{{ $a->id }}"
                                                         class="badge bg-success">
                                                         <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
@@ -62,15 +63,49 @@
                                                     <a href="/dashboard/anggotas/{{ $a->id }}"
                                                         class="badge bg-primary"><i class="fa fa-pencil fa-2x"
                                                             aria-hidden="true"></i></a>
+                                                </div> --}}
+                                                <div class="btn-group" role="group"
+                                                    aria-label="Basic mixed styles example">
+
+                                                    {{-- <a href="/dashboard/anggotas/{{ $a->id }}"
+                                                        class="badge bg-success">
+                                                        <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+                                                    </a> --}}
+
+                                                    <a href="/dashboard/anggotas/{{ $a->id }}">
+                                                        <button class="badge bg-success border-0"><i class="fa fa-eye fa-lg"
+                                                                aria-hidden="true"></i></button>
+                                                    </a>
+
+                                                    <a href="/dashboard/anggotas/{{ $a->id }}">
+                                                        <button class="badge bg-primary border-0"><i
+                                                                class="fa fa-pencil fa-lg" aria-hidden="true"></i></button>
+                                                    </a>
+
+                                                    <form action="/dashboard/anggotas/{{ $a->id }}" method="POST">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button class="badge bg-danger border-0"
+                                                            onclick="return confirm('Are you sure !!')"><i
+                                                                class="fa fa-times fa-lg" aria-hidden="true"></i></button>
+                                                    </form>
                                                 </div>
-                                                <form action="/dashboard/anggotas/{{ $a->id }}" method="POST"
-                                                    class="d-inline">
-                                                    @method('delete')
-                                                    @csrf
-                                                    <button class="badge bg-danger border-0"
-                                                        onclick="return confirm('Are you sure !!')"><i
-                                                            class="fa fa-trash-o fa-1" aria-hidden="true"></i></button>
-                                                </form>
+
+                                                {{-- <div class="d-inline">
+                                                    <a href="/dashboard/anggotas/{{ $a->id }}">
+                                                        <button class="badge bg-primary border-0"><i
+                                                                class="fa fa-pencil fa-lg" aria-hidden="true"></i></button>
+                                                    </a>
+                                                </div>
+                                                <div class="d-inline">
+                                                    <form action="/dashboard/anggotas/{{ $a->id }}" method="POST">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button class="badge bg-danger border-0"
+                                                            onclick="return confirm('Are you sure !!')"><i
+                                                                class="fa fa-times fa-lg" aria-hidden="true"></i></button>
+                                                    </form>
+                                                </div> --}}
                                             </td>
                                         </tr>
                                     @endforeach

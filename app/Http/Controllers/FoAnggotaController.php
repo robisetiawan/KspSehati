@@ -44,8 +44,26 @@ class FoAnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        $request['user_id'] = auth()->user()->id;
-        Anggota::create($request->all());
+        // $request['user_id'] = auth()->user()->id;    
+        $validatedData = $request->validate([
+            'nama_panggilan' => 'nullable',
+            'jenis_kelamin' => 'nullable',
+            'tempat_lahir' => 'nullable',
+            'tanggal_lahir' => 'nullable',
+            'nama_ibu' => 'nullable',
+            'email' => 'required|email:dns|unique:users',
+            'telepon_rumah' => 'min:10|max:12',
+            'telepon_seluler' => 'min:10|max:12',
+            'telepon_kantor' => 'min:10|max:12',
+        ]);
+
+        // $request['kode_produk'] = 'P' . tambah_nol_didepan((int)$produk->id_produk + 1, 6);
+
+        $anggota = Anggota::latest()->first() ?? new Anggota();
+        $validatedData['no_anggota'] = 'AKS' . $anggota->created_at->format('dmy') . $anggota->id;
+
+        // dd($validatedData);
+        Anggota::create($validatedData);
 
         return redirect('/dashboard/anggotas')->with('success', 'Berhasil menambahkan anggota');
     }

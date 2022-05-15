@@ -21,6 +21,20 @@
 
         <div class="card">
             <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form action="/dashboard/pooling-order">
+
+                            <div class="input-group mb-3">
+                                <label class="col-sm-4 col-form-label visually-hidden" for="id">No Anggota</label>
+                                <input type="text" class="form-control" placeholder="Nomor Anggota" name="search"
+                                    value="{{ request('search') }}">
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-arrow-right"
+                                        aria-hidden="true"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
                 <form class="form theme-form">
 

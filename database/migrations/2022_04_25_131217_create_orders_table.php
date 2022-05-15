@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('anggota_id');
+            $table->string('no_order')->unique();
             $table->enum('tipe_order', ['Retail', 'coming soon'])->nullable();
             $table->enum('status', ['verify', 'coming soon']);
             $table->enum('platform', ['Konvensional', 'coming soon'])->nullable();

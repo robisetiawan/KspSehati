@@ -15,7 +15,7 @@
              @endif
 
              <div class="badge-bottom"><span class="badge badge-primary">FO</span></div>
-             <a href="/profil-fo">
+             <a href="/dashboard/profile">
                  {{-- <h6 class="mt-3 f-14 f-w-600">FINANCE OFFICER</h6> --}}
                  <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->name }}</h6> {{-- auth otomatis sdh ad di laravel --}}
              </a>
@@ -52,6 +52,15 @@
                                  <span>Dashboard</span>
                              </a>
                          </li>
+
+                         <li class="dropdown">
+                             <a href="/dashboard/anggotas" {{-- class="menu-title link-nav nav-link {{ Request::path() === '/order' ? 'active' : '' }}" --}}
+                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/anggotas*') ? 'active' : '' }}">
+                                 <i data-feather="users"></i>
+                                 <span>Anggota</span>
+                             </a>
+                         </li>
+
                          <li class="dropdown">
                              <a href="/dashboard/pooling-order"
                                  class="menu-title link-nav nav-link {{ Request::is('/dashboard/pooling-order*') ? 'active' : '' }}">
@@ -68,13 +77,6 @@
                              </a>
                          </li>
 
-                         <li class="dropdown">
-                             <a href="/dashboard/anggotas" {{-- class="menu-title link-nav nav-link {{ Request::path() === '/order' ? 'active' : '' }}" --}}
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/anggotas*') ? 'active' : '' }}">
-                                 <i data-feather="users"></i>
-                                 <span>Anggota</span>
-                             </a>
-                         </li>
 
 
                          {{-- <li class="dropdown">

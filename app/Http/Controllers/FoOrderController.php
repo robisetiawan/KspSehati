@@ -98,9 +98,15 @@ class FoOrderController extends Controller
 
     public function poolingorder()
     {
+        $order = Anggota::latest();
+
+        if (request('search')) {
+            $order->where('title', 'like', '%' . request('search') . "%");
+        }
+
         return view('dashboard.fo.pooling-order', [
             "title" => "Pooling Order",
-            "pooling" => Order::all()
+            "anggotas" => Anggota::all()
         ]);
     }
 }

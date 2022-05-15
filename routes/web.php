@@ -100,12 +100,12 @@ Route::name('allusers')->middleware('auth')->group(
 
 // Route::get('/order', [FoController::class, 'order']);
 // Route::get('/edit-order', [FoController::class, 'editorder']);
-// Route::get('/struktur-kredit', [FoController::class, 'strukturkredit']);
-// Route::get('/penerimaan-uang', [FoController::class, 'penerimaanuang']);
-// // Route::get('/pembayaran', [FoController::class, 'pembayaran']);
-// Route::get('/cetak-buku-anggota', [FoController::class, 'cetakbukuanggota']);
+Route::get('/struktur-kredit', [ProfileController::class, 'strukturkredit']);
+Route::get('/penerimaan-uang', [ProfileController::class, 'penerimaanuang']);
+// // Route::get('/pembayaran', [ProfileController::class, 'pembayaran']);
+Route::get('/cetak-buku-anggota', [ProfileController::class, 'cetakbukuanggota']);
+Route::get('/print-buku-anggota', [ProfileController::class, 'printbukuag']);
 // Route::get('/profil-fo', [FoController::class, 'profilfo']);
-// Route::get('/print-buku-anggota', [FoController::class, 'printbukuag']);
 // //endrouteFO
 
 // //RouteAnggota
@@ -122,13 +122,13 @@ Route::get('/profil-bm', [BmController::class, 'profilbm']);
 Route::get('/detail-ag', [BmController::class, 'detailag']);
 //endrouteBM
 
-Route::get('/login', function () {
-    return view('login', [
-        "title" => "Login"
-    ]);
-});
-Route::get('/ss', function () {
-    return view('templatebaru', [
-        "title" => "Pooling Order"
-    ]);
-});
+// Route::get('/login', function () {
+//     return view('login', [
+//         "title" => "Login"
+//     ]);
+// });
+// Route::get('/ss', function () {
+//     return view('templatebaru', [
+//         "title" => "Pooling Order"
+//     ]);
+// });

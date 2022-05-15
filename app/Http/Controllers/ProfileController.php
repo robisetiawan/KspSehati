@@ -87,21 +87,21 @@ class ProfileController extends Controller
 
     public function strukturkredit()
     {
-        return view('fo.struktur-kredit-VFO', [
+        return view('dashboard.fo.struktur-kredit', [
             "title" => "Struktur Kredit"
         ]);
     }
 
     public function penerimaanuang()
     {
-        return view('fo.penerimaan-uang-VFO', [
+        return view('dashboard.fo.penerimaan-uang', [
             "title" => "Penerimaan Uang"
         ]);
     }
 
     public function cetakbukuanggota()
     {
-        return view('fo.cetak-buku-anggota-VFO', [
+        return view('dashboard.fo.cetak-buku-anggota', [
             "title" => "Cetak Buku Anggota"
         ]);
     }

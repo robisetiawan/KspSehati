@@ -41,9 +41,9 @@
                                     @foreach ($orders as $o)
                                         <tr>
                                             {{-- <th>{{ $loop->iteration }}</th> --}}
-                                            <td>{{ $o->id }}</td>
+                                            <td>{{ $o->no_order }}</td>
                                             <td>{{ $o->created_at->format('d M Y') }}</td>
-                                            <td>{{ $o->tipe_order }}</td>
+                                            <td>{{ $o->anggota->user->name }}</td>
                                             <td>Motor</td>
                                             <td>
                                                 <a href="/dashboard/orders/{{ $o->id }}" class="badge bg-success">

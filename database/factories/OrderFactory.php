@@ -15,6 +15,7 @@ class OrderFactory extends Factory
     {
         return [
             'anggota_id' => $this->faker->numberBetween(1, 20),
+            'no_order' => $this->faker->numerify('150522OR######'),
             'tipe_order' => $this->faker->randomElement(['Retail', 'coming soon']),
             'status' => $this->faker->randomElement(['verify', 'coming soon']),
             'platform' => $this->faker->randomElement(['Konvensional', 'coming soon']),

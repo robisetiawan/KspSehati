@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
 
         Order::create([
             'anggota_id' => 2,
+            'no_order' => '120522OR12431',
             'tipe_order' => 'Retail',
             'status' => 'verify',
             'platform' => 'Konvensional',
@@ -45,6 +46,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Order::create([
             'anggota_id' => 1,
+            'no_order' => '120522OR12432',
             'tipe_order' => 'coming soon',
             'status' => 'verify',
             'platform' => 'Konvensional',

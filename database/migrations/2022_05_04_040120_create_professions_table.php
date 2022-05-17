@@ -19,12 +19,12 @@ class CreateProfessionsTable extends Migration
             $table->char('lama_kerja_tahun', 2);
             $table->char('lama_kerja_bulan', 2);
             $table->char('tanggungan', 2);
-            $table->integer('omset_dagang');
-            $table->integer('pendapatan');
-            $table->integer('gaji');
-            $table->integer('pendapatan_psg');
-            $table->integer('pendapatan_lain');
-            $table->integer('biaya_bulanan');
+            $table->integer('omset_dagang')->nullable();
+            $table->integer('pendapatan')->nullable();
+            $table->integer('gaji')->nullable();
+            $table->integer('pendapatan_psg')->nullable();
+            $table->integer('pendapatan_lain')->nullable();
+            $table->integer('biaya_bulanan')->nullable();
             $table->timestamps();
         });
     }

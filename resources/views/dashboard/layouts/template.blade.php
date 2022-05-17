@@ -29,12 +29,6 @@
     <!-- Font Awesome-->
     <link rel="stylesheet" type="text/css"
         href="{{ asset('templates/assets/font-awesome-4.7.0/css/font-awesome.css ') }}">
-    <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/icofont.css ') }}">
-    <!-- Themify icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/themify.css ') }}">
-    <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/flag-icon.css ') }}">
     <!-- Feather icon-->
     <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/feather-icon.css ') }}">
     <!-- Plugins css start-->

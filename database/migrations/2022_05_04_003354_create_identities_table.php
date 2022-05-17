@@ -20,9 +20,9 @@ class CreateIdentitiesTable extends Migration
             $table->enum('warganegara', ['WNI', 'WNA']);
             $table->enum('agama', ['Islam', 'Protestan', 'Katolik', 'Hindu', 'Buddha', 'Khonghucu']);
             $table->enum('pendidikan', ['SD', 'SMP', 'SMA/SMK', 'Diploma', 'Sarjana', 'Megister', 'Spesialis', 'Doktor']);
-            $table->string('gelar');
+            $table->string('gelar')->nullable();
             $table->enum('status_kawin', ['Kawin', 'Belum Kawin']);
-            $table->enum('gol_darah', ['A', 'B', 'AB', 'O']);
+            $table->enum('gol_darah', ['A', 'B', 'AB', 'O'])->nullable();
             $table->enum('status_rumah', ['Rumah Sendiri', 'Rumah Orang tua', 'Kontrakan', 'Sewa']);
             $table->string('alamat');
             $table->char('rt', 3);

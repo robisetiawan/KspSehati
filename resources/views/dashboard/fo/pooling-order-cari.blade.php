@@ -43,19 +43,23 @@
                                 {{-- Left Coloum --}}
                                 <div class="col">
                                     <!-- **************************************************************************************************8******  -->
-                                    <div class=" row mb-1">
-                                        <label class="col-sm-4 col-form-label" for="id">No Anggota</label>
-                                        <div class="col p-l-0">
-                                            <input class="form-control form-control-sm @error('id ') is-invalid @enderror"
-                                                name="id" type="text" id="id" value="{{ auth()->user()->anggota->id }}"
-                                                autofocus>
-                                            @error('id')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
+
+                                    @foreach ($anggotas as $a)
+                                        <div class=" row mb-1">
+                                            <label class="col-sm-4 col-form-label" for="no_anggota">No Anggota</label>
+                                            <div class="col p-l-0">
+                                                <input
+                                                    class="form-control form-control-sm @error('no_anggota ') is-invalid @enderror"
+                                                    name="no_anggota" type="text" id="no_anggota"
+                                                    value="{{ $a->no_anggota }}" autofocus>
+                                                @error('no_anggota')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                     <!-- **************************************************************************************************8******  -->
                                     {{-- <div class="row mb-1">
                                                 <label class="col-sm-4 col-form-label" for="nama">No
@@ -163,16 +167,23 @@
                                     {{-- Right Coloum --}}
 
                                     <!-- **************************************************************************************************8******  -->
-                                    <div class="row mb-1">
-                                        <label class="col-sm-4 col-form-label" for="nama">Type
-                                            Identitas</label>
-                                        <div class="col p-l-0">
-                                            <select class="form-select form-select-sm" disabled>
-                                                <option>KTP</option>
-                                                <option>Kartu Keluarga</option>
-                                            </select>
+                                    @foreach ($identities as $i)
+                                        <div class="row mb-1">
+                                            <label class="col-sm-4 col-form-label" for="nama">Type
+                                                Identitas</label>
+                                            <div class="col p-l-0">
+                                                <input
+                                                    class="form-control form-control-sm @error('no_anggota ') is-invalid @enderror"
+                                                    name="no_anggota" type="text" id="no_anggota"
+                                                    value="{{ $i->type_identitas }}" autofocus>
+                                                @error('no_anggota')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                     <!-- **************************************************************************************************8******  -->
                                     <div class=" row mb-1">
                                         <label class="col-sm-4 col-form-label" for="no_identitas">No

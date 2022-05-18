@@ -66,6 +66,7 @@ Route::name('allusers')->middleware('auth')->group(
     function () {
         //Finance Officer Route
         Route::get('/dashboard/pooling-order', [FoOrderController::class, 'poolingorder']);
+        Route::get('/dashboard/pooling-order/cari', [FoOrderController::class, 'caripoolingorder']);
         Route::resource('/dashboard/anggotas', FoAnggotaController::class);
         // Route::get('/dashboard/anggotas/{id}', [FoAnggotaController::class, 'show']);
 

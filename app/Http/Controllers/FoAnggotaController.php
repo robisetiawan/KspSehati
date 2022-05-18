@@ -129,7 +129,7 @@ class FoAnggotaController extends Controller
             // $validatedData['password'] = bcrypt($validatedData['password']);
             // dd($validatedData);
 
-            User::create($validatedData);
+            // User::create($validatedData);
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,

@@ -179,7 +179,7 @@
                                                                 class="form-select @error('jenis_kelamin') is-invalid @enderror"
                                                                 name="jenis_kelamin" id="jenis_kelamin"
                                                                 value={{ old('jenis_kelamin') }}>
-                                                                <option selected>Pilih Jenis Kelamin</option>
+                                                                <option></option>
                                                                 <option>Laki-Laki</option>
                                                                 <option>Perempuan</option>
                                                             </select>
@@ -327,12 +327,12 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="type_identitas">Type
                                                             Identitas</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-3">
                                                             <select
                                                                 class="form-select @error('type_identitas') is-invalid @enderror"
                                                                 name="type_identitas" id="type_identitas"
                                                                 value={{ old('type_identitas') }}>
-                                                                <option selected>Pilih Type Identitas</option>
+                                                                <option></option>
                                                                 <option>KTP</option>
                                                                 <option>KK</option>
                                                             </select>
@@ -363,12 +363,12 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="warganegara">Warganegara</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-3">
                                                             <select
                                                                 class="form-select @error('warganegara') is-invalid @enderror"
                                                                 name="warganegara" id="warganegara"
                                                                 value={{ old('warganegara') }}>
-                                                                <option selected>Pilih Jenis Kelamin</option>
+                                                                <option></option>
                                                                 <option>WNI</option>
                                                                 <option>WNA</option>
                                                             </select>
@@ -382,11 +382,11 @@
                                                     <!-- **************************************************************************************************8******  -->
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="agama">Agama</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-4">
                                                             <select
                                                                 class="form-select @error('agama') is-invalid @enderror"
                                                                 name="agama" id="agama" value={{ old('agama') }}>
-                                                                <option selected>Pilih Jenis Kelamin</option>
+                                                                <option></option>
                                                                 <option>Islam</option>
                                                                 <option>Kristen</option>
                                                                 <option>Katolik</option>
@@ -405,12 +405,12 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="pendidikan">Pendidikan</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-4">
                                                             <select
                                                                 class="form-select @error('pendidikan') is-invalid @enderror"
                                                                 name="pendidikan" id="pendidikan"
                                                                 value={{ old('pendidikan') }}>
-                                                                <option selected>Pilih Jenis Kelamin</option>
+                                                                <option></option>
                                                                 <option>SD</option>
                                                                 <option>SMP</option>
                                                                 <option>SMA/SMK</option>
@@ -430,7 +430,7 @@
                                                     <!-- **************************************************************************************************8******  -->
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="gelar">Gelar</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-4">
                                                             <input
                                                                 class="form-control form-control-sm @error('gelar') is-invalid @enderror"
                                                                 name="gelar" type="text" id="gelar"
@@ -446,12 +446,12 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="status_kawin">Status
                                                             Kawin</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-4">
                                                             <select
                                                                 class="form-select @error('status_kawin') is-invalid @enderror"
                                                                 name="status_kawin" id="status_kawin"
                                                                 value={{ old('status_kawin') }}>
-                                                                <option selected>Pilih Jenis Kelamin</option>
+                                                                <option></option>
                                                                 <option>Kawin</option>
                                                                 <option>Belum Kawin</option>
                                                             </select>
@@ -466,12 +466,12 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="gol_darah">Gol
                                                             Darah</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-3">
                                                             <select
                                                                 class="form-select @error('gol_darah') is-invalid @enderror"
                                                                 name="gol_darah" id="gol_darah"
                                                                 value={{ old('gol_darah') }}>
-                                                                <option selected>Pilih Jenis Kelamin</option>
+                                                                <option></option>
                                                                 <option>A</option>
                                                                 <option>B</option>
                                                                 <option>AB</option>
@@ -502,12 +502,12 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="status_rumah">Status
                                                             Rumah</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <select
                                                                 class="form-select @error('status_rumah') is-invalid @enderror"
                                                                 name="status_rumah" id="status_rumah"
                                                                 value={{ old('status_rumah') }}>
-                                                                <option selected>Pilih Jenis Kelamin</option>
+                                                                <option></option>
                                                                 <option>Rumah Sendiri</option>
                                                                 <option>Rumah Orang tua</option>
                                                                 <option>Kontrakan</option>
@@ -524,10 +524,8 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="alamat">Alamat</label>
                                                         <div class="col">
-                                                            <input
-                                                                class="form-control form-control-sm @error('alamat') is-invalid @enderror"
-                                                                name="alamat" type="text" id="alamat"
-                                                                value={{ old('alamat') }}>
+                                                            <textarea class="form-control form-control-sm @error('alamat') is-invalid @enderror" name="alamat" type="text"
+                                                                id="alamat" value={{ old('alamat') }}></textarea>
                                                             @error('alamat')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -537,8 +535,10 @@
                                                     </div>
 
                                                     <div class="row mb-1">
-                                                        <label class="col-sm-4 col-form-label" for="rt">RT</label>
-                                                        <div class="col">
+                                                        <label class="col-sm-4 col-form-label" for="rt">RT / RW</label>
+                                                        <label class="col-sm-4 col-form-label visually-hidden"
+                                                            for="rw">Rw</label>
+                                                        <div class="col-sm-3">
                                                             <input
                                                                 class="form-control form-control-sm @error('rt') is-invalid @enderror"
                                                                 name="rt" type="number" id="rt" value={{ old('rt') }}>
@@ -548,11 +548,7 @@
                                                                 </div>
                                                             @enderror
                                                         </div>
-                                                    </div>
-
-                                                    <div class="row mb-1">
-                                                        <label class="col-sm-4 col-form-label" for="rw">Rw</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-3">
                                                             <input
                                                                 class="form-control form-control-sm @error('rw') is-invalid @enderror"
                                                                 name="rw" type="number" id="rw" value={{ old('rw') }}>
@@ -567,7 +563,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="desa_kel">Desa/Kel</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('desa_kel') is-invalid @enderror"
                                                                 name="desa_kel" type="text" id="desa_kel"
@@ -582,7 +578,7 @@
 
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="kec">Kec</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('kec') is-invalid @enderror"
                                                                 name="kec" type="text" id="kec" value={{ old('kec') }}>
@@ -597,7 +593,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="kab_kota">Kab/Kota</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('kab_kota') is-invalid @enderror"
                                                                 name="kab_kota" type="text" id="kab_kota"
@@ -613,7 +609,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="provinsi">Provinsi</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('provinsi') is-invalid @enderror"
                                                                 name="provinsi" type="text" id="provinsi"
@@ -629,7 +625,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="kode_pos">Kode
                                                             Pos</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-4">
                                                             <input
                                                                 class="form-control form-control-sm @error('kode_pos') is-invalid @enderror"
                                                                 name="kode_pos" type="number" id="kode_pos"
@@ -668,7 +664,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="pekerjaan">Pekerjaan</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('pekerjaan') is-invalid @enderror"
                                                                 name="pekerjaan" type="text" id="pekerjaan"
@@ -683,11 +679,14 @@
                                                     <!-- **************************************************************************************************8******  -->
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="lama_kerja_tahun">Lama
-                                                            Kerja Tahun</label>
-                                                        <div class="col">
+                                                            Bekerja</label>
+                                                        <label class="col-sm-4 col-form-label visually-hidden"
+                                                            for="lama_kerja_bulan">lama_kerja_bulan</label>
+                                                        <div class="col-sm-3">
                                                             <input
                                                                 class="form-control form-control-sm @error('lama_kerja_tahun') is-invalid @enderror"
-                                                                name="lama_kerja_tahun" type="number" id="lama_kerja_tahun"
+                                                                name="lama_kerja_tahun" type="number" placeholder="Tahun"
+                                                                id="lama_kerja_tahun"
                                                                 value={{ old('lama_kerja_tahun') }}>
                                                             @error('lama_kerja_tahun')
                                                                 <div class="invalid-feedback">
@@ -695,16 +694,12 @@
                                                                 </div>
                                                             @enderror
                                                         </div>
-                                                    </div>
-                                                    <!-- **************************************************************************************************8******  -->
-                                                    <div class="row mb-1">
-                                                        <label class="col-sm-4 col-form-label"
-                                                            for="lama_kerja_bulan">lama_kerja_bulan</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-3">
                                                             <input
                                                                 class="form-control form-control-sm @error('lama_kerja_bulan') is-invalid @enderror"
-                                                                name="lama_kerja_bulan" type="number" id="lama_kerja_bulan"
-                                                                max="11" value={{ old('lama_kerja_bulan') }}>
+                                                                name="lama_kerja_bulan" type="number" placeholder="Bulan"
+                                                                id="lama_kerja_bulan" max="11"
+                                                                value={{ old('lama_kerja_bulan') }}>
                                                             @error('lama_kerja_bulan')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -716,7 +711,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="tanggungan">Tanggungan</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-2">
                                                             <input
                                                                 class="form-control form-control-sm @error('tanggungan') is-invalid @enderror"
                                                                 name="tanggungan" type="number" id="tanggungan"
@@ -731,8 +726,8 @@
                                                     <!-- **************************************************************************************************8******  -->
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="omset_dagang">Omset
-                                                            DAgang</label>
-                                                        <div class="col">
+                                                            Dagang</label>
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('omset_dagang') is-invalid @enderror"
                                                                 name="omset_dagang" type="number" id="omset_dagang"
@@ -763,7 +758,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="pendapatan">Pendapatan</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('pendapatan') is-invalid @enderror"
                                                                 name="pendapatan" type="number" id="pendapatan"
@@ -778,7 +773,7 @@
 
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="gaji">Gaji</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('gaji') is-invalid @enderror"
                                                                 name="gaji" type="number" id="gaji"
@@ -793,8 +788,8 @@
 
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
-                                                            for="pendapatan_psg">Pendapatan Pasangan</label>
-                                                        <div class="col">
+                                                            for="pendapatan_psg">Pendapatan Psg</label>
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('pendapatan_psg') is-invalid @enderror"
                                                                 name="pendapatan_psg" type="number" id="pendapatan_psg"
@@ -810,7 +805,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="pendapatan_lain">Pendapatan Lain</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('pendapatan_lain') is-invalid @enderror"
                                                                 name="pendapatan_lain" type="number" id="pendapatan_lain"
@@ -826,7 +821,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="biaya_bulanan">Biaya
                                                             Bulanan</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('biaya_bulanan') is-invalid @enderror"
                                                                 name="biaya_bulanan" type="number" id="biaya_bulanan"
@@ -881,10 +876,9 @@
                                                         <label class="col-sm-4 col-form-label"
                                                             for="alamat_add">Alamat</label>
                                                         <div class="col">
-                                                            <input
-                                                                class="form-control form-control-sm @error('alamat_add') is-invalid @enderror"
-                                                                name="alamat_add" type="text" id="alamat_add"
-                                                                value={{ old('alamat_add') }}>
+                                                            <textarea class="form-control form-control-sm @error('alamat_add') is-invalid @enderror" name="alamat_add" type="text"
+                                                                id="alamat_add"
+                                                                value={{ old('alamat_add') }}></textarea>
                                                             @error('alamat_add')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -894,8 +888,10 @@
                                                     </div>
                                                     <!-- **************************************************************************************************8******  -->
                                                     <div class="row mb-1">
-                                                        <label class="col-sm-4 col-form-label" for="rt_add">rt_add</label>
-                                                        <div class="col">
+                                                        <label class="col-sm-4 col-form-label" for="rt_add">RT / RW</label>
+                                                        <label class="col-sm-4 col-form-label visually-hidden"
+                                                            for="rw_add">rw_add</label>
+                                                        <div class="col-sm-3">
                                                             <input
                                                                 class="form-control form-control-sm @error('rt_add') is-invalid @enderror"
                                                                 name="rt_add" type="number" id="rt_add"
@@ -906,11 +902,7 @@
                                                                 </div>
                                                             @enderror
                                                         </div>
-                                                    </div>
-                                                    <!-- **************************************************************************************************8******  -->
-                                                    <div class="row mb-1">
-                                                        <label class="col-sm-4 col-form-label" for="rw_add">rw_add</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-3">
                                                             <input
                                                                 class="form-control form-control-sm @error('rw_add') is-invalid @enderror"
                                                                 name="rw_add" type="number" id="rw_add"
@@ -926,7 +918,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="desa_kel_add">Desa
                                                             Kel</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('desa_kel_add') is-invalid @enderror"
                                                                 name="desa_kel_add" type="text" id="desa_kel_add"
@@ -956,8 +948,8 @@
                                                     <!-- **************************************************************************************************8******  -->
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
-                                                            for="kec_add">kec_add</label>
-                                                        <div class="col">
+                                                            for="kec_add">Kecamatan</label>
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('kec_add') is-invalid @enderror"
                                                                 name="kec_add" type="text" id="kec_add"
@@ -971,9 +963,9 @@
                                                     </div>
 
                                                     <div class="row mb-1">
-                                                        <label class="col-sm-4 col-form-label"
-                                                            for="kab_kota_add">kab_kota_add</label>
-                                                        <div class="col">
+                                                        <label class="col-sm-4 col-form-label" for="kab_kota_add">Kabupaten
+                                                            / Kota</label>
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('kab_kota_add') is-invalid @enderror"
                                                                 name="kab_kota_add" type="text" id="kab_kota_add"
@@ -989,7 +981,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="provinsi_add">Provinsi</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('provinsi_add') is-invalid @enderror"
                                                                 name="provinsi_add" type="text" id="provinsi_add"
@@ -1005,7 +997,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label" for="kode_pos_add">Kode
                                                             Pos</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('kode_pos_add') is-invalid @enderror"
                                                                 name="kode_pos_add" type="number" id="kode_pos_add"
@@ -1021,7 +1013,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="telepon_rumah_add">Telepon Rumah</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('telepon_rumah_add') is-invalid @enderror"
                                                                 name="telepon_rumah_add" type="number"
@@ -1038,7 +1030,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="telepon_seluler_add">Telepon seluler</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('telepon_seluler_add') is-invalid @enderror"
                                                                 name="telepon_seluler_add" type="number"
@@ -1061,11 +1053,13 @@
                                 </div>
                             </div>
 
+                            <div class="text-end">
+                                <button class="btn btn-primary text-end" type="submit">Simpan</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <button class="btn btn-primary" type="submit">Submit</button>
 
             </form>
         </div>

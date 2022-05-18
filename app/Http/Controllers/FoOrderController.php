@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Anggota;
+use App\Models\Identity;
 use Illuminate\Http\Request;
 
 class FoOrderController extends Controller
@@ -98,15 +99,26 @@ class FoOrderController extends Controller
 
     public function poolingorder()
     {
-        $order = Anggota::latest();
 
-        if (request('search')) {
-            $order->where('title', 'like', '%' . request('search') . "%");
-        }
 
         return view('dashboard.fo.pooling-order', [
             "title" => "Pooling Order",
             "anggotas" => Anggota::all()
         ]);
+    }
+
+    public function caripoolingorder(Request $request)
+    {
+        $cari = $request->cari;
+
+        $anggotas = Anggota::where('no_anggota', 'like', "%" . $cari . "%")->get();
+        $identities = Identity::where('id', 'like', "%" . $anggotas->identity->id . "%")->get();
+
+        $title = "Pooling Order";
+
+        return view(
+            'dashboard.fo.pooling-order-cari',
+            compact('anggotas', 'title', 'identities')
+        );
     }
 }

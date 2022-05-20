@@ -50,21 +50,6 @@ class FoAnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // $request['user_id'] = auth()->user()->id;s
-        // $validatedData = $request->validate([
-        //     'nama_panggilan' => 'nullable',
-        //     'jenis_kelamin' => 'nullable',
-        //     'tempat_lahir' => 'nullable',
-        //     'tanggal_lahir' => 'nullable',
-        //     'nama_ibu' => 'nullable',
-        //     'email' => 'required|email:dns|unique:users',
-        //     'telepon_rumah' => 'min:10|max:12',
-        //     'telepon_seluler' => 'min:10|max:12',
-        //     'telepon_kantor' => 'min:10|max:12',
-        // ]);
-
-
 
         $cobo = DB::transaction(function () use ($request) {
 
@@ -73,9 +58,10 @@ class FoAnggotaController extends Controller
                 'name' => 'required|max:255',
                 'email' => 'nullable|email|unique:users',
                 'password' => 'nullable|min:5|max:255',
+                'image' => 'nullable|image',
                 //identitas
                 'type_identitas' => 'required',
-                'no_identitas' => 'required',
+                'no_identitas' => 'required|min:16|max:16',
                 "warganegara" => 'required',
                 "agama" => 'required',
                 "pendidikan" => 'required',
@@ -126,6 +112,10 @@ class FoAnggotaController extends Controller
 
             ]);
 
+
+            if ($request->file('image')) {
+                $request->image = $request->file('image')->store('profile-image');
+            }
             // $validatedData['password'] = bcrypt($validatedData['password']);
             // dd($validatedData);
 
@@ -134,7 +124,7 @@ class FoAnggotaController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
-                'image' => $request->image,
+                'image' => $request->image
             ]);
 
             $identity = Identity::create([

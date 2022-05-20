@@ -48,7 +48,7 @@
                                         <tr>
                                             {{-- <th>{{ $loop->iteration }}</th> --}}
                                             <td>{{ $a->no_anggota }}</td>
-                                            <td>{{ $a->nama_panggilan }}</td>
+                                            <td>{{ $a->user->name }}</td>
                                             <td>{{ $a->tempat_lahir }}, {{ $a->tanggal_lahir }}</td>
                                             <td>{{ $a->telepon_seluler }}</td>
                                             <td>

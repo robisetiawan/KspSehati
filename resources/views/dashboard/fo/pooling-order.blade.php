@@ -27,11 +27,14 @@
 
                             <div class="input-group mb-3">
                                 <label class="col-sm-4 col-form-label visually-hidden" for="id">No Anggota</label>
-                                <input type="text" name="cari" placeholder="Cari Pegawai .." value="{{ old('cari') }}">
+                                <input class="form-control" type="text" name="cari" placeholder="Nomor Anggota ..."
+                                    value="{{ old('cari') }}">
                                 <button class="btn btn-primary" type="submit" value="CARI"><i class="fa fa-arrow-right"
                                         aria-hidden="true"></i></button>
                             </div>
+
                         </form>
+
                     </div>
                 </div>
 
@@ -47,8 +50,7 @@
                                         <label class="col-sm-4 col-form-label" for="id">No Anggota</label>
                                         <div class="col p-l-0">
                                             <input class="form-control form-control-sm @error('id ') is-invalid @enderror"
-                                                name="id" type="text" id="id" value="{{ auth()->user()->anggota->id }}"
-                                                autofocus>
+                                                name="id" type="text" id="id" readonly disabled>
                                             @error('id')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -56,6 +58,7 @@
                                             @enderror
                                         </div>
                                     </div>
+
                                     <!-- **************************************************************************************************8******  -->
                                     {{-- <div class="row mb-1">
                                                 <label class="col-sm-4 col-form-label" for="nama">No
@@ -71,8 +74,7 @@
                                         <label class="col-sm-4 col-form-label" for="name">Nama</label>
                                         <div class="col p-l-0">
                                             <input class="form-control form-control-sm @error('name ') is-invalid @enderror"
-                                                name="name" type="text" id="name" value="{{ auth()->user()->name }}"
-                                                required>
+                                                name="name" type="text" id="name" required>
                                             @error('name')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -88,7 +90,7 @@
                                             <input type="text"
                                                 class="form-control form-control-sm
                                                         @error('buss_unit ') is-invalid @enderror"
-                                                name="buss_unit" id="buss_unit" value="" />
+                                                name="buss_unit" id="buss_unit" />
                                             @error('buss_unit')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -109,14 +111,12 @@
                                         <div class="col p-l-0">
                                             <input type="text"
                                                 class="form-control form-control-sm @error('tempat_lahir ') is-invalid @enderror"
-                                                id="tempat_lahir" name="tempat_lahir"
-                                                value="{{ auth()->user()->anggota->tempat_lahir }}" />
+                                                id="tempat_lahir" name="tempat_lahir" />
                                         </div>
-                                        <div class="col p-l-0">
-                                            <input type="date"
+                                        <div class="col-sm-3 p-l-0">
+                                            <input type="text"
                                                 class="form-control form-control-sm @error('tanggal_lahir ') is-invalid @enderror"
-                                                id="tanggal_lahir" name="tanggal_lahir"
-                                                value="{{ auth()->user()->anggota->tanggal_lahir }}" />
+                                                id="tanggal_lahir" name="tanggal_lahir" />
                                         </div>
                                     </div>
                                     <!-- **************************************************************************************************8******  -->
@@ -125,8 +125,7 @@
                                         <div class="col p-l-0">
                                             <input
                                                 class="form-control form-control-sm @error('nama_ibu ') is-invalid @enderror"
-                                                name="nama_ibu" type="text" id="nama_ibu"
-                                                value="{{ auth()->user()->anggota->nama_ibu }}" required>
+                                                name="nama_ibu" type="text" id="nama_ibu" required>
                                             @error('nama_ibu')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -180,8 +179,7 @@
                                         <div class="col p-l-0">
                                             <input
                                                 class="form-control form-control-sm @error('no_identitas ') is-invalid @enderror"
-                                                name="no_identitas" type="number" id="no_identitas"
-                                                value="{{ auth()->user()->anggota->identity->no_identitas }}" required>
+                                                name="no_identitas" type="number" id="no_identitas" required>
                                             @error('no_identitas')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -195,8 +193,7 @@
                                         <div class="col p-l-0">
                                             <input
                                                 class="form-control form-control-sm @error('telepon_seluler ') is-invalid @enderror"
-                                                name="telepon_seluler" type="text" id="telepon_seluler"
-                                                value="{{ auth()->user()->anggota->telepon_seluler }}" required>
+                                                name="telepon_seluler" type="text" id="telepon_seluler" required>
                                             @error('telepon_seluler')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -210,8 +207,7 @@
                                         <div class="col p-l-0">
                                             <input
                                                 class="form-control form-control-sm @error('pekerjaan ') is-invalid @enderror"
-                                                name="pekerjaan" type="text" id="pekerjaan"
-                                                value="{{ auth()->user()->anggota->profession->pekerjaan }}" required>
+                                                name="pekerjaan" type="text" id="pekerjaan" required>
                                             @error('pekerjaan')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}

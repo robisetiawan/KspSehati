@@ -31,7 +31,7 @@ class CreateIdentitiesTable extends Migration
             $table->string('kec');
             $table->string('kab_kota');
             $table->string('provinsi');
-            $table->char('kode_pos');
+            $table->char('kode_pos')->nullable();
             $table->timestamps();
         });
     }

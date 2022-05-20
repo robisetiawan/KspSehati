@@ -12,7 +12,7 @@
                             <li class="breadcrumb-item">KSP Sehati
                             </li>
                             <li class="breadcrumb-item">Anggota</li>
-                            <li class="breadcrumb-item">Detail</li>
+                            <li class="breadcrumb-item">Detail Anggota</li>
                         </ol>
                     </div>
                 </div>
@@ -20,138 +20,154 @@
         </div>
 
         <div class="card">
-            <form class="form theme-form">
+            <form method="POST" action="/dashboard/anggotas" class="form theme-form" enctype="multipart/form-data">
+                @csrf
+
                 <div class="card-body f-12">
                     <div class="row">
                         <div class="col">
 
-                            <div class="container-fluid">
-                                <a href="/dashboard/anggotas" class="btn btn-pill btn-outline-primary btn-xs mb-3"><i
-                                        class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
-                                <div class="row border rounded">
+                            <a href="/dashboard/anggotas" class="btn btn-pill btn-outline-primary btn-xs mb-3"><i
+                                    class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+
+                            {{-- Users --}}
+                            <div class="container-fluid mb-2 border">
+                                <div class="card-header p-1 mt-2">
+                                    <h6> <i class="fa fa-lock" aria-hidden="true"></i>
+                                        Account</h6>
+                                </div>
+                                <div class="row rounded">
                                     <div class="col-sm-12 col-xl-6">
                                         <div class="row">
                                             <div class="col-sm-12 p-r-0">
-                                                <div class="card border-0 my-3">
+
+                                                <!-- **************************************************************************************************8******  -->
+                                                <div class="card-body p-1 ">
                                                     <!-- **************************************************************************************************8******  -->
-                                                    <div class="card-body p-1 ">
-                                                        <form class="theme-form">
-                                                            <!-- **************************************************************************************************8******  -->
 
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">No Anggota</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        name="id" value=": {{ $anggotas->no_anggota }}"
-                                                                        readonly disabled>
+
+
+                                                    <!-- **************************************************************************************************8******  -->
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="email">Email</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('email') is-invalid @enderror"
+                                                                name="email" type="email" id="email"
+                                                                value="{{ $anggotas->user->email }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="image">Image</label>
+                                                        <div class="col">
+                                                            @if ($anggotas->user->image)
+                                                                {{-- <img src="{{ asset('storage/' . $anggotas->user->image) }}"
+                                                                    class="card-img-top mt-3"> --}}
+                                                                <div style="overflow: hidden">
+                                                                    <img class="rounded"
+                                                                        src="{{ asset('storage/' . $anggotas->user->image) }}"
+                                                                        width="200px" height="200px" />
                                                                 </div>
-                                                            </div>
+                                                            @else
+                                                                <img src="{{ asset('templates/assets/images/dashboard/2.png ') }}"
+                                                                    class="rounded" width="200px" height="200px">
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                                            <!-- **************************************************************************************************8******  -->
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label"
-                                                                    for="name">Nama</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        name="name" value=": {{ $anggotas->user->name }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
+                                    <!-- ************************************************************************************************* -->
+                                </div>
+                            </div>
 
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label"
-                                                                    for="nama_panggilan">Panggilan</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        name="nama_panggilan"
-                                                                        value=": {{ $anggotas->nama_panggilan }}" readonly
-                                                                        disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
+                            {{-- Anggota --}}
+                            <div class="container-fluid mb-2 border">
+                                <div class="card-header p-1 mt-2">
+                                    <h6> <i class="fa fa-users" aria-hidden="true"></i>
+                                        Data Anggota</h6>
+                                </div>
 
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label"
-                                                                    for="email">Email</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        name="email"
-                                                                        value=": {{ $anggotas->user->email }}" readonly
-                                                                        disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
+                                <div class="row rounded">
+                                    <div class="col-sm-12 col-xl-6">
+                                        <div class="row">
+                                            <div class="col-sm-12 p-r-0">
 
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label"
-                                                                    for="jenis_kelamin">Jenis
-                                                                    Kelamin</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        name="jenis_kelamin"
-                                                                        value=": {{ $anggotas->jenis_kelamin }}" readonly
-                                                                        disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">TTL</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->tempat_lahir }}, {{ $anggotas->tanggal_lahir }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Nama Ibu</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->nama_ibu }}" readonly
-                                                                        disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Telp Rumah</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->telepon_rumah }}" readonly
-                                                                        disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Telp Seluler</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->telepon_seluler }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Telp Kantor</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->telepon_kantor }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                        </form>
+                                                <!-- **************************************************************************************************8******  -->
+                                                <div class="card-body p-1 ">
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="no_anggota">No
+                                                            Anggota</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('no_anggota') is-invalid @enderror"
+                                                                name="no_anggota" type="text" id="no_anggota"
+                                                                value="{{ $anggotas->no_anggota }}" readonly>
+                                                        </div>
                                                     </div>
 
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="name">Nama</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('name') is-invalid @enderror"
+                                                                name="name" type="text" id="name"
+                                                                value="{{ $anggotas->user->name }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="nama_panggilan">Nama
+                                                            Panggilan</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('nama_panggilan') is-invalid @enderror"
+                                                                name="nama_panggilan" type="text" id="nama_panggilan"
+                                                                value="{{ $anggotas->nama_panggilan }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="jenis_kelamin">Jenis
+                                                            Kelamin</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('jenis_kelamin') is-invalid @enderror"
+                                                                name="jenis_kelamin" type="text" id="jenis_kelamin"
+                                                                value="{{ $anggotas->jenis_kelamin }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="tempat_lahir">TTL</label>
+                                                        <label class="col-sm-4 col-form-label visually-hidden"
+                                                            for="tanggal_lahir">TTL</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('tempat_lahir') is-invalid @enderror"
+                                                                name="tempat_lahir" type="text" id="tempat_lahir"
+                                                                value="{{ $anggotas->tempat_lahir }}" readonly>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('tanggal_lahir') is-invalid @enderror"
+                                                                name="tanggal_lahir" type="text" id="tanggal_lahir"
+                                                                value="{{ $anggotas->tanggal_lahir }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+
                                                 </div>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -162,239 +178,273 @@
                                     <div class="col-sm-12 col-xl-6">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <div class="card border-0 my-3">
+                                                <!-- **************************************************************************************************8******  -->
+                                                <div class="card-body p-1">
                                                     <!-- **************************************************************************************************8******  -->
-                                                    <div class="card-body p-1">
-                                                        <!-- **************************************************************************************************8******  -->
-                                                        <form class="theme-form">
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Type
-                                                                    Identitas</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->identity->type_identitas }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                        </form>
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="nama_ibu">Nama
+                                                            Ibu</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('nama_ibu') is-invalid @enderror"
+                                                                name="nama_ibu" type="text" id="nama_ibu"
+                                                                value="{{ $anggotas->nama_ibu }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="telepon_rumah">Telepon
+                                                            Rumah</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('telepon_rumah') is-invalid @enderror"
+                                                                name="telepon_rumah" type="text" id="telepon_rumah"
+                                                                value="{{ $anggotas->telepon_rumah }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="telepon_seluler">Telepon
+                                                            Seluler</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('telepon_rumah') is-invalid @enderror"
+                                                                name="telepon_rumah" type="text" id="telepon_rumah"
+                                                                value="{{ $anggotas->telepon_rumah }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="telepon_kantor">Telepon
+                                                            Kantor</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('telepon_kantor') is-invalid @enderror"
+                                                                name="telepon_kantor" type="text" id="telepon_kantor"
+                                                                value="{{ $anggotas->telepon_kantor }}" readonly>
+                                                        </div>
                                                     </div>
 
                                                 </div>
+
+
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
 
-                            <div class="container-fluid my-2">
-                                <div class="row border rounded">
+                            {{-- Data Identitas --}}
+                            <div class="container-fluid mb-2 border">
+                                <div class="card-header p-1 mt-2">
+                                    <h6> <i class="fa fa-address-card" aria-hidden="true"></i>
+                                        Data Identitas</h6>
+                                </div>
+                                <div class="row rounded">
+
                                     <div class="col-sm-12 col-xl-6">
                                         <div class="row">
                                             <div class="col-sm-12 p-r-0">
-
-                                                <div class="card border-0 my-3">
+                                                <!-- **************************************************************************************************8******  -->
+                                                <div class="card-body p-1 ">
                                                     <!-- **************************************************************************************************8******  -->
-                                                    <div class="card-body p-1">
-                                                        <!-- **************************************************************************************************8******  -->
-                                                        <form class="theme-form">
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <h6>Data Identitas</h6>
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Type
-                                                                    Identitas</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->identity->type_identitas }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">No Identitas</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->identity->no_identitas }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Warganegara</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->identity->warganegara }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Agama</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->identity->agama }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Gol Darah</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->identity->gol_darah }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Pendidikan</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->identity->pendidikan }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Gelar</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->identity->gelar }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            {{-- <div class="row mb-1">
-                                                            <label class="col-sm-4 col-form-label"
-                                                                for="nama">Pendidikan</label>
-                                                            <div class="col-sm-4 p-l-0">
-                                                                <select class="form-select form-select-sm">
-                                                                    <option>SD</option>
-                                                                    <option>SMP</option>
-                                                                    <option>SMA/SMK</option>
-                                                                    <option>Diploma 1</option>
-                                                                    <option>Diploma 2</option>
-                                                                    <option>Diploma 3</option>
-                                                                    <option>Diploma 4</option>
-                                                                    <option>Sarjana S1</option>
-                                                                    <option>Master</option>
-                                                                    <option>Doktor</option>
-                                                                </select>
-                                                            </div>
-                                                        </div> --}}
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Status Kawin</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->identity->status_kawin }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Status Rumah</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->identity->status_rumah }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            {{-- <div class="row mb-1">
-                                                            <label class="col-sm-4 col-form-label" for="nama">Status
-                                                                Rumah</label>
-                                                            <div class="col-sm-4 p-l-0">
-                                                                <select class="form-select form-select-sm">
-                                                                    <option>Rumah Sendiri</option>
-                                                                    <option>Rumah Orang Tua</option>
-                                                                    <option>Rumah Dinas</option>
-                                                                    <option>Rumah Sewa/Kontrak</option>
-                                                                    <option>Kost</option>
-                                                                    <option>Rumah Status Kredit</option>
-                                                                    <option>Rumah Keluarga</option>
-                                                                </select>
-                                                            </div>
-                                                        </div> --}}
-                                                            <!-- **************************************************************************************************8******  -->
-                                                        </form>
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="type_identitas">Type
+                                                            Identitas</label>
+                                                        <div class="col-sm-3">
+                                                            <input
+                                                                class="form-control form-control-sm @error('type_identitas') is-invalid @enderror"
+                                                                name="type_identitas" type="text" id="type_identitas"
+                                                                value="{{ $anggotas->identity->type_identitas }}"
+                                                                readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="no_identitas">No
+                                                            Identitas</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('no_identitas') is-invalid @enderror"
+                                                                name="no_identitas" type="text" id="no_identitas"
+                                                                value="{{ $anggotas->identity->no_identitas }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="warganegara">Warganegara</label>
+                                                        <div class="col-sm-3">
+                                                            <input
+                                                                class="form-control form-control-sm @error('warganegara') is-invalid @enderror"
+                                                                name="warganegara" type="text" id="warganegara"
+                                                                value="{{ $anggotas->identity->warganegara }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="agama">Agama</label>
+                                                        <div class="col-sm-4">
+                                                            <input
+                                                                class="form-control form-control-sm @error('agama') is-invalid @enderror"
+                                                                name="agama" type="text" id="agama"
+                                                                value="{{ $anggotas->identity->agama }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="pendidikan">Pendidikan</label>
+                                                        <div class="col-sm-4">
+                                                            <input
+                                                                class="form-control form-control-sm @error('pendidikan') is-invalid @enderror"
+                                                                name="pendidikan" type="text" id="pendidikan"
+                                                                value="{{ $anggotas->identity->pendidikan }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="gelar">Gelar</label>
+                                                        <div class="col-sm-4">
+                                                            <input
+                                                                class="form-control form-control-sm @error('gelar') is-invalid @enderror"
+                                                                name="gelar" type="text" id="gelar"
+                                                                value="{{ $anggotas->identity->gelar }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="status_kawin">Status
+                                                            Kawin</label>
+                                                        <div class="col-sm-4">
+                                                            <input
+                                                                class="form-control form-control-sm @error('status_kawin') is-invalid @enderror"
+                                                                name="status_kawin" type="text" id="status_kawin"
+                                                                value="{{ $anggotas->identity->status_kawin }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="gol_darah">Gol
+                                                            Darah</label>
+                                                        <div class="col-sm-3">
+                                                            <input
+                                                                class="form-control form-control-sm @error('gol_darah') is-invalid @enderror"
+                                                                name="gol_darah" type="text" id="gol_darah"
+                                                                value="{{ $anggotas->identity->gol_darah }}" readonly>
+                                                        </div>
                                                     </div>
 
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- ************************************************************************************************* -->
+
                                     <div class="col-sm-12 col-xl-6">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <div class="card border-0 my-3">
+                                                <!-- **************************************************************************************************8******  -->
+                                                <div class="card-body p-1">
                                                     <!-- **************************************************************************************************8******  -->
-                                                    <div class="card-body p-1 ">
-
-                                                        <!-- **************************************************************************************************8******  -->
-                                                        <div class="row mb-1">
-                                                            <label class="col-sm-4 col-form-label">Alamat</label>
-                                                            <div class="col">
-                                                                <input type="textarea" class="form-control-plaintext"
-                                                                    value=": {{ $anggotas->identity->alamat }}" readonly
-                                                                    disabled>
-                                                            </div>
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="status_rumah">Status
+                                                            Rumah</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('status_rumah') is-invalid @enderror"
+                                                                name="status_rumah" type="text" id="status_rumah"
+                                                                value="{{ $anggotas->identity->status_rumah }}" readonly>
                                                         </div>
-                                                        <!-- **************************************************************************************************8******  -->
-                                                        <div class="row mb-1">
-                                                            <label class="col-sm-4 col-form-label">RT/RW</label>
-                                                            <div class="col">
-                                                                <input type="textarea" class="form-control-plaintext"
-                                                                    value=": {{ $anggotas->identity->rt }}/{{ $anggotas->identity->rw }}"
-                                                                    readonly disabled>
-                                                            </div>
-                                                        </div>
-                                                        <!-- **************************************************************************************************8******  -->
-                                                        <div class="row mb-1">
-                                                            <label class="col-sm-4 col-form-label">Desa/Kel</label>
-                                                            <div class="col">
-                                                                <input type="textarea" class="form-control-plaintext"
-                                                                    value=": {{ $anggotas->identity->desa_kel }}"
-                                                                    readonly disabled>
-                                                            </div>
-                                                        </div>
-                                                        <!-- **************************************************************************************************8******  -->
-                                                        <div class="row mb-1">
-                                                            <label class="col-sm-4 col-form-label">Kecamatan</label>
-                                                            <div class="col">
-                                                                <input type="textarea" class="form-control-plaintext"
-                                                                    value=": {{ $anggotas->identity->kec }}" readonly
-                                                                    disabled>
-                                                            </div>
-                                                        </div>
-                                                        <!-- **************************************************************************************************8******  -->
-                                                        <div class="row mb-1">
-                                                            <label class="col-sm-4 col-form-label">Kab/Kota</label>
-                                                            <div class="col">
-                                                                <input type="textarea" class="form-control-plaintext"
-                                                                    value=": {{ $anggotas->identity->kab_kota }}"
-                                                                    readonly disabled>
-                                                            </div>
-                                                        </div>
-                                                        <!-- **************************************************************************************************8******  -->
-                                                        <div class="row mb-1">
-                                                            <label class="col-sm-4 col-form-label">Provinsi</label>
-                                                            <div class="col">
-                                                                <input type="textarea" class="form-control-plaintext"
-                                                                    value=": {{ $anggotas->identity->provinsi }}"
-                                                                    readonly disabled>
-                                                            </div>
-                                                        </div>
-                                                        <!-- **************************************************************************************************8******  -->
-                                                        <div class="row mb-1">
-                                                            <label class="col-sm-4 col-form-label">Kode Pos</label>
-                                                            <div class="col">
-                                                                <input type="textarea" class="form-control-plaintext"
-                                                                    value=": {{ $anggotas->identity->kode_pos }}"
-                                                                    readonly disabled>
-                                                            </div>
-                                                        </div>
-                                                        <!-- **************************************************************************************************8******  -->
-
                                                     </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="alamat">Alamat</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('alamat') is-invalid @enderror"
+                                                                name="alamat" type="text" id="alamat"
+                                                                value="{{ $anggotas->identity->alamat }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="rt">RT / RW</label>
+                                                        <label class="col-sm-4 col-form-label visually-hidden"
+                                                            for="rw">Rw</label>
+                                                        <div class="col-sm-3">
+                                                            <input
+                                                                class="form-control form-control-sm @error('rt') is-invalid @enderror"
+                                                                name="rt" type="text" id="rt"
+                                                                value="{{ $anggotas->identity->rt }}" readonly>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input
+                                                                class="form-control form-control-sm @error('rw') is-invalid @enderror"
+                                                                name="rw" type="text" id="rw"
+                                                                value="{{ $anggotas->identity->rw }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="desa_kel">Desa/Kel</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('desa_kel') is-invalid @enderror"
+                                                                name="desa_kel" type="text" id="desa_kel"
+                                                                value="{{ $anggotas->identity->desa_kel }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="kec">Kec</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('kec') is-invalid @enderror"
+                                                                name="kec" type="text" id="kec"
+                                                                value="{{ $anggotas->identity->kec }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="kab_kota">Kab/Kota</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('kab_kota') is-invalid @enderror"
+                                                                name="kab_kota" type="text" id="kab_kota"
+                                                                value="{{ $anggotas->identity->kab_kota }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="provinsi">Provinsi</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('provinsi') is-invalid @enderror"
+                                                                name="provinsi" type="text" id="provinsi"
+                                                                value="{{ $anggotas->identity->provinsi }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="kode_pos">Kode
+                                                            Pos</label>
+                                                        <div class="col-sm-4">
+                                                            <input
+                                                                class="form-control form-control-sm @error('kode_pos') is-invalid @enderror"
+                                                                name="kode_pos" type="text" id="kode_pos"
+                                                                value="{{ $anggotas->identity->kode_pos }}" readonly>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -402,125 +452,78 @@
                                 </div>
                             </div>
 
-                            <div class="container-fluid">
-                                <div class="row border rounded">
+                            {{-- Data Pekerjaan --}}
+                            <div class="container-fluid mb-2 border">
+                                <div class="card-header p-1 mt-2">
+                                    <h6> <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                        Data Pekerjaan</h6>
+                                </div>
+                                <div class="row rounded">
+
                                     <div class="col-sm-12 col-xl-6">
                                         <div class="row">
                                             <div class="col-sm-12 p-r-0">
-                                                <div class="card border-0 my-3">
+                                                <!-- **************************************************************************************************8******  -->
+                                                <div class="card-body p-1 ">
                                                     <!-- **************************************************************************************************8******  -->
-                                                    <div class="card-body p-1 ">
-                                                        <form class="theme-form">
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <h6>Data Pekerjaan</h6>
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Pekerjaan</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        name="id"
-                                                                        value=": {{ $anggotas->profession->pekerjaan }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label" for="name">Lama
-                                                                    Kerja</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        name="name"
-                                                                        value=": {{ $anggotas->profession->lama_kerja_tahun }} Tahun {{ $anggotas->profession->lama_kerja_bulan }} Bulan"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label"
-                                                                    for="nama_panggilan">Tanggungan</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        name="nama_panggilan"
-                                                                        value=": {{ $anggotas->profession->tanggungan }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label"
-                                                                    for="jenis_kelamin">Pendapatan</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        name="jenis_kelamin"
-                                                                        value=": Rp.{{ $anggotas->profession->pendapatan }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label" for="email">Omset
-                                                                    Dagang</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        name="email"
-                                                                        value=": Rp.{{ $anggotas->profession->omset_dagang }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Gaji</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": Rp.{{ $anggotas->profession->gaji }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Pendapatan
-                                                                    Psg</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": Rp.{{ $anggotas->profession->pendapatan_psg }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Pendapatan
-                                                                    Lain</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": Rp.{{ $anggotas->profession->pendapatan_lain }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Biaya
-                                                                    Bulanan</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": Rp.{{ $anggotas->profession->biaya_bulanan }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- **************************************************************************************************8******  -->
-
-                                                        </form>
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="pekerjaan">Pekerjaan</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('pekerjaan') is-invalid @enderror"
+                                                                name="pekerjaan" type="text" id="pekerjaan"
+                                                                value="{{ $anggotas->profession->pekerjaan }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="lama_kerja_tahun">Lama
+                                                            Bekerja</label>
+                                                        <label class="col-sm-4 col-form-label visually-hidden"
+                                                            for="lama_kerja_bulan">lama_kerja_bulan</label>
+                                                        <div class="col-sm-3">
+                                                            <input
+                                                                class="form-control form-control-sm @error('lama_kerja_tahun') is-invalid @enderror"
+                                                                name="lama_kerja_tahun" type="text" id="lama_kerja_tahun"
+                                                                value="{{ $anggotas->profession->lama_kerja_tahun }}"
+                                                                readonly>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input
+                                                                class="form-control form-control-sm @error('lama_kerja_bulan') is-invalid @enderror"
+                                                                name="lama_kerja_bulan" type="text" id="lama_kerja_bulan"
+                                                                value="{{ $anggotas->profession->lama_kerja_bulan }}"
+                                                                readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="tanggungan">Tanggungan</label>
+                                                        <div class="col-sm-2">
+                                                            <input
+                                                                class="form-control form-control-sm @error('tanggungan') is-invalid @enderror"
+                                                                name="tanggungan" type="text" id="tanggungan"
+                                                                value="Rp. {{ $anggotas->profession->tanggungan }}"
+                                                                readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="omset_dagang">Omset
+                                                            Dagang</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('omset_dagang') is-invalid @enderror"
+                                                                name="omset_dagang" type="text" id="omset_dagang"
+                                                                value="Rp. {{ $anggotas->profession->omset_dagang }}"
+                                                                readonly>
+                                                        </div>
                                                     </div>
 
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -531,118 +534,258 @@
                                     <div class="col-sm-12 col-xl-6">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <div class="card border-0 my-3">
+                                                <!-- **************************************************************************************************8******  -->
+                                                <div class="card-body p-1">
                                                     <!-- **************************************************************************************************8******  -->
-                                                    <div class="card-body p-1">
-                                                        <!-- **************************************************************************************************8******  -->
-                                                        <form class="theme-form">
-                                                            <h6>Kerabat dalam kondisi darurat</h6>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Nama</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->adddata->nama }}" readonly
-                                                                        disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Alamat</label>
-                                                                <div class="col">
-                                                                    <input type="textarea" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->adddata->alamat }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">RT/RW</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->adddata->rt }}/{{ $anggotas->adddata->rw }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Desa/Kel</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->adddata->desa_kel }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Kecamatan</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->adddata->kec }}" readonly
-                                                                        disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Kab/Kota</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->adddata->kab_kota }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Provinsi</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->adddata->provinsi }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Kode Pos</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->adddata->kode_pos }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Telepon
-                                                                    Rumah</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->adddata->telepon_rumah }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                            <!-- **************************************************************************************************8******  -->
-                                                            <div class="row mb-1">
-                                                                <label class="col-sm-4 col-form-label">Telepon
-                                                                    Seluler</label>
-                                                                <div class="col">
-                                                                    <input type="text" class="form-control-plaintext"
-                                                                        value=": {{ $anggotas->adddata->telepon_seluler }}"
-                                                                        readonly disabled>
-                                                                </div>
-                                                            </div>
-                                                        </form>
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="pendapatan">Pendapatan</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('pendapatan') is-invalid @enderror"
+                                                                name="pendapatan" type="text" id="pendapatan"
+                                                                value="Rp. {{ $anggotas->profession->pendapatan }}"
+                                                                readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="gaji">Gaji</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('gaji') is-invalid @enderror"
+                                                                name="gaji" type="text" id="gaji"
+                                                                value="Rp. {{ $anggotas->profession->gaji }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="pendapatan_psg">Pendapatan Psg</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('pendapatan_psg') is-invalid @enderror"
+                                                                name="pendapatan_psg" type="text" id="pendapatan_psg"
+                                                                value="Rp. {{ $anggotas->profession->pendapatan_psg }}"
+                                                                readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="pendapatan_lain">Pendapatan Lain</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('pendapatan_lain') is-invalid @enderror"
+                                                                name="pendapatan_lain" type="text" id="pendapatan_lain"
+                                                                value="Rp. {{ $anggotas->profession->pendapatan_lain }}"
+                                                                readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="biaya_bulanan">Biaya
+                                                            Bulanan</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('biaya_bulanan') is-invalid @enderror"
+                                                                name="biaya_bulanan" type="text" id="biaya_bulanan"
+                                                                value="Rp. {{ $anggotas->profession->biaya_bulanan }}"
+                                                                readonly>
+                                                        </div>
                                                     </div>
 
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
 
+                            {{-- Data Tambahan --}}
+                            <div class="container-fluid mb-2 border">
+                                <div class="card-header p-1 mt-2">
+                                    <h6> <i class="fa fa-user-md" aria-hidden="true"></i>
+                                        Data Tambahan</h6>
+                                </div>
+                                <div class="row rounded">
+
+                                    <div class="col-sm-12 col-xl-6">
+                                        <div class="row">
+                                            <div class="col-sm-12 p-r-0">
+                                                <!-- **************************************************************************************************8******  -->
+                                                <div class="card-body p-1 ">
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="nama">Nama</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('nama') is-invalid @enderror"
+                                                                name="nama" type="text" id="nama"
+                                                                value="{{ $anggotas->adddata->nama }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="alamat_add">Alamat</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('alamat_add') is-invalid @enderror"
+                                                                name="alamat_add" type="text" id="alamat_add"
+                                                                value="{{ $anggotas->adddata->alamat }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="rt_add">RT / RW</label>
+                                                        <label class="col-sm-4 col-form-label visually-hidden"
+                                                            for="rw_add">rw_add</label>
+                                                        <div class="col-sm-3">
+                                                            <input
+                                                                class="form-control form-control-sm @error('rt_add') is-invalid @enderror"
+                                                                name="rt_add" type="text" id="rt_add"
+                                                                value="{{ $anggotas->adddata->rt }}" readonly>
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <input
+                                                                class="form-control form-control-sm @error('rw_add') is-invalid @enderror"
+                                                                name="rw_add" type="text" id="rw_add"
+                                                                value="{{ $anggotas->adddata->rw }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="desa_kel_add">Desa
+                                                            Kel</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('desa_kel_add') is-invalid @enderror"
+                                                                name="desa_kel_add" type="text" id="desa_kel_add"
+                                                                value="{{ $anggotas->adddata->desa_kel }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ************************************************************************************************* -->
+                                    <!-- ************************************************************************************************* -->
+
+                                    <div class="col-sm-12 col-xl-6">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <!-- **************************************************************************************************8******  -->
+                                                <div class="card-body p-1">
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="kec_add">Kecamatan</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('kec_add') is-invalid @enderror"
+                                                                name="kec_add" type="text" id="kec_add"
+                                                                value="{{ $anggotas->adddata->kec }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="kab_kota_add">Kabupaten
+                                                            / Kota</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('kab_kota_add') is-invalid @enderror"
+                                                                name="kab_kota_add" type="text" id="kab_kota_add"
+                                                                value="{{ $anggotas->adddata->kab_kota }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="provinsi_add">Provinsi</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('provinsi_add') is-invalid @enderror"
+                                                                name="provinsi_add" type="text" id="provinsi_add"
+                                                                value="{{ $anggotas->adddata->provinsi }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="kode_pos_add">Kode
+                                                            Pos</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('kode_pos_add') is-invalid @enderror"
+                                                                name="kode_pos_add" type="text" id="kode_pos_add"
+                                                                value="{{ $anggotas->adddata->kode_pos }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="telepon_rumah_add">Telepon Rumah</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('telepon_rumah_add') is-invalid @enderror"
+                                                                name="telepon_rumah_add" type="text" id="telepon_rumah_add"
+                                                                value="{{ $anggotas->adddata->telepon_rumah }}" readonly>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label"
+                                                            for="telepon_seluler_add">Telepon seluler</label>
+                                                        <div class="col-sm-6">
+                                                            <input
+                                                                class="form-control form-control-sm @error('telepon_seluler_add') is-invalid @enderror"
+                                                                name="telepon_seluler_add" type="text"
+                                                                id="telepon_seluler_add"
+                                                                value="{{ $anggotas->adddata->telepon_seluler }}"
+                                                                readonly>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="text-end">
+                                <button class="btn btn-primary text-end" type="submit">Simpan</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
             </form>
         </div>
     </div>
+
+    <script>
+        // preview image
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
 @endsection

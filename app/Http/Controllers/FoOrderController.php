@@ -112,13 +112,13 @@ class FoOrderController extends Controller
         $cari = $request->cari;
 
         $anggotas = Anggota::where('no_anggota', 'like', "%" . $cari . "%")->get();
-        $identities = Identity::where('id', 'like', "%" . $anggotas->identity->id . "%")->get();
+        // $identities = Identity::where('id', 'like', "%" . $anggotas->identity->id . "%")->get();
 
         $title = "Pooling Order";
 
         return view(
             'dashboard.fo.pooling-order-cari',
-            compact('anggotas', 'title', 'identities')
+            compact('anggotas', 'title')
         );
     }
 }

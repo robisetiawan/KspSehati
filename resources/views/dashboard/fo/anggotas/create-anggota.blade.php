@@ -20,7 +20,7 @@
         </div>
 
         <div class="card">
-            <form method="POST" action="/dashboard/anggotas" class="form theme-form">
+            <form method="POST" action="/dashboard/anggotas" class="form theme-form" enctype="multipart/form-data">
                 @csrf
 
                 <div class="card-body f-12">
@@ -126,7 +126,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label">Priview Image</label>
                                                         <div class="col">
-                                                            <img class="p-l-2 img-preview img-fluid mb-3 col-sm-6">
+                                                            <img class="p-l-2 img-preview img-fluid mb-3 col-sm-6 rounded">
                                                         </div>
                                                     </div>
 
@@ -195,7 +195,7 @@
                                                         <label class="col-sm-4 col-form-label"
                                                             for="tempat_lahir">TTL</label>
                                                         <label class="col-sm-4 col-form-label visually-hidden"
-                                                            for="tanggal_lahir">TTL</label>
+                                                            for="tanggal_lahir">tanggal_lahir</label>
                                                         <div class="col">
                                                             <input
                                                                 class="form-control form-control-sm @error('tempat_lahir') is-invalid @enderror"
@@ -711,7 +711,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-4 col-form-label"
                                                             for="tanggungan">Tanggungan</label>
-                                                        <div class="col-sm-2">
+                                                        <div class="col-sm-3">
                                                             <input
                                                                 class="form-control form-control-sm @error('tanggungan') is-invalid @enderror"
                                                                 name="tanggungan" type="number" id="tanggungan"
@@ -731,7 +731,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('omset_dagang') is-invalid @enderror"
                                                                 name="omset_dagang" type="number" id="omset_dagang"
-                                                                value={{ old('omset_dagang') }}>
+                                                                value="Rp. {{ old('omset_dagang') }}">
                                                             @error('omset_dagang')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -762,7 +762,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('pendapatan') is-invalid @enderror"
                                                                 name="pendapatan" type="number" id="pendapatan"
-                                                                value={{ old('pendapatan') }}>
+                                                                value="Rp. {{ old('pendapatan') }}">
                                                             @error('pendapatan')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -777,7 +777,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('gaji') is-invalid @enderror"
                                                                 name="gaji" type="number" id="gaji"
-                                                                value={{ old('gaji') }}>
+                                                                value="Rp. {{ old('pendapatan') }}">
                                                             @error('gaji')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -793,7 +793,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('pendapatan_psg') is-invalid @enderror"
                                                                 name="pendapatan_psg" type="number" id="pendapatan_psg"
-                                                                value={{ old('pendapatan_psg') }}>
+                                                                value="Rp. {{ old('pendapatan_psg') }}">
                                                             @error('pendapatan_psg')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -809,7 +809,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('pendapatan_lain') is-invalid @enderror"
                                                                 name="pendapatan_lain" type="number" id="pendapatan_lain"
-                                                                value={{ old('pendapatan_lain') }}>
+                                                                value="Rp. {{ old('pendapatan_lain') }}">
                                                             @error('pendapatan_lain')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -825,7 +825,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('biaya_bulanan') is-invalid @enderror"
                                                                 name="biaya_bulanan" type="number" id="biaya_bulanan"
-                                                                value={{ old('biaya_bulanan') }}>
+                                                                value="Rp. {{ old('biaya_bulanan') }}">
                                                             @error('biaya_bulanan')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}

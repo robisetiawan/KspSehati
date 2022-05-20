@@ -16,8 +16,8 @@ class CreateProfessionsTable extends Migration
         Schema::create('professions', function (Blueprint $table) {
             $table->id();
             $table->string('pekerjaan');
-            $table->char('lama_kerja_tahun', 2);
-            $table->char('lama_kerja_bulan', 2);
+            $table->char('lama_kerja_tahun', 2)->nullable();
+            $table->char('lama_kerja_bulan', 2)->nullable();
             $table->char('tanggungan', 2);
             $table->integer('omset_dagang')->nullable();
             $table->integer('pendapatan')->nullable();

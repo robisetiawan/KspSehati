@@ -16,16 +16,16 @@ class CreateAdddatasTable extends Migration
         Schema::create('adddatas', function (Blueprint $table) {
             $table->id();
             $table->string('nama')->nullable();
-            $table->string('alamat')->nullable();
-            $table->char('rt', 3)->nullable();
-            $table->char('rw', 3)->nullable();
-            $table->string('desa_kel')->nullable();
-            $table->string('kec')->nullable();
-            $table->string('kab_kota')->nullable();
-            $table->string('provinsi')->nullable();
-            $table->char('kode_pos')->nullable();
-            $table->char('telepon_rumah', 12)->nullable();
-            $table->char('telepon_seluler', 12)->nullable();
+            $table->string('alamat_add')->nullable();
+            $table->char('rt_add', 3)->nullable();
+            $table->char('rw_add', 3)->nullable();
+            $table->string('desa_kel_add')->nullable();
+            $table->string('kec_add')->nullable();
+            $table->string('kab_kota_add')->nullable();
+            $table->string('provinsi_add')->nullable();
+            $table->char('kode_pos_add')->nullable();
+            $table->char('telepon_rumah_add', 12)->nullable();
+            $table->char('telepon_seluler_add', 12)->nullable();
             $table->timestamps();
         });
     }

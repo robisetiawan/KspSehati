@@ -52,32 +52,14 @@
                                             <td>{{ $a->tempat_lahir }}, {{ $a->tanggal_lahir }}</td>
                                             <td>{{ $a->telepon_seluler }}</td>
                                             <td>
-
-                                                {{-- <div class="d-inline">
-                                                    <a href="/dashboard/anggotas/{{ $a->id }}"
-                                                        class="badge bg-success">
-                                                        <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="d-inline">
-                                                    <a href="/dashboard/anggotas/{{ $a->id }}"
-                                                        class="badge bg-primary"><i class="fa fa-pencil fa-2x"
-                                                            aria-hidden="true"></i></a>
-                                                </div> --}}
                                                 <div class="btn-group" role="group"
                                                     aria-label="Basic mixed styles example">
-
-                                                    {{-- <a href="/dashboard/anggotas/{{ $a->id }}"
-                                                        class="badge bg-success">
-                                                        <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
-                                                    </a> --}}
-
                                                     <a href="/dashboard/anggotas/{{ $a->id }}">
                                                         <button class="badge bg-success border-0"><i class="fa fa-eye fa-lg"
                                                                 aria-hidden="true"></i></button>
                                                     </a>
 
-                                                    <a href="/dashboard/anggotas/{{ $a->id }}">
+                                                    <a href="/dashboard/anggotas/{{ $a->id }}/edit">
                                                         <button class="badge bg-primary border-0"><i
                                                                 class="fa fa-pencil fa-lg" aria-hidden="true"></i></button>
                                                     </a>
@@ -90,23 +72,8 @@
                                                                 class="fa fa-times fa-lg" aria-hidden="true"></i></button>
                                                     </form>
                                                 </div>
-
-                                                {{-- <div class="d-inline">
-                                                    <a href="/dashboard/anggotas/{{ $a->id }}">
-                                                        <button class="badge bg-primary border-0"><i
-                                                                class="fa fa-pencil fa-lg" aria-hidden="true"></i></button>
-                                                    </a>
-                                                </div>
-                                                <div class="d-inline">
-                                                    <form action="/dashboard/anggotas/{{ $a->id }}" method="POST">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <button class="badge bg-danger border-0"
-                                                            onclick="return confirm('Are you sure !!')"><i
-                                                                class="fa fa-times fa-lg" aria-hidden="true"></i></button>
-                                                    </form>
-                                                </div> --}}
                                             </td>
+
                                         </tr>
                                     @endforeach
                                 </tbody>

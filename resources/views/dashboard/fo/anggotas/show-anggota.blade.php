@@ -20,16 +20,37 @@
         </div>
 
         <div class="card">
-            <form method="POST" action="/dashboard/anggotas" class="form theme-form" enctype="multipart/form-data">
-                @csrf
 
-                <div class="card-body f-12">
-                    <div class="row">
-                        <div class="col">
+            {{-- <form method="POST" action="/dashboard/anggotas" class="form theme-form" enctype="multipart/form-data">
+                @csrf --}}
 
-                            <a href="/dashboard/anggotas" class="btn btn-pill btn-outline-primary btn-xs mb-3"><i
-                                    class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+            <div class="card-body f-12">
+                <div class="row">
+                    <div class="col">
 
+                        <div class="btn-group">
+                            <a href="/dashboard/anggotas">
+                                <button class="btn btn-pill btn-outline-primary btn-xs mb-3"><i class="fa fa-arrow-left"
+                                        aria-hidden="true"></i> Back</button>
+                            </a>
+
+                            <a href="/dashboard/anggotas/{{ $anggotas->id }}/edit">
+                                <button class="btn btn-pill btn-outline-success btn-xs mb-3 mx-1"><i
+                                        class="fa fa-pencil fa-lg" aria-hidden="true"></i> Edit</button>
+                            </a>
+
+                            <form action="/dashboard/anggotas/{{ $anggotas->id }}" method="POST">
+                                @method('delete')
+                                @csrf
+                                <button class="btn btn-pill btn-outline-danger btn-xs mb-3"
+                                    onclick="return confirm('Are you sure !!')"><i class="fa fa-times fa-lg"
+                                        aria-hidden="true"></i> Delete</button>
+                            </form>
+                        </div>
+
+                        <form method="POST" action="/dashboard/anggotas" class="form theme-form"
+                            enctype="multipart/form-data">
+                            @csrf
                             {{-- Users --}}
                             <div class="container-fluid mb-2 border">
                                 <div class="card-header p-1 mt-2">
@@ -635,7 +656,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('alamat_add') is-invalid @enderror"
                                                                 name="alamat_add" type="text" id="alamat_add"
-                                                                value="{{ $anggotas->adddata->alamat }}" readonly>
+                                                                value="{{ $anggotas->adddata->alamat_add }}" readonly>
                                                         </div>
                                                     </div>
                                                     <!-- **************************************************************************************************8******  -->
@@ -647,13 +668,13 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('rt_add') is-invalid @enderror"
                                                                 name="rt_add" type="text" id="rt_add"
-                                                                value="{{ $anggotas->adddata->rt }}" readonly>
+                                                                value="{{ $anggotas->adddata->rt_add }}" readonly>
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <input
                                                                 class="form-control form-control-sm @error('rw_add') is-invalid @enderror"
                                                                 name="rw_add" type="text" id="rw_add"
-                                                                value="{{ $anggotas->adddata->rw }}" readonly>
+                                                                value="{{ $anggotas->adddata->rw_add }}" readonly>
                                                         </div>
                                                     </div>
                                                     <!-- **************************************************************************************************8******  -->
@@ -664,7 +685,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('desa_kel_add') is-invalid @enderror"
                                                                 name="desa_kel_add" type="text" id="desa_kel_add"
-                                                                value="{{ $anggotas->adddata->desa_kel }}" readonly>
+                                                                value="{{ $anggotas->adddata->desa_kel_add }}" readonly>
                                                         </div>
                                                     </div>
 
@@ -690,7 +711,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('kec_add') is-invalid @enderror"
                                                                 name="kec_add" type="text" id="kec_add"
-                                                                value="{{ $anggotas->adddata->kec }}" readonly>
+                                                                value="{{ $anggotas->adddata->kec_add }}" readonly>
                                                         </div>
                                                     </div>
 
@@ -701,7 +722,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('kab_kota_add') is-invalid @enderror"
                                                                 name="kab_kota_add" type="text" id="kab_kota_add"
-                                                                value="{{ $anggotas->adddata->kab_kota }}" readonly>
+                                                                value="{{ $anggotas->adddata->kab_kota_add }}" readonly>
                                                         </div>
                                                     </div>
 
@@ -712,7 +733,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('provinsi_add') is-invalid @enderror"
                                                                 name="provinsi_add" type="text" id="provinsi_add"
-                                                                value="{{ $anggotas->adddata->provinsi }}" readonly>
+                                                                value="{{ $anggotas->adddata->provinsi_add }}" readonly>
                                                         </div>
                                                     </div>
 
@@ -723,7 +744,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('kode_pos_add') is-invalid @enderror"
                                                                 name="kode_pos_add" type="text" id="kode_pos_add"
-                                                                value="{{ $anggotas->adddata->kode_pos }}" readonly>
+                                                                value="{{ $anggotas->adddata->kode_pos_add }}" readonly>
                                                         </div>
                                                     </div>
 
@@ -734,7 +755,8 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('telepon_rumah_add') is-invalid @enderror"
                                                                 name="telepon_rumah_add" type="text" id="telepon_rumah_add"
-                                                                value="{{ $anggotas->adddata->telepon_rumah }}" readonly>
+                                                                value="{{ $anggotas->adddata->telepon_rumah_add }}"
+                                                                readonly>
                                                         </div>
                                                     </div>
 
@@ -746,7 +768,7 @@
                                                                 class="form-control form-control-sm @error('telepon_seluler_add') is-invalid @enderror"
                                                                 name="telepon_seluler_add" type="text"
                                                                 id="telepon_seluler_add"
-                                                                value="{{ $anggotas->adddata->telepon_seluler }}"
+                                                                value="{{ $anggotas->adddata->telepon_seluler_add }}"
                                                                 readonly>
                                                         </div>
                                                     </div>
@@ -763,12 +785,16 @@
                             <div class="text-end">
                                 <button class="btn btn-primary text-end" type="submit">Simpan</button>
                             </div>
-                        </div>
+
+                        </form>
+
+
                     </div>
                 </div>
+            </div>
 
 
-            </form>
+            {{-- </form> --}}
         </div>
     </div>
 

@@ -7,9 +7,10 @@ use App\Models\Adddata;
 use App\Models\Anggota;
 use App\Models\Identity;
 use App\Models\Profession;
-use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Contracts\Support\ValidatedData;
 
 class FoAnggotaController extends Controller
 {
@@ -106,9 +107,9 @@ class FoAnggotaController extends Controller
                 "tempat_lahir" => 'required',
                 "tanggal_lahir" => 'required',
                 "nama_ibu" => 'required',
-                "telepon_rumah" => 'required|min:10|max:12',
-                "telepon_seluler" => 'required|min:10|max:12',
-                "telepon_kantor" => 'required|min:10|max:12',
+                "telepon_rumah" => 'nullable|min:10|max:12',
+                "telepon_seluler" => 'nullable|min:10|max:12',
+                "telepon_kantor" => 'nullable|min:10|max:12',
 
             ]);
 
@@ -162,16 +163,16 @@ class FoAnggotaController extends Controller
 
             $adddata = Adddata::create([
                 "nama" => $request->nama,
-                "alamat" => $request->alamat_add,
-                "rt" => $request->rt_add,
-                "rw" => $request->rw_add,
-                "desa_kel" => $request->desa_kel_add,
-                "kec" => $request->kec_add,
-                "kab_kota" => $request->kab_kota_add,
-                "provinsi" => $request->provinsi_add,
-                "kode_pos" => $request->kode_pos_add,
-                "telepon_rumah" => $request->telepon_rumah_add,
-                "telepon_seluler" => $request->telepon_seluler_add,
+                "alamat_add" => $request->alamat_add,
+                "rt_add" => $request->rt_add,
+                "rw_add" => $request->rw_add,
+                "desa_kel_add" => $request->desa_kel_add,
+                "kec_add" => $request->kec_add,
+                "kab_kota_add" => $request->kab_kota_add,
+                "provinsi_add" => $request->provinsi_add,
+                "kode_pos_add" => $request->kode_pos_add,
+                "telepon_rumah_add" => $request->telepon_rumah_add,
+                "telepon_seluler_add" => $request->telepon_seluler_add,
 
             ]);
 
@@ -183,7 +184,7 @@ class FoAnggotaController extends Controller
                 "no_anggota" => "AKS" . date('dmy') . $user->id,
                 "nama_panggilan" => $request->nama_panggilan,
                 "jenis_kelamin" => $request->jenis_kelamin,
-                "tempat_lahir" => $request->tempat_Lahir,
+                "tempat_lahir" => $request->tempat_lahir,
                 "tanggal_lahir" => $request->tanggal_lahir,
                 "nama_ibu" => $request->nama_ibu,
                 "telepon_rumah" => $request->telepon_rumah,
@@ -236,7 +237,11 @@ class FoAnggotaController extends Controller
      */
     public function edit(Anggota $anggota)
     {
-        //
+        return view('dashboard.fo.anggotas.edit-anggota', [
+            'title' => 'Edit Anggota',
+            'anggota' => $anggota,
+            'anggotas' => Anggota::all()
+        ]);
     }
 
     /**
@@ -248,7 +253,115 @@ class FoAnggotaController extends Controller
      */
     public function update(Request $request, Anggota $anggota)
     {
-        //
+        $user = [
+            // Users
+            'name' => 'required|max:255',
+            // 'email' => 'nullable|email|unique:users,email',
+            'password' => 'nullable|min:5|max:255',
+            'image' => 'nullable|image',
+
+        ];
+
+        $identity = [
+            //identitas
+            'type_identitas' => 'required',
+            'no_identitas' => 'required|min:16|max:16',
+            "warganegara" => 'required',
+            "agama" => 'required',
+            "pendidikan" => 'required',
+            "gelar" => 'nullable',
+            "status_kawin" => 'required',
+            "gol_darah" => 'nullable',
+            "status_rumah" => 'required',
+            "alamat" => 'required',
+            "rt" => 'required|max:3',
+            "rw" => 'required|max:3',
+            "desa_kel" => 'required',
+            "kec" => 'required',
+            "kab_kota" => 'required',
+            "provinsi" => 'required',
+            "kode_pos" => 'nullable',
+        ];
+
+        $profession = [
+            //profession
+            "pekerjaan" => 'required',
+            "lama_kerja_tahun" => 'nullable|max:2',
+            "lama_kerja_bulan" => 'nullable|max:2',
+            "tanggungan" => 'required',
+            "omset_dagang" => 'nullable',
+            "pendapatan" => 'nullable',
+            "gaji" => 'nullable',
+            "pendapatan_psg" => 'nullable',
+            "pendapatan_lain" => 'nullable',
+            "biaya_bulanan" => 'nullable',
+        ];
+
+        $adddata = [
+
+            //adddata
+            "nama" => 'nullable',
+            "alamat_add" => 'nullable',
+            "rt_add" => 'nullable',
+            "rw_add" => 'nullable',
+            "desa_kel_add" => 'nullable',
+            "kec_add" => 'nullable',
+            "kab_kota_add" => 'nullable',
+            "provinsi_add" => 'nullable',
+            "kode_pos_add" => 'nullable',
+            "telepon_rumah_add" => 'nullable',
+            "telepon_seluler_add" => 'nullable',
+        ];
+
+        $anggotas = [
+
+            //anggota
+            "nama_panggilan" => 'required',
+            "jenis_kelamin" => 'required',
+            "tempat_lahir" => 'required',
+            "tanggal_lahir" => 'required',
+            "nama_ibu" => 'required',
+            "telepon_rumah" => 'nullable|min:10|max:12',
+            "telepon_seluler" => 'nullable|min:10|max:12',
+            "telepon_kantor" => 'nullable|min:10|max:12',
+
+        ];
+
+        if ($request->email != $anggota->user->email) {
+            $user['email'] = 'nullable|unique:users';
+        }
+
+
+
+        $validuser = $request->validate($user);
+        $valididentity = $request->validate($identity);
+        $validprofession = $request->validate($profession);
+        $validadddata = $request->validate($adddata);
+        $validanggotas = $request->validate($anggotas);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validuser['image'] = $request->file('image')->store('profile-image');
+        }
+
+        // dd($validuser, $valididentity, $validprofession, $validadddata,  $validanggotas);
+
+        User::where('id', $anggota->user->id)
+            ->update($validuser);
+        Identity::where('id', $anggota->identity->id)
+            ->update($valididentity);
+        Profession::where('id', $anggota->profession->id)
+            ->update($validprofession);
+        Adddata::where('id', $anggota->adddata->id)
+            ->update($validadddata);
+        Anggota::where('id', $anggota->id)
+            ->update($validanggotas);
+
+
+        return redirect('/dashboard/anggotas')->with('success', 'Data Berhasil diupdate');
+        // dd($validatedData);
     }
 
     /**

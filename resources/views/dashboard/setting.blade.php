@@ -72,29 +72,6 @@
                                     <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                                 </div>
 
-                                {{-- <div class="form-group mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Password Baru</label>
-                                    <div class="col-sm-8" id="show_hide_password">
-                                        <input class="form-control" type="password" required="">
-
-                                        <div class="show-hide">
-                                            <a href=""><i class="fa fa-eye-slash px-3" aria-hidden="true"></i></a>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="mb-3 row">
-                                    <label class="col-sm-4 col-form-label">Konfirm Password Baru</label>
-                                    <div class="col-sm-8">
-                                        <input class="form-control" type="password" required="">
-                                    </div>
-                                </div>
-
-                                <div class="form-group text-end">
-                                    <button class="btn btn-primary btn-block" type="submit">Simpan</button>
-                                </div> --}}
-
                             </div>
                         </div>
                     </div>

@@ -196,7 +196,7 @@
                                                                 name="jenis_kelamin" id="jenis_kelamin"
                                                                 value="{{ old('jenis_kelamin') }}">
                                                                 <option>
-                                                                    {{ old('type_identitas', $anggota->jenis_kelamin) }}
+                                                                    {{ old('jenis_kelamin', $anggota->jenis_kelamin) }}
                                                                 </option>
                                                             </select>
                                                             @error('jenis_kelamin')

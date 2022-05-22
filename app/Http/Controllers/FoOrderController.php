@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Barang;
 use App\Models\Anggota;
+use App\Models\Jaminan;
 use App\Models\Identity;
 use Illuminate\Http\Request;
 
@@ -30,10 +32,10 @@ class FoOrderController extends Controller
      */
     public function create()
     {
-        return view('dashboard.fo.pooling-order', [
-            'title' => 'Tambah Anggota',
-            'anggotas' => Order::all()
-        ]);
+        // return view('dashboard.fo.pooling-order', [
+        //     'title' => 'Tambah Anggota',
+        //     'anggotas' => Order::all()
+        // ]);
     }
 
     /**
@@ -44,7 +46,28 @@ class FoOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $order = $request->validate([
+        //     ''
+        // ])
+        $anggota = Anggota::all();
+
+        $order = Order::create([
+            "no_order" => date('dmy') . "OR" . $anggota->id,
+        ]);
+
+        $jaminan = Jaminan::create([
+            "buss_unit" => $request->buss_unit,
+            "ada_jaminan?" => $request->ada_jaminan,
+            "no_polisi" => $request->no_polisi,
+            "no_mesin" => $request->no_mesin
+        ]);
+
+        $barang = Barang::create([
+            "bpkb" => $request->bpkb,
+            "stnk_ada?" => $request->stnk_ada
+        ]);
+
+        return redirect('/dashboard/orders')->with('success', 'Berhasil menambahkan order');
     }
 
     /**

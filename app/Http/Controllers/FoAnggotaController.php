@@ -257,7 +257,7 @@ class FoAnggotaController extends Controller
             // Users
             'name' => 'required|max:255',
             // 'email' => 'nullable|email|unique:users,email',
-            'password' => 'nullable|min:5|max:255',
+            // 'password' => 'nullable|min:5|max:255',
             'image' => 'nullable|image',
 
         ];
@@ -331,6 +331,24 @@ class FoAnggotaController extends Controller
             $user['email'] = 'nullable|unique:users';
         }
 
+        // if ($request->password) {
+        //     $user['password'] = 'required|min:5|max:255';
+        // }
+
+        // if ($request->password) {
+        //     $user['password'] = bcrypt($request->password);
+        // }
+
+        // if ($request->password) {
+        //     $user['password'] = ['nullable|min:5|max:255', bcrypt($request->password)];
+        // }
+
+        if ($request->password) {
+            $user['password'] = 'nullable|min:5|max:255';
+        }
+
+        // $validatedData['password'] = bcrypt($validatedData['password']);
+        // dd($user);
 
 
         $validuser = $request->validate($user);
@@ -338,6 +356,12 @@ class FoAnggotaController extends Controller
         $validprofession = $request->validate($profession);
         $validadddata = $request->validate($adddata);
         $validanggotas = $request->validate($anggotas);
+
+        if ($request->password) {
+            $validuser['password'] = bcrypt($request->password);
+        }
+
+        // dd($validuser);
 
         if ($request->file('image')) {
             if ($request->oldImage) {

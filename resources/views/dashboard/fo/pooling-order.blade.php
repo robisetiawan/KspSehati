@@ -50,7 +50,7 @@
                                         <label class="col-sm-4 col-form-label" for="id">No Anggota</label>
                                         <div class="col p-l-0">
                                             <input class="form-control form-control-sm @error('id ') is-invalid @enderror"
-                                                name="id" type="text" id="id" readonly disabled>
+                                                name="id" type="text" id="id" readonly>
                                             @error('id')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -74,7 +74,7 @@
                                         <label class="col-sm-4 col-form-label" for="name">Nama</label>
                                         <div class="col p-l-0">
                                             <input class="form-control form-control-sm @error('name ') is-invalid @enderror"
-                                                name="name" type="text" id="name" required>
+                                                name="name" type="text" id="name" readonly>
                                             @error('name')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -99,6 +99,7 @@
                                         </div>
                                         <div class="col p-l-0">
                                             <select class="form-select form-select-sm">
+                                                <option></option>
                                                 <option>01 - Pinjaman Jaminan Motor</option>
                                                 <option>02 - Pinjaman Jaminan Mobil</option>
                                             </select>
@@ -111,12 +112,12 @@
                                         <div class="col p-l-0">
                                             <input type="text"
                                                 class="form-control form-control-sm @error('tempat_lahir ') is-invalid @enderror"
-                                                id="tempat_lahir" name="tempat_lahir" />
+                                                id="tempat_lahir" name="tempat_lahir" readonly />
                                         </div>
                                         <div class="col-sm-3 p-l-0">
                                             <input type="text"
                                                 class="form-control form-control-sm @error('tanggal_lahir ') is-invalid @enderror"
-                                                id="tanggal_lahir" name="tanggal_lahir" />
+                                                id="tanggal_lahir" name="tanggal_lahir" readonly />
                                         </div>
                                     </div>
                                     <!-- **************************************************************************************************8******  -->
@@ -125,7 +126,7 @@
                                         <div class="col p-l-0">
                                             <input
                                                 class="form-control form-control-sm @error('nama_ibu ') is-invalid @enderror"
-                                                name="nama_ibu" type="text" id="nama_ibu" required>
+                                                name="nama_ibu" type="text" id="nama_ibu" readonly>
                                             @error('nama_ibu')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -138,7 +139,8 @@
                                         <label class="col-sm-4 col-form-label" for="nama">Jenis
                                             Kelamin</label>
                                         <div class="col p-l-0">
-                                            <select class="form-select form-select-sm" disabled>
+                                            <select class="form-select form-select-sm">
+                                                <option></option>
                                                 <option>Laki-Laki</option>
                                                 <option>Perempuan</option>
                                             </select>
@@ -148,7 +150,8 @@
                                     <div class="row mb-1">
                                         <label class="col-sm-4 col-form-label" for="nama">Status</label>
                                         <div class="col p-l-0">
-                                            <select class="form-select form-select-sm" disabled>
+                                            <select class="form-select form-select-sm">
+                                                <option></option>
                                                 <option>Kawin</option>
                                                 <option>Belum Kawin </option>
                                             </select>
@@ -166,7 +169,8 @@
                                         <label class="col-sm-4 col-form-label" for="nama">Type
                                             Identitas</label>
                                         <div class="col p-l-0">
-                                            <select class="form-select form-select-sm" disabled>
+                                            <select class="form-select form-select-sm" readonly>
+                                                <option></option>
                                                 <option>KTP</option>
                                                 <option>Kartu Keluarga</option>
                                             </select>
@@ -179,7 +183,7 @@
                                         <div class="col p-l-0">
                                             <input
                                                 class="form-control form-control-sm @error('no_identitas ') is-invalid @enderror"
-                                                name="no_identitas" type="number" id="no_identitas" required>
+                                                name="no_identitas" type="number" id="no_identitas" readonly>
                                             @error('no_identitas')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -193,7 +197,7 @@
                                         <div class="col p-l-0">
                                             <input
                                                 class="form-control form-control-sm @error('telepon_seluler ') is-invalid @enderror"
-                                                name="telepon_seluler" type="text" id="telepon_seluler" required>
+                                                name="telepon_seluler" type="text" id="telepon_seluler" readonly>
                                             @error('telepon_seluler')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -207,7 +211,7 @@
                                         <div class="col p-l-0">
                                             <input
                                                 class="form-control form-control-sm @error('pekerjaan ') is-invalid @enderror"
-                                                name="pekerjaan" type="text" id="pekerjaan" required>
+                                                name="pekerjaan" type="text" id="pekerjaan" readonly>
                                             @error('pekerjaan')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -219,8 +223,11 @@
                                     <div class="row mb-1">
                                         <label class="col-sm-4 col-form-label" for="nama">Jaminan</label>
                                         <div class="col p-l-0">
-                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                                disabled />
+                                            <select class="form-select form-select-sm">
+                                                <option></option>
+                                                <option>Ada Jaminan</option>
+                                                <option>Tidak Ada Jaminan</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <!-- **************************************************************************************************8******  -->
@@ -236,8 +243,7 @@
                                         <label class="col-sm-4 col-form-label" for="nama">No
                                             Polisi</label>
                                         <div class="col p-l-0">
-                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                                disabled />
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                         </div>
                                     </div>
                                     <!-- **************************************************************************************************8******  -->
@@ -245,8 +251,7 @@
                                         <label class="col-sm-4 col-form-label" for="nama">No
                                             Mesin</label>
                                         <div class="col p-l-0">
-                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                                disabled />
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                         </div>
                                     </div>
                                     <!-- ****************************************************************************************** -->

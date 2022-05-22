@@ -17,4 +17,14 @@ class Order extends Model
     {
         return $this->belongsTo(Anggota::class);
     }
+
+    public function jaminan()
+    {
+        return $this->belongsTo(Jaminan::class);
+    }
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class);
+    }
 }

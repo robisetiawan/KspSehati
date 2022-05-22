@@ -23,38 +23,38 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Robi Setiawan',
             'email' => 'robi@gmail.com',
-            'password' => bcrypt('12345')
+            'password' => bcrypt('password')
         ]);
         User::create([
             'name' => 'Randi',
             'email' => 'randis@gmail.com',
-            'password' => bcrypt('12345')
+            'password' => bcrypt('password')
         ]);
 
         User::factory(18)->create();
 
         Anggota::factory(20)->create();
 
-        Order::create([
-            'anggota_id' => 2,
-            'no_order' => '120522OR12431',
-            'tipe_order' => 'Retail',
-            'status' => 'verify',
-            'platform' => 'Konvensional',
-            'keperluan' => 'Sendiri',
-            'catatan' => 'Modal Sawah'
-        ]);
-        Order::create([
-            'anggota_id' => 1,
-            'no_order' => '120522OR12432',
-            'tipe_order' => 'coming soon',
-            'status' => 'verify',
-            'platform' => 'Konvensional',
-            'keperluan' => 'Sendiri',
-            'catatan' => 'Modal Sawah'
-        ]);
+        // Order::create([
+        //     'anggota_id' => 2,
+        //     'no_order' => '120522OR12431',
+        //     'tipe_order' => 'Retail',
+        //     'status' => 'verify',
+        //     'platform' => 'Konvensional',
+        //     'keperluan' => 'Sendiri',
+        //     'catatan' => 'Modal Sawah'
+        // ]);
+        // Order::create([
+        //     'anggota_id' => 1,
+        //     'no_order' => '120522OR12432',
+        //     'tipe_order' => 'coming soon',
+        //     'status' => 'verify',
+        //     'platform' => 'Konvensional',
+        //     'keperluan' => 'Sendiri',
+        //     'catatan' => 'Modal Sawah'
+        // ]);
 
-        Order::factory(18)->create();
+        // Order::factory(18)->create();
 
         Identity::create([
             'type_identitas' => 'KTP',

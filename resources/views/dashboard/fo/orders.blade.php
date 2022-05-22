@@ -59,8 +59,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
-
-                            <table class="table table-bordered table-xxs text-center mt-5">
+                            {{-- <table class="table table-bordered table-xxs text-center mt-5">
                                 <thead class="table-primary">
                                     <tr>
                                         <th scope="col">No</th>
@@ -93,11 +92,11 @@
                                     </tr>
 
                                 </tbody>
-                            </table>
+                            </table> --}}
                         </div>
 
                         <!-- Modal -->
-                        @include('fo.edit-order-VFO')
+                        {{-- @include('fo.edit-order-VFO') --}}
                         <!-- endModal -->
 
                     </div>

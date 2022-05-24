@@ -184,12 +184,12 @@
                                                                 class="form-select @error('jenis_kelamin') is-invalid @enderror"
                                                                 name="jenis_kelamin" id="jenis_kelamin">
                                                                 <option></option>
-                                                                <option value="1"
-                                                                    {{ old('jenis_kelamin') == '1' ? 'selected' : '' }}>
+                                                                <option value="Laki-laki"
+                                                                    {{ old('jenis_kelamin') == 'Laki-laki' ? 'selected' : '' }}>
                                                                     Laki-Laki
                                                                 </option>
-                                                                <option value="2"
-                                                                    {{ old('jenis_kelamin') == '2' ? 'selected' : '' }}>
+                                                                <option value="Perempuan"
+                                                                    {{ old('jenis_kelamin') == 'Perempuan' ? 'selected' : '' }}>
                                                                     Perempuan
                                                                 </option>
                                                             </select>

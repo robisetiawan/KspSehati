@@ -15,12 +15,12 @@ class CreateBarangsTable extends Migration
     {
         Schema::create('barangs', function (Blueprint $table) {
             $table->id();
-            $table->string('bpkb')->nullable();
-            $table->string('stnk_ada?')->nullable();
-            $table->string('faktur')->nullable();
-            $table->string('jatuh_tempo_stnk')->nullable();
-            $table->string('surat_jual_beli?')->nullable();
-            $table->string('stnk_mati_tahun?')->nullable();
+            $table->enum('bpkb', ['Atas Nama Sendiri', 'Atas Nama Orang Lain'])->nullable();
+            $table->enum('stnk_ada', ['Ada', 'Tidak Ada'])->nullable();
+            $table->enum('faktur', ['Ada', 'Tidak Ada'])->nullable();
+            $table->date('jatuh_tempo_stnk')->nullable();
+            $table->enum('surat_jual_beli', ['Ada', 'Tidak Ada'])->nullable();
+            $table->string('stnk_mati_tahun')->nullable();
             $table->timestamps();
         });
     }

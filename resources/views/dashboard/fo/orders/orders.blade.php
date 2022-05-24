@@ -25,6 +25,13 @@
                     <div class="card">
 
                         <div class="table-responsive-sm card-body f-12">
+                            @if (session()->has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
@@ -32,7 +39,7 @@
                                         <th scope="col">No Order</th>
                                         <th scope="col">Tanggal Order</th>
                                         <th scope="col">Nama Pelanggan</th>
-                                        <th scope="col">UB</th>
+                                        <th scope="col">Buss Unit</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -44,15 +51,37 @@
                                             <td>{{ $o->no_order }}</td>
                                             <td>{{ $o->created_at->format('d M Y') }}</td>
                                             <td>{{ $o->anggota->user->name }}</td>
-                                            <td>Motor</td>
+                                            <td>{{ $o->jaminan->barang }}</td>
                                             <td>
-                                                <a href="/dashboard/orders/{{ $o->id }}" class="badge bg-success">
+                                                {{-- <a href="/dashboard/orders/{{ $o->id }}" class="badge bg-success"
+                                                    data-bs-toggle="modal" data-bs-target="#editOrder">
                                                     <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
                                                 </a>
                                                 <a href="/dashboard/orders/{{ $o->id }}" class="badge bg-primary"><i
                                                         class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>
                                                 <a href="/dashboard/orders/{{ $o->id }}" class="badge bg-danger"><i
-                                                        class="fa fa-trash-o fa-2x" aria-hidden="true"></i></span></a>
+                                                        class="fa fa-trash-o fa-2x" aria-hidden="true"></i></span></a> --}}
+
+                                                <div class="btn-group" role="group"
+                                                    aria-label="Basic mixed styles example">
+                                                    <a href="/dashboard/orders/{{ $o->id }}">
+                                                        <button class="badge bg-success border-0"><i class="fa fa-eye fa-lg"
+                                                                aria-hidden="true"></i></button>
+                                                    </a>
+
+                                                    <a href="/dashboard/orders/{{ $o->id }}/edit">
+                                                        <button class="badge bg-primary border-0"><i
+                                                                class="fa fa-pencil fa-lg" aria-hidden="true"></i></button>
+                                                    </a>
+
+                                                    <form action="/dashboard/orders/{{ $o->id }}" method="POST">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button class="badge bg-danger border-0"
+                                                            onclick="return confirm('Are you sure !!')"><i
+                                                                class="fa fa-times fa-lg" aria-hidden="true"></i></button>
+                                                    </form>
+                                                </div>
 
                                             </td>
                                         </tr>

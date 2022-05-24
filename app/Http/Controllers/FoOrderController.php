@@ -8,6 +8,7 @@ use App\Models\Anggota;
 use App\Models\Jaminan;
 use App\Models\Identity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FoOrderController extends Controller
 {
@@ -18,7 +19,7 @@ class FoOrderController extends Controller
      */
     public function index()
     {
-        return view('dashboard.fo.orders', [
+        return view('dashboard.fo.orders.orders', [
             "title" => "Orders",
             "orders" => Order::latest()->get(),
             // "anggotas" => Anggota::with(['user', 'order'])->latest()->get()
@@ -49,23 +50,34 @@ class FoOrderController extends Controller
         // $order = $request->validate([
         //     ''
         // ])
-        $anggota = Anggota::all();
+        // $anggota = Anggota::all();
 
-        $order = Order::create([
-            "no_order" => date('dmy') . "OR" . $anggota->id,
-        ]);
+        // dd($request);
 
-        $jaminan = Jaminan::create([
-            "buss_unit" => $request->buss_unit,
-            "ada_jaminan?" => $request->ada_jaminan,
-            "no_polisi" => $request->no_polisi,
-            "no_mesin" => $request->no_mesin
-        ]);
+        $createorder = DB::transaction(
+            function () use ($request) {
 
-        $barang = Barang::create([
-            "bpkb" => $request->bpkb,
-            "stnk_ada?" => $request->stnk_ada
-        ]);
+                $jaminan = Jaminan::create([
+                    "barang" => $request->barang,
+                    "buss_unit" => $request->buss_unit,
+                    "ada_jaminan" => $request->ada_jaminan,
+                    "no_polisi" => $request->no_polisi,
+                    "no_mesin" => $request->no_mesin
+                ]);
+
+                $barang = Barang::create([
+                    "bpkb" => $request->bpkb,
+                    "stnk_ada" => $request->stnk_ada
+                ]);
+
+                $order = Order::create([
+                    "no_order" => date('dmy') . "OR" . $request->id,
+                    "anggota_id" => $request->id,
+                    "jaminan_id" => $jaminan->id,
+                    "barang_id" => $barang->id
+                ]);
+            }
+        );
 
         return redirect('/dashboard/orders')->with('success', 'Berhasil menambahkan order');
     }
@@ -80,9 +92,7 @@ class FoOrderController extends Controller
     {
         return view('anggota', [
             "title" => "Edit Order",
-            "anggotas" => Anggota::all(),
-            "anggota" => $order->anggota,
-            "order" => $order->status,
+            "orders" => $order
         ]);
     }
 
@@ -94,7 +104,11 @@ class FoOrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        return view('dashboard.fo.orders.edit-order', [
+            'title' => 'Edit Order',
+            'order' => $order,
+            'orders' => Order::all()
+        ]);
     }
 
     /**
@@ -106,7 +120,7 @@ class FoOrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -124,7 +138,7 @@ class FoOrderController extends Controller
     {
 
 
-        return view('dashboard.fo.pooling-order', [
+        return view('dashboard.fo.orders.pooling-order', [
             "title" => "Pooling Order",
             "anggotas" => Anggota::all()
         ]);
@@ -140,7 +154,7 @@ class FoOrderController extends Controller
         $title = "Pooling Order";
 
         return view(
-            'dashboard.fo.pooling-order-cari',
+            'dashboard.fo.orders.pooling-order-cari',
             compact('anggotas', 'title')
         );
     }

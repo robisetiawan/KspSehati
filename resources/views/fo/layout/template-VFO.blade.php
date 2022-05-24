@@ -10,9 +10,8 @@
     <meta name="keywords"
         content="admin template, viho admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{ asset('templates/assets/images/logo/logo-sehati2.png ') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('templates/assets/images/logo/logo-sehati2.png ') }}"
-        type="image/x-icon">
+    <link rel="icon" href="{{ asset('templates/assets/images/favicon.ico ') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('templates/assets/images/favicon.ico ') }}" type="image/x-icon">
     <title>Sehati | {{ $title }}
     </title>
     <!-- Google font-->
@@ -29,6 +28,12 @@
     <!-- Font Awesome-->
     <link rel="stylesheet" type="text/css"
         href="{{ asset('templates/assets/font-awesome-4.7.0/css/font-awesome.css ') }}">
+    <!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/icofont.css ') }}">
+    <!-- Themify icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/themify.css ') }}">
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/flag-icon.css ') }}">
     <!-- Feather icon-->
     <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/feather-icon.css ') }}">
     <!-- Plugins css start-->
@@ -45,24 +50,21 @@
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/css/responsive.css ') }}">
 
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/cssadd/bootsrap.css') }}"> --}}
-    {{-- dataTables --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('templates/assets/cssadd/bootsrap.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('templates/assets/cssadd/dataTables.bootstrap4.min.css') }}">
-    {{-- endDataTabels --}}
-    {{-- heroes.css-bootstrap --}}
-    <link rel="stylesheet" href="/css/heroes.css">
+
 
 </head>
 
 <body>
 
     <!--  Navbar  -->
-    @include('dashboard.layouts.navbar')
+    @include('fo.layout.navbar-VFO')
     <!--  EndNavbar  -->
 
     <!--  Sidebar  -->
-    @include('dashboard.layouts.sidebar')
+    @include('fo.layout.sidebar-VFO')
     <!--  EndSidebar -->
 
     <!-- content -->
@@ -71,9 +73,9 @@
 
     <!-- Container-fluid Ends-->
 
-    <!-- dashboardoter -->
-    @include('dashboard.layouts.footer')
-    <!-- Enddashboardoter -->
+    <!-- Footer -->
+    @include('fo.layout.footer-VFO')
+    <!-- EndFooter -->
 
     <script type="text/javascript">
         // localStorage.clear();
@@ -125,13 +127,11 @@
         integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
     </script>
 
-    {{-- dataTables --}}
-    @stack('prepend-script')
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    @stack('scripts')
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
-    {{-- end_dataTables --}}
-
+    <script>
+        $(document).ready(function() {
+            $('.example').DataTable();
+        });
+    </script>
 </body>
 
 </html>

@@ -193,10 +193,14 @@
                                                         <div class="col">
                                                             <select
                                                                 class="form-select @error('jenis_kelamin') is-invalid @enderror"
-                                                                name="jenis_kelamin" id="jenis_kelamin"
-                                                                value="{{ old('jenis_kelamin') }}">
-                                                                <option>
-                                                                    {{ old('jenis_kelamin', $anggota->jenis_kelamin) }}
+                                                                name="jenis_kelamin" id="jenis_kelamin">
+                                                                <option value="Laki-laki"
+                                                                    {{ old('jenis_kelamin', $anggota->jenis_kelamin) == 'Laki-laki' ? 'selected' : '' }}>
+                                                                    Laki-laki
+                                                                </option>
+                                                                <option value="Perempuan"
+                                                                    {{ old('jenis_kelamin', $anggota->jenis_kelamin) == 'Perempuan' ? 'selected' : '' }}>
+                                                                    Perempuan
                                                                 </option>
                                                             </select>
                                                             @error('jenis_kelamin')
@@ -347,11 +351,14 @@
                                                             <select
                                                                 class="form-select @error('type_identitas') is-invalid @enderror"
                                                                 name="type_identitas" id="type_identitas" value="">
-                                                                <option>
-                                                                    {{ old('type_identitas', $anggota->identity->type_identitas) }}
+                                                                <option value="KTP"
+                                                                    {{ old('type_identitas', $anggota->identity->type_identitas) == 'KTP' ? 'selected' : '' }}>
+                                                                    KTP
                                                                 </option>
-                                                                <option>KTP</option>
-                                                                <option>KK</option>
+                                                                <option value="KK"
+                                                                    {{ old('type_identitas', $anggota->identity->type_identitas) == 'KK' ? 'selected' : '' }}>
+                                                                    KK
+                                                                </option>
                                                             </select>
                                                             @error('type_identitas')
                                                                 <div class="invalid-feedback">
@@ -384,11 +391,14 @@
                                                             <select
                                                                 class="form-select @error('warganegara') is-invalid @enderror"
                                                                 name="warganegara" id="warganegara" value="">
-                                                                <option>
-                                                                    {{ old('warganegara', $anggota->identity->warganegara) }}
+                                                                <option value="WNI"
+                                                                    {{ old('warganegara', $anggota->identity->warganegara) == 'WNI' ? 'selected' : '' }}>
+                                                                    WNI
                                                                 </option>
-                                                                <option>WNI</option>
-                                                                <option>WNA</option>
+                                                                <option value="WNA"
+                                                                    {{ old('warganegara', $anggota->identity->warganegara) == 'WNA' ? 'selected' : '' }}>
+                                                                    WNA
+                                                                </option>
                                                             </select>
                                                             @error('warganegara')
                                                                 <div class="invalid-feedback">
@@ -404,14 +414,30 @@
                                                             <select
                                                                 class="form-select @error('agama') is-invalid @enderror"
                                                                 name="agama" id="agama" value="">
-                                                                <option>{{ old('agama', $anggota->identity->agama) }}
+                                                                <option value="Islam"
+                                                                    {{ old('agama', $anggota->identity->agama) == 'Islam' ? 'selected' : '' }}>
+                                                                    Islam
                                                                 </option>
-                                                                <option>Islam</option>
-                                                                <option>Kristen</option>
-                                                                <option>Katolik</option>
-                                                                <option>Hindu</option>
-                                                                <option>Buddha</option>
-                                                                <option>Khonghucu</option>
+                                                                <option value="Kristen"
+                                                                    {{ old('agama', $anggota->identity->agama) == 'Kristen' ? 'selected' : '' }}>
+                                                                    Kristen
+                                                                </option>
+                                                                <option value="Katolik"
+                                                                    {{ old('agama', $anggota->identity->agama) == 'Katolik' ? 'selected' : '' }}>
+                                                                    Katolik
+                                                                </option>
+                                                                <option value="Hindu"
+                                                                    {{ old('agama', $anggota->identity->agama) == 'Hindu' ? 'selected' : '' }}>
+                                                                    Hindu
+                                                                </option>
+                                                                <option value="Buddha"
+                                                                    {{ old('agama', $anggota->identity->agama) == 'Buddha' ? 'selected' : '' }}>
+                                                                    Buddha
+                                                                </option>
+                                                                <option value="Khonghucu"
+                                                                    {{ old('agama', $anggota->identity->agama) == 'Khonghucu' ? 'selected' : '' }}>
+                                                                    Khonghucu
+                                                                </option>
                                                             </select>
                                                             @error('agama')
                                                                 <div class="invalid-feedback">
@@ -428,17 +454,38 @@
                                                             <select
                                                                 class="form-select @error('pendidikan') is-invalid @enderror"
                                                                 name="pendidikan" id="pendidikan" value="">
-                                                                <option>
-                                                                    {{ old('pendidikan', $anggota->identity->pendidikan) }}
+                                                                <option value="SD"
+                                                                    {{ old('pendidikan', $anggota->identity->pendidikan) == 'SD' ? 'selected' : '' }}>
+                                                                    SD
                                                                 </option>
-                                                                <option>SD</option>
-                                                                <option>SMP</option>
-                                                                <option>SMA/SMK</option>
-                                                                <option>Diploma</option>
-                                                                <option>Sarjana</option>
-                                                                <option>Megister</option>
-                                                                <option>Spesialis</option>
-                                                                <option>Doktor</option>
+                                                                <option value="SMP"
+                                                                    {{ old('pendidikan', $anggota->identity->pendidikan) == 'SMP' ? 'selected' : '' }}>
+                                                                    SMP
+                                                                </option>
+                                                                <option value="SMA/SMK"
+                                                                    {{ old('pendidikan', $anggota->identity->pendidikan) == 'SMA/SMK' ? 'selected' : '' }}>
+                                                                    SMA/SMK
+                                                                </option>
+                                                                <option value="Diploma"
+                                                                    {{ old('pendidikan', $anggota->identity->pendidikan) == 'Diploma' ? 'selected' : '' }}>
+                                                                    Diploma
+                                                                </option>
+                                                                <option value="Sarjana"
+                                                                    {{ old('pendidikan', $anggota->identity->pendidikan) == 'Sarjana' ? 'selected' : '' }}>
+                                                                    Sarjana
+                                                                </option>
+                                                                <option value="Megister"
+                                                                    {{ old('pendidikan', $anggota->identity->pendidikan) == 'Megister' ? 'selected' : '' }}>
+                                                                    Megister
+                                                                </option>
+                                                                <option value="Spesialis"
+                                                                    {{ old('pendidikan', $anggota->identity->pendidikan) == 'Spesialis' ? 'selected' : '' }}>
+                                                                    Spesialis
+                                                                </option>
+                                                                <option value="Doktor"
+                                                                    {{ old('pendidikan', $anggota->identity->pendidikan) == 'Doktor' ? 'selected' : '' }}>
+                                                                    Doktor
+                                                                </option>
                                                             </select>
                                                             @error('pendidikan')
                                                                 <div class="invalid-feedback">
@@ -470,11 +517,14 @@
                                                             <select
                                                                 class="form-select @error('status_kawin') is-invalid @enderror"
                                                                 name="status_kawin" id="status_kawin" value="">
-                                                                <option>
-                                                                    {{ old('status_kawin', $anggota->identity->status_kawin) }}
+                                                                <option value="Kawin"
+                                                                    {{ old('status_kawin', $anggota->identity->status_kawin) == 'Kawin' ? 'selected' : '' }}>
+                                                                    Kawin
                                                                 </option>
-                                                                <option>Kawin</option>
-                                                                <option>Belum Kawin</option>
+                                                                <option value="Belum Kawin"
+                                                                    {{ old('status_kawin', $anggota->identity->status_kawin) == 'Belum Kawin' ? 'selected' : '' }}>
+                                                                    Belum Kawin
+                                                                </option>
                                                             </select>
                                                             @error('status_kawin')
                                                                 <div class="invalid-feedback">
@@ -491,13 +541,22 @@
                                                             <select
                                                                 class="form-select @error('gol_darah') is-invalid @enderror"
                                                                 name="gol_darah" id="gol_darah" value="">
-                                                                <option>
-                                                                    {{ old('gol_darah', $anggota->identity->gol_darah) }}
+                                                                <option value="A"
+                                                                    {{ old('gol_darah', $anggota->identity->gol_darah) == 'A' ? 'selected' : '' }}>
+                                                                    A
                                                                 </option>
-                                                                <option>A</option>
-                                                                <option>B</option>
-                                                                <option>AB</option>
-                                                                <option>O</option>
+                                                                <option value="B"
+                                                                    {{ old('gol_darah', $anggota->identity->gol_darah) == 'B' ? 'selected' : '' }}>
+                                                                    B
+                                                                </option>
+                                                                <option value="AB"
+                                                                    {{ old('gol_darah', $anggota->identity->gol_darah) == 'AB' ? 'selected' : '' }}>
+                                                                    AB
+                                                                </option>
+                                                                <option value="O"
+                                                                    {{ old('gol_darah', $anggota->identity->gol_darah) == 'O' ? 'selected' : '' }}>
+                                                                    O
+                                                                </option>
                                                             </select>
                                                             @error('gol_darah')
                                                                 <div class="invalid-feedback">
@@ -528,13 +587,22 @@
                                                             <select
                                                                 class="form-select @error('status_rumah') is-invalid @enderror"
                                                                 name="status_rumah" id="status_rumah" value="">
-                                                                <option>
-                                                                    {{ old('status_rumah', $anggota->identity->status_rumah) }}
+                                                                <option value="Rumah Sendiri"
+                                                                    {{ old('status_rumah', $anggota->identity->status_rumah) == 'Rumah Sendiri' ? 'selected' : '' }}>
+                                                                    Rumah Sendiri
                                                                 </option>
-                                                                <option>Rumah Sendiri</option>
-                                                                <option>Rumah Orang tua</option>
-                                                                <option>Kontrakan</option>
-                                                                <option>Sewa</option>
+                                                                <option value="Rumah Orang tua"
+                                                                    {{ old('status_rumah', $anggota->identity->status_rumah) == 'Rumah Orang tua' ? 'selected' : '' }}>
+                                                                    Rumah Orang tua
+                                                                </option>
+                                                                <option value="Kontrakan"
+                                                                    {{ old('status_rumah', $anggota->identity->status_rumah) == 'Kontrakan' ? 'selected' : '' }}>
+                                                                    Kontrakan
+                                                                </option>
+                                                                <option value="Sewa"
+                                                                    {{ old('status_rumah', $anggota->identity->status_rumah) == 'Sewa' ? 'selected' : '' }}>
+                                                                    Sewa
+                                                                </option>
                                                             </select>
                                                             @error('status_rumah')
                                                                 <div class="invalid-feedback">

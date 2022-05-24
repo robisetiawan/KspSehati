@@ -86,7 +86,7 @@
                                     <div class="row mb-1">
                                         <label class="col-sm-4 col-form-label" for="buss_unit">Buss
                                             Unit</label>
-                                        <div class="col-sm-2 p-l-0">
+                                        <div class="col-sm-4 p-l-0">
                                             <input type="text"
                                                 class="form-control form-control-sm
                                                         @error('buss_unit ') is-invalid @enderror"
@@ -97,6 +97,9 @@
                                                 </div>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label"></label>
                                         <div class="col p-l-0">
                                             <select class="form-select form-select-sm">
                                                 <option></option>
@@ -252,6 +255,52 @@
                                             Mesin</label>
                                         <div class="col p-l-0">
                                             <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="bpkb">BPKB</label>
+                                        <div class="col p-l-0">
+                                            <select class="form-select form-select-sm @error('bpkb') is-invalid @enderror"
+                                                name="bpkb" id="bpkb">
+                                                <option></option>
+                                                <option value="Atas nama sendiri"
+                                                    {{ old('bpkb') == 'Atas nama sendiri' ? 'selected' : '' }}>
+                                                    Atas nama sendiri
+                                                </option>
+                                                <option value="Atas nama orang lain"
+                                                    {{ old('bpkb') == 'Atas nama orang lain' ? 'selected' : '' }}>
+                                                    Atas nama orang lain
+                                                </option>
+                                            </select>
+                                            @error('bpkb')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <!-- **************************************************************************************************8******  -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label" for="stnk_ada">STNK Ada ?</label>
+                                        <div class="col p-l-0">
+                                            <select
+                                                class="form-select form-select-sm @error('stnk_ada') is-invalid @enderror"
+                                                name="stnk_ada" id="stnk_ada">
+                                                <option></option>
+                                                <option value="Ada" {{ old('stnk_ada') == 'Ada' ? 'selected' : '' }}>
+                                                    Ada
+                                                </option>
+                                                <option value="Tidak ada"
+                                                    {{ old('stnk_ada') == 'Tidak ada' ? 'selected' : '' }}>
+                                                    Tidak ada
+                                                </option>
+                                            </select>
+                                            @error('stnk_ada')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <!-- ****************************************************************************************** -->

@@ -15,7 +15,7 @@ class CreateJaminansTable extends Migration
     {
         Schema::create('jaminans', function (Blueprint $table) {
             $table->id();
-            $table->string('ada_jaminan?')->nullable();
+            $table->string('ada_jaminan')->nullable();
             $table->string('buss_unit')->nullable();
             $table->string('no_polisi')->nullable();
             $table->string('no_mesin')->nullable();

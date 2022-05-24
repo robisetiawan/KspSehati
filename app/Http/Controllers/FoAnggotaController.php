@@ -52,7 +52,7 @@ class FoAnggotaController extends Controller
     public function store(Request $request)
     {
 
-        $cobo = DB::transaction(function () use ($request) {
+        $createanggota = DB::transaction(function () use ($request) {
 
             $validatedData = $request->validate([
                 // Users
@@ -253,6 +253,7 @@ class FoAnggotaController extends Controller
      */
     public function update(Request $request, Anggota $anggota)
     {
+        // dd($request);
         $user = [
             // Users
             'name' => 'required|max:255',

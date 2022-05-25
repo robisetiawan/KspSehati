@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BmController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FoOrderController;
-use App\Http\Controllers\AgAnggotaController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AgAnggotaController;
 use App\Http\Controllers\FoAnggotaController;
+use App\Http\Controllers\CetakBukuAgController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,9 @@ Route::name('allusers')->middleware('auth')->group(
         Route::resource('/dashboard/orders', FoOrderController::class);
         // Route::get('/dashboard/orders', [FoOrderController::class, 'index']);
         // Route::get('/dashboard/orders/{order:id}', [FoOrderController::class, 'show']);
+        Route::get('/dashboard/cetak-buku-anggota', [CetakBukuAgController::class, 'cetak']);
+        Route::get('/dashboard/cetak-buku-anggota/cari', [CetakBukuAgController::class, 'caricetak']);
+        Route::get('/dashboard/cetak-buku-anggota/cari/{id}', [CetakBukuAgController::class, 'print']);
         //endRoute FO
 
         //Anggota Route

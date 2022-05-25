@@ -28,16 +28,24 @@
             <div class="card-body f-12 pb-0">
                 <div class="row justify-content-center">
                     <div class="col-sm-6 col-form-label">
-                        <form action="/dashboard/pooling-order">
+                        <form action="/dashboard/cetak-buku-anggota/cari" method="GET">
 
                             <div class="input-group mb-3">
+                                <label class="col-sm-4 col-form-label visually-hidden" for="id">No Anggota</label>
+                                <input class="form-control" type="text" name="cari" placeholder="Nomor Anggota ..."
+                                    value="{{ old('cari') }}">
+                                <button class="btn btn-primary" type="submit" value="CARI"><i class="fa fa-arrow-right"
+                                        aria-hidden="true"></i></button>
+                            </div>
+                            {{-- <div class="input-group mb-3">
                                 <label class="col-sm-4 col-form-label visually-hidden" for="id">No
                                     Anggota </label>
                                 <input type="text" class="form-control" placeholder="Nomor Anggota  " name="search"
                                     value="{{ request('search') }}">
                                 <button class="btn btn-primary" type="submit"><i class="fa fa-arrow-right"
                                         aria-hidden="true"></i></button>
-                            </div>
+                            </div> --}}
+
                         </form>
                     </div>
                 </div>
@@ -148,10 +156,6 @@
                 </div>
             </form>
             <div class="card-footer f-12">
-                <div>
-                    <a href="/print-buku-anggota">
-                        <button class="btn btn-primary" type="submit">Cetak</button></a>
-                </div>
             </div>
         </div>
     </div>

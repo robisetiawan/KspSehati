@@ -27,4 +27,14 @@ class Order extends Model
     {
         return $this->belongsTo(Barang::class);
     }
+
+    public function kondisi_unit()
+    {
+        return $this->belongsTo(Kondisi_unit::class);
+    }
+
+    public function las()
+    {
+        return $this->belongsTo(Las::class);
+    }
 }

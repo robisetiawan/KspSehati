@@ -26,7 +26,7 @@
                             </div>
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="created_at">Nama</label>
+                                <label class="col-sm-4 col-form-label" for="created_at">Entry Date</label>
                                 <div class="col">
                                     <input
                                         class="form-control form-control-sm @error('created_at') is-invalid @enderror"
@@ -55,7 +55,7 @@
                             </div>
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="nama_panggilan">Nama</label>
+                                <label class="col-sm-4 col-form-label" for="nama_panggilan">Nama Panggilan</label>
                                 <div class="col">
                                     <input
                                         class="form-control form-control-sm @error('nama_panggilan') is-invalid @enderror"

@@ -342,7 +342,7 @@
                     <label class="col-sm-2 col-form-label text-end" for="nama">STNK Mati (Tahun)</label>
                     <div class="col-sm-2 p-l-0">
                         <input class="form-control form-control-sm @error('stnk_mati_tahun') is-invalid @enderror"
-                            name="stnk_mati_tahun" type="text" id="stnk_mati_tahun" disabled
+                            name="stnk_mati_tahun" type="number" id="stnk_mati_tahun"
                             value="{{ old('stnk_mati_tahun', $order->barang->stnk_mati_tahun) }}">
                         @error('stnk_mati_tahun')
                             <div class="invalid-feedback">

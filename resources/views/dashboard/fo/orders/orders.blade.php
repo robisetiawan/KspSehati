@@ -32,6 +32,13 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endif
+                            {{-- @if (session()->has('alert'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('alert') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif --}}
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
@@ -64,10 +71,10 @@
 
                                                 <div class="btn-group" role="group"
                                                     aria-label="Basic mixed styles example">
-                                                    <a href="/dashboard/orders/{{ $o->id }}">
+                                                    {{-- <a href="/dashboard/orders/{{ $o->id }}">
                                                         <button class="badge bg-success border-0"><i class="fa fa-eye fa-lg"
                                                                 aria-hidden="true"></i></button>
-                                                    </a>
+                                                    </a> --}}
 
                                                     <a href="/dashboard/orders/{{ $o->id }}/edit">
                                                         <button class="badge bg-primary border-0"><i

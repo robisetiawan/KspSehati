@@ -14,7 +14,7 @@
                                     Order</label>
                                 <div class="col">
                                     <input class="form-control form-control-sm @error('no_order') is-invalid @enderror"
-                                        name="no_order" type="text" id="no_order"
+                                        name="no_order" type="text" id="no_order" readonly
                                         value="{{ old('no_order', $order->no_order) }}">
                                     @error('no_order')
                                         <div class="invalid-feedback">
@@ -23,7 +23,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-1">
+                            {{-- <div class="row mb-1">
                                 <label class="col-sm-4 col-form-label" for="no_identitas">No
                                     Identitas</label>
                                 <div class="col">
@@ -37,7 +37,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
                                 <label class="col-sm-4 col-form-label" for="pekerjaan">Pekerjaan</label>
@@ -428,11 +428,11 @@
                             </div>
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="cat">Catatan Keperluan Pinjaman</label>
+                                <label class="col-sm-4 col-form-label" for="catatan">Catatan Keperluan Pinjaman</label>
                                 <div class="col">
-                                    <textarea class="form-control form-control-sm @error('cat') is-invalid @enderror" name="cat" type="text"
-                                        id="cat">{{ old('cat', $order->cat) }}</textarea>
-                                    @error('cat')
+                                    <textarea class="form-control form-control-sm @error('catatan') is-invalid @enderror" name="catatan" type="text"
+                                        id="catatan">{{ old('catatan', $order->catatan) }}</textarea>
+                                    @error('catatan')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -441,23 +441,8 @@
                             </div>
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="barang">Buss
+                                <label class="col-sm-4 col-form-label" for="buss_unit">Buss
                                     Unit</label>
-                                <div class="col-sm-4">
-                                    <input
-                                        class=" form-control
-                                    form-control-sm @error('barang') is-invalid @enderror"
-                                        name="barang" type="text" id="barang"
-                                        value="{{ old('buss_unit', $order->jaminan->barang) }}">
-                                    @error('barang')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="buss_unit"></label>
                                 <div class="col">
                                     <select
                                         class="form-select form-select-sm @error('buss_unit') is-invalid @enderror"

@@ -210,6 +210,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('tempat_lahir') is-invalid @enderror"
                                                                 name="tempat_lahir" type="text" id="tempat_lahir"
+                                                                value="{{ old('tempat_lahir') }}"
                                                                 value="{{ old('tempat_lahir') }}">
                                                             @error('tempat_lahir')
                                                                 <div class="invalid-feedback">
@@ -220,7 +221,8 @@
                                                         <div class="col">
                                                             <input
                                                                 class="form-control form-control-sm @error('tanggal_lahir') is-invalid @enderror"
-                                                                name="tanggal_lahir" type="date" id="tanggal_lahir">
+                                                                name="tanggal_lahir" type="date" id="tanggal_lahir"
+                                                                value="{{ old('tanggal_lahir') }}">
                                                             @error('tanggal_lahir')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -235,7 +237,8 @@
                                                         <div class="col">
                                                             <input
                                                                 class="form-control form-control-sm @error('nama_ibu') is-invalid @enderror"
-                                                                name="nama_ibu" type="text" id="nama_ibu">
+                                                                name="nama_ibu" type="text" id="nama_ibu"
+                                                                value="{{ old('nama_ibu') }}">
                                                             @error('nama_ibu')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}

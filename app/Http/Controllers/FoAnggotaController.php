@@ -254,8 +254,8 @@ class FoAnggotaController extends Controller
     public function update(Request $request, Anggota $anggota)
     {
         // dd($request);
+        // Users
         $user = [
-            // Users
             'name' => 'required|max:255',
             // 'email' => 'nullable|email|unique:users,email',
             // 'password' => 'nullable|min:5|max:255',
@@ -263,8 +263,8 @@ class FoAnggotaController extends Controller
 
         ];
 
+        //identitas
         $identity = [
-            //identitas
             'type_identitas' => 'required',
             'no_identitas' => 'required|min:16|max:16',
             "warganegara" => 'required',
@@ -284,8 +284,8 @@ class FoAnggotaController extends Controller
             "kode_pos" => 'nullable',
         ];
 
+        //profession
         $profession = [
-            //profession
             "pekerjaan" => 'required',
             "lama_kerja_tahun" => 'nullable|max:2',
             "lama_kerja_bulan" => 'nullable|max:2',
@@ -298,9 +298,8 @@ class FoAnggotaController extends Controller
             "biaya_bulanan" => 'nullable',
         ];
 
+        //adddata
         $adddata = [
-
-            //adddata
             "nama" => 'nullable',
             "alamat_add" => 'nullable',
             "rt_add" => 'nullable',
@@ -314,9 +313,8 @@ class FoAnggotaController extends Controller
             "telepon_seluler_add" => 'nullable',
         ];
 
+        //anggota
         $anggotas = [
-
-            //anggota
             "nama_panggilan" => 'required',
             "jenis_kelamin" => 'required',
             "tempat_lahir" => 'required',
@@ -398,6 +396,10 @@ class FoAnggotaController extends Controller
     public function destroy(Anggota $anggota)
     {
         Anggota::destroy($anggota->id);
+        User::destroy($anggota->user->id);
+        Identity::destroy($anggota->identity->id);
+        Profession::destroy($anggota->profession->id);
+        Adddata::destroy($anggota->adddata->id);
 
         return redirect('/dashboard/anggotas')->with('success', 'Anggota Berhasil dihapus');
     }

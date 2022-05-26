@@ -346,4 +346,27 @@ class FoOrderController extends Controller
             compact('anggotas', 'title')
         );
     }
+
+    public function strukturkredit()
+    {
+        return view('dashboard.fo.struktur-kredit', [
+            "title" => "Struktur Kredit by Angsuran",
+            "anggotas" => Order::all()
+        ]);
+    }
+
+    public function caristrukturkredit(Request $request)
+    {
+        $cari = $request->cari;
+
+        $orders = Order::where('no_order', 'like', "%" . $cari . "%")->get();
+        // $identities = Identity::where('id', 'like', "%" . $anggotas->identity->id . "%")->get();
+
+        $title = "Struktur Kredit by Angsuran";
+
+        return view(
+            'dashboard.fo.struktur-kredit-cari',
+            compact('anggotas', 'title')
+        );
+    }
 }

@@ -25,10 +25,10 @@
                 <h6>Koperasi Sehati Makmur Abadi</h6>
             </div>
             <form class="form theme-form">
-                <div class="card-body pt-3 f-12">
-                    <div class="row">
-                        <div class="col">
-                            @foreach ($anggotas as $anggota)
+                @foreach ($anggotas as $anggota)
+                    <div class="card-body pt-3 f-12">
+                        <div class="row">
+                            <div class="col">
                                 <!-- *************** -->
                                 <!-- *************** -->
                                 <div class="mb-1 row">
@@ -133,17 +133,19 @@
                                 </div>
                                 <!-- *************** -->
                                 <!-- *************** -->
-                            @endforeach
 
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="card-footer f-12">
+                        <div>
+                            <a href="/dashboard/cetak-buku-anggota/cari/{{ $anggota->id }}"
+                                class="btn btn-primary">Cetak</a>
+                            {{-- <button class="btn btn-primary" type="submit">Cetak</button></a> --}}
+                        </div>
+                    </div>
+                @endforeach
             </form>
-            <div class="card-footer f-12">
-                <div>
-                    <button class="btn btn-primary" type="submit">Cetak</button>
-                </div>
-            </div>
         </div>
     </div>
 @endsection

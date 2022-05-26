@@ -74,6 +74,8 @@ Route::name('allusers')->middleware('auth')->group(
         Route::resource('/dashboard/orders', FoOrderController::class);
         // Route::get('/dashboard/orders', [FoOrderController::class, 'index']);
         // Route::get('/dashboard/orders/{order:id}', [FoOrderController::class, 'show']);
+        Route::get('/dashboard/struktur-kredit', [FoOrderController::class, 'strukturkredit']);
+        Route::get('/dashboard/struktur-kredit/cari', [FoOrderController::class, 'caristrukturkredit']);
         Route::get('/dashboard/cetak-buku-anggota', [CetakBukuAgController::class, 'cetak']);
         Route::get('/dashboard/cetak-buku-anggota/cari', [CetakBukuAgController::class, 'caricetak']);
         Route::get('/dashboard/cetak-buku-anggota/cari/{id}', [CetakBukuAgController::class, 'print']);
@@ -87,6 +89,8 @@ Route::name('allusers')->middleware('auth')->group(
 
         //BM Route
         Route::get('/dashboard/lap-dt-ag', [BmController::class, 'index']);
+        Route::get('/dashboard/lap-dt-ag/{id}', [BmController::class, 'detail']);
+        Route::get('/dashboard/lap-dt-ag/false', [BmController::class, 'false']);
         Route::get('/dashboard/lap-dt-ag/{anggota:id}', [BmController::class, 'show']);
         Route::get('/dashboard/lap-keuangan', [BmController::class, 'lapkeuangan']);
         //endRoute BM

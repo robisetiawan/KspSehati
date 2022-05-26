@@ -92,16 +92,16 @@ class DatabaseSeeder extends Seeder
 
         Adddata::create([
             'nama' => 'Salaudin',
-            'alamat' => 'Jl. Abusamah',
-            'rt' => '041',
-            'rw' => '006',
-            'desa_kel' => 'Sukajaya',
-            'kec' => 'Sukarami',
-            'kab_kota' => 'Palembang',
-            'provinsi' => 'Sumatera Selatan',
-            'kode_pos' => '30151',
-            'telepon_rumah' => '082175571725',
-            'telepon_seluler' => '082175344567',
+            'alamat_add' => 'Jl. Abusamah',
+            'rt_add' => '041',
+            'rw_add' => '006',
+            'desa_kel_add' => 'Sukajaya',
+            'kec_add' => 'Sukarami',
+            'kab_kota_add' => 'Palembang',
+            'provinsi_add' => 'Sumatera Selatan',
+            'kode_pos_add' => '30151',
+            'telepon_rumah_add' => '082175571725',
+            'telepon_seluler_add' => '082175344567',
         ]);
     }
 }

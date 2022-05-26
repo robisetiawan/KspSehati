@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Las;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Barang;
@@ -10,6 +11,7 @@ use App\Models\Anggota;
 use App\Models\Jaminan;
 use App\Models\Identity;
 use App\Models\Profession;
+use App\Models\Kondisi_unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -73,11 +75,21 @@ class FoOrderController extends Controller
                     "stnk_ada" => $request->stnk_ada
                 ]);
 
+                $kondisi_unit = Kondisi_unit::create([
+                    "id" => $barang->id
+                ]);
+
+                $las = Las::create([
+                    "id" => $barang->id
+                ]);
+
                 $order = Order::create([
                     "no_order" => date('dmy') . "OR" . $request->id,
                     "anggota_id" => $request->id,
                     "jaminan_id" => $jaminan->id,
-                    "barang_id" => $barang->id
+                    "barang_id" => $barang->id,
+                    "kondisi_unit_id" => $kondisi_unit->id,
+                    "las_id" => $las->id
                 ]);
             }
         );
@@ -214,6 +226,40 @@ class FoOrderController extends Controller
             "stnk_mati_tahun" => 'nullable',
         ];
 
+        $kondisi_unit = [
+            "kategori_m" => 'nullable',
+            "suara_m" => 'nullable',
+            "sayap_b" => 'nullable',
+            "cover_b" => 'nullable',
+            "knalpot" => 'nullable',
+            "accu_aki" => 'nullable',
+            "cakram" => 'nullable',
+            "speedometer" => 'nullable',
+            "kick_s" => 'nullable',
+            "velg_ban" => 'nullable',
+            "shockbreaker" => 'nullable',
+            "spion" => 'nullable',
+            "kaki" => 'nullable',
+            "jok" => 'nullable',
+            "lampu_sign" => 'nullable',
+        ];
+
+        $las = [
+            "sewa_rumah" => 'nullable',
+            "per" => 'nullable',
+            "mobil" => 'nullable',
+            "kulkas" => 'nullable',
+            "ac" => 'nullable',
+            "furniture" => 'nullable',
+            "motor" => 'nullable',
+            "tv" => 'nullable',
+            "dvd" => 'nullable',
+            "jarak_rk" => 'nullable',
+            "rumah" => 'nullable',
+            "tetangga_kanan" => 'nullable',
+            "tetangga_kiri" => 'nullable',
+        ];
+
         //order
         $orders = [
             "status" => 'required',
@@ -230,6 +276,8 @@ class FoOrderController extends Controller
         $validanggotas = $request->validate($anggotas);
         $validjaminan = $request->validate($jaminan);
         $validbarang = $request->validate($barang);
+        $validkondisi_unit = $request->validate($kondisi_unit);
+        $validlas = $request->validate($las);
         $validorder = $request->validate($orders);
 
         User::where('id', $order->anggota->user->id)
@@ -246,6 +294,10 @@ class FoOrderController extends Controller
             ->update($validjaminan);
         Barang::where('id', $order->barang->id)
             ->update($validbarang);
+        Kondisi_unit::where('id', $order->kondisi_unit->id)
+            ->update($validkondisi_unit);
+        Las::where('id', $order->las->id)
+            ->update($validlas);
         Order::where('id', $order->id)
             ->update($validorder);
 
@@ -264,6 +316,8 @@ class FoOrderController extends Controller
         Order::destroy($order->id);
         Jaminan::destroy($order->jaminan->id);
         Barang::destroy($order->barang->id);
+        Kondisi_unit::destroy($order->kondisi_unit->id);
+        Las::destroy($order->las->id);
 
         return redirect('/dashboard/orders')->with('success', 'Data Berhasil dihapus');
     }

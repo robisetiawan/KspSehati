@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kondisi_unit extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    protected $guarded = [];
 
     public function order()
     {

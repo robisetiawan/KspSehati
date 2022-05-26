@@ -526,8 +526,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('tanggungan') is-invalid @enderror"
                                                                 name="tanggungan" type="text" id="tanggungan"
-                                                                value="Rp. {{ $anggotas->profession->tanggungan }}"
-                                                                readonly>
+                                                                value="{{ $anggotas->profession->tanggungan }}" readonly>
                                                         </div>
                                                     </div>
                                                     <!-- **************************************************************************************************8******  -->
@@ -538,8 +537,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('omset_dagang') is-invalid @enderror"
                                                                 name="omset_dagang" type="text" id="omset_dagang"
-                                                                value="Rp. {{ $anggotas->profession->omset_dagang }}"
-                                                                readonly>
+                                                                value="@currency($anggotas->profession->omset_dagang)" readonly>
                                                         </div>
                                                     </div>
 
@@ -565,8 +563,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('pendapatan') is-invalid @enderror"
                                                                 name="pendapatan" type="text" id="pendapatan"
-                                                                value="Rp. {{ $anggotas->profession->pendapatan }}"
-                                                                readonly>
+                                                                value="@currency($anggotas->profession->pendapatan)" readonly>
                                                         </div>
                                                     </div>
 
@@ -575,8 +572,8 @@
                                                         <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('gaji') is-invalid @enderror"
-                                                                name="gaji" type="text" id="gaji"
-                                                                value="Rp. {{ $anggotas->profession->gaji }}" readonly>
+                                                                name="gaji" type="text" id="gaji" value="@currency($anggotas->profession->gaji)"
+                                                                readonly>
                                                         </div>
                                                     </div>
 
@@ -587,8 +584,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('pendapatan_psg') is-invalid @enderror"
                                                                 name="pendapatan_psg" type="text" id="pendapatan_psg"
-                                                                value="Rp. {{ $anggotas->profession->pendapatan_psg }}"
-                                                                readonly>
+                                                                value="@currency($anggotas->profession->pendapatan_psg)" readonly>
                                                         </div>
                                                     </div>
 
@@ -599,8 +595,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('pendapatan_lain') is-invalid @enderror"
                                                                 name="pendapatan_lain" type="text" id="pendapatan_lain"
-                                                                value="Rp. {{ $anggotas->profession->pendapatan_lain }}"
-                                                                readonly>
+                                                                value="@currency($anggotas->profession->pendapatan_lain)" readonly>
                                                         </div>
                                                     </div>
 
@@ -611,8 +606,7 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('biaya_bulanan') is-invalid @enderror"
                                                                 name="biaya_bulanan" type="text" id="biaya_bulanan"
-                                                                value="Rp. {{ $anggotas->profession->biaya_bulanan }}"
-                                                                readonly>
+                                                                value="@currency($anggotas->profession->biaya_bulanan)" readonly>
                                                         </div>
                                                     </div>
 

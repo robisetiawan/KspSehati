@@ -5,6 +5,7 @@ use App\Http\Controllers\BmController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FoOrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PinjamController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AgAnggotaController;
 use App\Http\Controllers\FoAnggotaController;
@@ -72,6 +73,7 @@ Route::name('allusers')->middleware('auth')->group(
         // Route::get('/dashboard/anggotas/{id}', [FoAnggotaController::class, 'show']);
 
         Route::resource('/dashboard/orders', FoOrderController::class);
+        Route::resource('/dashboard/pinjaman', PinjamController::class);
         // Route::get('/dashboard/orders', [FoOrderController::class, 'index']);
         // Route::get('/dashboard/orders/{order:id}', [FoOrderController::class, 'show']);
         Route::get('/dashboard/struktur-kredit', [FoOrderController::class, 'strukturkredit']);

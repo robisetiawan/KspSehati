@@ -88,8 +88,8 @@
                          </li> --}}
 
                          <li class=" dropdown">
-                             <a href="/struktur-kredit"
-                                 class="menu-title link-nav nav-link {{ $title === 'Struktur Kredit' ? 'active' : '' }}">
+                             <a href="/dashboard/struktur-kredit"
+                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/struktur-kredit*') ? 'active' : '' }}">
                                  <i data-feather="file-text"></i>
                                  <span>Struktur Kredit</span>
                              </a>

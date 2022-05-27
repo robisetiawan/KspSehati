@@ -351,7 +351,7 @@ class FoOrderController extends Controller
     {
         return view('dashboard.fo.struktur-kredit', [
             "title" => "Struktur Kredit by Angsuran",
-            "anggotas" => Order::all()
+            "orders" => Order::all()
         ]);
     }
 
@@ -360,13 +360,12 @@ class FoOrderController extends Controller
         $cari = $request->cari;
 
         $orders = Order::where('no_order', 'like', "%" . $cari . "%")->get();
-        // $identities = Identity::where('id', 'like', "%" . $anggotas->identity->id . "%")->get();
 
         $title = "Struktur Kredit by Angsuran";
 
         return view(
             'dashboard.fo.struktur-kredit-cari',
-            compact('anggotas', 'title')
+            compact('orders', 'title')
         );
     }
 }

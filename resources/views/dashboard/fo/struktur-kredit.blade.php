@@ -23,327 +23,318 @@
             <div class="row">
                 <div class="col">
                     {{-- Card --}}
-                    <form class="form theme-form">
-                        <div class="card mb-1">
+                    <div class="card mb-1">
 
-                            {{-- cardBody --}}
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row ">
-                                            <div class="col-md-6">
-                                                <form action="/dashboard/pooling-order/cari" method="GET">
+                        {{-- cardBody --}}
+                        <div class="card-body">
+                            @if (session()->has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+                            <div class="row">
+                                <div class="col">
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                            <form action="/dashboard/struktur-kredit/cari" method="GET">
 
-                                                    <div class="input-group mb-3">
-                                                        <label class="col-sm-4 col-form-label visually-hidden" for="id">No
-                                                            Order</label>
-                                                        <input class="form-control" type="text" name="cari"
-                                                            placeholder="Nomor Order ..." value="{{ old('cari') }}">
-                                                        <button class="btn btn-primary" type="submit" value="CARI"><i
-                                                                class="fa fa-arrow-right" aria-hidden="true"></i></button>
-                                                    </div>
+                                                <div class="input-group mb-3">
+                                                    <label class="col-sm-4 col-form-label visually-hidden" for="id">No
+                                                        Order</label>
+                                                    <input class="form-control" type="text" name="cari"
+                                                        placeholder="Nomor Order ..." value="{{ old('cari') }}">
+                                                    <button class="btn btn-primary" type="submit" value="CARI"><i
+                                                            class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                                                </div>
 
-                                                </form>
-                                            </div>
-                                            <div class="col">
-                                                <label for="nama"
-                                                    class="col-sm-2 col-form-label visually-hidden">Nama</label>
-                                                <input type="text" class="form-control" id="nama" name="nama"
-                                                    placeholder="Nama" aria-label="Nama">
-
-                                            </div>
+                                            </form>
                                         </div>
-
-
-                                        <!-- ****************************************************************************************** -->
                                     </div>
+                                    <!-- ****************************************************************************************** -->
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="card">
-                            <div class="card-body f-12">
-                                <div class="row">
-                                    {{-- Left Coloum --}}
-                                    <div class="col">
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label for="nilai_pinj" class="col-sm-5 col-form-label">Nilai Pinjaman</label>
-                                            <div class="col p-l-0">
-                                                <input type="number" class="form-control form-control-sm" id="nilai_pinj">
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label for="pk_kembali" class="col-sm-5 col-form-label">Pokok
-                                                Pengembalian</label>
-                                            <div class="col p-l-0">
-                                                <input type="number" class="form-control form-control-sm" id="pk_kembali">
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label for="tp_angs" class="col-sm-5 col-form-label">Tipe Angsuran</label>
-                                            <div class="col p-l-0">
-                                                <select class="form-select form-select-sm">
-                                                    <option>Tetap</option>
-                                                    <option>musiman</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label for="tp_angs" class="col-sm-5 col-form-label">Advance /
-                                                Arrear</label>
-                                            <div class="col p-l-0">
-                                                <select class="form-select form-select-sm">
-                                                    <option>Arrear</option>
-                                                    <option>Advance</option>
-                                                </select>
-                                            </div>
-                                            <label for="tp_angs" class="col-sm-2 col-form-label">SK
-                                                Rate</label>
-                                            <div class="col p-l-0">
-                                                <select class="form-select form-select-sm">
-                                                    <option>Arrear</option>
-                                                    <option>Advance</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-5 col-form-label" for="nama">Jml
-                                                Angs</label>
-                                            <div class="col p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-5 col-form-label" for="nama">Periode
-                                            </label>
-                                            <div class="col-sm-2 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                            <div class="col p-l-0">
-                                                <select class="form-select form-select-sm">
-                                                    <option>Bulan</option>
-                                                    <option>Tahun</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-5 col-form-label" for="nama">Angsuran / Kategori
-                                            </label>
-                                            <div class="col-sm-3 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                            <label class="col col-form-label visually-hidden" for="nama">Kategori
-                                            </label>
-                                            <div class="col p-l-0">
-                                                <select class="form-select form-select-sm">
-                                                    <option></option>
-                                                    <option></option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-5 col-form-label" for="nama">Admin
-                                                Total</label>
-                                            <div class="col-sm-3 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-5 col-form-label" for="nama">Jml
-                                                Angs</label>
-                                            <div class="col-sm-3 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-5 col-form-label" for="nama">
-                                                Provisi (%)</label>
-                                            <div class="col-sm-3 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-5 col-form-label" for="nama">
-                                                % Asuransi (%)</label>
-                                            <div class="col-sm-3 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-5 col-form-label" for="nama">
-                                                Biaya Transfer</label>
-                                            <div class="col-sm-3 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-5 col-form-label" for="nama">
-                                                Bunga Margin Eff (%)</label>
-                                            <div class="col-sm-3 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-5 col-form-label" for="nama">
-                                                Bunga Margin Flat (%)</label>
-                                            <div class="col-sm-3 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-
-                                    </div>
-
-                                    <div class="col">
-                                        {{-- Right Coloum --}}
-                                        <div class="row mb-1">
-                                            <label class="col-sm-6 col-form-label" for="nama">
-                                                Harga Acuan Pinjaman</label>
-                                            <div class="col-sm-6 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-6 col-form-label" for="nama">
-                                                Bunga Margin</label>
-                                            <div class="col-sm-6 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-6 col-form-label" for="nama">
-                                                Pokok + Margin</label>
-                                            <div class="col-sm-6 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-6 col-form-label" for="nama">
-                                                Angsuran Terakhir</label>
-                                            <div class="col-sm-6 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-6 col-form-label" for="nama">
-                                                Bng / Margin Eff Actual (%)</label>
-                                            <div class="col-sm-6 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-6 col-form-label" for="nama">
-                                                Bng / Margin Flat Actual (%)</label>
-                                            <div class="col-sm-6 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-6 col-form-label" for="nama">
-                                                Asuransi</label>
-                                            <div class="col-sm-6 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-6 col-form-label" for="nama">
-                                                Provisi</label>
-                                            <div class="col-sm-6 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-6 col-form-label" for="nama">
-                                                Cad Promo</label>
-                                            <div class="col-sm-6 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-6 col-form-label" for="nama">
-                                                Simpanan Pokok</label>
-                                            <div class="col-sm-6 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-6 col-form-label" for="nama">
-                                                Admin</label>
-                                            <div class="col-sm-6 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
-                                        </div>
-                                        <!-- ****************************************************************************************** -->
-                                        <div class="row mb-1">
-                                            <label class="col-sm-6 col-form-label" for="nama">
-                                                Nilai yang diterima</label>
-                                            <div class="col-sm-6 p-l-0">
-                                                <input type="text" class="form-control form-control-sm"
-                                                    id="colFormLabelSm" />
-                                            </div>
+                    <div class="card">
+                        <div class="card-body f-12">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row mb-1">
+                                        <label for="name" class="col-sm-5 col-form-label">Nama</label>
+                                        <div class="col p-l-0">
+                                            <input class="form-control form-control-sm @error('name ') is-invalid @enderror"
+                                                name="name" type="text" id="name" value="" readonly>
+                                            @error('name')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
                                     </div>
-                                    {{-- EndRight Coloum --}}
                                 </div>
+                                <div class="col"></div>
                             </div>
-                            {{-- cardFooter --}}
-                            <div class="card-footer text-end">
-                                <button class="btn btn-primary" type="submit">Submit</button>
-                                <input class="btn btn-light" type="reset" value="Cancel" />
+                            <div class="row">
+                                {{-- Left Coloum --}}
+                                <div class="col">
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label for="nilai_pinj" class="col-sm-5 col-form-label">Nilai Pinjaman</label>
+                                        <div class="col p-l-0">
+                                            <input type="number" class="form-control form-control-sm" id="nilai_pinj">
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label for="pk_kembali" class="col-sm-5 col-form-label">Pokok
+                                            Pengembalian</label>
+                                        <div class="col p-l-0">
+                                            <input type="number" class="form-control form-control-sm" id="pk_kembali">
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label for="tp_angs" class="col-sm-5 col-form-label">Tipe Angsuran</label>
+                                        <div class="col p-l-0">
+                                            <select class="form-select form-select-sm">
+                                                <option>Tetap</option>
+                                                <option>musiman</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label for="tp_angs" class="col-sm-5 col-form-label">Advance /
+                                            Arrear</label>
+                                        <div class="col p-l-0">
+                                            <select class="form-select form-select-sm">
+                                                <option>Arrear</option>
+                                                <option>Advance</option>
+                                            </select>
+                                        </div>
+                                        <label for="tp_angs" class="col-sm-2 col-form-label">SK
+                                            Rate</label>
+                                        <div class="col p-l-0">
+                                            <select class="form-select form-select-sm">
+                                                <option>Arrear</option>
+                                                <option>Advance</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-5 col-form-label" for="nama">Jml
+                                            Angs</label>
+                                        <div class="col p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-5 col-form-label" for="nama">Periode
+                                        </label>
+                                        <div class="col-sm-2 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                        <div class="col p-l-0">
+                                            <select class="form-select form-select-sm">
+                                                <option>Bulan</option>
+                                                <option>Tahun</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-5 col-form-label" for="nama">Angsuran / Kategori
+                                        </label>
+                                        <div class="col-sm-3 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                        <label class="col col-form-label visually-hidden" for="nama">Kategori
+                                        </label>
+                                        <div class="col p-l-0">
+                                            <select class="form-select form-select-sm">
+                                                <option></option>
+                                                <option></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-5 col-form-label" for="nama">Admin
+                                            Total</label>
+                                        <div class="col-sm-3 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-5 col-form-label" for="nama">Jml
+                                            Angs</label>
+                                        <div class="col-sm-3 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-5 col-form-label" for="nama">
+                                            Provisi (%)</label>
+                                        <div class="col-sm-3 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-5 col-form-label" for="nama">
+                                            % Asuransi (%)</label>
+                                        <div class="col-sm-3 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-5 col-form-label" for="nama">
+                                            Biaya Transfer</label>
+                                        <div class="col-sm-3 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-5 col-form-label" for="nama">
+                                            Bunga Margin Eff (%)</label>
+                                        <div class="col-sm-3 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-5 col-form-label" for="nama">
+                                            Bunga Margin Flat (%)</label>
+                                        <div class="col-sm-3 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+
+                                </div>
+
+                                <div class="col">
+                                    {{-- Right Coloum --}}
+                                    <div class="row mb-1">
+                                        <label class="col-sm-6 col-form-label" for="nama">
+                                            Harga Acuan Pinjaman</label>
+                                        <div class="col-sm-6 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-6 col-form-label" for="nama">
+                                            Bunga Margin</label>
+                                        <div class="col-sm-6 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-6 col-form-label" for="nama">
+                                            Pokok + Margin</label>
+                                        <div class="col-sm-6 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-6 col-form-label" for="nama">
+                                            Angsuran Terakhir</label>
+                                        <div class="col-sm-6 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-6 col-form-label" for="nama">
+                                            Bng / Margin Eff Actual (%)</label>
+                                        <div class="col-sm-6 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-6 col-form-label" for="nama">
+                                            Bng / Margin Flat Actual (%)</label>
+                                        <div class="col-sm-6 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-6 col-form-label" for="nama">
+                                            Asuransi</label>
+                                        <div class="col-sm-6 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-6 col-form-label" for="nama">
+                                            Provisi</label>
+                                        <div class="col-sm-6 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-6 col-form-label" for="nama">
+                                            Cad Promo</label>
+                                        <div class="col-sm-6 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-6 col-form-label" for="nama">
+                                            Simpanan Pokok</label>
+                                        <div class="col-sm-6 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-6 col-form-label" for="nama">
+                                            Admin</label>
+                                        <div class="col-sm-6 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                    <!-- ****************************************************************************************** -->
+                                    <div class="row mb-1">
+                                        <label class="col-sm-6 col-form-label" for="nama">
+                                            Nilai yang diterima</label>
+                                        <div class="col-sm-6 p-l-0">
+                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- EndRight Coloum --}}
                             </div>
-                            {{-- endCardFooter --}}
                         </div>
-                        {{-- endCardBody --}}
+                        {{-- cardFooter --}}
+                        <div class="card-footer text-end">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <input class="btn btn-light" type="reset" value="Cancel" />
+                        </div>
+                        {{-- endCardFooter --}}
+                    </div>
+                    {{-- endCardBody --}}
 
 
 
-                    </form>
                     {{-- endCard --}}
                 </div>
             </div>

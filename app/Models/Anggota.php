@@ -16,6 +16,11 @@ class Anggota extends Model
         //satu anggota bisa memiliki >= 1 Order
     }
 
+    public function pinjaman()
+    {
+        return $this->hasMany(Pinjaman::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

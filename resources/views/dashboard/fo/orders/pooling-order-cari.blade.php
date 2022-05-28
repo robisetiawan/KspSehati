@@ -275,9 +275,9 @@
                                                         {{ old('ada_jaminan') == 'Ada Jaminan' ? 'selected' : '' }}>
                                                         Ada Jaminan
                                                     </option>
-                                                    <option value="Tidak Ada Jaminan"
-                                                        {{ old('ada_jaminan') == 'Tidak Ada Jaminan' ? 'selected' : '' }}>
-                                                        Tidak Ada Jaminan
+                                                    <option value="Tanpa Jaminan"
+                                                        {{ old('ada_jaminan') == 'Tanpa Jaminan' ? 'selected' : '' }}>
+                                                        Tanpa Jaminan
                                                     </option>
                                                 </select>
                                                 @error('ada_jaminan')
@@ -327,13 +327,17 @@
                                                     class="form-select form-select-sm @error('bpkb') is-invalid @enderror"
                                                     name="bpkb" id="bpkb">
                                                     <option></option>
-                                                    <option value="Atas nama sendiri"
-                                                        {{ old('bpkb') == 'Atas nama sendiri' ? 'selected' : '' }}>
-                                                        Atas nama sendiri
+                                                    <option value="Atas Nama Sendiri"
+                                                        {{ old('bpkb') == 'Atas Nama Sendiri' ? 'selected' : '' }}>
+                                                        Atas Nama Sendiri
                                                     </option>
-                                                    <option value="Atas nama orang lain"
-                                                        {{ old('bpkb') == 'Atas nama orang lain' ? 'selected' : '' }}>
-                                                        Atas nama orang lain
+                                                    <option value="Atas Nama Orang Lain"
+                                                        {{ old('bpkb') == 'Atas Nama Orang Lain' ? 'selected' : '' }}>
+                                                        Atas Nama Orang Lain
+                                                    </option>
+                                                    <option value="Atas Nama Istri/Suami/Keluarga"
+                                                        {{ old('bpkb') == 'Atas Nama Istri/Suami/Keluarga' ? 'selected' : '' }}>
+                                                        Atas Nama Istri/Suami/Keluarga
                                                     </option>
                                                 </select>
                                                 @error('bpkb')

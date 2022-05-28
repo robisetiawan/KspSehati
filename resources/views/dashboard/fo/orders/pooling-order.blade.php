@@ -157,6 +157,7 @@
                                                 <option></option>
                                                 <option>Kawin</option>
                                                 <option>Belum Kawin </option>
+                                                <option>Cerai </option>
                                             </select>
                                         </div>
                                     </div>
@@ -175,7 +176,8 @@
                                             <select class="form-select form-select-sm" readonly>
                                                 <option></option>
                                                 <option>KTP</option>
-                                                <option>Kartu Keluarga</option>
+                                                <option>SIM</option>
+                                                <option>Domisili</option>
                                             </select>
                                         </div>
                                     </div>
@@ -229,7 +231,7 @@
                                             <select class="form-select form-select-sm">
                                                 <option></option>
                                                 <option>Ada Jaminan</option>
-                                                <option>Tidak Ada Jaminan</option>
+                                                <option>Tanpa Jaminan</option>
                                             </select>
                                         </div>
                                     </div>
@@ -272,6 +274,7 @@
                                                     {{ old('bpkb') == 'Atas nama orang lain' ? 'selected' : '' }}>
                                                     Atas nama orang lain
                                                 </option>
+                                                <option value="">Atas Nama Istri/Suami/Keluarga</option>
                                             </select>
                                             @error('bpkb')
                                                 <div class="invalid-feedback">

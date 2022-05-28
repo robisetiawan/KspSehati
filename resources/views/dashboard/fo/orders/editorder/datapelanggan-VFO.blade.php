@@ -130,10 +130,12 @@
                                             {{ old('type_identitas', $order->anggota->identity->type_identitas) == 'KTP' ? 'selected' : '' }}>
                                             KTP
                                         </option>
-                                        <option value="KK"
-                                            {{ old('type_identitas', $order->anggota->identity->type_identitas) == 'KK' ? 'selected' : '' }}>
-                                            KK
-                                        </option>
+                                        <option value="SIM"
+                                            {{ old('type_identitas', $order->anggota->identity->type_identitas) == 'SIM' ? 'selected' : '' }}>
+                                            SIM</option>
+                                        <option value="Domisili"
+                                            {{ old('type_identitas', $order->anggota->identity->type_identitas) == 'Domisili' ? 'selected' : '' }}>
+                                            Domisili</option>
                                     </select>
                                     @error('type_identitas')
                                         <div class="invalid-feedback">
@@ -149,7 +151,7 @@
                                 <div class="col">
                                     <input
                                         class="form-control form-control-sm @error('no_identitas') is-invalid @enderror"
-                                        name="no_identitas" type="number" id="no_identitas"
+                                        name="no_identitas" type="text" id="no_identitas"
                                         value="{{ old('no_identitas', $order->anggota->identity->no_identitas) }}">
                                     @error('no_identitas')
                                         <div class="invalid-feedback">
@@ -301,21 +303,24 @@
                                             {{ old('pendidikan', $order->anggota->identity->pendidikan) == 'SMA/SMK' ? 'selected' : '' }}>
                                             SMA/SMK
                                         </option>
-                                        <option value="Diploma"
-                                            {{ old('pendidikan', $order->anggota->identity->pendidikan) == 'Diploma' ? 'selected' : '' }}>
-                                            Diploma
-                                        </option>
-                                        <option value="Sarjana"
-                                            {{ old('pendidikan', $order->anggota->identity->pendidikan) == 'Sarjana' ? 'selected' : '' }}>
-                                            Sarjana
-                                        </option>
+                                        <option value="Diploma 1"
+                                            {{ old('pendidikan', $order->anggota->identity->pendidikan) == 'Diploma 1' ? 'selected' : '' }}>
+                                            Diploma 1</option>
+                                        <option value="Diploma 2"
+                                            {{ old('pendidikan', $order->anggota->identity->pendidikan) == 'Diploma 2' ? 'selected' : '' }}>
+                                            Diploma 2</option>
+                                        <option value="Diploma 3"
+                                            {{ old('pendidikan', $order->anggota->identity->pendidikan) == 'Diploma 3' ? 'selected' : '' }}>
+                                            Diploma 3</option>
+                                        <option value="Diploma 4"
+                                            {{ old('pendidikan', $order->anggota->identity->pendidikan) == 'Diploma 4' ? 'selected' : '' }}>
+                                            Diploma 4</option>
+                                        <option value="Sarjana S1"
+                                            {{ old('pendidikan', $order->anggota->identity->pendidikan) == 'Sarjana S1' ? 'selected' : '' }}>
+                                            Sarjana S1</option>
                                         <option value="Megister"
                                             {{ old('pendidikan', $order->anggota->identity->pendidikan) == 'Megister' ? 'selected' : '' }}>
                                             Megister
-                                        </option>
-                                        <option value="Spesialis"
-                                            {{ old('pendidikan', $order->anggota->identity->pendidikan) == 'Spesialis' ? 'selected' : '' }}>
-                                            Spesialis
                                         </option>
                                         <option value="Doktor"
                                             {{ old('pendidikan', $order->anggota->identity->pendidikan) == 'Doktor' ? 'selected' : '' }}>
@@ -344,13 +349,24 @@
                                             {{ old('status_rumah', $order->anggota->identity->status_rumah) == 'Rumah Orang tua' ? 'selected' : '' }}>
                                             Rumah Orang tua
                                         </option>
-                                        <option value="Kontrakan"
-                                            {{ old('status_rumah', $order->anggota->identity->status_rumah) == 'Kontrakan' ? 'selected' : '' }}>
-                                            Kontrakan
+                                        <option value="Rumah Dinas"
+                                            {{ old('status_rumah', $order->anggota->identity->status_rumah) == 'Rumah Dinas' ? 'selected' : '' }}>
+                                            Rumah Dinas</option>
+                                        <option value="Rumah Sewa/Kontrak"
+                                            {{ old('status_rumah', $order->anggota->identity->status_rumah) == 'Rumah Sewa/Kontrak' ? 'selected' : '' }}>
+                                            Rumah Sewa/Kontrak
                                         </option>
-                                        <option value="Sewa"
-                                            {{ old('status_rumah', $order->anggota->identity->status_rumah) == 'Sewa' ? 'selected' : '' }}>
-                                            Sewa
+                                        <option value="Kost"
+                                            {{ old('status_rumah', $order->anggota->identity->status_rumah) == 'Kost' ? 'selected' : '' }}>
+                                            Kost
+                                        </option>
+                                        <option value="Rumah Status Kredit"
+                                            {{ old('status_rumah', $order->anggota->identity->status_rumah) == 'Rumah Status Kredit' ? 'selected' : '' }}>
+                                            Rumah Status Kredit
+                                        </option>
+                                        <option value="Rumah Keluarga"
+                                            {{ old('status_rumah', $order->anggota->identity->status_rumah) == 'Rumah Keluarga' ? 'selected' : '' }}>
+                                            Rumah Keluarga
                                         </option>
                                     </select>
                                     @error('status_rumah')

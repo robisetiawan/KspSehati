@@ -26,12 +26,12 @@
                                 <select class="form-select form-select-sm @error('kategori_m') is-invalid @enderror"
                                     name="kategori_m" id="kategori_m">
                                     <option value="Baik"
-                                        {{ old('faktur', $order->kondisi_unit->kategori_m) == 'Baik' ? 'selected' : '' }}>
+                                        {{ old('kategori_m', $order->kondisi_unit->kategori_m) == 'Baik' ? 'selected' : '' }}>
                                         Baik
                                     </option>
-                                    <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->kategori_m) == 'Tidak Ada' ? 'selected' : '' }}>
-                                        Tidak Ada
+                                    <option value="Tidak Baik"
+                                        {{ old('kategori_m', $order->kondisi_unit->kategori_m) == 'Tidak Baik' ? 'selected' : '' }}>
+                                        Tidak Baik
                                     </option>
                                 </select>
                             </td>
@@ -46,12 +46,12 @@
                                 <select class="form-select form-select-sm @error('suara_m') is-invalid @enderror"
                                     name="suara_m" id="suara_m">
                                     <option value="Halus"
-                                        {{ old('faktur', $order->kondisi_unit->suara_m) == 'Halus' ? 'selected' : '' }}>
+                                        {{ old('suara_m', $order->kondisi_unit->suara_m) == 'Halus' ? 'selected' : '' }}>
                                         Halus
                                     </option>
-                                    <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->suara_m) == 'Tidak Ada' ? 'selected' : '' }}>
-                                        Tidak Ada
+                                    <option value="Tidak Halus"
+                                        {{ old('suara_m', $order->kondisi_unit->suara_m) == 'Tidak Halus' ? 'selected' : '' }}>
+                                        Tidak Halus
                                     </option>
                                 </select>
                             </td>
@@ -66,11 +66,11 @@
                                 <select class="form-select form-select-sm @error('sayap_b') is-invalid @enderror"
                                     name="sayap_b" id="sayap_b">
                                     <option value="Ada"
-                                        {{ old('faktur', $order->kondisi_unit->sayap_b) == 'Ada' ? 'selected' : '' }}>
+                                        {{ old('sayap_b', $order->kondisi_unit->sayap_b) == 'Ada' ? 'selected' : '' }}>
                                         Ada
                                     </option>
                                     <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->sayap_b) == 'Tidak Ada' ? 'selected' : '' }}>
+                                        {{ old('sayap_b', $order->kondisi_unit->sayap_b) == 'Tidak Ada' ? 'selected' : '' }}>
                                         Tidak Ada
                                     </option>
                                 </select>
@@ -86,11 +86,11 @@
                                 <select class="form-select form-select-sm @error('cover_b') is-invalid @enderror"
                                     name="cover_b" id="cover_b">
                                     <option value="Ada"
-                                        {{ old('faktur', $order->kondisi_unit->cover_b) == 'Ada' ? 'selected' : '' }}>
+                                        {{ old('cover_b', $order->kondisi_unit->cover_b) == 'Ada' ? 'selected' : '' }}>
                                         Ada
                                     </option>
                                     <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->cover_b) == 'Tidak Ada' ? 'selected' : '' }}>
+                                        {{ old('cover_b', $order->kondisi_unit->cover_b) == 'Tidak Ada' ? 'selected' : '' }}>
                                         Tidak Ada
                                     </option>
                                 </select>
@@ -106,12 +106,12 @@
                                 <select class="form-select form-select-sm @error('knalpot') is-invalid @enderror"
                                     name="knalpot" id="knalpot">
                                     <option value="Orisinil"
-                                        {{ old('faktur', $order->kondisi_unit->knalpot) == 'Orisinil' ? 'selected' : '' }}>
+                                        {{ old('knalpot', $order->kondisi_unit->knalpot) == 'Orisinil' ? 'selected' : '' }}>
                                         Orisinil
                                     </option>
-                                    <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->knalpot) == 'Tidak Ada' ? 'selected' : '' }}>
-                                        Tidak Ada
+                                    <option value="Tidak Orisinil"
+                                        {{ old('knalpot', $order->kondisi_unit->knalpot) == 'Tidak Orisinil' ? 'selected' : '' }}>
+                                        Tidak Orisinil
                                     </option>
                                 </select>
                             </td>
@@ -126,11 +126,11 @@
                                 <select class="form-select form-select-sm @error('accu_aki') is-invalid @enderror"
                                     name="accu_aki" id="accu_aki">
                                     <option value="Ada"
-                                        {{ old('faktur', $order->kondisi_unit->accu_aki) == 'Ada' ? 'selected' : '' }}>
+                                        {{ old('accu_aki', $order->kondisi_unit->accu_aki) == 'Ada' ? 'selected' : '' }}>
                                         Ada
                                     </option>
                                     <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->accu_aki) == 'Tidak Ada' ? 'selected' : '' }}>
+                                        {{ old('accu_aki', $order->kondisi_unit->accu_aki) == 'Tidak Ada' ? 'selected' : '' }}>
                                         Tidak Ada
                                     </option>
                                 </select>
@@ -145,12 +145,12 @@
                             <td>
                                 <select class="form-select form-select-sm @error('cakram') is-invalid @enderror"
                                     name="cakram" id="cakram">
-                                    <option value="Ada"
-                                        {{ old('faktur', $order->kondisi_unit->cakram) == 'Ada' ? 'selected' : '' }}>
-                                        Ada
+                                    <option value="Ada/Model Tidak Bercakram"
+                                        {{ old('cakram', $order->kondisi_unit->cakram) == 'Ada/Model Tidak Bercakram' ? 'selected' : '' }}>
+                                        Ada/Model Tidak Bercakram
                                     </option>
                                     <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->cakram) == 'Tidak Ada' ? 'selected' : '' }}>
+                                        {{ old('cakram', $order->kondisi_unit->cakram) == 'Tidak Ada' ? 'selected' : '' }}>
                                         Tidak Ada
                                     </option>
                                 </select>
@@ -166,11 +166,11 @@
                                 <select class="form-select form-select-sm @error('speedometer') is-invalid @enderror"
                                     name="speedometer" id="speedometer">
                                     <option value="Ada"
-                                        {{ old('faktur', $order->kondisi_unit->speedometer) == 'Ada' ? 'selected' : '' }}>
+                                        {{ old('speedometer', $order->kondisi_unit->speedometer) == 'Ada' ? 'selected' : '' }}>
                                         Ada
                                     </option>
                                     <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->speedometer) == 'Tidak Ada' ? 'selected' : '' }}>
+                                        {{ old('speedometer', $order->kondisi_unit->speedometer) == 'Tidak Ada' ? 'selected' : '' }}>
                                         Tidak Ada
                                     </option>
                                 </select>
@@ -186,11 +186,11 @@
                                 <select class="form-select form-select-sm @error('kick_s') is-invalid @enderror"
                                     name="kick_s" id="kick_s">
                                     <option value="Ada"
-                                        {{ old('faktur', $order->kondisi_unit->kick_s) == 'Ada' ? 'selected' : '' }}>
+                                        {{ old('kick_s', $order->kondisi_unit->kick_s) == 'Ada' ? 'selected' : '' }}>
                                         Ada
                                     </option>
                                     <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->kick_s) == 'Tidak Ada' ? 'selected' : '' }}>
+                                        {{ old('kick_s', $order->kondisi_unit->kick_s) == 'Tidak Ada' ? 'selected' : '' }}>
                                         Tidak Ada
                                     </option>
                                 </select>
@@ -206,12 +206,12 @@
                                 <select class="form-select form-select-sm @error('velg_ban') is-invalid @enderror"
                                     name="velg_ban" id="velg_ban">
                                     <option value="Standar"
-                                        {{ old('faktur', $order->kondisi_unit->velg_ban) == 'Standar' ? 'selected' : '' }}>
+                                        {{ old('velg_ban', $order->kondisi_unit->velg_ban) == 'Standar' ? 'selected' : '' }}>
                                         Standar
                                     </option>
-                                    <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->velg_ban) == 'Tidak Ada' ? 'selected' : '' }}>
-                                        Tidak Ada
+                                    <option value="Tidak Standar"
+                                        {{ old('velg_ban', $order->kondisi_unit->velg_ban) == 'Tidak Standar' ? 'selected' : '' }}>
+                                        Tidak Standar
                                     </option>
                                 </select>
                             </td>
@@ -226,12 +226,12 @@
                                 <select class="form-select form-select-sm @error('shockbreaker') is-invalid @enderror"
                                     name="shockbreaker" id="shockbreaker">
                                     <option value="Standar"
-                                        {{ old('faktur', $order->kondisi_unit->shockbreaker) == 'Standar' ? 'selected' : '' }}>
+                                        {{ old('shockbreaker', $order->kondisi_unit->shockbreaker) == 'Standar' ? 'selected' : '' }}>
                                         Standar
                                     </option>
-                                    <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->shockbreaker) == 'Tidak Ada' ? 'selected' : '' }}>
-                                        Tidak Ada
+                                    <option value="Tidak Standar"
+                                        {{ old('shockbreaker', $order->kondisi_unit->shockbreaker) == 'Tidak Standar' ? 'selected' : '' }}>
+                                        Tidak Standar
                                     </option>
                                 </select>
                             </td>
@@ -246,11 +246,11 @@
                                 <select class="form-select form-select-sm @error('spion') is-invalid @enderror"
                                     name="spion" id="spion">
                                     <option value="Ada"
-                                        {{ old('faktur', $order->kondisi_unit->spion) == 'Ada' ? 'selected' : '' }}>
+                                        {{ old('spion', $order->kondisi_unit->spion) == 'Ada' ? 'selected' : '' }}>
                                         Ada
                                     </option>
                                     <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->spion) == 'Tidak Ada' ? 'selected' : '' }}>
+                                        {{ old('spion', $order->kondisi_unit->spion) == 'Tidak Ada' ? 'selected' : '' }}>
                                         Tidak Ada
                                     </option>
                                 </select>
@@ -266,11 +266,11 @@
                                 <select class="form-select form-select-sm @error('kaki') is-invalid @enderror"
                                     name="kaki" id="kaki">
                                     <option value="Ada"
-                                        {{ old('faktur', $order->kondisi_unit->kaki) == 'Ada' ? 'selected' : '' }}>
+                                        {{ old('kaki', $order->kondisi_unit->kaki) == 'Ada' ? 'selected' : '' }}>
                                         Ada
                                     </option>
                                     <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->kaki) == 'Tidak Ada' ? 'selected' : '' }}>
+                                        {{ old('kaki', $order->kondisi_unit->kaki) == 'Tidak Ada' ? 'selected' : '' }}>
                                         Tidak Ada
                                     </option>
                                 </select>
@@ -286,12 +286,12 @@
                                 <select class="form-select form-select-sm @error('jok') is-invalid @enderror"
                                     name="jok" id="jok">
                                     <option value="Orisinil"
-                                        {{ old('faktur', $order->kondisi_unit->jok) == 'Orisinil' ? 'selected' : '' }}>
+                                        {{ old('jok', $order->kondisi_unit->jok) == 'Orisinil' ? 'selected' : '' }}>
                                         Orisinil
                                     </option>
-                                    <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->jok) == 'Tidak Ada' ? 'selected' : '' }}>
-                                        Tidak Ada
+                                    <option value="Tidak Orisinil"
+                                        {{ old('jok', $order->kondisi_unit->jok) == 'Tidak Orisinil' ? 'selected' : '' }}>
+                                        Tidak Orisinil
                                     </option>
                                 </select>
                             </td>
@@ -306,11 +306,11 @@
                                 <select class="form-select form-select-sm @error('lampu_sign') is-invalid @enderror"
                                     name="lampu_sign" id="lampu_sign">
                                     <option value="Ada"
-                                        {{ old('faktur', $order->kondisi_unit->lampu_sign) == 'Ada' ? 'selected' : '' }}>
+                                        {{ old('lampu_sign', $order->kondisi_unit->lampu_sign) == 'Ada' ? 'selected' : '' }}>
                                         Ada
                                     </option>
                                     <option value="Tidak Ada"
-                                        {{ old('faktur', $order->kondisi_unit->lampu_sign) == 'Tidak Ada' ? 'selected' : '' }}>
+                                        {{ old('lampu_sign', $order->kondisi_unit->lampu_sign) == 'Tidak Ada' ? 'selected' : '' }}>
                                         Tidak Ada
                                     </option>
                                 </select>

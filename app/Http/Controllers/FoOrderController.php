@@ -143,7 +143,7 @@ class FoOrderController extends Controller
         //identitas
         $identity = [
             'type_identitas' => 'required',
-            'no_identitas' => 'required|min:16|max:16',
+            'no_identitas' => 'required',
             "warganegara" => 'required',
             "agama" => 'required',
             "pendidikan" => 'required',

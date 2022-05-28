@@ -58,13 +58,13 @@
                                 <div class="col-sm-6">
                                     <select class="form-select @error('ada_jaminan') is-invalid @enderror"
                                         name="ada_jaminan" id="ada_jaminan" value="">
-                                        <option value="Ada"
-                                            {{ old('ada_jaminan', $order->jaminan->ada_jaminan) == 'Ada' ? 'selected' : '' }}>
-                                            Ada
+                                        <option value="Ada Jaminan"
+                                            {{ old('ada_jaminan', $order->jaminan->ada_jaminan) == 'Ada Jaminan' ? 'selected' : '' }}>
+                                            Ada Jaminan
                                         </option>
-                                        <option value="Tidak Ada"
-                                            {{ old('ada_jaminan', $order->jaminan->ada_jaminan) == 'Tidak Ada' ? 'selected' : '' }}>
-                                            Tidak Ada
+                                        <option value="Tanpa Jaminan"
+                                            {{ old('ada_jaminan', $order->jaminan->ada_jaminan) == 'Tanpa Jaminan' ? 'selected' : '' }}>
+                                            Tanpa Jaminan
                                         </option>
                                     </select>
                                     @error('ada_jaminan')
@@ -98,9 +98,21 @@
                                             {{ old('kepemilikan', $order->jaminan->kepemilikan) == 'Milik Sendiri' ? 'selected' : '' }}>
                                             Milik Sendiri
                                         </option>
-                                        <option value="KK"
-                                            {{ old('kepemilikan', $order->jaminan->kepemilikan) == 'KK' ? 'selected' : '' }}>
-                                            KK
+                                        <option value="Milik Suami"
+                                            {{ old('kepemilikan', $order->jaminan->kepemilikan) == 'Milik Suami' ? 'selected' : '' }}>
+                                            Milik Suami
+                                        </option>
+                                        <option value="Milik Istri"
+                                            {{ old('kepemilikan', $order->jaminan->kepemilikan) == 'Milik Istri' ? 'selected' : '' }}>
+                                            Milik Istri
+                                        </option>
+                                        <option value="Milik Keluarga"
+                                            {{ old('kepemilikan', $order->jaminan->kepemilikan) == 'Milik Keluarga' ? 'selected' : '' }}>
+                                            Milik Keluarga
+                                        </option>
+                                        <option value="Milik Orang Lain"
+                                            {{ old('kepemilikan', $order->jaminan->kepemilikan) == 'Milik Orang Lain' ? 'selected' : '' }}>
+                                            Milik Orang Lain
                                         </option>
                                     </select>
                                     @error('kepemilikan')
@@ -348,9 +360,17 @@
                                             {{ old('status', $order->status) == 'Verify' ? 'selected' : '' }}>
                                             Verify
                                         </option>
-                                        <option value="KK"
-                                            {{ old('status', $order->status) == 'KK' ? 'selected' : '' }}>
-                                            KK
+                                        <option value="Approve"
+                                            {{ old('status', $order->status) == 'Approve' ? 'selected' : '' }}>
+                                            Approve
+                                        </option>
+                                        <option value="Baru"
+                                            {{ old('status', $order->status) == 'Baru' ? 'selected' : '' }}>
+                                            Baru
+                                        </option>
+                                        <option value="Reject"
+                                            {{ old('status', $order->status) == 'Reject' ? 'selected' : '' }}>
+                                            Reject
                                         </option>
                                     </select>
                                     @error('status')
@@ -370,9 +390,9 @@
                                             {{ old('tipe_order', $order->tipe_order) == 'Retail' ? 'selected' : '' }}>
                                             Retail
                                         </option>
-                                        <option value="KK"
-                                            {{ old('tipe_order', $order->tipe_order) == 'KK' ? 'selected' : '' }}>
-                                            KK
+                                        <option value="Group Customer"
+                                            {{ old('tipe_order', $order->tipe_order) == 'Group Customer' ? 'selected' : '' }}>
+                                            Group Customer
                                         </option>
                                     </select>
                                     @error('tipe_order')
@@ -392,9 +412,9 @@
                                             {{ old('platform', $order->platform) == 'Konvensional' ? 'selected' : '' }}>
                                             Konvensional
                                         </option>
-                                        <option value="KK"
-                                            {{ old('platform', $order->platform) == 'KK' ? 'selected' : '' }}>
-                                            KK
+                                        <option value="Syariah"
+                                            {{ old('platform', $order->platform) == 'Syariah' ? 'selected' : '' }}>
+                                            Syariah
                                         </option>
                                     </select>
                                     @error('platform')
@@ -414,9 +434,13 @@
                                             {{ old('keperluan', $order->keperluan) == 'Sendiri' ? 'selected' : '' }}>
                                             Sendiri
                                         </option>
-                                        <option value="KK"
-                                            {{ old('keperluan', $order->keperluan) == 'KK' ? 'selected' : '' }}>
-                                            KK
+                                        <option value="Keluarga"
+                                            {{ old('keperluan', $order->keperluan) == 'Keluarga' ? 'selected' : '' }}>
+                                            Keluarga
+                                        </option>
+                                        <option value="Orang Lain"
+                                            {{ old('keperluan', $order->keperluan) == 'Orang Lain' ? 'selected' : '' }}>
+                                            Orang Lain
                                         </option>
                                     </select>
                                     @error('keperluan')
@@ -598,7 +622,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <label class="visually-hidden" for=K"awalorakhir"></label>
+                                <label class="visually-hidden" for="awalorakhir"></label>
                                 <div class="col-sm-4">
                                     <select
                                         class="form-select form-select-sm @error('awalorakhir') is-invalid @enderror"

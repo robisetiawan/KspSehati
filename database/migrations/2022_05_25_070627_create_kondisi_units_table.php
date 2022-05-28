@@ -15,20 +15,20 @@ class CreateKondisiUnitsTable extends Migration
     {
         Schema::create('kondisi_units', function (Blueprint $table) {
             $table->id();
-            $table->enum('kategori_m', ['Baik', 'Tidak Ada'])->nullable();
-            $table->enum('suara_m', ['Halus', 'Tidak Ada'])->nullable();
+            $table->enum('kategori_m', ['Baik', 'Tidak Baik'])->nullable();
+            $table->enum('suara_m', ['Halus', 'Tidak Halus'])->nullable();
             $table->enum('sayap_b', ['Ada', 'Tidak Ada'])->nullable();
             $table->enum('cover_b', ['Ada', 'Tidak Ada'])->nullable();
-            $table->enum('knalpot', ['Orisinil', 'Tidak Ada'])->nullable();
+            $table->enum('knalpot', ['Orisinil', 'Tidak Orisinil'])->nullable();
             $table->enum('accu_aki', ['Ada', 'Tidak Ada'])->nullable();
-            $table->enum('cakram', ['Ada', 'Tidak Ada'])->nullable();
+            $table->enum('cakram', ['Ada/Model Tidak Bercakram', 'Tidak Ada'])->nullable();
             $table->enum('speedometer', ['Ada', 'Tidak Ada'])->nullable();
             $table->enum('kick_s', ['Ada', 'Tidak Ada'])->nullable();
-            $table->enum('velg_ban', ['Standar', 'Tidak Ada'])->nullable();
-            $table->enum('shockbreaker', ['Standar', 'Tidak Ada'])->nullable();
+            $table->enum('velg_ban', ['Standar', 'Tidak Standar'])->nullable();
+            $table->enum('shockbreaker', ['Standar', 'Tidak Standar'])->nullable();
             $table->enum('spion', ['Ada', 'Tidak Ada'])->nullable();
             $table->enum('kaki', ['Ada', 'Tidak Ada'])->nullable();
-            $table->enum('jok', ['Orisinil', 'Tidak Ada'])->nullable();
+            $table->enum('jok', ['Orisinil', 'Tidak Orisinil'])->nullable();
             $table->enum('lampu_sign', ['Ada', 'Tidak Ada'])->nullable();
             $table->timestamps();
         });

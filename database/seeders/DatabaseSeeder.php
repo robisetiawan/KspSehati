@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
             'no_identitas' => '1234567890123456',
             'warganegara' => 'WNI',
             'agama' => 'Islam',
-            'pendidikan' => 'Sarjana',
+            'pendidikan' => 'Sarjana S1',
             'gelar' => 'S1',
             'status_kawin' => 'Belum kawin',
             'gol_darah' => 'O',

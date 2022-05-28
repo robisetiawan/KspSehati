@@ -199,12 +199,16 @@
                                         <select class="form-select form-select-sm @error('rumah') is-invalid @enderror"
                                             name="rumah" id="rumah">
                                             <option value="Semi Permanen"
-                                                {{ old('faktur', $order->las->rumah) == 'Semi Permanen' ? 'selected' : '' }}>
+                                                {{ old('rumah', $order->las->rumah) == 'Semi Permanen' ? 'selected' : '' }}>
                                                 Semi Permanen
                                             </option>
-                                            <option value="Tidak Ada"
-                                                {{ old('faktur', $order->las->rumah) == 'Tidak Ada' ? 'selected' : '' }}>
-                                                Tidak Ada
+                                            <option value="Permanen"
+                                                {{ old('rumah', $order->las->rumah) == 'Permanen' ? 'selected' : '' }}>
+                                                Permanen
+                                            </option>
+                                            <option value="Non Permanen (Papan)"
+                                                {{ old('rumah', $order->las->rumah) == 'Non Permanen (Papan)' ? 'selected' : '' }}>
+                                                Non Permanen (Papan)
                                             </option>
                                         </select>
                                     </div>

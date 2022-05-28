@@ -15,15 +15,15 @@ class CreateJaminansTable extends Migration
     {
         Schema::create('jaminans', function (Blueprint $table) {
             $table->id();
-            $table->string('ada_jaminan')->nullable();
-            $table->string('buss_unit')->nullable();
+            $table->enum('ada_jaminan', ['Ada Jaminan', 'Tanpa Jaminan'])->nullable();
+            $table->enum('buss_unit', ['01 - Pinjaman Jaminan Motor', '02 - Pinjaman Jaminan Mobil'])->nullable();
             $table->string('no_polisi')->nullable();
             $table->string('no_mesin')->nullable();
-            $table->string('kepemilikan')->nullable();
+            $table->enum('kepemilikan', ['Milik Sendiri', 'Milik Suami', 'Milik Istri', 'Milik Keluarga', 'Milik Orang Lain'])->nullable();
             $table->string('barang')->nullable();
             $table->string('tipe')->nullable();
             $table->string('tahun')->nullable();
-            $table->string('awalorakhir')->nullable();
+            $table->enum('awalorakhir', ['Awal', 'Akhir'])->nullable();
             $table->string('harga_pasar')->nullable();
             $table->timestamps();
         });

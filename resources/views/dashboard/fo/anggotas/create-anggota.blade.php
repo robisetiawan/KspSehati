@@ -343,12 +343,15 @@
                                                                 class="form-select @error('type_identitas') is-invalid @enderror"
                                                                 name="type_identitas" id="type_identitas">
                                                                 <option></option>
-                                                                <option value="1"
-                                                                    {{ old('type_identitas') == '1' ? 'selected' : '' }}>
+                                                                <option value="KTP"
+                                                                    {{ old('type_identitas') == 'KTP' ? 'selected' : '' }}>
                                                                     KTP</option>
-                                                                <option value="2"
-                                                                    {{ old('type_identitas') == '2' ? 'selected' : '' }}>
-                                                                    KK</option>
+                                                                <option value="SIM"
+                                                                    {{ old('type_identitas') == 'SIM' ? 'selected' : '' }}>
+                                                                    SIM</option>
+                                                                <option value="Domisili"
+                                                                    {{ old('type_identitas') == 'Domisili' ? 'selected' : '' }}>
+                                                                    Domisili</option>
                                                             </select>
                                                             @error('type_identitas')
                                                                 <div class="invalid-feedback">
@@ -364,7 +367,7 @@
                                                         <div class="col">
                                                             <input
                                                                 class="form-control form-control-sm @error('no_identitas') is-invalid @enderror"
-                                                                name="no_identitas" type="number" id="no_identitas"
+                                                                name="no_identitas" type="text" id="no_identitas"
                                                                 value="{{ old('no_identitas') }}">
                                                             @error('no_identitas')
                                                                 <div class="invalid-feedback">
@@ -382,11 +385,13 @@
                                                                 class="form-select @error('warganegara') is-invalid @enderror"
                                                                 name="warganegara" id="warganegara">
                                                                 <option></option>
-                                                                <option value="1"
-                                                                    {{ old('warganegara') == '1' ? 'selected' : '' }}>WNI
+                                                                <option value="WNI"
+                                                                    {{ old('warganegara') == 'WNI' ? 'selected' : '' }}>
+                                                                    WNI
                                                                 </option>
-                                                                <option value="2"
-                                                                    {{ old('warganegara') == '2' ? 'selected' : '' }}>WNA
+                                                                <option value="WNA"
+                                                                    {{ old('warganegara') == 'WNA' ? 'selected' : '' }}>
+                                                                    WNA
                                                                 </option>
                                                             </select>
                                                             @error('warganegara')
@@ -404,23 +409,27 @@
                                                                 class="form-select @error('agama') is-invalid @enderror"
                                                                 name="agama" id="agama">
                                                                 <option></option>
-                                                                <option value="1"
-                                                                    {{ old('agama') == '1' ? 'selected' : '' }}>Islam
+                                                                <option value="Islam"
+                                                                    {{ old('agama') == 'Islam' ? 'selected' : '' }}>Islam
                                                                 </option>
-                                                                <option value="2"
-                                                                    {{ old('agama') == '2' ? 'selected' : '' }}>Kristen
+                                                                <option value="Kristen"
+                                                                    {{ old('agama') == 'Kristen' ? 'selected' : '' }}>
+                                                                    Kristen
                                                                 </option>
-                                                                <option value="3"
-                                                                    {{ old('agama') == '3' ? 'selected' : '' }}>Katolik
+                                                                <option value="Katolik"
+                                                                    {{ old('agama') == 'Katolik' ? 'selected' : '' }}>
+                                                                    Katolik
                                                                 </option>
-                                                                <option value="4"
-                                                                    {{ old('agama') == '4' ? 'selected' : '' }}>Hindu
+                                                                <option value="Hindu"
+                                                                    {{ old('agama') == 'Hindu' ? 'selected' : '' }}>Hindu
                                                                 </option>
-                                                                <option value="5"
-                                                                    {{ old('agama') == '5' ? 'selected' : '' }}>Buddha
+                                                                <option value="Buddha"
+                                                                    {{ old('agama') == 'Buddha' ? 'selected' : '' }}>
+                                                                    Buddha
                                                                 </option>
-                                                                <option value="6"
-                                                                    {{ old('agama') == '6' ? 'selected' : '' }}>Khonghucu
+                                                                <option value="Khonghucu"
+                                                                    {{ old('agama') == 'Khonghucu' ? 'selected' : '' }}>
+                                                                    Khonghucu
                                                                 </option>
                                                             </select>
                                                             @error('agama')
@@ -439,29 +448,35 @@
                                                                 class="form-select @error('pendidikan') is-invalid @enderror"
                                                                 name="pendidikan" id="pendidikan">
                                                                 <option></option>
-                                                                <option value="1"
-                                                                    {{ old('pendidikan') == '1' ? 'selected' : '' }}>
+                                                                <option value="SD"
+                                                                    {{ old('pendidikan') == 'SD' ? 'selected' : '' }}>
                                                                     SD</option>
-                                                                <option value="2"
-                                                                    {{ old('pendidikan') == '2' ? 'selected' : '' }}>
+                                                                <option value="SMP"
+                                                                    {{ old('pendidikan') == 'SMP' ? 'selected' : '' }}>
                                                                     SMP</option>
-                                                                <option value="3"
-                                                                    {{ old('pendidikan') == '3' ? 'selected' : '' }}>
+                                                                <option value="SMA/SMK"
+                                                                    {{ old('pendidikan') == 'SMA/SMK' ? 'selected' : '' }}>
                                                                     SMA/SMK</option>
-                                                                <option value="4"
-                                                                    {{ old('pendidikan') == '4' ? 'selected' : '' }}>
-                                                                    Diploma</option>
-                                                                <option value="5"
-                                                                    {{ old('pendidikan') == '5' ? 'selected' : '' }}>
-                                                                    Sarjana</option>
-                                                                <option value="6"
-                                                                    {{ old('pendidikan') == '6' ? 'selected' : '' }}>
+                                                                <option value="Diploma 1"
+                                                                    {{ old('pendidikan') == 'Diploma 1' ? 'selected' : '' }}>
+                                                                    Diploma 1</option>
+                                                                <option value="Diploma 2"
+                                                                    {{ old('pendidikan') == 'Diploma 2' ? 'selected' : '' }}>
+                                                                    Diploma 2</option>
+                                                                <option value="Diploma 3"
+                                                                    {{ old('pendidikan') == 'Diploma 3' ? 'selected' : '' }}>
+                                                                    Diploma 3</option>
+                                                                <option value="Diploma 4"
+                                                                    {{ old('pendidikan') == 'Diploma 4' ? 'selected' : '' }}>
+                                                                    Diploma 4</option>
+                                                                <option value="Sarjana S1"
+                                                                    {{ old('pendidikan') == 'Sarjana S1' ? 'selected' : '' }}>
+                                                                    Sarjana S1</option>
+                                                                <option value="Megister"
+                                                                    {{ old('pendidikan') == 'Megister' ? 'selected' : '' }}>
                                                                     Megister</option>
-                                                                <option value="7"
-                                                                    {{ old('pendidikan') == '7' ? 'selected' : '' }}>
-                                                                    Spesialis</option>
-                                                                <option value="8"
-                                                                    {{ old('pendidikan') == '8' ? 'selected' : '' }}>
+                                                                <option value="Doktor"
+                                                                    {{ old('pendidikan') == 'Doktor' ? 'selected' : '' }}>
                                                                     Doktor</option>
                                                             </select>
                                                             @error('pendidikan')
@@ -495,12 +510,15 @@
                                                                 class="form-select @error('status_kawin') is-invalid @enderror"
                                                                 name="status_kawin" id="status_kawin">
                                                                 <option></option>
-                                                                <option value="1"
-                                                                    {{ old('status_kawin') == '1' ? 'selected' : '' }}>
+                                                                <option value="Kawin"
+                                                                    {{ old('status_kawin') == 'Kawin' ? 'selected' : '' }}>
                                                                     Kawin</option>
-                                                                <option value="2"
-                                                                    {{ old('status_kawin') == '2' ? 'selected' : '' }}>
+                                                                <option value="Belum Kawin"
+                                                                    {{ old('status_kawin') == 'Belum Kawin' ? 'selected' : '' }}>
                                                                     Belum Kawin</option>
+                                                                <option value="Cerai"
+                                                                    {{ old('status_kawin') == 'Cerai' ? 'selected' : '' }}>
+                                                                    Cerai</option>
                                                             </select>
                                                             @error('status_kawin')
                                                                 <div class="invalid-feedback">
@@ -518,17 +536,17 @@
                                                                 class="form-select @error('gol_darah') is-invalid @enderror"
                                                                 name="gol_darah" id="gol_darah">
                                                                 <option></option>
-                                                                <option value="1"
-                                                                    {{ old('gol_darah') == '1' ? 'selected' : '' }}>A
+                                                                <option value="A"
+                                                                    {{ old('gol_darah') == 'A' ? 'selected' : '' }}>A
                                                                 </option>
-                                                                <option value="2"
-                                                                    {{ old('gol_darah') == '2' ? 'selected' : '' }}>B
+                                                                <option value="B"
+                                                                    {{ old('gol_darah') == 'B' ? 'selected' : '' }}>B
                                                                 </option>
-                                                                <option value="3"
-                                                                    {{ old('gol_darah') == '3' ? 'selected' : '' }}>AB
+                                                                <option value="AB"
+                                                                    {{ old('gol_darah') == 'AB' ? 'selected' : '' }}>AB
                                                                 </option>
-                                                                <option value="4"
-                                                                    {{ old('gol_darah') == '4' ? 'selected' : '' }}>O
+                                                                <option value="O"
+                                                                    {{ old('gol_darah') == 'O' ? 'selected' : '' }}>O
                                                                 </option>
                                                             </select>
                                                             @error('gol_darah')
@@ -561,18 +579,30 @@
                                                                 class="form-select @error('status_rumah') is-invalid @enderror"
                                                                 name="status_rumah" id="status_rumah">
                                                                 <option></option>
-                                                                <option value="1"
-                                                                    {{ old('status_rumah') == '1' ? 'selected' : '' }}>
+                                                                <option value="Rumah Sendiri"
+                                                                    {{ old('status_rumah') == 'Rumah Sendiri' ? 'selected' : '' }}>
                                                                     Rumah Sendiri</option>
-                                                                <option value="2"
-                                                                    {{ old('status_rumah') == '2' ? 'selected' : '' }}>
+                                                                <option value="Rumah Orang tua"
+                                                                    {{ old('status_rumah') == 'Rumah Orang tua' ? 'selected' : '' }}>
                                                                     Rumah Orang tua</option>
-                                                                <option value="3"
-                                                                    {{ old('status_rumah') == '3' ? 'selected' : '' }}>
-                                                                    Kontrakan</option>
-                                                                <option value="4"
-                                                                    {{ old('status_rumah') == '4' ? 'selected' : '' }}>
-                                                                    Sewa
+                                                                <option value="Rumah Dinas"
+                                                                    {{ old('status_rumah') == 'Rumah Dinas' ? 'selected' : '' }}>
+                                                                    Rumah Dinas</option>
+                                                                <option value="Rumah Sewa/Kontrak"
+                                                                    {{ old('status_rumah') == 'Rumah Sewa/Kontrak' ? 'selected' : '' }}>
+                                                                    Rumah Sewa/Kontrak
+                                                                </option>
+                                                                <option value="Kost"
+                                                                    {{ old('status_rumah') == 'Kost' ? 'selected' : '' }}>
+                                                                    Kost
+                                                                </option>
+                                                                <option value="Rumah Status Kredit"
+                                                                    {{ old('status_rumah') == 'Rumah Status Kredit' ? 'selected' : '' }}>
+                                                                    Rumah Status Kredit
+                                                                </option>
+                                                                <option value="Rumah Keluarga"
+                                                                    {{ old('status_rumah') == 'Rumah Keluarga' ? 'selected' : '' }}>
+                                                                    Rumah Keluarga
                                                                 </option>
                                                             </select>
                                                             @error('status_rumah')

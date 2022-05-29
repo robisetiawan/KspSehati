@@ -51,6 +51,17 @@ class FoAnggotaController extends Controller
      */
     public function store(Request $request)
     {
+        // $a = "Rp 8.000.000";
+        // $deleteRp = array("Rp", ".", " ");
+
+        // $omsetRp = str_replace($deleteRp, "", $a);
+        // $intOmset = (int)$omsetRp;
+        // dd($intOmset);
+        // $omsetRp = "300";
+        // $badChars = array("rp", ".", "(", ")");
+        // $num = "rp.5.000.000";
+
+        // $sds = str_replace($badChars, "", $num);
 
         $createanggota = DB::transaction(function () use ($request) {
 
@@ -62,7 +73,7 @@ class FoAnggotaController extends Controller
                 'image' => 'nullable|image',
                 //identitas
                 'type_identitas' => 'required',
-                'no_identitas' => 'required|min:16|max:16',
+                'no_identitas' => 'required',
                 "warganegara" => 'required',
                 "agama" => 'required',
                 "pendidikan" => 'required',
@@ -117,8 +128,29 @@ class FoAnggotaController extends Controller
             if ($request->file('image')) {
                 $request->image = $request->file('image')->store('profile-image');
             }
+
+            // $num = "rp.5.000.000";
+
+            // $sds = str_replace($deleteRp, "", $num);
+            $deleteRp = array("Rp", ".", " ");
+
+            $omsetRp = str_replace($deleteRp, "", $request->omset_dagang);
+            $pendapatanRp = str_replace($deleteRp, "", $request->pendapatan);
+            $gajiRp = str_replace($deleteRp, "", $request->gaji);
+            $pendapatan_psgRp = str_replace($deleteRp, "", $request->pendapatan_psg);
+            $pendapatan_lainRp = str_replace($deleteRp, "", $request->pendapatan_lain);
+            $biaya_bulananRp = str_replace($deleteRp, "", $request->biaya_bulanan);
+
+            $intOmset = (int)$omsetRp;
+            $intpendapatan = (int)$pendapatanRp;
+            $intgaji = (int)$gajiRp;
+            $intpendapatan_psg = (int)$pendapatan_psgRp;
+            $intpendapatan_lain = (int)$pendapatan_lainRp;
+            $intbiaya_bulanan = (int)$biaya_bulananRp;
+
+            // $gettype = gettype($intOmset);
             // $validatedData['password'] = bcrypt($validatedData['password']);
-            // dd($validatedData);
+            // dd($intOmset);
 
             // User::create($validatedData);
             $user = User::create([
@@ -153,12 +185,12 @@ class FoAnggotaController extends Controller
                 "lama_kerja_tahun" => $request->lama_kerja_tahun,
                 "lama_kerja_bulan" => $request->lama_kerja_bulan,
                 "tanggungan" => $request->tanggungan,
-                "omset_dagang" => $request->omset_dagang,
-                "pendapatan" => $request->pendapatan,
-                "gaji" => $request->gaji,
-                "pendapatan_psg" => $request->pendapatan_psg,
-                "pendapatan_lain" => $request->pendapatan_lain,
-                "biaya_bulanan" => $request->biaya_bulanan
+                "omset_dagang" => $intOmset,
+                "pendapatan" => $intpendapatan,
+                "gaji" => $intgaji,
+                "pendapatan_psg" => $intpendapatan_psg,
+                "pendapatan_lain" => $intpendapatan_lain,
+                "biaya_bulanan" => $intbiaya_bulanan
             ]);
 
             $adddata = Adddata::create([
@@ -253,7 +285,7 @@ class FoAnggotaController extends Controller
      */
     public function update(Request $request, Anggota $anggota)
     {
-        // dd($request);
+
         // Users
         $user = [
             'name' => 'required|max:255',
@@ -360,7 +392,25 @@ class FoAnggotaController extends Controller
             $validuser['password'] = bcrypt($request->password);
         }
 
-        // dd($validuser);
+        //currency
+        $deleteRp = array("Rp", ".", " ");
+
+        $omsetRp = str_replace($deleteRp, "", $request->omset_dagang);
+        $pendapatanRp = str_replace($deleteRp, "", $request->pendapatan);
+        $gajiRp = str_replace($deleteRp, "", $request->gaji);
+        $pendapatan_psgRp = str_replace($deleteRp, "", $request->pendapatan_psg);
+        $pendapatan_lainRp = str_replace($deleteRp, "", $request->pendapatan_lain);
+        $biaya_bulananRp = str_replace($deleteRp, "", $request->biaya_bulanan);
+
+        $validprofession['omset_dagang'] = (int)$omsetRp;
+        $validprofession['pendapatan'] = (int)$pendapatanRp;
+        $validprofession['gaji'] = (int)$gajiRp;
+        $validprofession['pendapatan_psg'] = (int)$pendapatan_psgRp;
+        $validprofession['pendapatan_lain'] = (int)$pendapatan_lainRp;
+        $validprofession['biaya_bulanan'] = (int)$biaya_bulananRp;
+        //endCurrency
+
+        // dd($validprofession);
 
         if ($request->file('image')) {
             if ($request->oldImage) {

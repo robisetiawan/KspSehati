@@ -57,13 +57,20 @@
                         @forelse ($orders as $o)
                             <div class="card">
                                 <div class="card-body f-12">
+                                    @error('anggota_id')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                     <div class=" row mb-1">
-                                        <label class="col-sm-4 col-form-label visually-hidden" for="id">No
+                                        <label class="col-sm-4 col-form-label visually-hidden" for="anggota_id">No
                                             Anggota</label>
                                         <div class="col p-l-0">
-                                            <input class="form-control form-control-sm @error('id ') is-invalid @enderror"
-                                                name="id" type="hidden" id="id" value="{{ $o->anggota->id }}" readonly>
-                                            @error('id')
+                                            <input
+                                                class="form-control form-control-sm @error('anggota_id ') is-invalid @enderror"
+                                                name="anggota_id" type="hidden" id="anggota_id"
+                                                value="{{ $o->anggota->id }}" readonly>
+                                            @error('anggota_id')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
                                                 </div>
@@ -101,8 +108,9 @@
                                                 <div class="col p-l-0">
                                                     <input
                                                         class="form-control form-control-sm @error('nilai_pinj') is-invalid @enderror"
-                                                        name="nilai_pinj" type="number" id="nilai_pinj"
-                                                        value="{{ old('nilai_pinj') }}">
+                                                        name="nilai_pinj" type="text" id="nilai_pinj"
+                                                        value="{{ old('nilai_pinj') }}" type-currency="IDR"
+                                                        placeholder="Rp ">
                                                     @error('nilai_pinj')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
@@ -112,14 +120,14 @@
                                             </div>
                                             <!-- ****************************************************************************************** -->
                                             <div class="row mb-1">
-                                                <label for="pk_kembali" class="col-sm-5 col-form-label">Pokok
+                                                <label for="pk_kem" class="col-sm-5 col-form-label">Pokok
                                                     Pengembalian</label>
                                                 <div class="col p-l-0">
                                                     <input
-                                                        class="form-control form-control-sm @error('pk_kembali') is-invalid @enderror"
-                                                        name="pk_kembali" type="text" id="pk_kembali"
-                                                        value="{{ old('pk_kembali') }}">
-                                                    @error('pk_kembali')
+                                                        class="form-control form-control-sm @error('pk_kem') is-invalid @enderror"
+                                                        name="pk_kem" type="text" id="pk_kem" value="{{ old('pk_kem') }}"
+                                                        type-currency="IDR" placeholder="Rp ">
+                                                    @error('pk_kem')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
@@ -192,7 +200,8 @@
                                                     <input
                                                         class="form-control form-control-sm @error('jml_angs') is-invalid @enderror"
                                                         name="jml_angs" type="text" id="jml_angs"
-                                                        value="{{ old('jml_angs') }}">
+                                                        value="{{ old('jml_angs') }}" type-currency="IDR"
+                                                        placeholder="Rp ">
                                                     @error('jml_angs')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
@@ -273,11 +282,12 @@
                                             <div class="row mb-1">
                                                 <label class="col-sm-5 col-form-label" for="admin_total">Admin
                                                     Total</label>
-                                                <div class="col-sm-3 p-l-0">
+                                                <div class="col-sm-5 p-l-0">
                                                     <input
                                                         class="form-control form-control-sm @error('admin_total') is-invalid @enderror"
                                                         name="admin_total" type="text" id="admin_total"
-                                                        value="{{ old('admin_total') }}">
+                                                        value="{{ old('admin_total') }}" type-currency="IDR"
+                                                        placeholder="Rp ">
                                                     @error('admin_total')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}

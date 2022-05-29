@@ -167,7 +167,7 @@
                                     <div class="row mb-1">
                                         <label class="col-sm-5 col-form-label" for="nama">Admin
                                             Total</label>
-                                        <div class="col-sm-3 p-l-0">
+                                        <div class="col-sm-5 p-l-0">
                                             <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
                                         </div>
                                     </div>

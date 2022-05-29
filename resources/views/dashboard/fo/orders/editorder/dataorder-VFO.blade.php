@@ -186,8 +186,9 @@
                                 <div class="col-sm-6">
                                     <input
                                         class="form-control form-control-sm @error('omset_dagang') is-invalid @enderror"
-                                        name="omset_dagang" type="number" id="omset_dagang"
-                                        value="{{ old('omset_dagang', $order->anggota->profession->omset_dagang) }}">
+                                        name="omset_dagang" type="text" id="omset_dagang"
+                                        value="{{ old('omset_dagang', $order->anggota->profession->omset_dagang) }}"
+                                        type-currency="IDR" placeholder="Rp ">
                                     @error('omset_dagang')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -201,8 +202,9 @@
                                 <div class="col-sm-6">
                                     <input
                                         class="form-control form-control-sm @error('pendapatan') is-invalid @enderror"
-                                        name="pendapatan" type="number" id="pendapatan"
-                                        value="{{ old('pendapatan', $order->anggota->profession->pendapatan) }}">
+                                        name="pendapatan" type="text" id="pendapatan"
+                                        value="{{ old('pendapatan', $order->anggota->profession->pendapatan) }}"
+                                        type-currency="IDR" placeholder="Rp ">
                                     @error('pendapatan')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -215,8 +217,9 @@
                                 <label class="col-sm-4 col-form-label" for="gaji">Gaji</label>
                                 <div class="col-sm-6">
                                     <input class="form-control form-control-sm @error('gaji') is-invalid @enderror"
-                                        name="gaji" type="number" id="gaji"
-                                        value="{{ old('gaji', $order->anggota->profession->gaji) }}">
+                                        name="gaji" type="text" id="gaji"
+                                        value="{{ old('gaji', $order->anggota->profession->gaji) }}"
+                                        type-currency="IDR" placeholder="Rp ">
                                     @error('gaji')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -230,8 +233,9 @@
                                 <div class="col-sm-6">
                                     <input
                                         class="form-control form-control-sm @error('pendapatan_psg') is-invalid @enderror"
-                                        name="pendapatan_psg" type="number" id="pendapatan_psg"
-                                        value="{{ old('pendapatan_psg', $order->anggota->profession->pendapatan_psg) }}">
+                                        name="pendapatan_psg" type="text" id="pendapatan_psg"
+                                        value="{{ old('pendapatan_psg', $order->anggota->profession->pendapatan_psg) }}"
+                                        type-currency="IDR" placeholder="Rp ">
                                     @error('pendapatan_psg')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -245,8 +249,9 @@
                                 <div class="col-sm-6">
                                     <input
                                         class="form-control form-control-sm @error('pendapatan_lain') is-invalid @enderror"
-                                        name="pendapatan_lain" type="number" id="pendapatan_lain"
-                                        value="{{ old('pendapatan_lain', $order->anggota->profession->pendapatan_lain) }}">
+                                        name="pendapatan_lain" type="text" id="pendapatan_lain"
+                                        value="{{ old('pendapatan_lain', $order->anggota->profession->pendapatan_lain) }}"
+                                        type-currency="IDR" placeholder="Rp ">
                                     @error('pendapatan_lain')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -261,8 +266,9 @@
                                 <div class="col-sm-6">
                                     <input
                                         class="form-control form-control-sm @error('biaya_bulanan') is-invalid @enderror"
-                                        name="biaya_bulanan" type="number" id="biaya_bulanan"
-                                        value="{{ old('biaya_bulanan', $order->anggota->profession->biaya_bulanan) }}">
+                                        name="biaya_bulanan" type="text" id="biaya_bulanan"
+                                        value="{{ old('biaya_bulanan', $order->anggota->profession->biaya_bulanan) }}"
+                                        type-currency="IDR" placeholder="Rp ">
                                     @error('biaya_bulanan')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -383,7 +389,7 @@
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
                                 <label class="col-sm-4 col-form-label" for="tipe_order">Tipe Order</label>
-                                <div class="col-sm-4">
+                                <div class="col-sm-5">
                                     <select class="form-select @error('tipe_order') is-invalid @enderror"
                                         name="tipe_order" id="tipe_order" value="{{ old('tipe_order') }}">
                                         <option value="Retail"
@@ -405,7 +411,7 @@
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
                                 <label class="col-sm-4 col-form-label" for="platform">Platform</label>
-                                <div class="col-sm-4">
+                                <div class="col-sm-5">
                                     <select class="form-select @error('platform') is-invalid @enderror" name="platform"
                                         id="platform" value="{{ old('platform') }}">
                                         <option value="Konvensional"
@@ -649,8 +655,9 @@
                                 <div class="col-sm-5">
                                     <input
                                         class="form-control form-control-sm @error('harga_pasar') is-invalid @enderror"
-                                        name="harga_pasar" type="number" id="harga_pasar"
-                                        value="{{ old('harga_pasar', $order->jaminan->harga_pasar) }}">
+                                        name="harga_pasar" type="text" id="harga_pasar"
+                                        value="{{ old('harga_pasar', $order->jaminan->harga_pasar) }}"
+                                        type-currency="IDR" placeholder="Rp ">
                                     @error('harga_pasar')
                                         <div class="invalid-feedback">
                                             {{ $message }}

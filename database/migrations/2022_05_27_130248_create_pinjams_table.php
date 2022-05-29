@@ -15,7 +15,7 @@ class CreatePinjamsTable extends Migration
     {
         Schema::create('pinjams', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('anggota_id')->nullable();
+            $table->foreignId('anggota_id')->unique();
             $table->string('nilai_pinj')->nullable();
             $table->string('pk_kem')->nullable();
             $table->enum('tipe_angs', ['Tetap', 'Musiman'])->nullable();

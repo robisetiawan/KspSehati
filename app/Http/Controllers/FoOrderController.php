@@ -242,7 +242,16 @@ class FoOrderController extends Controller
             "kaki" => 'nullable',
             "jok" => 'nullable',
             "lampu_sign" => 'nullable',
+            // "m_kend" => 'nullable',
+            // "a_man" => 'nullable',
+            // "a_opt" => 'nullable',
         ];
+
+        // if ($request->password) {
+        //     $validuser['password'] = bcrypt($request->password);
+        // }
+
+        // $kondisi_unit['m_kend'] = $request->kategori_m === 'Baik' ? '100' : '0';
 
         $las = [
             "sewa_rumah" => 'nullable',
@@ -269,6 +278,10 @@ class FoOrderController extends Controller
             "catatan" => 'nullable'
         ];
 
+
+
+        // dd($kondisi_unit);
+
         $validuser = $request->validate($user);
         $valididentity = $request->validate($identity);
         $validprofession = $request->validate($profession);
@@ -279,6 +292,71 @@ class FoOrderController extends Controller
         $validkondisi_unit = $request->validate($kondisi_unit);
         $validlas = $request->validate($las);
         $validorder = $request->validate($orders);
+
+        //Currency
+        $deleteRp = array(
+            "Rp", ".", " "
+        );
+
+        $omsetRp = str_replace($deleteRp, "", $request->omset_dagang);
+        $pendapatanRp = str_replace($deleteRp, "", $request->pendapatan);
+        $gajiRp = str_replace($deleteRp, "", $request->gaji);
+        $pendapatan_psgRp = str_replace($deleteRp, "", $request->pendapatan_psg);
+        $pendapatan_lainRp = str_replace($deleteRp, "", $request->pendapatan_lain);
+        $biaya_bulananRp = str_replace($deleteRp, "", $request->biaya_bulanan);
+        $harga_pasarRp = str_replace($deleteRp, "", $request->harga_pasar);
+
+        $validprofession['omset_dagang'] = (int)$omsetRp;
+        $validprofession['pendapatan'] = (int)$pendapatanRp;
+        $validprofession['gaji'] = (int)$gajiRp;
+        $validprofession['pendapatan_psg'] = (int)$pendapatan_psgRp;
+        $validprofession['pendapatan_lain'] = (int)$pendapatan_lainRp;
+        $validprofession['biaya_bulanan'] = (int)$biaya_bulananRp;
+        $validjaminan['harga_pasar'] = (int)$harga_pasarRp;
+        //endCurrency
+
+        $k_mesin = $request->kategori_m === 'Baik' ? '50' : '0';
+        $s_mesin = $request->suara_m === 'Halus' ? '50' : '0';
+
+        $j_m_kend = $k_mesin + $s_mesin;
+
+        if ($request->kategori_m) {
+            $validkondisi_unit['m_kend'] = $j_m_kend;
+        }
+
+        $a_a = $request->accu_aki === 'Ada' ? '20' : '0';
+        $ks = $request->kick_s === 'Ada' ? '20' : '0';
+        $ck = $request->cakram === 'Ada/Model Tidak Bercakram' ? '15' : '0';
+        $s_b = $request->sayap_b === 'Ada' ? '7.5' : '0';
+        $c_b = $request->cover_b === 'Ada' ? '7.5' : '0';
+        $kn = $request->knalpot === 'Orisinil' ? '7.5' : '0';
+        $sp = $request->speedometer === 'Ada' ? '7.5' : '0';
+        $v_b = $request->velg_ban === 'Standar' ? '7.5' : '0';
+        $sh = $request->shockbreaker === 'Standar' ? '7.5' : '0';
+
+        $j_a_man = $a_a + $ks + $ck + $s_b + $c_b + $kn + $sp + $v_b + $sh;
+
+        if ($request->accu_aki) {
+            $validkondisi_unit['a_man'] = $j_a_man;
+        }
+
+        $spion = $request->spion === 'Ada' ? '25' : '0';
+        $kaki = $request->kaki === 'Ada' ? '25' : '0';
+        $jok = $request->jok === 'Orisinil' ? '25' : '0';
+        $l_sign = $request->lampu_sign === 'Ada' ? '25' : '0';
+
+        $j_a_opt = $spion + $kaki + $jok + $l_sign;
+
+        if ($request->spion) {
+            $validkondisi_unit['a_opt'] = $j_a_opt;
+        }
+        if ($request->spion) {
+            $validkondisi_unit['grade_desc'] = ($j_m_kend + $j_a_man + $j_a_opt) / 3;
+        }
+
+
+
+        // dd($validkondisi_unit);
 
         User::where('id', $order->anggota->user->id)
             ->update($validuser);

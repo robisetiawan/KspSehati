@@ -36,22 +36,43 @@ class PinjamController extends Controller
      */
     public function store(Request $request)
     {
+
         // dd($request);
         $pinjamans = DB::transaction(
             function () use ($request) {
 
+                $validatedData = $request->validate([
+                    "anggota_id" => 'unique:pinjams',
+                    "pk_kem" => 'required|unique:pinjams'
+                ]);
+                //Currency
+                $deleteRp = array("Rp", ".", " ");
+
+                $nilai_pinjRp = str_replace($deleteRp, "", $request->nilai_pinj);
+                $pk_kemRp = str_replace($deleteRp, "", $request->pk_kem);
+                $jumlah_angsRp = str_replace($deleteRp, "", $request->jumlah_angs);
+                $angsuranRp = str_replace($deleteRp, "", $request->angsuran);
+                $admin_totalRp = str_replace($deleteRp, "", $request->admin_total);
+
+                $intnilai_pinj = (int)$nilai_pinjRp;
+                $intpk_kem = (int)$pk_kemRp;
+                $intjumlah_angs = (int)$jumlah_angsRp;
+                $intangsuran = (int)$angsuranRp;
+                $intadmin_total = (int)$admin_totalRp;
+                //endCurrency
+
                 $pinj = Pinjam::create([
                     "anggota_id" => $request->id,
-                    "nilai_pinj" => $request->nilai_pinj,
-                    "pk_kem" => $request->pk_kem,
+                    "nilai_pinj" => $intnilai_pinj,
+                    "pk_kem" => $intpk_kem,
                     "tipe_angs" => $request->tipe_angsminan,
                     "ad_ar" => $request->ad_ar,
-                    "jumlah_angs" => $request->jumlah_angs,
+                    "jumlah_angs" => $intjumlah_angs,
                     "periode" => $request->periode,
                     "per_p" => $request->per_p,
-                    "angsuran" => $request->angsuran,
+                    "angsuran" => $intangsuran,
                     "kategori" => $request->kategori,
-                    "admin_total" => $request->admin_total,
+                    "admin_total" => $intadmin_total,
                 ]);
             }
         );

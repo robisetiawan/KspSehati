@@ -86,6 +86,29 @@
         localStorage.setItem('page-body-wrapper', 'sidebar-icon');
     </script>
 
+    {{-- Currency --}}
+    <script type="text/javascript">
+        document.querySelectorAll('input[type-currency="IDR"]').forEach((element) => {
+            element.addEventListener('keyup', function(e) {
+                let cursorPostion = this.selectionStart;
+                let value = parseInt(this.value.replace(/[^,\d]/g, ''));
+                let originalLenght = this.value.length;
+                if (isNaN(value)) {
+                    this.value = "";
+                } else {
+                    this.value = value.toLocaleString('id-ID', {
+                        currency: 'IDR',
+                        style: 'currency',
+                        minimumFractionDigits: 0
+                    });
+                    cursorPostion = this.value.length - originalLenght + cursorPostion;
+                    this.setSelectionRange(cursorPostion, cursorPostion);
+                }
+            });
+        });
+    </script>
+    {{-- End --}}
+
     <script src="{{ asset('templates/assets/js/jquery-3.5.1.min.js ') }}"></script>
     <!-- feather icon js-->
     <script src="{{ asset('templates/assets/js/icons/feather-icon/feather.min.js ') }}"></script>

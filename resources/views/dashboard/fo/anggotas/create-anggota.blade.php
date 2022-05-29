@@ -825,8 +825,9 @@
                                                         <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('omset_dagang') is-invalid @enderror"
-                                                                name="omset_dagang" type="number" id="omset_dagang"
-                                                                value="Rp. {{ old('omset_dagang') }}">
+                                                                name="omset_dagang" type="text" id="omset_dagang"
+                                                                value="Rp. {{ old('omset_dagang') }}" type-currency="IDR"
+                                                                placeholder="Rp ">
                                                             @error('omset_dagang')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -856,8 +857,9 @@
                                                         <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('pendapatan') is-invalid @enderror"
-                                                                name="pendapatan" type="number" id="pendapatan"
-                                                                value="Rp. {{ old('pendapatan') }}">
+                                                                name="pendapatan" type="text" id="pendapatan"
+                                                                value="Rp. {{ old('pendapatan') }}" type-currency="IDR"
+                                                                placeholder="Rp ">
                                                             @error('pendapatan')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -871,8 +873,9 @@
                                                         <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('gaji') is-invalid @enderror"
-                                                                name="gaji" type="number" id="gaji"
-                                                                value="Rp. {{ old('pendapatan') }}">
+                                                                name="gaji" type="text" id="gaji"
+                                                                value="Rp. {{ old('pendapatan') }}" type-currency="IDR"
+                                                                placeholder="Rp ">
                                                             @error('gaji')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -887,8 +890,9 @@
                                                         <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('pendapatan_psg') is-invalid @enderror"
-                                                                name="pendapatan_psg" type="number" id="pendapatan_psg"
-                                                                value="Rp. {{ old('pendapatan_psg') }}">
+                                                                name="pendapatan_psg" type="text" id="pendapatan_psg"
+                                                                value="Rp. {{ old('pendapatan_psg') }}"
+                                                                type-currency="IDR" placeholder="Rp ">
                                                             @error('pendapatan_psg')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -903,8 +907,9 @@
                                                         <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('pendapatan_lain') is-invalid @enderror"
-                                                                name="pendapatan_lain" type="number" id="pendapatan_lain"
-                                                                value="Rp. {{ old('pendapatan_lain') }}">
+                                                                name="pendapatan_lain" type="text" id="pendapatan_lain"
+                                                                value="Rp. {{ old('pendapatan_lain') }}"
+                                                                type-currency="IDR" placeholder="Rp ">
                                                             @error('pendapatan_lain')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}
@@ -919,8 +924,9 @@
                                                         <div class="col-sm-6">
                                                             <input
                                                                 class="form-control form-control-sm @error('biaya_bulanan') is-invalid @enderror"
-                                                                name="biaya_bulanan" type="number" id="biaya_bulanan"
-                                                                value="Rp. {{ old('biaya_bulanan') }}">
+                                                                name="biaya_bulanan" type="text" id="biaya_bulanan"
+                                                                value="Rp. {{ old('biaya_bulanan') }}"
+                                                                type-currency="IDR" placeholder="Rp ">
                                                             @error('biaya_bulanan')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}

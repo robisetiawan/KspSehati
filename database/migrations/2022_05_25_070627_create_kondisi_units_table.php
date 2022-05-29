@@ -30,6 +30,10 @@ class CreateKondisiUnitsTable extends Migration
             $table->enum('kaki', ['Ada', 'Tidak Ada'])->nullable();
             $table->enum('jok', ['Orisinil', 'Tidak Orisinil'])->nullable();
             $table->enum('lampu_sign', ['Ada', 'Tidak Ada'])->nullable();
+            $table->integer('m_kend')->nullable();
+            $table->integer('a_man')->nullable();
+            $table->integer('a_opt')->nullable();
+            $table->integer('grade_desc')->nullable();
             $table->timestamps();
         });
     }

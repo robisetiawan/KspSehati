@@ -25,6 +25,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('kategori_m') is-invalid @enderror"
                                     name="kategori_m" id="kategori_m">
+                                    <option></option>
                                     <option value="Baik"
                                         {{ old('kategori_m', $order->kondisi_unit->kategori_m) == 'Baik' ? 'selected' : '' }}>
                                         Baik
@@ -45,6 +46,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('suara_m') is-invalid @enderror"
                                     name="suara_m" id="suara_m">
+                                    <option></option>
                                     <option value="Halus"
                                         {{ old('suara_m', $order->kondisi_unit->suara_m) == 'Halus' ? 'selected' : '' }}>
                                         Halus
@@ -65,6 +67,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('sayap_b') is-invalid @enderror"
                                     name="sayap_b" id="sayap_b">
+                                    <option></option>
                                     <option value="Ada"
                                         {{ old('sayap_b', $order->kondisi_unit->sayap_b) == 'Ada' ? 'selected' : '' }}>
                                         Ada
@@ -85,6 +88,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('cover_b') is-invalid @enderror"
                                     name="cover_b" id="cover_b">
+                                    <option></option>
                                     <option value="Ada"
                                         {{ old('cover_b', $order->kondisi_unit->cover_b) == 'Ada' ? 'selected' : '' }}>
                                         Ada
@@ -105,6 +109,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('knalpot') is-invalid @enderror"
                                     name="knalpot" id="knalpot">
+                                    <option></option>
                                     <option value="Orisinil"
                                         {{ old('knalpot', $order->kondisi_unit->knalpot) == 'Orisinil' ? 'selected' : '' }}>
                                         Orisinil
@@ -125,6 +130,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('accu_aki') is-invalid @enderror"
                                     name="accu_aki" id="accu_aki">
+                                    <option></option>
                                     <option value="Ada"
                                         {{ old('accu_aki', $order->kondisi_unit->accu_aki) == 'Ada' ? 'selected' : '' }}>
                                         Ada
@@ -145,6 +151,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('cakram') is-invalid @enderror"
                                     name="cakram" id="cakram">
+                                    <option></option>
                                     <option value="Ada/Model Tidak Bercakram"
                                         {{ old('cakram', $order->kondisi_unit->cakram) == 'Ada/Model Tidak Bercakram' ? 'selected' : '' }}>
                                         Ada/Model Tidak Bercakram
@@ -165,6 +172,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('speedometer') is-invalid @enderror"
                                     name="speedometer" id="speedometer">
+                                    <option></option>
                                     <option value="Ada"
                                         {{ old('speedometer', $order->kondisi_unit->speedometer) == 'Ada' ? 'selected' : '' }}>
                                         Ada
@@ -185,6 +193,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('kick_s') is-invalid @enderror"
                                     name="kick_s" id="kick_s">
+                                    <option></option>
                                     <option value="Ada"
                                         {{ old('kick_s', $order->kondisi_unit->kick_s) == 'Ada' ? 'selected' : '' }}>
                                         Ada
@@ -205,6 +214,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('velg_ban') is-invalid @enderror"
                                     name="velg_ban" id="velg_ban">
+                                    <option></option>
                                     <option value="Standar"
                                         {{ old('velg_ban', $order->kondisi_unit->velg_ban) == 'Standar' ? 'selected' : '' }}>
                                         Standar
@@ -225,6 +235,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('shockbreaker') is-invalid @enderror"
                                     name="shockbreaker" id="shockbreaker">
+                                    <option></option>
                                     <option value="Standar"
                                         {{ old('shockbreaker', $order->kondisi_unit->shockbreaker) == 'Standar' ? 'selected' : '' }}>
                                         Standar
@@ -245,6 +256,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('spion') is-invalid @enderror"
                                     name="spion" id="spion">
+                                    <option></option>
                                     <option value="Ada"
                                         {{ old('spion', $order->kondisi_unit->spion) == 'Ada' ? 'selected' : '' }}>
                                         Ada
@@ -265,6 +277,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('kaki') is-invalid @enderror"
                                     name="kaki" id="kaki">
+                                    <option></option>
                                     <option value="Ada"
                                         {{ old('kaki', $order->kondisi_unit->kaki) == 'Ada' ? 'selected' : '' }}>
                                         Ada
@@ -285,6 +298,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('jok') is-invalid @enderror"
                                     name="jok" id="jok">
+                                    <option></option>
                                     <option value="Orisinil"
                                         {{ old('jok', $order->kondisi_unit->jok) == 'Orisinil' ? 'selected' : '' }}>
                                         Orisinil
@@ -305,6 +319,7 @@
                             <td>
                                 <select class="form-select form-select-sm @error('lampu_sign') is-invalid @enderror"
                                     name="lampu_sign" id="lampu_sign">
+                                    <option></option>
                                     <option value="Ada"
                                         {{ old('lampu_sign', $order->kondisi_unit->lampu_sign) == 'Ada' ? 'selected' : '' }}>
                                         Ada
@@ -328,6 +343,7 @@
                     <label class="col-sm-2 col-form-label text-end" for="bpkb">BPKB</label>
                     <div class="col-sm-3 p-l-0">
                         <select class="form-select @error('bpkb') is-invalid @enderror" name="bpkb" id="bpkb">
+                            <option></option>
                             <option value="Atas Nama Sendiri"
                                 {{ old('bpkb', $order->barang->bpkb) == 'Atas Nama Sendiri' ? 'selected' : '' }}>
                                 Atas Nama Sendiri
@@ -348,6 +364,7 @@
                     <div class="col-sm-2 p-l-0">
                         <select class="form-select @error('faktur') is-invalid @enderror" name="faktur" id="faktur"
                             value="{{ old('faktur') }}">
+                            <option></option>
                             <option value="Ada"
                                 {{ old('faktur', $order->barang->faktur) == 'Ada' ? 'selected' : '' }}>
                                 Ada
@@ -367,6 +384,7 @@
                     <div class="col-sm-2 p-l-0">
                         <select class="form-select @error('surat_jual_beli') is-invalid @enderror"
                             name="surat_jual_beli" id="surat_jual_beli" value="{{ old('surat_jual_beli') }}">
+                            <option></option>
                             <option value="Ada"
                                 {{ old('surat_jual_beli', $order->barang->surat_jual_beli) == 'Ada' ? 'selected' : '' }}>
                                 Ada
@@ -389,6 +407,7 @@
                     <div class="col-sm-2 p-l-0">
                         <select class="form-select @error('stnk_ada') is-invalid @enderror" name="stnk_ada"
                             id="stnk_ada" value="{{ old('stnk_ada') }}">
+                            <option></option>
                             <option value="Ada"
                                 {{ old('stnk_ada', $order->barang->stnk_ada) == 'Ada' ? 'selected' : '' }}>
                                 Ada

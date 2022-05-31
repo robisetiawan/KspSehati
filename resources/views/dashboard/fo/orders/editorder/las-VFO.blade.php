@@ -17,11 +17,12 @@
 
                                 <div class="row mb-1">
                                     <label class="col-sm-4 col-form-label" for="sewa_rumah">Sewa Rumah (Rp)</label>
-                                    <div class="col-sm-3 p-l-0">
+                                    <div class="col-sm-5 p-l-0">
                                         <input
                                             class="form-control form-control-sm @error('sewa_rumah') is-invalid @enderror"
                                             name="sewa_rumah" type="text" id="sewa_rumah"
-                                            value="{{ old('sewa_rumah', $order->las->sewa_rumah) }}">
+                                            value="{{ old('sewa_rumah', $order->las->sewa_rumah) }}"
+                                            type-currency="IDR" placeholder="Rp ">
                                         @error('sewa_rumah')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -31,6 +32,7 @@
                                     <div class="col-sm-3 p-l-0">
                                         <select class="form-select form-select-sm @error('per') is-invalid @enderror"
                                             name="per" id="per">
+                                            <option></option>
                                             <option value="Bulan"
                                                 {{ old('faktur', $order->las->per) == 'Bulan' ? 'selected' : '' }}>
                                                 Bulan
@@ -48,6 +50,7 @@
                                     <div class="col-sm-3 p-l-0">
                                         <select class="form-select form-select-sm @error('mobil') is-invalid @enderror"
                                             name="mobil" id="mobil">
+                                            <option></option>
                                             <option value="Ada"
                                                 {{ old('faktur', $order->las->mobil) == 'Ada' ? 'selected' : '' }}>
                                                 Ada
@@ -62,6 +65,7 @@
                                     <div class="col-sm-3 p-l-0">
                                         <select class="form-select form-select-sm @error('motor') is-invalid @enderror"
                                             name="motor" id="motor">
+                                            <option></option>
                                             <option value="Ada"
                                                 {{ old('faktur', $order->las->motor) == 'Ada' ? 'selected' : '' }}>
                                                 Ada
@@ -79,6 +83,7 @@
                                     <div class="col-sm-3 p-l-0">
                                         <select class="form-select form-select-sm @error('kulkas') is-invalid @enderror"
                                             name="kulkas" id="kulkas">
+                                            <option></option>
                                             <option value="Ada"
                                                 {{ old('faktur', $order->las->kulkas) == 'Ada' ? 'selected' : '' }}>
                                                 Ada
@@ -93,6 +98,7 @@
                                     <div class="col-sm-3 p-l-0">
                                         <select class="form-select form-select-sm @error('tv') is-invalid @enderror"
                                             name="tv" id="tv">
+                                            <option></option>
                                             <option value="Ada"
                                                 {{ old('faktur', $order->las->tv) == 'Ada' ? 'selected' : '' }}>
                                                 Ada
@@ -110,6 +116,7 @@
                                     <div class="col-sm-3 p-l-0">
                                         <select class="form-select form-select-sm @error('ac') is-invalid @enderror"
                                             name="ac" id="ac">
+                                            <option></option>
                                             <option value="Ada"
                                                 {{ old('faktur', $order->las->ac) == 'Ada' ? 'selected' : '' }}>
                                                 Ada
@@ -124,6 +131,7 @@
                                     <div class="col-sm-3 p-l-0">
                                         <select class="form-select form-select-sm @error('dvd') is-invalid @enderror"
                                             name="dvd" id="dvd">
+                                            <option></option>
                                             <option value="Ada"
                                                 {{ old('faktur', $order->las->dvd) == 'Ada' ? 'selected' : '' }}>
                                                 Ada
@@ -141,6 +149,7 @@
                                         <select
                                             class="form-select form-select-sm @error('furniture') is-invalid @enderror"
                                             name="furniture" id="furniture">
+                                            <option></option>
                                             <option value="Ada"
                                                 {{ old('faktur', $order->las->furniture) == 'Ada' ? 'selected' : '' }}>
                                                 Ada
@@ -198,6 +207,7 @@
                                     <div class="col-sm-6 p-l-0">
                                         <select class="form-select form-select-sm @error('rumah') is-invalid @enderror"
                                             name="rumah" id="rumah">
+                                            <option></option>
                                             <option value="Semi Permanen"
                                                 {{ old('rumah', $order->las->rumah) == 'Semi Permanen' ? 'selected' : '' }}>
                                                 Semi Permanen
@@ -221,6 +231,7 @@
                                         <select
                                             class="form-select form-select-sm @error('tetangga_kanan') is-invalid @enderror"
                                             name="tetangga_kanan" id="tetangga_kanan">
+                                            <option></option>
                                             <option value="Lebih dari 5 rumah"
                                                 {{ old('faktur', $order->las->tetangga_kanan) == 'Lebih dari 5 rumah' ? 'selected' : '' }}>
                                                 Lebih dari 5 rumah
@@ -240,6 +251,7 @@
                                         <select
                                             class="form-select form-select-sm @error('tetangga_kiri') is-invalid @enderror"
                                             name="tetangga_kiri" id="tetangga_kiri">
+                                            <option></option>
                                             <option value="Lebih dari 5 rumah"
                                                 {{ old('faktur', $order->las->tetangga_kiri) == 'Lebih dari 5 rumah' ? 'selected' : '' }}>
                                                 Lebih dari 5 rumah

@@ -60,7 +60,8 @@
                                         <label class="col-sm-3 col-form-label" for="nama">Grade Desc</label>
                                         <div class="col-sm-9 p-l-0">
                                             <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                                value="{{ $order->kondisi_unit->grade_desc >= 80 ? 'Diatas 80 %' : 'Dibawah 80 %' }}" />
+                                                value="{{ $order->kondisi_unit->grade_desc >= 80 ? 'Diatas 80 %' : 'Dibawah 80 %' }}"
+                                                disabled />
                                         </div>
                                     </div>
 
@@ -73,7 +74,8 @@
                                         </div>
                                         <div class="col p-l-0">
                                             <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                                value="{{ $order->barang->stnk_mati_tahun >= 5 ? 'Mati diatas 5 tahun' : 'Mati dibawah 5 tahun' }}" />
+                                                value="{{ $order->barang->stnk_mati_tahun >= 5 ? 'Mati diatas 5 tahun' : 'Mati dibawah 5 tahun' }}"
+                                                disabled />
                                         </div>
                                     </div>
                                 </div>

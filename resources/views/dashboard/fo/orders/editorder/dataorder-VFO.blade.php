@@ -58,6 +58,7 @@
                                 <div class="col-sm-6">
                                     <select class="form-select @error('ada_jaminan') is-invalid @enderror"
                                         name="ada_jaminan" id="ada_jaminan" value="">
+                                        <option></option>
                                         <option value="Ada Jaminan"
                                             {{ old('ada_jaminan', $order->jaminan->ada_jaminan) == 'Ada Jaminan' ? 'selected' : '' }}>
                                             Ada Jaminan
@@ -94,6 +95,7 @@
                                 <div class="col-sm-6">
                                     <select class="form-select @error('kepemilikan') is-invalid @enderror"
                                         name="kepemilikan" id="kepemilikan" value="">
+                                        <option></option>
                                         <option value="Milik Sendiri"
                                             {{ old('kepemilikan', $order->jaminan->kepemilikan) == 'Milik Sendiri' ? 'selected' : '' }}>
                                             Milik Sendiri
@@ -362,6 +364,7 @@
                                 <div class="col-sm-4">
                                     <select class="form-select @error('status') is-invalid @enderror" name="status"
                                         id="status" value="{{ old('status') }}">
+                                        <option></option>
                                         <option value="Verify"
                                             {{ old('status', $order->status) == 'Verify' ? 'selected' : '' }}>
                                             Verify
@@ -392,6 +395,7 @@
                                 <div class="col-sm-5">
                                     <select class="form-select @error('tipe_order') is-invalid @enderror"
                                         name="tipe_order" id="tipe_order" value="{{ old('tipe_order') }}">
+                                        <option></option>
                                         <option value="Retail"
                                             {{ old('tipe_order', $order->tipe_order) == 'Retail' ? 'selected' : '' }}>
                                             Retail
@@ -414,6 +418,7 @@
                                 <div class="col-sm-5">
                                     <select class="form-select @error('platform') is-invalid @enderror" name="platform"
                                         id="platform" value="{{ old('platform') }}">
+                                        <option></option>
                                         <option value="Konvensional"
                                             {{ old('platform', $order->platform) == 'Konvensional' ? 'selected' : '' }}>
                                             Konvensional
@@ -436,6 +441,7 @@
                                 <div class="col-sm-4">
                                     <select class="form-select @error('keperluan') is-invalid @enderror"
                                         name="keperluan" id="keperluan" value="{{ old('keperluan') }}">
+                                        <option></option>
                                         <option value="Sendiri"
                                             {{ old('keperluan', $order->keperluan) == 'Sendiri' ? 'selected' : '' }}>
                                             Sendiri
@@ -477,12 +483,13 @@
                                     <select
                                         class="form-select form-select-sm @error('buss_unit') is-invalid @enderror"
                                         name="buss_unit" id="buss_unit">
+                                        <option></option>
                                         <option value="01 - Pinjaman Jaminan Motor"
-                                            {{ old('buss_unit', $order->buss_unit) == '01 - Pinjaman Jaminan Motor' ? 'selected' : '' }}>
+                                            {{ old('buss_unit', $order->jaminan->buss_unit) == '01 - Pinjaman Jaminan Motor' ? 'selected' : '' }}>
                                             01 - Pinjaman Jaminan Motor
                                         </option>
                                         <option value="02 - Pinjaman Jaminan Mobil"
-                                            {{ old('buss_unit', $order->buss_unit) == '02 - Pinjaman Jaminan Mobil' ? 'selected' : '' }}>
+                                            {{ old('buss_unit', $order->jaminan->buss_unit) == '02 - Pinjaman Jaminan Mobil' ? 'selected' : '' }}>
                                             02 - Pinjaman Jaminan Mobil
                                         </option>
                                     </select>
@@ -633,12 +640,13 @@
                                     <select
                                         class="form-select form-select-sm @error('awalorakhir') is-invalid @enderror"
                                         name="awalorakhir" id="awalorakhir">
+                                        <option></option>
                                         <option value="Awal"
-                                            {{ old('awaloeakhir', $order->jaminan->awaloeakhir) == 'Awal' ? 'selected' : '' }}>
+                                            {{ old('awalorakhir', $order->jaminan->awalorakhir) == 'Awal' ? 'selected' : '' }}>
                                             Awal
                                         </option>
                                         <option value="Akhir"
-                                            {{ old('awaloeakhir', $order->jaminan->awaloeakhir) == 'Akhir' ? 'selected' : '' }}>
+                                            {{ old('awalorakhir', $order->jaminan->awalorakhir) == 'Akhir' ? 'selected' : '' }}>
                                             Akhir
                                         </option>
                                     </select>

@@ -62,6 +62,10 @@ class FoOrderController extends Controller
         $createorder = DB::transaction(
             function () use ($request) {
 
+                $validatedData = $request->validate([
+                    'anggota_id' => 'required|unique:orders',
+                ]);
+
                 $jaminan = Jaminan::create([
                     "barang" => $request->barang,
                     "buss_unit" => $request->buss_unit,
@@ -84,8 +88,8 @@ class FoOrderController extends Controller
                 ]);
 
                 $order = Order::create([
-                    "no_order" => date('dmy') . "OR" . $request->id,
-                    "anggota_id" => $request->id,
+                    "no_order" => date('dmy') . "OR" . $request->anggota_id,
+                    "anggota_id" => $request->anggota_id,
                     "jaminan_id" => $jaminan->id,
                     "barang_id" => $barang->id,
                     "kondisi_unit_id" => $kondisi_unit->id,
@@ -271,9 +275,9 @@ class FoOrderController extends Controller
 
         //order
         $orders = [
-            "status" => 'required',
+            "status" => 'nullable',
             "tipe_order" => 'nullable',
-            "paltform" => 'nullable',
+            "platform" => 'nullable',
             "keperluan" => 'nullable',
             "catatan" => 'nullable'
         ];
@@ -305,6 +309,7 @@ class FoOrderController extends Controller
         $pendapatan_lainRp = str_replace($deleteRp, "", $request->pendapatan_lain);
         $biaya_bulananRp = str_replace($deleteRp, "", $request->biaya_bulanan);
         $harga_pasarRp = str_replace($deleteRp, "", $request->harga_pasar);
+        $sewa_rumahRp = str_replace($deleteRp, "", $request->sewa_rumah);
 
         $validprofession['omset_dagang'] = (int)$omsetRp;
         $validprofession['pendapatan'] = (int)$pendapatanRp;
@@ -313,6 +318,7 @@ class FoOrderController extends Controller
         $validprofession['pendapatan_lain'] = (int)$pendapatan_lainRp;
         $validprofession['biaya_bulanan'] = (int)$biaya_bulananRp;
         $validjaminan['harga_pasar'] = (int)$harga_pasarRp;
+        $validsewa_rumah['sewa_rumah'] = (int)$sewa_rumahRp;
         //endCurrency
 
         $k_mesin = $request->kategori_m === 'Baik' ? '50' : '0';

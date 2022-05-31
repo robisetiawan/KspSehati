@@ -40,26 +40,31 @@
                     @csrf
                     <div class="card">
                         <div class="card-body f-12">
-                            <div class="row">
-                                {{-- Left Coloum --}}
-                                @forelse ($anggotas as $a)
-                                    <div class="col">
-                                        <!-- **************************************************************************************************8******  -->
-
-                                        <div class=" row mb-1">
-                                            <label class="col-sm-4 col-form-label visually-hidden" for="id">No
-                                                Anggota</label>
-                                            <div class="col p-l-0">
-                                                <input
-                                                    class="form-control form-control-sm @error('id ') is-invalid @enderror"
-                                                    name="id" type="hidden" id="id" value="{{ $a->id }}" readonly>
-                                                @error('id')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                            @forelse ($anggotas as $a)
+                                <div class="row mb-3">
+                                    <label class="col-sm-5 col-form-label visually-hidden" for="anggota_id">anggota_id
+                                    </label>
+                                    <div class="col p-l-0">
+                                        <input
+                                            class="form-control form-control-sm @error('anggota_id') is-invalid @enderror"
+                                            name="anggota_id" type="hidden" id="anggota_id"
+                                            value="{{ old('anggota_id', $a->id) }}">
+                                        @error('anggota_id')
+                                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Anggota
+                                                sedang
+                                                dalam
+                                                proses order
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                    aria-label="Close"></button>
                                             </div>
-                                        </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    {{-- Left Coloum --}}
+                                    <div class="col">
+
                                         <!-- **************************************************************************************************8******  -->
 
                                         <div class=" row mb-1">
@@ -372,11 +377,11 @@
                                         </div>
                                         <!-- ****************************************************************************************** -->
                                     </div>
-                                @empty
-                                    <p class="text-center">Anggota tidak ditemukan !!!</p>
-                                @endforelse
-                                {{-- EndRight Coloum --}}
-                            </div>
+                                    {{-- EndRight Coloum --}}
+                                </div>
+                            @empty
+                                <p class="text-center">Anggota tidak ditemukan !!!</p>
+                            @endforelse
                         </div>
                         {{-- cardFooter --}}
                         <div class="card-footer text-end">

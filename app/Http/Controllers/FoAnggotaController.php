@@ -8,7 +8,9 @@ use App\Models\Anggota;
 use App\Models\Identity;
 use App\Models\Profession;
 use Illuminate\Http\Request;
+use App\Exports\AnggotaExport;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Support\ValidatedData;
 
@@ -452,5 +454,14 @@ class FoAnggotaController extends Controller
         Adddata::destroy($anggota->adddata->id);
 
         return redirect('/dashboard/anggotas')->with('success', 'Anggota Berhasil dihapus');
+    }
+
+    public function AnggotaExport()
+    {
+        $export = new AnggotaExport([
+            ['nama_panggilan', 'no_anggota']
+        ]);
+
+        return Excel::download(new $export, 'data-anggota.xlsx');
     }
 }

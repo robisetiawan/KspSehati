@@ -81,6 +81,8 @@ Route::name('fo')->middleware('fo')->group(
         Route::get('/dashboard/cetak-buku-anggota', [CetakBukuAgController::class, 'cetak']);
         Route::get('/dashboard/cetak-buku-anggota/cari', [CetakBukuAgController::class, 'caricetak']);
         Route::get('/dashboard/cetak-buku-anggota/cari/{id}', [CetakBukuAgController::class, 'print']);
+
+        Route::get('/export-data-anggota', [FoAnggotaController::class, 'AnggotaExport']);
     }
 );
 //endRoute FO

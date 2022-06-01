@@ -22,9 +22,13 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
+
                         <div class="table-responsive card-body py-3 f-12">
                             <a href="/dashboard/anggotas/create" class="btn btn-primary mb-2"><i class="fa fa-plus"
                                     aria-hidden="true"></i> Tambah anggota</a>
+
+                            <a href="/export-data-anggota" class="btn btn-success mb-2"><i class="fa fa-file-excel-o"
+                                    aria-hidden="true"></i> Export Excel</a>
                             @if (session()->has('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     {{ session('success') }}

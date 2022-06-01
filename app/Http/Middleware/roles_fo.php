@@ -20,7 +20,7 @@ class roles_fo
             abort(403);
         }
 
-        if (auth()->user()->roles !== 'fo') {
+        if (auth()->user()->roles !== 'FO') {
             abort(403);
         }
 

@@ -14,7 +14,7 @@
                  <img class="img-90 rounded-circle" src="{{ asset('templates/assets/images/dashboard/2.png ') }} " />
              @endif
 
-             <div class="badge-bottom"><span class="badge badge-primary">FO</span></div>
+             <div class="badge-bottom"><span class="badge badge-primary">{{ auth()->user()->roles }}</span></div>
              <a href="/dashboard/profile">
                  {{-- <h6 class="mt-3 f-14 f-w-600">FINANCE OFFICER</h6> --}}
                  <h6 class="mt-3 f-14 f-w-600">{{ auth()->user()->name }}</h6> {{-- auth otomatis sdh ad di laravel --}}

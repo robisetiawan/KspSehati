@@ -20,7 +20,7 @@ class roles_anggota
             abort(403);
         }
 
-        if (auth()->user()->roles !== 'anggota') {
+        if (auth()->user()->roles !== 'Anggota') {
             abort(403);
         }
 

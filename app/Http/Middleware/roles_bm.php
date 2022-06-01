@@ -20,7 +20,7 @@ class roles_bm
             abort(403);
         }
 
-        if (auth()->user()->roles !== 'bm') {
+        if (auth()->user()->roles !== 'BM') {
             abort(403);
         }
 

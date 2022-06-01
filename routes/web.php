@@ -64,9 +64,9 @@ Route::put('/dashboard/update-setting/{user}', [ProfileController::class, 'updat
 
 //=======================
 
-Route::name('allusers')->middleware('auth')->group(
+//Finance Officer Route
+Route::name('fo')->middleware('fo')->group(
     function () {
-        //Finance Officer Route
         Route::get('/dashboard/pooling-order', [FoOrderController::class, 'poolingorder']);
         Route::get('/dashboard/pooling-order/cari', [FoOrderController::class, 'caripoolingorder']);
         Route::resource('/dashboard/anggotas', FoAnggotaController::class);
@@ -81,24 +81,33 @@ Route::name('allusers')->middleware('auth')->group(
         Route::get('/dashboard/cetak-buku-anggota', [CetakBukuAgController::class, 'cetak']);
         Route::get('/dashboard/cetak-buku-anggota/cari', [CetakBukuAgController::class, 'caricetak']);
         Route::get('/dashboard/cetak-buku-anggota/cari/{id}', [CetakBukuAgController::class, 'print']);
-        //endRoute FO
+    }
+);
+//endRoute FO
 
-        //Anggota Route
+
+//Anggota Route
+Route::name('anggota')->middleware('anggota')->group(
+    function () {
         Route::get('/dashboard/kartu-anggota', [AgAnggotaController::class, 'index']);
         Route::get('/dashboard/pinjaman', [AgAnggotaController::class, 'pinjaman']);
         Route::get('/dashboard/simpanan', [AgAnggotaController::class, 'simpanan']);
-        //endRoute Anggota
+    }
+);
+//endRoute Anggota
 
-        //BM Route
+
+//BM Route
+Route::name('bm')->middleware('bm')->group(
+    function () {
         Route::get('/dashboard/lap-dt-ag', [BmController::class, 'index']);
         Route::get('/dashboard/lap-dt-ag/{id}', [BmController::class, 'detail']);
         Route::get('/dashboard/lap-dt-ag/false', [BmController::class, 'false']);
         Route::get('/dashboard/lap-dt-ag/{anggota:id}', [BmController::class, 'show']);
         Route::get('/dashboard/lap-keuangan', [BmController::class, 'lapkeuangan']);
-        //endRoute BM
     }
 );
-
+//endRoute BM
 
 
 

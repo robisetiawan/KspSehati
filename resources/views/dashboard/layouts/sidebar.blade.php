@@ -31,11 +31,11 @@
                              <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2"
                                      aria-hidden="true"></i></div>
                          </li>
-                         <li class="sidebar-main-title">
+                         {{-- <li class="sidebar-main-title">
                              <div>
                                  <h6>FO</h6>
                              </div>
-                         </li>
+                         </li> --}}
 
                          {{-- <li class="dropdown">
                              <a href="/anggota"
@@ -45,41 +45,43 @@
                              </a>
                          </li> --}}
 
-                         <li class="dropdown">
-                             <a href="/dashboard/home"
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/home') ? 'active' : '' }}">
-                                 <i data-feather="home"></i>
-                                 <span>Dashboard</span>
-                             </a>
-                         </li>
+                         {{-- FO View --}}
+                         @can('fo')
+                             <li class="dropdown">
+                                 <a href="/dashboard/home"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/home') ? 'active' : '' }}">
+                                     <i data-feather="home"></i>
+                                     <span>Dashboard</span>
+                                 </a>
+                             </li>
 
-                         <li class="dropdown">
-                             <a href="/dashboard/anggotas" {{-- class="menu-title link-nav nav-link {{ Request::path() === '/order' ? 'active' : '' }}" --}}
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/anggotas*') ? 'active' : '' }}">
-                                 <i data-feather="users"></i>
-                                 <span>Anggota</span>
-                             </a>
-                         </li>
+                             <li class="dropdown">
+                                 <a href="/dashboard/anggotas" {{-- class="menu-title link-nav nav-link {{ Request::path() === '/order' ? 'active' : '' }}" --}}
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/anggotas*') ? 'active' : '' }}">
+                                     <i data-feather="users"></i>
+                                     <span>Anggota</span>
+                                 </a>
+                             </li>
 
-                         <li class="dropdown">
-                             <a href="/dashboard/pooling-order"
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/pooling-order*') ? 'active' : '' }}">
-                                 <i data-feather="monitor"></i>
-                                 <span>Pooling Order</span>
-                             </a>
-                         </li>
+                             <li class="dropdown">
+                                 <a href="/dashboard/pooling-order"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/pooling-order*') ? 'active' : '' }}">
+                                     <i data-feather="monitor"></i>
+                                     <span>Pooling Order</span>
+                                 </a>
+                             </li>
 
-                         <li class="dropdown">
-                             <a href="/dashboard/orders" {{-- class="menu-title link-nav nav-link {{ Request::path() === '/order' ? 'active' : '' }}" --}}
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/orders*') ? 'active' : '' }}">
-                                 <i data-feather="layers"></i>
-                                 <span>Order</span>
-                             </a>
-                         </li>
+                             <li class="dropdown">
+                                 <a href="/dashboard/orders" {{-- class="menu-title link-nav nav-link {{ Request::path() === '/order' ? 'active' : '' }}" --}}
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/orders*') ? 'active' : '' }}">
+                                     <i data-feather="layers"></i>
+                                     <span>Order</span>
+                                 </a>
+                             </li>
 
 
 
-                         {{-- <li class="dropdown">
+                             {{-- <li class="dropdown">
                              <a href="/edit-order"
                                  class="menu-title link-nav nav-link {{ $title === 'Edit Order' ? 'active' : '' }}">
                                  <i data-feather="server"></i>
@@ -87,98 +89,96 @@
                              </a>
                          </li> --}}
 
-                         <li class=" dropdown">
-                             <a href="/dashboard/struktur-kredit"
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/struktur-kredit*') ? 'active' : '' }}">
-                                 <i data-feather="file-text"></i>
-                                 <span>Struktur Kredit</span>
-                             </a>
-                         </li>
+                             <li class=" dropdown">
+                                 <a href="/dashboard/struktur-kredit"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/struktur-kredit*') ? 'active' : '' }}">
+                                     <i data-feather="file-text"></i>
+                                     <span>Struktur Kredit</span>
+                                 </a>
+                             </li>
 
-                         <li class="dropdown">
-                             <a href="/penerimaan-uang"
-                                 class="menu-title link-nav nav-link {{ $title === 'Penerimaan Uang' ? 'active' : '' }}">
-                                 <i data-feather="dollar-sign"></i>
-                                 <span>Penerimaan Uang</span>
-                             </a>
-                         </li>
+                             <li class="dropdown">
+                                 <a href="/penerimaan-uang"
+                                     class="menu-title link-nav nav-link {{ $title === 'Penerimaan Uang' ? 'active' : '' }}">
+                                     <i data-feather="dollar-sign"></i>
+                                     <span>Penerimaan Uang</span>
+                                 </a>
+                             </li>
 
 
-                         <li class="dropdown">
-                             <a href="/cetak-buku-anggota"
-                                 class="menu-title link-nav nav-link {{ $title === 'Cetak Buku Anggota' ? 'active' : '' }}">
-                                 <i data-feather="printer"></i>
-                                 <span>Cetak Buku Anggota</span>
-                             </a>
-                         </li>
+                             <li class="dropdown">
+                                 <a href="/cetak-buku-anggota"
+                                     class="menu-title link-nav nav-link {{ $title === 'Cetak Buku Anggota' ? 'active' : '' }}">
+                                     <i data-feather="printer"></i>
+                                     <span>Cetak Buku Anggota</span>
+                                 </a>
+                             </li>
 
-                         <li class="dropdown">
-                             <a href="/register"
-                                 class="menu-title link-nav nav-link {{ Request::is('/register') ? 'active' : '' }}">
-                                 <i data-feather="user-plus"></i>
-                                 <span>Register</span>
-                             </a>
-                         </li>
+                             <li class="dropdown">
+                                 <a href="/register"
+                                     class="menu-title link-nav nav-link {{ Request::is('/register') ? 'active' : '' }}">
+                                     <i data-feather="user-plus"></i>
+                                     <span>Register</span>
+                                 </a>
+                             </li>
+                         @endcan
+                         {{-- end Fo View --}}
 
-                         <li class="sidebar-main-title">
-                             <div>
-                                 <h6>Anggota</h6>
-                             </div>
-                         </li>
+                         {{-- Anggota View --}}
+                         @can('anggota')
+                             <li class="dropdown">
+                                 <a href="/dashboard/kartu-anggota"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/kartu-anggotas*') ? 'active' : '' }}">
+                                     <i data-feather="users"></i>
+                                     <span>Kartu Anggota</span>
+                                 </a>
+                             </li>
 
-                         <li class="dropdown">
-                             <a href="/dashboard/kartu-anggota"
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/kartu-anggotas*') ? 'active' : '' }}">
-                                 <i data-feather="users"></i>
-                                 <span>Kartu Anggota</span>
-                             </a>
-                         </li>
+                             <li class="dropdown">
+                                 <a href="/dashboard/pinjaman"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/pinjaman*') ? 'active' : '' }}">
+                                     <i data-feather="book-open"></i>
+                                     <span>Pinjaman</span>
+                                 </a>
+                             </li>
 
-                         <li class="dropdown">
-                             <a href="/dashboard/pinjaman"
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/pinjaman*') ? 'active' : '' }}">
-                                 <i data-feather="book-open"></i>
-                                 <span>Pinjaman</span>
-                             </a>
-                         </li>
+                             <li class="dropdown">
+                                 <a href="/dashboard/simpanan"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/simpanan*') ? 'active' : '' }}">
+                                     <i data-feather="book"></i>
+                                     <span>Simpanan</span>
+                                 </a>
+                             </li>
+                         @endcan
+                         {{-- end Anggota View --}}
 
-                         <li class="dropdown">
-                             <a href="/dashboard/simpanan"
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/simpanan*') ? 'active' : '' }}">
-                                 <i data-feather="book"></i>
-                                 <span>Simpanan</span>
-                             </a>
-                         </li>
+                         {{-- Bm View --}}
+                         @can('bm')
+                             <li class="dropdown">
+                                 <a href="/dashboard/lap-dt-ag"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/lap-dt-ag') ? 'active' : '' }}">
+                                     <i data-feather="users"></i>
+                                     <span>Laporan Data Anggota</span>
+                                 </a>
+                             </li>
 
-                         <li class="sidebar-main-title">
-                             <div>
-                                 <h6>Branch Manager</h6>
-                             </div>
-                         </li>
+                             <li class="dropdown">
+                                 <a href="/dashboard/lap-dt-ag"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/lap-dt-ag/false') ? 'active' : '' }}">
+                                     <i data-feather="users"></i>
+                                     <span>Laporan Data Anggota False</span>
+                                 </a>
+                             </li>
 
-                         <li class="dropdown">
-                             <a href="/dashboard/lap-dt-ag"
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/lap-dt-ag') ? 'active' : '' }}">
-                                 <i data-feather="users"></i>
-                                 <span>Laporan Data Anggota</span>
-                             </a>
-                         </li>
-
-                         <li class="dropdown">
-                             <a href="/dashboard/lap-dt-ag"
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/lap-dt-ag/false') ? 'active' : '' }}">
-                                 <i data-feather="users"></i>
-                                 <span>Laporan Data Anggota False</span>
-                             </a>
-                         </li>
-
-                         <li class="dropdown">
-                             <a href="/dashboard/lap-keuangan"
-                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/lap-keuangan*') ? 'active' : '' }}">
-                                 <i data-feather="file-text"></i>
-                                 <span>Laporan Keuangan</span>
-                             </a>
-                         </li>
+                             <li class="dropdown">
+                                 <a href="/dashboard/lap-keuangan"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/lap-keuangan*') ? 'active' : '' }}">
+                                     <i data-feather="file-text"></i>
+                                     <span>Laporan Keuangan</span>
+                                 </a>
+                             </li>
+                         @endcan
+                         {{-- end BM View --}}
 
 
                      </ul>

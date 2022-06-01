@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
+use App\Models\User;
+use Illuminate\Support\Facades\Gate;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +29,16 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::directive('currency', function ($expression) {
             return "Rp. <?php echo number_format($expression,0,',','.'); ?>";
+        });
+
+        Gate::define('fo', function (User $user) {
+            return $user->roles === 'fo';
+        });
+        Gate::define('anggota', function (User $user) {
+            return $user->roles === 'anggota';
+        });
+        Gate::define('bm', function (User $user) {
+            return $user->roles === 'bm';
         });
     }
 }

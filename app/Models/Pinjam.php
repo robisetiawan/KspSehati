@@ -14,4 +14,10 @@ class Pinjam extends Model
     {
         return $this->belongsTo(Anggota::class);
     }
+
+    public function order()
+    {
+        return $this->hasOne(Order::class);
+        //satu anggota bisa memiliki >= 1 Identity
+    }
 }

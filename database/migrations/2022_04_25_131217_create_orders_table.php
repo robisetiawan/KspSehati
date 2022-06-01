@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('barang_id');
             $table->foreignId('las_id');
             $table->foreignId('kondisi_unit_id');
+            $table->foreignId('pinjam_id');
             $table->string('no_order')->unique();
             $table->enum('tipe_order', ['Retail', 'Group Customer'])->nullable();
             $table->enum('status', ['Approve', 'Baru', 'Reject', 'Verify'])->nullable();

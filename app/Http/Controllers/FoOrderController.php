@@ -6,6 +6,7 @@ use App\Models\Las;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Barang;
+use App\Models\Pinjam;
 use App\Models\Adddata;
 use App\Models\Anggota;
 use App\Models\Jaminan;
@@ -64,6 +65,13 @@ class FoOrderController extends Controller
 
                 $validatedData = $request->validate([
                     'anggota_id' => 'required|unique:orders',
+                    'buss_unit' => "required",
+                    'barang' => "required",
+                    'ada_jaminan' => "required",
+                    'no_polisi' => "required",
+                    'no_mesin' => "required",
+                    'bpkb' => "required",
+                    'stnk_ada' => "required",
                 ]);
 
                 $jaminan = Jaminan::create([
@@ -87,13 +95,19 @@ class FoOrderController extends Controller
                     "id" => $barang->id
                 ]);
 
+                $pinjam = Pinjam::create([
+                    "id" => $barang->id,
+                    "anggota_id" => $request->anggota_id
+                ]);
+
                 $order = Order::create([
                     "no_order" => date('dmy') . "OR" . $request->anggota_id,
                     "anggota_id" => $request->anggota_id,
                     "jaminan_id" => $jaminan->id,
                     "barang_id" => $barang->id,
                     "kondisi_unit_id" => $kondisi_unit->id,
-                    "las_id" => $las->id
+                    "las_id" => $las->id,
+                    "pinjam_id" => $pinjam->id
                 ]);
             }
         );
@@ -139,6 +153,7 @@ class FoOrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+
         // Users
         $user = [
             'name' => 'required|max:255',
@@ -273,6 +288,19 @@ class FoOrderController extends Controller
             "tetangga_kiri" => 'nullable',
         ];
 
+        $pinjam = [
+            "nilai_pinj" => 'nullable',
+            "pk_kem" => 'nullable',
+            "tipe_angs" => 'nullable',
+            "ad_ar" => 'nullable',
+            "jumlah_angs" => 'nullable',
+            "periode" => 'nullable',
+            "per_p" => 'nullable',
+            "angsuran" => 'nullable',
+            "kategori" => 'nullable',
+            "admin_total" => 'nullable',
+        ];
+
         //order
         $orders = [
             "status" => 'nullable',
@@ -296,6 +324,7 @@ class FoOrderController extends Controller
         $validkondisi_unit = $request->validate($kondisi_unit);
         $validlas = $request->validate($las);
         $validorder = $request->validate($orders);
+        $validpinjam = $request->validate($pinjam);
 
         //Currency
         $deleteRp = array(
@@ -320,6 +349,18 @@ class FoOrderController extends Controller
         $validjaminan['harga_pasar'] = (int)$harga_pasarRp;
         $validsewa_rumah['sewa_rumah'] = (int)$sewa_rumahRp;
         //endCurrency
+
+        //struktur kredit by angsuran
+        $nilai_pinjRp = str_replace($deleteRp, "", $request->nilai_pinj);
+        $pk_kemRp = str_replace($deleteRp, "", $request->pk_kem);
+        $angsuranRp = str_replace($deleteRp, "", $request->angsuran);
+        $admin_totalRp = str_replace($deleteRp, "", $request->admin_total);
+
+        $validpinjam['nilai_pinj'] = (int)$nilai_pinjRp;
+        $validpinjam['pk_kem'] = (int)$pk_kemRp;
+        $validpinjam['angsuran'] = (int)$angsuranRp;
+        $validpinjam['admin_total'] = (int)$admin_totalRp;
+        //end struktur kredit by angsuran
 
         $k_mesin = $request->kategori_m === 'Baik' ? '50' : '0';
         $s_mesin = $request->suara_m === 'Halus' ? '50' : '0';
@@ -382,6 +423,8 @@ class FoOrderController extends Controller
             ->update($validkondisi_unit);
         Las::where('id', $order->las->id)
             ->update($validlas);
+        Pinjam::where('id', $order->pinjam->id)
+            ->update($validpinjam);
         Order::where('id', $order->id)
             ->update($validorder);
 

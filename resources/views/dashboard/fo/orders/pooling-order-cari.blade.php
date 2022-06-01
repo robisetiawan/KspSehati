@@ -27,8 +27,8 @@
 
                             <div class="input-group mb-3">
                                 <label class="col-sm-4 col-form-label visually-hidden" for="id">No Anggota</label>
-                                <input class="form-control" type="text" name="cari" placeholder="Nomor Anggota ..."
-                                    value="{{ request('cari') }}">
+                                <input class="form-control" type="text" name="cari"
+                                    placeholder="Masukan Nomor Anggota ..." value="{{ request('cari') }}" required>
                                 <button class="btn btn-primary" type="submit" value="CARI"><i class="fa fa-arrow-right"
                                         aria-hidden="true"></i></button>
                             </div>
@@ -73,7 +73,7 @@
                                                 <input
                                                     class="form-control form-control-sm @error('no_anggota ') is-invalid @enderror"
                                                     name="no_anggota" type="text" id="no_anggota"
-                                                    value="{{ $a->no_anggota }}" readonly>
+                                                    value="{{ $a->no_anggota }}" disabled>
                                                 @error('no_anggota')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -88,7 +88,7 @@
                                                 <input
                                                     class="form-control form-control-sm @error('name ') is-invalid @enderror"
                                                     name="name" type="text" id="name" value="{{ $a->user->name }}"
-                                                    readonly>
+                                                    disabled>
                                                 @error('name')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -143,13 +143,13 @@
                                                 <input type="text"
                                                     class="form-control form-control-sm @error('tempat_lahir ') is-invalid @enderror"
                                                     id="tempat_lahir" name="tempat_lahir" value="{{ $a->tempat_lahir }}"
-                                                    readonly />
+                                                    disabled />
                                             </div>
                                             <div class="col-sm-3 p-l-0">
                                                 <input type="text"
                                                     class="form-control form-control-sm @error('tanggal_lahir ') is-invalid @enderror"
                                                     id="tanggal_lahir" name="tanggal_lahir"
-                                                    value="{{ $a->tanggal_lahir }}" readonly />
+                                                    value="{{ $a->tanggal_lahir }}" disabled />
                                             </div>
                                         </div>
                                         <!-- **************************************************************************************************8******  -->
@@ -159,7 +159,7 @@
                                                 <input
                                                     class="form-control form-control-sm @error('nama_ibu ') is-invalid @enderror"
                                                     name="nama_ibu" type="text" id="nama_ibu" value="{{ $a->nama_ibu }}"
-                                                    readonly>
+                                                    disabled>
                                                 @error('nama_ibu')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -175,7 +175,7 @@
                                                 <input
                                                     class="form-control form-control-sm @error('jenis_kelamin ') is-invalid @enderror"
                                                     name="jenis_kelamin" type="text" id="jenis_kelamin"
-                                                    value="{{ $a->jenis_kelamin }}" readonly>
+                                                    value="{{ $a->jenis_kelamin }}" disabled>
                                                 @error('jenis_kelamin')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -190,7 +190,7 @@
                                                 <input
                                                     class="form-control form-control-sm @error('status_kawin ') is-invalid @enderror"
                                                     name="status_kawin" type="text" id="status_kawin"
-                                                    value="{{ $a->identity->status_kawin }}" readonly>
+                                                    value="{{ $a->identity->status_kawin }}" disabled>
                                                 @error('status_kawin')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -214,7 +214,7 @@
                                                 <input
                                                     class="form-control form-control-sm @error('type_identitas ') is-invalid @enderror"
                                                     name="type_identitas" type="text" id="type_identitas"
-                                                    value="{{ $a->identity->type_identitas }}" readonly>
+                                                    value="{{ $a->identity->type_identitas }}" disabled>
                                                 @error('type_identitas')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -231,7 +231,7 @@
                                                 <input
                                                     class="form-control form-control-sm @error('no_identitas ') is-invalid @enderror"
                                                     name="no_identitas" type="text" id="no_identitas"
-                                                    value="{{ $a->identity->no_identitas }}" readonly>
+                                                    value="{{ $a->identity->no_identitas }}" disabled>
                                                 @error('no_identitas')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -246,7 +246,7 @@
                                                 <input
                                                     class="form-control form-control-sm @error('telepon_seluler ') is-invalid @enderror"
                                                     name="telepon_seluler" type="text" id="telepon_seluler"
-                                                    value="{{ $a->telepon_seluler }}" readonly>
+                                                    value="{{ $a->telepon_seluler }}" disabled>
                                                 @error('telepon_seluler')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -261,7 +261,7 @@
                                                 <input
                                                     class="form-control form-control-sm @error('pekerjaan ') is-invalid @enderror"
                                                     name="pekerjaan" type="text" id="pekerjaan"
-                                                    value="{{ $a->profession->pekerjaan }}" readonly>
+                                                    value="{{ $a->profession->pekerjaan }}" disabled>
                                                 @error('pekerjaan')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}

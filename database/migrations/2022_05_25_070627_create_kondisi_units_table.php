@@ -34,6 +34,10 @@ class CreateKondisiUnitsTable extends Migration
             $table->integer('a_man')->nullable();
             $table->integer('a_opt')->nullable();
             $table->integer('grade_desc')->nullable();
+            $table->integer('pk_stnk')->nullable();
+            $table->integer('hrgpk_stnk')->nullable();
+            $table->integer('pk_kondisi')->nullable();
+            $table->integer('hrgpk_kondisi')->nullable();
             $table->timestamps();
         });
     }

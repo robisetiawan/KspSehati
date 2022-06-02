@@ -22,11 +22,9 @@ class CreateOrdersTable extends Migration
             $table->foreignId('kondisi_unit_id');
             $table->foreignId('pinjam_id');
             $table->string('no_order')->unique();
-            $table->enum('tipe_order', ['Retail', 'Group Customer'])->nullable();
-            $table->enum('status', ['Approve', 'Baru', 'Reject', 'Verify'])->nullable();
-            $table->enum('platform', ['Konvensional', 'Syariah'])->nullable();
             $table->enum('keperluan', ['Sendiri', 'Keluarga', 'Orang Lain'])->nullable();
             $table->text('catatan')->nullable();
+            $table->text('catt_survey')->nullable();
             $table->timestamps();
         });
     }

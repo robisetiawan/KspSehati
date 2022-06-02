@@ -405,15 +405,11 @@
                 <div class="row mb-1">
                     <label class="col-sm-2 col-form-label text-end" for="stnk_ada">STNK Ada?</label>
                     <div class="col-sm-2 p-l-0">
-                        <select class="form-select @error('stnk_ada') is-invalid @enderror" name="stnk_ada"
-                            id="stnk_ada" value="{{ old('stnk_ada') }}">
-                            <option></option>
-                            <option value="Ada"
-                                {{ old('stnk_ada', $order->barang->stnk_ada) == 'Ada' ? 'selected' : '' }}>
+                        <select class="form-select" disabled>
+                            <option value="Ada">
                                 Ada
                             </option>
-                            <option value="Tidak Ada"
-                                {{ old('stnk_ada', $order->barang->stnk_ada) == 'Tidak Ada' ? 'selected' : '' }}>
+                            <option value="Tidak Ada">
                                 Tidak Ada
                             </option>
                         </select>

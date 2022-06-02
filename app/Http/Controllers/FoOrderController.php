@@ -67,24 +67,24 @@ class FoOrderController extends Controller
                     'anggota_id' => 'required|unique:orders',
                     'buss_unit' => "required",
                     'barang' => "required",
-                    'ada_jaminan' => "required",
+                    'ada_jaminan' => "nullable",
                     'no_polisi' => "required",
                     'no_mesin' => "required",
                     'bpkb' => "required",
-                    'stnk_ada' => "required",
+                    'stnk_ada' => "nullable",
                 ]);
 
                 $jaminan = Jaminan::create([
                     "barang" => $request->barang,
                     "buss_unit" => $request->buss_unit,
-                    "ada_jaminan" => $request->ada_jaminan,
+                    "ada_jaminan" => "Ada Jaminan",
                     "no_polisi" => $request->no_polisi,
                     "no_mesin" => $request->no_mesin
                 ]);
 
                 $barang = Barang::create([
                     "bpkb" => $request->bpkb,
-                    "stnk_ada" => $request->stnk_ada
+                    "stnk_ada" => "Ada"
                 ]);
 
                 $kondisi_unit = Kondisi_unit::create([
@@ -224,7 +224,7 @@ class FoOrderController extends Controller
 
         //jaminan
         $jaminan = [
-            "ada_jaminan" => 'required',
+            "ada_jaminan" => 'nullable',
             "kepemilikan" => 'required',
             "buss_unit" => 'required',
             "barang" => 'required',
@@ -261,6 +261,10 @@ class FoOrderController extends Controller
             "kaki" => 'nullable',
             "jok" => 'nullable',
             "lampu_sign" => 'nullable',
+            "pk_stnk" => 'nullable',
+            "hrgpk_stnk" => 'nullable',
+            "pk_kondisi" => 'nullable',
+            "hrgpk_kondisi" => 'nullable',
             // "m_kend" => 'nullable',
             // "a_man" => 'nullable',
             // "a_opt" => 'nullable',
@@ -297,8 +301,9 @@ class FoOrderController extends Controller
             "periode" => 'nullable',
             "per_p" => 'nullable',
             "angsuran" => 'nullable',
-            "kategori" => 'nullable',
             "admin_total" => 'nullable',
+            "harga_acuan" => 'nullable',
+            "persentase" => 'nullable',
         ];
 
         //order
@@ -307,8 +312,10 @@ class FoOrderController extends Controller
             "tipe_order" => 'nullable',
             "platform" => 'nullable',
             "keperluan" => 'nullable',
-            "catatan" => 'nullable'
+            "catatan" => 'nullable',
+            "catt_survey" => 'nullable'
         ];
+
 
 
 
@@ -362,24 +369,30 @@ class FoOrderController extends Controller
         $validpinjam['admin_total'] = (int)$admin_totalRp;
         //end struktur kredit by angsuran
 
-        $k_mesin = $request->kategori_m === 'Baik' ? '50' : '0';
-        $s_mesin = $request->suara_m === 'Halus' ? '50' : '0';
+
+        $k_mesin = $request->kategori_m === 'Baik' ? '70' : '0';
+        $s_mesin = $request->suara_m === 'Halus' ? '30' : '0';
 
         $j_m_kend = $k_mesin + $s_mesin;
 
         if ($request->kategori_m) {
             $validkondisi_unit['m_kend'] = $j_m_kend;
         }
+        // if ($order->barang->stnk_mati_tahun != null) {
+        //     { if ($order->barang->stnk_mati_tahun == 1 )
+        //         $validkondisi_unit['pk_stnk'] = 4;
+        //     elseif }
+        // }
 
-        $a_a = $request->accu_aki === 'Ada' ? '20' : '0';
-        $ks = $request->kick_s === 'Ada' ? '20' : '0';
-        $ck = $request->cakram === 'Ada/Model Tidak Bercakram' ? '15' : '0';
-        $s_b = $request->sayap_b === 'Ada' ? '7.5' : '0';
-        $c_b = $request->cover_b === 'Ada' ? '7.5' : '0';
-        $kn = $request->knalpot === 'Orisinil' ? '7.5' : '0';
-        $sp = $request->speedometer === 'Ada' ? '7.5' : '0';
-        $v_b = $request->velg_ban === 'Standar' ? '7.5' : '0';
-        $sh = $request->shockbreaker === 'Standar' ? '7.5' : '0';
+        $ks = $request->kick_s === 'Ada' ? '30' : '0';
+        $a_a = $request->accu_aki === 'Ada' ? '11.25' : '0';
+        $s_b = $request->sayap_b === 'Ada' ? '11.25' : '0';
+        $c_b = $request->cover_b === 'Ada' ? '11.25' : '0';
+        $kn = $request->knalpot === 'Orisinil' ? '11.25' : '0';
+        $ck = $request->cakram === 'Ada/Model Tidak Bercakram' ? '10' : '0';
+        $sp = $request->speedometer === 'Ada' ? '5' : '0';
+        $v_b = $request->velg_ban === 'Standar' ? '5' : '0';
+        $sh = $request->shockbreaker === 'Standar' ? '5' : '0';
 
         $j_a_man = $a_a + $ks + $ck + $s_b + $c_b + $kn + $sp + $v_b + $sh;
 
@@ -401,6 +414,49 @@ class FoOrderController extends Controller
             $validkondisi_unit['grade_desc'] = ($j_m_kend + $j_a_man + $j_a_opt) / 3;
         }
 
+        //pengurangan kondisi unit
+        $a = $request->kategori_m === 'Baik' ? '0' : '30';
+        $b = $request->suara_m === 'Halus' ? '0' : '15';
+        //
+        $c = $request->kick_s === 'Ada' ? '0' : '20';
+        $d = $request->accu_aki === 'Ada' ? '0' : '10';
+        $e = $request->sayap_b === 'Ada' ? '0' : '10';
+        $f = $request->cover_b === 'Ada' ? '0' : '10';
+        $g = $request->knalpot === 'Orisinil' ? '0' : '10';
+        $h = $request->cakram === 'Ada/Model Tidak Bercakram' ? '0' : '8';
+        $i = $request->speedometer === 'Ada' ? '0' : '5';
+        $j = $request->velg_ban === 'Standar' ? '0' : '5';
+        $k = $request->shockbreaker === 'Standar' ? '0' : '5';
+        //
+        $l = $request->spion === 'Ada' ? '0' : '5';
+        $m = $request->kaki === 'Ada' ? '0' : '5';
+        $n = $request->jok === 'Orisinil' ? '0' : '5';
+        $o = $request->lampu_sign === 'Ada' ? '0' : '5';
+
+        $jmlpku = $a + $b + $c + $d + $e + $f + $g + $h + $i + $j + $k + $l + $m + $n + $o;
+
+        $validkondisi_unit['pk_kondisi'] = $jmlpku;
+        $validkondisi_unit['hrgpk_kondisi'] = ((int)$harga_pasarRp * $jmlpku) / 100;
+        //end pengurangan unit
+
+        //pengurangan kondisi stnk
+        if ($request->stnk_mati_tahun == 1)
+            $pk_stnk = 4;
+        elseif ($request->stnk_mati_tahun == 2)
+            $pk_stnk = 8;
+        elseif ($request->stnk_mati_tahun == 3)
+            $pk_stnk = 16;
+        elseif ($request->stnk_mati_tahun == 4)
+            $pk_stnk = 20;
+        else
+            $pk_stnk = 25;
+
+        $validkondisi_unit['pk_stnk'] = $pk_stnk;
+        $validkondisi_unit['hrgpk_stnk'] = ((int)$harga_pasarRp * $pk_stnk) / 100;
+
+        //endpengurangan
+
+        $validpinjam['harga_acuan'] = (int)$harga_pasarRp - ($validkondisi_unit['hrgpk_kondisi'] + $validkondisi_unit['hrgpk_stnk']);
 
 
         // dd($validkondisi_unit);

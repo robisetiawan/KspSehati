@@ -274,16 +274,16 @@
                                             <label class="col-sm-4 col-form-label" for="ada_jaminan">Jaminan</label>
                                             <div class="col p-l-0">
                                                 <select class="form-select @error('ada_jaminan') is-invalid @enderror"
-                                                    name="ada_jaminan" id="ada_jaminan">
-                                                    <option></option>
-                                                    <option value="Ada Jaminan"
+                                                    name="ada_jaminan" id="ada_jaminan" disabled>
+                                                    <option>Ada Jaminan</option>
+                                                    {{-- <option value="Ada Jaminan"
                                                         {{ old('ada_jaminan') == 'Ada Jaminan' ? 'selected' : '' }}>
                                                         Ada Jaminan
                                                     </option>
                                                     <option value="Tanpa Jaminan"
                                                         {{ old('ada_jaminan') == 'Tanpa Jaminan' ? 'selected' : '' }}>
                                                         Tanpa Jaminan
-                                                    </option>
+                                                    </option> --}}
                                                 </select>
                                                 @error('ada_jaminan')
                                                     <div class="invalid-feedback">
@@ -356,17 +356,9 @@
                                         <div class="row mb-1">
                                             <label class="col-sm-4 col-form-label" for="stnk_ada">STNK Ada ?</label>
                                             <div class="col p-l-0">
-                                                <select
-                                                    class="form-select form-select-sm @error('stnk_ada') is-invalid @enderror"
-                                                    name="stnk_ada" id="stnk_ada">
-                                                    <option></option>
-                                                    <option value="Ada" {{ old('stnk_ada') == 'Ada' ? 'selected' : '' }}>
-                                                        Ada
-                                                    </option>
-                                                    <option value="Tidak ada"
-                                                        {{ old('stnk_ada') == 'Tidak ada' ? 'selected' : '' }}>
-                                                        Tidak ada
-                                                    </option>
+                                                <select class="form-select @error('stnk_ada') is-invalid @enderror"
+                                                    name="stnk_ada" id="stnk_ada" disabled>
+                                                    <option>Ada Jaminan</option>
                                                 </select>
                                                 @error('stnk_ada')
                                                     <div class="invalid-feedback">
@@ -386,7 +378,6 @@
                         {{-- cardFooter --}}
                         <div class="card-footer text-end">
                             <button class="btn btn-primary" type="submit">Submit</button>
-                            <input class="btn btn-light" type="reset" value="Cancel" />
                         </div>
                         {{-- endCardFooter --}}
                     </div>

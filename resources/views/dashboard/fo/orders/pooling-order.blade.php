@@ -314,7 +314,6 @@
                         {{-- cardFooter --}}
                         <div class="card-footer text-end">
                             <button class="btn btn-primary" type="submit">Submit</button>
-                            <input class="btn btn-light" type="reset" value="Cancel" />
                         </div>
                         {{-- endCardFooter --}}
                     </div>

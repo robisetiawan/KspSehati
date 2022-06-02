@@ -60,7 +60,7 @@
                                         <label class="col-sm-3 col-form-label" for="nama">Grade Desc</label>
                                         <div class="col-sm-9 p-l-0">
                                             <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                                value="{{ $order->kondisi_unit->grade_desc >= 80 ? 'Diatas 80 %' : 'Dibawah 80 %' }}"
+                                                value="@if ($order->kondisi_unit->grade_desc >= 80) Diatas 80 % @elseif ($order->kondisi_unit->grade_desc == null) @else Dibawah 80 % @endif"
                                                 disabled />
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="col p-l-0">
                                             <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                                value="{{ $order->barang->stnk_mati_tahun >= 5 ? 'Mati diatas 5 tahun' : 'Mati dibawah 5 tahun' }}"
+                                                value="@if ($order->barang->stnk_mati_tahun >= 5) Mati diatas 5 tahun @elseif ($order->barang->stnk_mati_tahun == null) @else Mati dibawah 5 tahun @endif"
                                                 disabled />
                                         </div>
                                     </div>
@@ -132,33 +132,36 @@
                                 <!-- ***************** -->
                                 <!-- ***************** -->
                                 <div class="row mb-1">
-                                    <label class="col-sm-6 col-form-label" for="nama">Pengurangan Kond.Unit</label>
+                                    <label class="col-sm-6 col-form-label">Pengurangan Kond.Unit</label>
                                     <div class="col-sm-2 p-l-0">
-                                        <input type="text" class="form-control form-control-sm" id="pengurangan_kond"
-                                            name="pengurangan_kond" value="{{ old('pengurangan_kond') }}" />
+                                        <input type="text" class="form-control form-control-sm" disabled
+                                            value="{{ $order->kondisi_unit->pk_kondisi }} %" />
                                     </div>
                                     <div class="col-sm-4 p-l-0">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                            value="" />
+                                        <input type="text" class="form-control form-control-sm" disabled
+                                            value="@currency($order->kondisi_unit->hrgpk_kondisi)" />
                                     </div>
                                 </div>
                                 <!-- ***************** -->
                                 <!-- ***************** -->
                                 <div class="row mb-1">
-                                    <label class="col-sm-6 col-form-label" for="nama">Pengurangan Kond.STNK</label>
+                                    <label class="col-sm-6 col-form-label">Pengurangan Kond.STNK</label>
                                     <div class="col-sm-2 p-l-0">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        <input type="text" class="form-control form-control-sm" disabled
+                                            value="{{ $order->kondisi_unit->pk_stnk }} %" />
                                     </div>
                                     <div class="col-sm-4 p-l-0">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        <input type="text" class="form-control form-control-sm" disabled
+                                            value="@currency($order->kondisi_unit->hrgpk_stnk)" />
                                     </div>
                                 </div>
                                 <!-- ***************** -->
                                 <!-- ***************** -->
                                 <div class="row mb-1">
-                                    <label class="col-sm-8 col-form-label" for="nama">Harga Acuan Pinjaman (IDR)</label>
+                                    <label class="col-sm-8 col-form-label">Harga Acuan Pinjaman (IDR)</label>
                                     <div class="col-sm-4 p-l-0">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                        <input type="text" class="form-control form-control-sm" disabled
+                                            value="@currency($order->pinjam->harga_acuan)" />
                                     </div>
                                 </div>
                                 <!-- ***************** -->

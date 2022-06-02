@@ -56,15 +56,11 @@
                             <div class="row mb-1">
                                 <label class="col-sm-4 col-form-label" for="ada_jaminan">Ada Jaminan</label>
                                 <div class="col-sm-6">
-                                    <select class="form-select @error('ada_jaminan') is-invalid @enderror"
-                                        name="ada_jaminan" id="ada_jaminan" value="">
-                                        <option></option>
-                                        <option value="Ada Jaminan"
-                                            {{ old('ada_jaminan', $order->jaminan->ada_jaminan) == 'Ada Jaminan' ? 'selected' : '' }}>
+                                    <select class="form-select" disabled>
+                                        <option value="Ada Jaminan">
                                             Ada Jaminan
                                         </option>
-                                        <option value="Tanpa Jaminan"
-                                            {{ old('ada_jaminan', $order->jaminan->ada_jaminan) == 'Tanpa Jaminan' ? 'selected' : '' }}>
+                                        <option value="Tanpa Jaminan">
                                             Tanpa Jaminan
                                         </option>
                                     </select>
@@ -360,83 +356,6 @@
                             </div>
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="status">Status</label>
-                                <div class="col-sm-4">
-                                    <select class="form-select @error('status') is-invalid @enderror" name="status"
-                                        id="status" value="{{ old('status') }}">
-                                        <option></option>
-                                        <option value="Verify"
-                                            {{ old('status', $order->status) == 'Verify' ? 'selected' : '' }}>
-                                            Verify
-                                        </option>
-                                        <option value="Approve"
-                                            {{ old('status', $order->status) == 'Approve' ? 'selected' : '' }}>
-                                            Approve
-                                        </option>
-                                        <option value="Baru"
-                                            {{ old('status', $order->status) == 'Baru' ? 'selected' : '' }}>
-                                            Baru
-                                        </option>
-                                        <option value="Reject"
-                                            {{ old('status', $order->status) == 'Reject' ? 'selected' : '' }}>
-                                            Reject
-                                        </option>
-                                    </select>
-                                    @error('status')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <!-- **************************************************************************************************8******  -->
-                            <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="tipe_order">Tipe Order</label>
-                                <div class="col-sm-5">
-                                    <select class="form-select @error('tipe_order') is-invalid @enderror"
-                                        name="tipe_order" id="tipe_order" value="{{ old('tipe_order') }}">
-                                        <option></option>
-                                        <option value="Retail"
-                                            {{ old('tipe_order', $order->tipe_order) == 'Retail' ? 'selected' : '' }}>
-                                            Retail
-                                        </option>
-                                        <option value="Group Customer"
-                                            {{ old('tipe_order', $order->tipe_order) == 'Group Customer' ? 'selected' : '' }}>
-                                            Group Customer
-                                        </option>
-                                    </select>
-                                    @error('tipe_order')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <!-- **************************************************************************************************8******  -->
-                            <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="platform">Platform</label>
-                                <div class="col-sm-5">
-                                    <select class="form-select @error('platform') is-invalid @enderror" name="platform"
-                                        id="platform" value="{{ old('platform') }}">
-                                        <option></option>
-                                        <option value="Konvensional"
-                                            {{ old('platform', $order->platform) == 'Konvensional' ? 'selected' : '' }}>
-                                            Konvensional
-                                        </option>
-                                        <option value="Syariah"
-                                            {{ old('platform', $order->platform) == 'Syariah' ? 'selected' : '' }}>
-                                            Syariah
-                                        </option>
-                                    </select>
-                                    @error('platform')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <!-- **************************************************************************************************8******  -->
-                            <div class="row mb-1">
                                 <label class="col-sm-4 col-form-label" for="keperluan">Keperluan</label>
                                 <div class="col-sm-4">
                                     <select class="form-select @error('keperluan') is-invalid @enderror"
@@ -480,8 +399,7 @@
                                 <label class="col-sm-4 col-form-label" for="buss_unit">Buss
                                     Unit</label>
                                 <div class="col">
-                                    <select
-                                        class="form-select form-select-sm @error('buss_unit') is-invalid @enderror"
+                                    <select class="form-select form-select-sm @error('buss_unit') is-invalid @enderror"
                                         name="buss_unit" id="buss_unit">
                                         <option></option>
                                         <option value="01 - Pinjaman Jaminan Motor"
@@ -502,88 +420,12 @@
                             </div>
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="cust_service">Cust Service</label>
-                                <div class="col-sm-4">
-                                    <input
-                                        class=" form-control
-                                    form-control-sm @error('cust_service') is-invalid @enderror"
-                                        name="cust_service" type="text" id="cust_service" value="">
-                                    @error('cust_service')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <!-- **************************************************************************************************8******  -->
-                            <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="reff_pelanggan">Reff Pelanggan</label>
-                                <div class="col-sm-4">
-                                    <input
-                                        class=" form-control
-                                    form-control-sm @error('reff_pelanggan') is-invalid @enderror"
-                                        name="reff_pelanggan" type="text" id="reff_pelanggan" value="">
-                                    @error('reff_pelanggan')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <!-- **************************************************************************************************8******  -->
-                            <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="surveyor">Surveyor</label>
-                                <div class="col-sm-4">
-                                    <input
-                                        class=" form-control
-                                    form-control-sm @error('surveyor') is-invalid @enderror"
-                                        name="surveyor" type="text" id="surveyor" value="">
-                                    @error('surveyor')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <!-- **************************************************************************************************8******  -->
-                            <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="cat_survey">Cat Survey</label>
-                                <div class="col-sm-4">
-                                    <input
-                                        class=" form-control
-                                    form-control-sm @error('cat_survey') is-invalid @enderror"
-                                        name="cat_survey" type="text" id="cat_survey" value="">
-                                    @error('cat_survey')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <!-- **************************************************************************************************8******  -->
-                            <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="program_rate">Program Rate</label>
-                                <div class="col-sm-4">
-                                    <input
-                                        class=" form-control
-                                    form-control-sm @error('program_rate') is-invalid @enderror"
-                                        name="program_rate" type="text" id="program_rate" value="">
-                                    @error('program_rate')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <!-- **************************************************************************************************8******  -->
-                            <div class="row mb-1">
-                                <label class="col-sm-4 col-form-label" for="cara_bayar">Cara Bayar</label>
-                                <div class="col-sm-4">
-                                    <input
-                                        class=" form-control
-                                    form-control-sm @error('cara_bayar') is-invalid @enderror"
-                                        name="cara_bayar" type="text" id="cara_bayar" value="">
-                                    @error('cara_bayar')
+                                <label class="col-sm-4 col-form-label" for="catt_survey">Catt Survey</label>
+                                <div class="col">
+                                    <textarea class="form-control form-control-sm @error('catt_survey') is-invalid @enderror" name="catt_survey"
+                                        type="text"
+                                        id="catt_survey">{{ old('catt_survey', $order->catt_survey) }}</textarea>
+                                    @error('catt_survey')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -593,7 +435,6 @@
                             <div class="mt-4 p-l-0">
                                 <h6><u>Barang Transaksi/Produk</u></h6>
                             </div>
-
                             <!-- **************************************************************************************************8******  -->
                             <div class="row mb-1">
                                 <label class="col-sm-4 col-form-label" for="barang">Barang</label>

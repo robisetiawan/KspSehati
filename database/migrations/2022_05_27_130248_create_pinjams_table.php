@@ -26,6 +26,8 @@ class CreatePinjamsTable extends Migration
             $table->string('angsuran')->nullable();
             $table->enum('kategori', ['Tetap', 'Tahun'])->nullable();
             $table->string('admin_total')->nullable();
+            $table->integer('harga_acuan')->nullable();
+            $table->integer('persentase')->nullable();
             $table->timestamps();
         });
     }

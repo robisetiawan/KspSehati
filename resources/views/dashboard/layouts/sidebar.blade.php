@@ -89,13 +89,13 @@
                              </a>
                          </li> --}}
 
-                             <li class=" dropdown">
+                             {{-- <li class=" dropdown">
                                  <a href="/dashboard/struktur-kredit"
                                      class="menu-title link-nav nav-link {{ Request::is('/dashboard/struktur-kredit*') ? 'active' : '' }}">
                                      <i data-feather="file-text"></i>
                                      <span>Struktur Kredit</span>
                                  </a>
-                             </li>
+                             </li> --}}
 
                              <li class="dropdown">
                                  <a href="/penerimaan-uang"
@@ -114,13 +114,13 @@
                                  </a>
                              </li>
 
-                             <li class="dropdown">
+                             {{-- <li class="dropdown">
                                  <a href="/register"
                                      class="menu-title link-nav nav-link {{ Request::is('/register') ? 'active' : '' }}">
                                      <i data-feather="user-plus"></i>
                                      <span>Register</span>
                                  </a>
-                             </li>
+                             </li> --}}
                          @endcan
                          {{-- end Fo View --}}
 

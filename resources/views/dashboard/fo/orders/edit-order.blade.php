@@ -19,6 +19,7 @@
         </div>
 
         <div class="card">
+
             <form method="POST" action="/dashboard/orders/{{ $order->id }}" class="form theme-form"
                 enctype="multipart/form-data">
                 @method('PUT')
@@ -28,6 +29,13 @@
                 <div class="col-sm-12 col-xl-6 xl-100">
 
                     <div class="card-body f-12">
+                        @if (session()->has('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
                         <a href="/dashboard/orders" class="btn btn-pill btn-outline-primary btn-xs mb-3"><i
                                 class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
 
@@ -152,9 +160,7 @@
                             </div>
 
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                @include(
-                                    'dashboard.fo.orders.strukturkredit.edit-struktur-kredit'
-                                )
+                                @include('dashboard.fo.orders.strukturkredit.edit-struktur-kredit')
                             </div>
                         </div>
 

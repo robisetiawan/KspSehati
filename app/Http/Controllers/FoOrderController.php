@@ -15,6 +15,7 @@ use App\Models\Profession;
 use App\Models\Kondisi_unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Type\Decimal;
 
 class FoOrderController extends Controller
 {
@@ -296,14 +297,18 @@ class FoOrderController extends Controller
             "nilai_pinj" => 'nullable',
             "pk_kem" => 'nullable',
             "tipe_angs" => 'nullable',
-            "ad_ar" => 'nullable',
             "jumlah_angs" => 'nullable',
             "periode" => 'nullable',
             "per_p" => 'nullable',
             "angsuran" => 'nullable',
             "admin_total" => 'nullable',
             "harga_acuan" => 'nullable',
-            "persentase" => 'nullable',
+            "bunga_margin" => 'nullable',
+            "pk_marg" => 'nullable',
+            "pinj_terakhir" => 'nullable',
+            "simp_kok" => 'nullable',
+            "nilai_terima" => 'nullable',
+            "bunga" => 'nullable',
         ];
 
         //order
@@ -359,14 +364,26 @@ class FoOrderController extends Controller
 
         //struktur kredit by angsuran
         $nilai_pinjRp = str_replace($deleteRp, "", $request->nilai_pinj);
-        $pk_kemRp = str_replace($deleteRp, "", $request->pk_kem);
+        // $pk_kemRp = str_replace($deleteRp, "", $request->pk_kem);
         $angsuranRp = str_replace($deleteRp, "", $request->angsuran);
         $admin_totalRp = str_replace($deleteRp, "", $request->admin_total);
 
         $validpinjam['nilai_pinj'] = (int)$nilai_pinjRp;
-        $validpinjam['pk_kem'] = (int)$pk_kemRp;
-        $validpinjam['angsuran'] = (int)$angsuranRp;
         $validpinjam['admin_total'] = (int)$admin_totalRp;
+
+        $pokok_kembali = (int)$nilai_pinjRp + (int)$admin_totalRp;
+
+        $validpinjam['pk_kem'] = $pokok_kembali;
+        $validpinjam['tipe_angs'] = 'Tetap';
+        $validpinjam['per_p'] = 'Bulan';
+        $validpinjam['angsuran'] = (int)$angsuranRp;
+
+        $bungafloat = floatval($request->bunga);
+
+        $validpinjam['bunga'] = $bungafloat;
+        $b_marg = ($pokok_kembali * $bungafloat / 100) * $request->periode;
+        $validpinjam['bunga_margin'] = $b_marg;
+        $validpinjam['pk_marg'] = $pokok_kembali + $b_marg;
         //end struktur kredit by angsuran
 
 
@@ -453,11 +470,11 @@ class FoOrderController extends Controller
 
         $validkondisi_unit['pk_stnk'] = $pk_stnk;
         $validkondisi_unit['hrgpk_stnk'] = ((int)$harga_pasarRp * $pk_stnk) / 100;
-
         //endpengurangan
 
-        $validpinjam['harga_acuan'] = (int)$harga_pasarRp - ($validkondisi_unit['hrgpk_kondisi'] + $validkondisi_unit['hrgpk_stnk']);
-
+        $harga_kondisi = (int)$harga_pasarRp - ($validkondisi_unit['hrgpk_kondisi'] + $validkondisi_unit['hrgpk_stnk']);
+        $validpinjam['harga_acuan'] = $harga_kondisi;
+        $validpinjam['persentase'] = ($pokok_kembali / $harga_kondisi) * 100;
 
         // dd($validkondisi_unit);
 
@@ -485,7 +502,9 @@ class FoOrderController extends Controller
             ->update($validorder);
 
 
-        return redirect('/dashboard/orders')->with('success', 'Data Berhasil diupdate');
+        // return redirect('/dashboard/orders/1/edit')->with('success', 'Data Berhasil diupdate');
+        // return redirect()->route('dashboard/orders/{{$order->id}}/edit', $order->id);
+        return redirect()->back()->with('success', 'Data Berhasil diupdate');
     }
 
     /**

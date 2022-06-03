@@ -83,6 +83,12 @@ Route::name('fo')->middleware('fo')->group(
         Route::get('/dashboard/cetak-buku-anggota/cari/{id}', [CetakBukuAgController::class, 'print']);
 
         Route::get('/export-data-anggota', [FoAnggotaController::class, 'AnggotaExport']);
+
+        Route::get('/coba', function () {
+            return view('coba', [
+                "title" => "Pooling Order"
+            ]);
+        });
     }
 );
 //endRoute FO

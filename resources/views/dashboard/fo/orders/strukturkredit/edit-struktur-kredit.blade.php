@@ -82,13 +82,29 @@
                             </div>
                             <!-- ****************************************************************************************** -->
                             <div class="row mb-1">
+                                <label class="col-sm-5 col-form-label" for="admin_total">Admin
+                                    Total</label>
+                                <div class="col-sm-5 p-l-0">
+                                    <input
+                                        class="form-control form-control-sm @error('admin_total') is-invalid @enderror"
+                                        name="admin_total" type="text" id="admin_total"
+                                        value="{{ old('admin_total', $order->pinjam->admin_total) }}"
+                                        type-currency="IDR" placeholder="Rp ">
+                                    @error('admin_total')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- ****************************************************************************************** -->
+                            <div class="row mb-1">
                                 <label for="pk_kem" class="col-sm-5 col-form-label">Pokok
                                     Pengembalian</label>
                                 <div class="col p-l-0">
                                     <input class="form-control form-control-sm @error('pk_kem') is-invalid @enderror"
-                                        name="pk_kem" type="text" id="pk_kem"
-                                        value="{{ old('pk_kem', $order->pinjam->pk_kem) }}" type-currency="IDR"
-                                        placeholder="Rp ">
+                                        name="pk_kem" type="text" id="pk_kem" value="@currency($order->pinjam->pk_kem)" disabled>
                                     @error('pk_kem')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -98,12 +114,27 @@
                             </div>
                             <!-- ****************************************************************************************** -->
                             <div class="row mb-1">
+                                <label for="persentase" class="col-sm-5 col-form-label">Persentase</label>
+                                <div class="col-sm-2 p-l-0">
+                                    <input
+                                        class="form-control form-control-sm @error('persentase') is-invalid @enderror"
+                                        name="persentase" type="text" id="persentase"
+                                        value="{{ $order->pinjam->persentase }} %" disabled>
+                                    @error('persentase')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- ****************************************************************************************** -->
+                            <div class="row mb-1">
                                 <label for="tipe_angs" class="col-sm-5 col-form-label">Tipe
                                     Angsuran</label>
-                                <div class="col p-l-0">
+                                <div class="col-sm-4 p-l-0">
                                     <select class="form-select form-select-sm @error('tipe_angs') is-invalid @enderror"
-                                        name="tipe_angs" id="tipe_angs">
-                                        <option></option>
+                                        name="tipe_angs" id="tipe_angs" disabled>
                                         <option value="Tetap" {{ old('tipe_angs') == 'Tetap' ? 'selected' : '' }}>
                                             Tetap
                                         </option>
@@ -117,36 +148,6 @@
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                </div>
-                            </div>
-                            <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
-                                <label for="ad_ar" class="col-sm-5 col-form-label">Advance /
-                                    Arrear</label>
-                                <div class="col p-l-0">
-                                    <select class="form-select form-select-sm @error('ad_ar') is-invalid @enderror"
-                                        name="ad_ar" id="ad_ar">
-                                        <option></option>
-                                        <option value="Arrear" {{ old('ad_ar') == 'Arrear' ? 'selected' : '' }}>
-                                            Arrear
-                                        </option>
-                                        <option value="Advance" {{ old('ad_ar') == 'Advance' ? 'selected' : '' }}>
-                                            Advance
-                                        </option>
-                                    </select>
-                                    @error('ad_ar')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <label for="tp_angs" class="col-sm-2 col-form-label">SK
-                                    Rate</label>
-                                <div class="col p-l-0">
-                                    <select class="form-select form-select-sm">
-                                        <option>Arrear</option>
-                                        <option>Advance</option>
-                                    </select>
                                 </div>
                             </div>
                             <!-- ****************************************************************************************** -->
@@ -183,8 +184,7 @@
                                 </div>
                                 <div class="col p-l-0">
                                     <select class="form-select form-select-sm @error('per_p') is-invalid @enderror"
-                                        name="per_p" id="per_p">
-                                        <option></option>
+                                        name="per_p" id="per_p" disabled>
                                         <option value="Bulan" {{ old('per_p') == 'Bulan' ? 'selected' : '' }}>
                                             Bulan
                                         </option>
@@ -201,7 +201,7 @@
                             </div>
                             <!-- ****************************************************************************************** -->
                             <div class="row mb-1">
-                                <label class="col-sm-5 col-form-label" for="angsuran">Angsuran / Kategori
+                                <label class="col-sm-5 col-form-label" for="angsuran">Angsuran
                                 </label>
                                 <div class="col-sm-4 p-l-0">
                                     <input class="form-control form-control-sm @error('angsuran') is-invalid @enderror"
@@ -214,88 +214,26 @@
                                         </div>
                                     @enderror
                                 </div>
-                                <label class="col col-form-label visually-hidden" for="kategori">Kategori
+                            </div>
+                            <!-- ****************************************************************************************** -->
+                            <div class="row mb-1">
+                                <label class="col-sm-5 col-form-label" for="bunga">Bunga
                                 </label>
-                                <div class="col p-l-0">
-                                    <select class="form-select form-select-sm @error('ketegori') is-invalid @enderror"
-                                        name="ketegori" id="ketegori">
-                                        <option></option>
-                                        <option value="Bulan" {{ old('ketegori') == 'Bulan' ? 'selected' : '' }}>
-                                            Bulan
-                                        </option>
-                                        <option value="Tahun" {{ old('ketegori') == 'Tahun' ? 'selected' : '' }}>
-                                            Tahun
-                                        </option>
-                                    </select>
-                                    @error('per_p')
+                                <div class="col-sm-2 px-0">
+                                    <input class="form-control form-control-sm @error('bunga') is-invalid @enderror"
+                                        name="bunga" type="text" id="bunga"
+                                        value="{{ old('bunga', $order->pinjam->bunga) }}">
+                                    @error('bunga')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
+                                <label class="col col-form-label p-l-1"> %
+                                </label>
                             </div>
-                            <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
-                                <label class="col-sm-5 col-form-label" for="admin_total">Admin
-                                    Total</label>
-                                <div class="col-sm-5 p-l-0">
-                                    <input
-                                        class="form-control form-control-sm @error('admin_total') is-invalid @enderror"
-                                        name="admin_total" type="text" id="admin_total"
-                                        value="{{ old('admin_total', $order->pinjam->admin_total) }}"
-                                        type-currency="IDR" placeholder="Rp ">
-                                    @error('admin_total')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
-                                <label class="col-sm-5 col-form-label" for="nama">
-                                    Provisi (%)</label>
-                                <div class="col-sm-3 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                        disabled />
-                                </div>
-                            </div>
-                            <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
-                                <label class="col-sm-5 col-form-label" for="nama">
-                                    % Asuransi (%)</label>
-                                <div class="col-sm-3 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                        disabled />
-                                </div>
-                            </div>
-                            <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
-                                <label class="col-sm-5 col-form-label" for="nama">
-                                    Biaya Transfer</label>
-                                <div class="col-sm-4 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                        disabled />
-                                </div>
-                            </div>
-                            <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
-                                <label class="col-sm-5 col-form-label" for="nama">
-                                    Bunga Margin Eff (%)</label>
-                                <div class="col-sm-3 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                        disabled />
-                                </div>
-                            </div>
-                            <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
-                                <label class="col-sm-5 col-form-label" for="nama">
-                                    Bunga Margin Flat (%)</label>
-                                <div class="col-sm-3 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                        disabled />
-                                </div>
-                            </div>
+
+
                             <!-- ****************************************************************************************** -->
 
                         </div>
@@ -306,7 +244,8 @@
                                 <label class="col-sm-6 col-form-label" for="nama">
                                     Harga Acuan Pinjaman</label>
                                 <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                        value="@currency($order->pinjam->harga_acuan)" disabled />
                                 </div>
                             </div>
                             <!-- ****************************************************************************************** -->
@@ -314,7 +253,8 @@
                                 <label class="col-sm-6 col-form-label" for="nama">
                                     Bunga Margin</label>
                                 <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                        value="@currency($order->pinjam->bunga_margin)" disabled />
                                 </div>
                             </div>
                             <!-- ****************************************************************************************** -->
@@ -322,55 +262,17 @@
                                 <label class="col-sm-6 col-form-label" for="nama">
                                     Pokok + Margin</label>
                                 <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                        value="@currency($order->pinjam->pk_marg)" disabled />
                                 </div>
                             </div>
                             <!-- ****************************************************************************************** -->
                             <div class="row mb-1">
                                 <label class="col-sm-6 col-form-label" for="nama">
-                                    Angsuran Terakhir</label>
+                                    Pinjaman Terakhir</label>
                                 <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                </div>
-                            </div>
-                            <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
-                                <label class="col-sm-6 col-form-label" for="nama">
-                                    Bng / Margin Eff Actual (%)</label>
-                                <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                </div>
-                            </div>
-                            <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
-                                <label class="col-sm-6 col-form-label" for="nama">
-                                    Bng / Margin Flat Actual (%)</label>
-                                <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                </div>
-                            </div>
-                            <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
-                                <label class="col-sm-6 col-form-label" for="nama">
-                                    Asuransi</label>
-                                <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                </div>
-                            </div>
-                            <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
-                                <label class="col-sm-6 col-form-label" for="nama">
-                                    Provisi</label>
-                                <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
-                                </div>
-                            </div>
-                            <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
-                                <label class="col-sm-6 col-form-label" for="nama">
-                                    Cad Promo</label>
-                                <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" value=""
+                                        disabled />
                                 </div>
                             </div>
                             <!-- ****************************************************************************************** -->
@@ -386,7 +288,8 @@
                                 <label class="col-sm-6 col-form-label" for="nama">
                                     Admin</label>
                                 <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                        value="@currency($order->pinjam->admin_total)" disabled />
                                 </div>
                             </div>
                             <!-- ****************************************************************************************** -->
@@ -394,26 +297,16 @@
                                 <label class="col-sm-6 col-form-label" for="nama">
                                     Nilai yang diterima</label>
                                 <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                        value="@currency($order->pinjam->nilai_pinj)" disabled />
                                 </div>
                             </div>
+
                         </div>
+
                         {{-- EndRight Coloum --}}
                     </div>
                 </div>
-                {{-- cardFooter --}}
-                {{-- <div class="card-footer text-end">
-                                                            <button class="btn btn-primary" type="submit">Submit</button>
-                                                            <input class="btn btn-light" type="reset" value="Cancel" />
-                                                        </div>
-                                                        {{-- endCardFooter --}}
-                {{-- </div>
-                                                @empty
-                                                    <p class="text-center">Order tidak ditemukan !!!</p>
-                                                @endforelse --}}
-
-                {{-- endCardBody --}}
-                {{-- </form> --}}
             </div>
             {{-- endCard --}}
         </div>

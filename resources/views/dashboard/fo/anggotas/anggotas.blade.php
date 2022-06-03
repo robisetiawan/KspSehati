@@ -28,7 +28,7 @@
                                     aria-hidden="true"></i> Tambah anggota</a>
 
                             <a href="/export-data-anggota" class="btn btn-success mb-2"><i class="fa fa-file-excel-o"
-                                    aria-hidden="true"></i> Export Excel</a>
+                                    aria-hidden="true"></i> Excel</a>
                             @if (session()->has('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     {{ session('success') }}

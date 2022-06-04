@@ -98,8 +98,8 @@
                              </li> --}}
 
                              <li class="dropdown">
-                                 <a href="/penerimaan-uang"
-                                     class="menu-title link-nav nav-link {{ $title === 'Penerimaan Uang' ? 'active' : '' }}">
+                                 <a href="/dashboard/penerimaan-uang"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/penerimaan-uang*') ? 'active' : '' }}">
                                      <i data-feather="dollar-sign"></i>
                                      <span>Penerimaan Uang</span>
                                  </a>

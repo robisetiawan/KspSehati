@@ -10,6 +10,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AgAnggotaController;
 use App\Http\Controllers\FoAnggotaController;
 use App\Http\Controllers\CetakBukuAgController;
+use App\Http\Controllers\PenerimaanUangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,9 @@ Route::name('fo')->middleware('fo')->group(
         // Route::get('/dashboard/orders/{order:id}', [FoOrderController::class, 'show']);
         Route::get('/dashboard/struktur-kredit', [FoOrderController::class, 'strukturkredit']);
         Route::get('/dashboard/struktur-kredit/cari', [FoOrderController::class, 'caristrukturkredit']);
+
+        Route::resource('/dashboard/penerimaan-uang', PenerimaanUangController::class);
+
         Route::get('/dashboard/cetak-buku-anggota', [CetakBukuAgController::class, 'cetak']);
         Route::get('/dashboard/cetak-buku-anggota/cari', [CetakBukuAgController::class, 'caricetak']);
         Route::get('/dashboard/cetak-buku-anggota/cari/{id}', [CetakBukuAgController::class, 'print']);

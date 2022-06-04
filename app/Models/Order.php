@@ -42,4 +42,9 @@ class Order extends Model
     {
         return $this->belongsTo(Pinjam::class);
     }
+
+    public function penerimaan_uang()
+    {
+        return $this->hasOne(PenerimaanUang::class);
+    }
 }

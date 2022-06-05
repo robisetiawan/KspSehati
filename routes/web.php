@@ -81,6 +81,7 @@ Route::name('fo')->middleware('fo')->group(
         Route::get('/dashboard/struktur-kredit/cari', [FoOrderController::class, 'caristrukturkredit']);
 
         Route::resource('/dashboard/penerimaan-uang', PenerimaanUangController::class);
+        Route::get('/dashboard/penerimaan-uang/{id}/cetak', [PenerimaanUangController::class, 'cetak']);
 
         Route::get('/dashboard/cetak-buku-anggota', [CetakBukuAgController::class, 'cetak']);
         Route::get('/dashboard/cetak-buku-anggota/cari', [CetakBukuAgController::class, 'caricetak']);

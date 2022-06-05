@@ -21,15 +21,31 @@
 
         <div class="card">
 
-            <form method="POST" action="/dashboard/penerimaan-uang/{{ $pene->id }}" class="form theme-form"
-                enctype="multipart/form-data">
-                @method('PUT')
-                @csrf
-                <div class="card-body f-12">
-
-
+            <div class="card-body f-12">
+                <div class="btn-group mb-3">
                     <a href="/dashboard/penerimaan-uang" class="btn btn-pill btn-outline-primary btn-xs mb-3"><i
                             class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+
+                    <a href="/dashboard/penerimaan-uang/{{ $pene->id }}/edit">
+                        <button class="btn btn-pill btn-outline-success btn-xs mb-3 mx-1"><i class="fa fa-pencil fa-lg"
+                                aria-hidden="true"></i> Edit</button>
+                    </a>
+
+                    <form action="/dashboard/penerimaan-uang/{{ $pene->id }}" method="POST">
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-pill btn-outline-danger btn-xs mb-3"
+                            onclick="return confirm('Are you sure !!')"><i class="fa fa-times fa-lg" aria-hidden="true"></i>
+                            Delete</button>
+                    </form>
+                </div>
+                <form method="POST" action="/dashboard/penerimaan-uang" class="form theme-form"
+                    enctype="multipart/form-data">
+                    @method('PUT')
+                    @csrf
+
+
+
                     <div class="row">
                         <div class="col-sm-12 col-xl-6">
                             <div class="row">
@@ -83,7 +99,8 @@
                                                 <input type="text"
                                                     class="form-control form-control-sm @error('trm_dr') is-invalid @enderror"
                                                     id="trm_dr" name="trm_dr"
-                                                    value="{{ old('trm_dr', $pene->order->anggota->user->name) }}" />
+                                                    value="{{ old('trm_dr', $pene->order->anggota->user->name) }}"
+                                                    readonly />
                                             </div>
 
                                         </div>
@@ -95,7 +112,7 @@
                                                     class="form-control form-control-sm @error('angsuran_ke') is-invalid @enderror"
                                                     id="angsuran_ke" name="angsuran_ke"
                                                     value="{{ old('angsuran_ke', $pene->angsuran_ke) }}"
-                                                    max="{{ $pene->order->pinjam->periode }}" min="1" />
+                                                    max="{{ $pene->order->pinjam->periode }}" min="1" readonly />
                                             </div>
                                             <div class="col-sm-4">
                                                 <input type="text"
@@ -127,8 +144,8 @@
                                                     Terima</label>
                                                 <div class="col-sm-4 p-l-0">
                                                     <input type="text" class="form-control form-control-sm" id="created_at"
-                                                        name="created_at" value="{{ $pene->updated_at->format('d M Y') }}"
-                                                        disabled />
+                                                        name="created_at"
+                                                        value="{{ $pene->updated_at->format('d M Y') }}" disabled />
                                                 </div>
                                                 <div class="col-sm-3 p-l-0">
                                                     <input type="text" class="form-control form-control-sm"
@@ -168,7 +185,7 @@
                                                     Bayar</label>
                                                 <div class="col-sm-4 p-l-0">
                                                     <select class="form-select @error('cr_bayar') is-invalid @enderror"
-                                                        name="cr_bayar" id="cr_bayar">
+                                                        name="cr_bayar" id="cr_bayar" disabled>
                                                         <option value="Tunai"
                                                             {{ old('cr_bayar', $pene->cr_bayar) == 'Tunai' ? 'selected' : '' }}>
                                                             Tunai
@@ -193,12 +210,7 @@
                                                     <input type="number"
                                                         class="form-control form-control-sm @error('kd_bank') is-invalid @enderror"
                                                         id="kd_bank" name="kd_bank"
-                                                        value="{{ old('kd_bank', $pene->kd_bank) }}" />
-                                                    @error('kd_bank')
-                                                        <div class="invalid-feedback">
-                                                            Kode bank tidak boleh kosong
-                                                        </div>
-                                                    @enderror
+                                                        value="{{ old('kd_bank', $pene->kd_bank) }}" readonly />
                                                 </div>
                                             </div>
                                             <!-- **************************************************************************************************8******  -->
@@ -209,12 +221,7 @@
                                                     <input type="number"
                                                         class="form-control form-control-sm @error('no_rek') is-invalid @enderror"
                                                         id="no_rek" name="no_rek"
-                                                        value="{{ old('no_rek', $pene->no_rek) }}" />
-                                                    @error('no_rek')
-                                                        <div class="invalid-feedback">
-                                                            No rekening tidak boleh kosong
-                                                        </div>
-                                                    @enderror
+                                                        value="{{ old('no_rek', $pene->no_rek) }}" readonly />
                                                 </div>
                                             </div>
                                             <!-- **************************************************************************************************8******  -->
@@ -229,15 +236,14 @@
                     </div>
 
                     <!-- ************************************************************************************************* -->
-                </div>
-                <div class="card-footer text-end f-12">
-                    <div>
-                        <button class="btn btn-primary" type="submit">Submit</button>
-                        <input class="btn btn-light" type="reset" value="Cancel" />
-                    </div>
-                </div>
-
+            </div>
             </form>
+            <div class="card-footer text-end f-12">
+                <div>
+                    <a href="/dashboard/penerimaan-uang/{{ $pene->id }}/cetak" class="btn btn-primary">Cetak</a>
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection

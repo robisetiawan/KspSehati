@@ -44,7 +44,7 @@ class PenerimaanUangController extends Controller
     {
         $pen = PenerimaanUang::create([
             'no_terima' => date('dmy') . "PU" . $request->id,
-            'order_id' => $request->id
+            'order_id' => $request->id,
         ]);
 
         return redirect('/dashboard/penerimaan-uang')->with('success', 'Berhasil menambahkan order');
@@ -58,7 +58,10 @@ class PenerimaanUangController extends Controller
      */
     public function show(PenerimaanUang $penerimaanUang)
     {
-        //
+        return view('dashboard.fo.penerimaan-uang.show-penerimaan-uang', [
+            "title" => "Penerimaan Uang",
+            "pene" => $penerimaanUang
+        ]);
     }
 
     /**
@@ -85,7 +88,41 @@ class PenerimaanUangController extends Controller
      */
     public function update(Request $request, PenerimaanUang $penerimaanUang)
     {
-        //
+
+        if ($request->cr_bayar === 'Transfer')
+            $pen = [
+                'trm_dr' => 'required',
+                'angsuran_ke' => 'required',
+                'nominal' => 'required',
+                'cr_bayar' => 'required',
+                'kd_bank' => 'required',
+                'no_rek' => 'required',
+            ];
+        else
+            $pen = [
+                'trm_dr' => 'required',
+                'angsuran_ke' => 'required',
+                'nominal' => 'required',
+                'cr_bayar' => 'required',
+                'kd_bank' => 'nullable',
+                'no_rek' => 'nullable',
+            ];
+
+        $validatedData = $request->validate($pen);
+
+        //Currency
+        $deleteRp = array(
+            "Rp", ".", " "
+        );
+
+        $nominal = str_replace($deleteRp, "", $request->nominal);
+        $validatedData['nominal'] = (int)$nominal;
+        //endCurrency
+
+        PenerimaanUang::where('id', $penerimaanUang->id)
+            ->update($validatedData);
+
+        return redirect('/dashboard/penerimaan-uang')->with('success', 'Data Berhadsil diupdate');
     }
 
     /**
@@ -99,5 +136,15 @@ class PenerimaanUangController extends Controller
         PenerimaanUang::destroy($penerimaanUang->id);
 
         return redirect('/dashboard/penerimaan-uang]')->with('success', 'Data Berhasil dihapus');
+    }
+
+    public function cetak(PenerimaanUang $penerimaanUang, $id)
+    {
+
+        return view('dashboard.fo.penerimaan-uang.cetak-penerimaan-uang', [
+            "title" => "Cetak",
+            "pene" => $penerimaanUang,
+            "penes" => PenerimaanUang::find($id)
+        ]);
     }
 }

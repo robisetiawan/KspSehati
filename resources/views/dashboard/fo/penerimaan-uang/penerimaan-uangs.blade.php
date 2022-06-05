@@ -64,7 +64,7 @@
                                         <th scope="col">No Terima</th>
                                         <th scope="col">Tanggal Terima</th>
                                         <th scope="col">Nama Anggota</th>
-                                        <th scope="col">Angsuran ke</th>
+                                        <th scope="col">Angs ke</th>
                                         <th scope="col">Nominal</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -78,7 +78,7 @@
                                             <td>{{ $pu->created_at->format('d M Y') }}</td>
                                             <td>{{ $pu->order->anggota->user->name }}</td>
                                             <td>{{ $pu->angsuran_ke }}</td>
-                                            <td>{{ $pu->nominal }}</td>
+                                            <td>@currency($pu->nominal)</td>
                                             <td>
                                                 {{-- <a href="/dashboard/orders/{{ $pu->id }}" class="badge bg-success"
                                                     data-bs-toggle="modal" data-bs-target="#editOrder">
@@ -91,7 +91,7 @@
 
                                                 <div class="btn-group" role="group"
                                                     aria-label="Basic mixed styles example">
-                                                    <a href="/dashboard/orders/{{ $pu->id }}">
+                                                    <a href="/dashboard/penerimaan-uang/{{ $pu->id }}">
                                                         <button class="badge bg-success border-0"><i class="fa fa-eye fa-lg"
                                                                 aria-hidden="true"></i></button>
                                                     </a>

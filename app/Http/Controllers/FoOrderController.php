@@ -374,7 +374,6 @@ class FoOrderController extends Controller
         //struktur kredit by angsuran
         $nilai_pinjRp = str_replace($deleteRp, "", $request->nilai_pinj);
         // $pk_kemRp = str_replace($deleteRp, "", $request->pk_kem);
-        $angsuranRp = str_replace($deleteRp, "", $request->angsuran);
         $admin_totalRp = str_replace($deleteRp, "", $request->admin_total);
 
         $validpinjam['nilai_pinj'] = (int)$nilai_pinjRp;
@@ -385,30 +384,36 @@ class FoOrderController extends Controller
         $validpinjam['pk_kem'] = $pokok_kembali;
         $validpinjam['tipe_angs'] = 'Tetap';
         $validpinjam['per_p'] = 'Bulan';
-        $validpinjam['angsuran'] = (int)$angsuranRp;
+
 
         $bungafloat = floatval($request->bunga);
-
-        $validpinjam['bunga'] = $bungafloat;
-        $b_margin = ($pokok_kembali * $bungafloat / 100) * $request->periode;
-
-        if ($b_margin > 100000) {
-            $desimal = $b_margin / 100000;
-            $b_marg = number_format($desimal, 2) * 100000;
-        } elseif ($b_margin > 1000000) {
-            $desimal = $b_margin / 1000000;
-            $b_marg = number_format($desimal, 2) * 1000000;
-        } else {
-            $desimal = $b_margin / 10000;
-            $b_marg = number_format($desimal, 2) * 10000;
+        if ($request->bunga) {
+            $validpinjam['bunga'] = $bungafloat;
         }
 
-        // dd($desimal, $b_marg);
-        $validpinjam['bunga_margin'] = $b_marg;
+        if ($request->bunga && $pokok_kembali !== null && $request->periode && $request->jumlah_angs) {
+            $b_margin = ($pokok_kembali * $bungafloat / 100) * $request->periode;
 
-        $pokokplusmargin = $pokok_kembali + $b_marg;
-        $validpinjam['pk_marg'] = $pokokplusmargin;
-        $validpinjam['angsuran'] =  $pokokplusmargin / $request->jumlah_angs;
+            if ($b_margin > 100000) {
+                $desimal = $b_margin / 100000;
+                $b_marg = number_format($desimal, 2) * 100000;
+            } elseif ($b_margin > 1000000) {
+                $desimal = $b_margin / 1000000;
+                $b_marg = number_format($desimal, 2) * 1000000;
+            } else {
+                $desimal = $b_margin / 10000;
+                $b_marg = number_format($desimal, 2) * 10000;
+            }
+
+            $validpinjam['bunga_margin'] = $b_marg;
+            $pokokplusmargin = $pokok_kembali + $b_marg;
+            $validpinjam['pk_marg'] = $pokokplusmargin;
+            $validpinjam['angsuran'] =  $pokokplusmargin / $request->jumlah_angs;
+        } else
+            $validpinjam['pk_marg'] && $validpinjam['pk_marg'] && $validpinjam['angsuran'] = null;
+
+
+        // dd($validpinjam);
         //end struktur kredit by angsuran
 
 

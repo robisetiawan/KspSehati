@@ -16,7 +16,7 @@ class CreateHistoriesTable extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('anggota_id');
-            $table->integer('simp_wj');
+            $table->integer('simp_wj')->nullable();
             $table->timestamps();
         });
     }

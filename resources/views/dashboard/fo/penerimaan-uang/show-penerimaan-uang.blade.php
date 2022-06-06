@@ -23,8 +23,9 @@
 
             <div class="card-body f-12">
                 <div class="btn-group mb-3">
-                    <a href="/dashboard/penerimaan-uang" class="btn btn-pill btn-outline-primary btn-xs mb-3"><i
-                            class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+                    <a href="/dashboard/penerimaan-uang"> <button class="btn btn-pill btn-outline-primary btn-xs mb-3"><i
+                                class="fa fa-arrow-left" aria-hidden="true"></i> Back </button>
+                    </a>
 
                     <a href="/dashboard/penerimaan-uang/{{ $pene->id }}/edit">
                         <button class="btn btn-pill btn-outline-success btn-xs mb-3 mx-1"><i class="fa fa-pencil fa-lg"

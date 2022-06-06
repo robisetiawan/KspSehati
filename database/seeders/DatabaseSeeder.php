@@ -4,9 +4,15 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Barang;
+use App\Models\Pinjam;
 use App\Models\Adddata;
 use App\Models\Anggota;
+use App\Models\History;
+use App\Models\Jaminan;
 use App\Models\Identity;
+use App\Models\Kondisi_unit;
+use App\Models\Las;
 use App\Models\Profession;
 use Illuminate\Database\Seeder;
 
@@ -41,17 +47,86 @@ class DatabaseSeeder extends Seeder
 
         User::factory(18)->create();
 
+        Anggota::create([
+            'user_id' => 1,
+            'identity_id' => 1,
+            'profession_id' => 1,
+            'adddata_id' => 1,
+            'no_anggota' => 'AKS025627',
+            'nama_panggilan' => 'Robi',
+            'jenis_kelamin' => 'Laki-laki',
+            'tempat_lahir' => 'Tj Kurung',
+            'nama_ibu' => 'Has',
+            'simpkok' => 50000
+        ]);
+
         Anggota::factory(20)->create();
 
-        // Order::create([
-        //     'anggota_id' => 2,
-        //     'no_order' => '120522OR12431',
-        //     'tipe_order' => 'Retail',
-        //     'status' => 'verify',
-        //     'platform' => 'Konvensional',
-        //     'keperluan' => 'Sendiri',
-        //     'catatan' => 'Modal Sawah'
-        // ]);
+        Kondisi_unit::create([
+            'kategori_m' => 'Baik'
+        ]);
+
+        Las::create([
+            'motor' => "Ada"
+        ]);
+
+        Profession::create([
+            'pekerjaan' => 'Pengusaha',
+            'tanggungan' => 2
+        ]);
+        Order::create([
+            'anggota_id' => 1,
+            'jaminan_id' => 1,
+            'barang_id' => 1,
+            'las_id' => 1,
+            'kondisi_unit_id' => 1,
+            'pinjam_id' => 1,
+            'history_id' => 1,
+            'no_order' => '040622OR15',
+            'keperluan' => 'Sendiri',
+            'catatan' => 'Modal Sawah',
+            'catt_survey' => 'Anggota memiliki rumah sendiri'
+        ]);
+
+        Jaminan::create([
+            'ada_jaminan' => 'Ada Jaminan',
+            'buss_unit' => '01 - Pinjaman Jaminan Motor',
+            'no_polisi' => 'BG6193ADP',
+            'no_mesin' => 'NNMDSANDASMDKASXKOLDPDANIS',
+            'kepemilikan' => 'Milik Sendiri',
+            'barang' => 'Motor',
+            'tipe' => 'Beat',
+            'tahun' => '2017',
+            'awalorakhir' => 'Awal',
+            'harga_pasar' => '14000000'
+        ]);
+
+        Barang::create([
+            'bpkb' => 'Atas Nama Sendiri',
+            'stnk_ada' => 'Ada',
+            'faktur' => 'Tidak Ada',
+            'surat_jual_beli' => 'Ada',
+            'stnk_mati_tahun' => '3'
+        ]);
+
+        Pinjam::create([
+            'anggota_id' => 1,
+            'nilai_pinj' => 1000000,
+            'pk_kem' => 1160000,
+            'tipe_angs' => 'Tetap',
+            'jumlah_angs' => '6',
+            'periode' => '6',
+            'per_p' => 'Bulan',
+            'angsuran' => 239000,
+            'admin_total' => 160000,
+            'bunga' => 3.937,
+
+        ]);
+
+        History::create([
+            'anggota_id' => 1,
+            'simp_wj' => 5000
+        ]);
         // Order::create([
         //     'anggota_id' => 1,
         //     'no_order' => '120522OR12432',

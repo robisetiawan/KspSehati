@@ -9,13 +9,13 @@ use App\Models\Barang;
 use App\Models\Pinjam;
 use App\Models\Adddata;
 use App\Models\Anggota;
+use App\Models\History;
 use App\Models\Jaminan;
 use App\Models\Identity;
 use App\Models\Profession;
 use App\Models\Kondisi_unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Ramsey\Uuid\Type\Decimal;
 
 class FoOrderController extends Controller
 {
@@ -101,6 +101,12 @@ class FoOrderController extends Controller
                     "anggota_id" => $request->anggota_id
                 ]);
 
+                $history = History::create([
+                    "id" => $barang->id,
+                    "anggota_id" => $request->anggota_id
+                ]);
+
+
                 $order = Order::create([
                     "no_order" => date('dmy') . "OR" . $request->anggota_id,
                     "anggota_id" => $request->anggota_id,
@@ -108,7 +114,8 @@ class FoOrderController extends Controller
                     "barang_id" => $barang->id,
                     "kondisi_unit_id" => $kondisi_unit->id,
                     "las_id" => $las->id,
-                    "pinjam_id" => $pinjam->id
+                    "pinjam_id" => $pinjam->id,
+                    "history_id" => $history->id,
                 ]);
             }
         );
@@ -126,7 +133,8 @@ class FoOrderController extends Controller
     {
         return view('anggota', [
             "title" => "Edit Order",
-            "orders" => $order
+            "orders" => $order,
+
         ]);
     }
 
@@ -141,7 +149,8 @@ class FoOrderController extends Controller
         return view('dashboard.fo.orders.edit-order', [
             'title' => 'Edit Order',
             'order' => $order,
-            'orders' => Order::all()
+            'orders' => Order::all(),
+            "pinlatest" => Pinjam::where('anggota_id', $order->anggota->id)->latest()->first()
         ]);
     }
 
@@ -381,9 +390,25 @@ class FoOrderController extends Controller
         $bungafloat = floatval($request->bunga);
 
         $validpinjam['bunga'] = $bungafloat;
-        $b_marg = ($pokok_kembali * $bungafloat / 100) * $request->periode;
+        $b_margin = ($pokok_kembali * $bungafloat / 100) * $request->periode;
+
+        if ($b_margin > 100000) {
+            $desimal = $b_margin / 100000;
+            $b_marg = number_format($desimal, 2) * 100000;
+        } elseif ($b_margin > 1000000) {
+            $desimal = $b_margin / 1000000;
+            $b_marg = number_format($desimal, 2) * 1000000;
+        } else {
+            $desimal = $b_margin / 10000;
+            $b_marg = number_format($desimal, 2) * 10000;
+        }
+
+        // dd($desimal, $b_marg);
         $validpinjam['bunga_margin'] = $b_marg;
-        $validpinjam['pk_marg'] = $pokok_kembali + $b_marg;
+
+        $pokokplusmargin = $pokok_kembali + $b_marg;
+        $validpinjam['pk_marg'] = $pokokplusmargin;
+        $validpinjam['angsuran'] =  $pokokplusmargin / $request->jumlah_angs;
         //end struktur kredit by angsuran
 
 

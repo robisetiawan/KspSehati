@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Pinjam;
 use App\Models\Adddata;
 use App\Models\Anggota;
 use App\Models\Identity;
 use App\Models\Profession;
 use Illuminate\Http\Request;
 use App\Exports\AnggotaExport;
+use App\Models\Simpanan;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
@@ -123,6 +125,8 @@ class FoAnggotaController extends Controller
                 "telepon_rumah" => 'nullable|min:10|max:12',
                 "telepon_seluler" => 'nullable|min:10|max:12',
                 "telepon_kantor" => 'nullable|min:10|max:12',
+                //simp_pk
+                "simpkok" => 'required'
 
             ]);
 
@@ -142,6 +146,7 @@ class FoAnggotaController extends Controller
             $pendapatan_psgRp = str_replace($deleteRp, "", $request->pendapatan_psg);
             $pendapatan_lainRp = str_replace($deleteRp, "", $request->pendapatan_lain);
             $biaya_bulananRp = str_replace($deleteRp, "", $request->biaya_bulanan);
+            $simpkokRp = str_replace($deleteRp, "", $request->simpkok);
 
             $intOmset = (int)$omsetRp;
             $intpendapatan = (int)$pendapatanRp;
@@ -149,6 +154,7 @@ class FoAnggotaController extends Controller
             $intpendapatan_psg = (int)$pendapatan_psgRp;
             $intpendapatan_lain = (int)$pendapatan_lainRp;
             $intbiaya_bulanan = (int)$biaya_bulananRp;
+            $intsimpkok = (int)$simpkokRp;
 
             // $gettype = gettype($intOmset);
             // $validatedData['password'] = bcrypt($validatedData['password']);
@@ -224,6 +230,7 @@ class FoAnggotaController extends Controller
                 "telepon_rumah" => $request->telepon_rumah,
                 "telepon_seluler" => $request->telepon_seluler,
                 "telepon_kantor" => $request->teleponkantorh,
+                "simp_pk" => $intsimpkok
 
             ]);
         });
@@ -251,7 +258,9 @@ class FoAnggotaController extends Controller
     {
         return view('dashboard.fo.anggotas.show-anggota', [
             "title" => "Detail Anggota",
-            "anggotas" => $anggota
+            "anggotas" => $anggota,
+            "pinjam" => Pinjam::where('anggota_id', $anggota->id)->latest()->get(),
+            "pinlatest" => Pinjam::where('anggota_id', $anggota->id)->latest()->first()
         ]);
     }
 

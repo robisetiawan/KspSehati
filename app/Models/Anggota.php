@@ -40,4 +40,9 @@ class Anggota extends Model
     {
         return $this->belongsTo(Adddata::class);
     }
+
+    public function history()
+    {
+        return $this->belongsTo(Simpanan::class);
+    }
 }

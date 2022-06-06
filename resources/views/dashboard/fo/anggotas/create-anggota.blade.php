@@ -1153,6 +1153,48 @@
                                 </div>
                             </div>
 
+                            {{-- Simpanan Pokok --}}
+                            <div class="container-fluid mb-2 border">
+                                <div class="card-header p-1 mt-2">
+                                    <h6> <i class="fa fa-user-md" aria-hidden="true"></i>
+                                        Simpanan Pokok</h6>
+                                </div>
+                                <div class="row rounded">
+
+                                    <div class="col-sm-12 col-xl-6">
+                                        <div class="row">
+                                            <div class="col-sm-12 p-r-0">
+                                                <!-- **************************************************************************************************8******  -->
+                                                <div class="card-body p-1 ">
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-2">
+                                                        <label class="col-sm-4 col-form-label" for="simpkok">Simpanan
+                                                            Pokok</label>
+                                                        <div class="col">
+                                                            <input
+                                                                class="form-control form-control-sm @error('simpkok') is-invalid @enderror"
+                                                                name="simpkok" type="text" id="simpkok"
+                                                                value="{{ old('simpkok') }}" type-currency="IDR"
+                                                                placeholder="Rp ">
+                                                            @error('simpkok')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ************************************************************************************************* -->
+
+                                </div>
+                            </div>
+
                             <div class="text-end">
                                 <button class="btn btn-primary text-end" type="submit">Simpan</button>
                             </div>

@@ -776,8 +776,180 @@
                                 </div>
                             </div>
 
-                            <div class="text-end">
-                                <button class="btn btn-primary text-end" type="submit">Simpan</button>
+                            {{-- Simpanan --}}
+                            <div class="container-fluid mb-2 border">
+                                <div class="card-header p-1 mt-2">
+                                    <h6> <i class="fa fa-user-md" aria-hidden="true"></i>
+                                        Data Simpanan</h6>
+                                </div>
+                                <div class="row mx-2 my-3">
+                                    <div class="col px-0">
+                                        <!-- ***************************-->
+                                        <!-- ***************************-->
+                                        <div class="row mb-1">
+                                            <label class="col-sm-2 col-form-label" for="simpkok">Simpanan Pokok</label>
+                                            <div class="col-sm-3">
+                                                <input
+                                                    class="form-control form-control-sm @error('simpkok') is-invalid @enderror"
+                                                    name="simpkok" type="text" id="simpkok" value="@currency($anggotas->simpkok)"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                        <!-- ***************************-->
+                                        <!-- ***************************-->
+                                        <div class="row mb-1">
+                                            <label class="col-sm-2 col-form-label" for="simpanan">Simpanan Wajib</label>
+                                            <div class="col-sm-3">
+                                                <input
+                                                    class="form-control form-control-sm @error('simpanan') is-invalid @enderror"
+                                                    name="simpanan" type="text" id="simpanan" value="@currency($anggotas->simpwj)"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row rounded mx-2">
+                                    <table class="table table-bordered table-xxs text-center table-striped mytable">
+                                        <thead>
+                                            <tr>
+                                                {{-- <th scope="col">No</th> --}}
+                                                <th scope="col">Tgl Simpan</th>
+                                                <th scope="col">Simpanan</th>
+                                                <th scope="col">Pk Kembali</th>
+                                                <th scope="col">Angs</th>
+                                                <th scope="col">Pokok + Bunga</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($pinjam as $pinj)
+                                                <tr>
+                                                    {{-- <th>{{ $loop->iteration }}</th> --}}
+                                                    <td>{{ $pinj->created_at->format('d M Y') }}</td>
+                                                    <td>@currency($pinj->nilai_pinj)</td>
+                                                    <td>@currency($pinj->pk_kem)</td>
+                                                    <td>@currency($pinj->angsuran)</td>
+                                                    <td>@currency($pinj->pk_marg)</td>
+                                                    <td>
+                                                        <div class="btn-group" role="group"
+                                                            aria-label="Basic mixed styles example">
+                                                            <a href="/dashboard/anggotas/{{ $pinj->id }}">
+                                                                <button class="badge bg-success border-0"><i
+                                                                        class="fa fa-eye fa-lg"
+                                                                        aria-hidden="true"></i></button>
+                                                            </a>
+
+                                                            <a href="/dashboard/anggotas/{{ $pinj->id }}/edit">
+                                                                <button class="badge bg-primary border-0"><i
+                                                                        class="fa fa-pencil fa-lg"
+                                                                        aria-hidden="true"></i></button>
+                                                            </a>
+
+                                                            <form action="/dashboard/anggotas/{{ $pinj->id }}"
+                                                                method="POST">
+                                                                @method('delete')
+                                                                @csrf
+                                                                <button class="badge bg-danger border-0"
+                                                                    onclick="return confirm('Are you sure !!')"><i
+                                                                        class="fa fa-times fa-lg"
+                                                                        aria-hidden="true"></i></button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            {{-- Pinjaman --}}
+                            <div class="container-fluid mb-2 border">
+                                <div class="card-header p-1 mt-2">
+                                    <h6> <i class="fa fa-user-md" aria-hidden="true"></i>
+                                        Data Pinjaman</h6>
+                                </div>
+                                <div class="row mx-2">
+                                    <div class="col px-0">
+                                        <!-- ***************************-->
+                                        <!-- ***************************-->
+                                        <div class="mb-1 row">
+                                            <label class="col-sm-2 col-form-label" for="pinlatest">Pinjaman
+                                                Terakhir</label>
+                                            <div class="col-sm-3">
+                                                <input
+                                                    class="form-control form-control-sm @error('pinlatest') is-invalid @enderror"
+                                                    name="pinlatest" type="text" id="pinlatest" value="@currency($pinlatest->nilai_pinj)"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                        <div class="mb-1 row">
+                                            <label class="col-sm-2 col-form-label" for="pinlatest">Pinjaman
+                                                Terakhir</label>
+                                            <div class="col-sm-3">
+                                                <input
+                                                    class="form-control form-control-sm @error('pinlatest') is-invalid @enderror"
+                                                    name="pinlatest" type="text" id="pinlatest" value="@currency($pinlatest->nilai_pinj)"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row rounded mx-2">
+                                    <table class="table table-bordered table-xxs text-center table-striped mytable">
+                                        <thead>
+                                            <tr>
+                                                {{-- <th scope="col">No</th> --}}
+                                                <th scope="col">Tgl Pinj</th>
+                                                <th scope="col">Pinjaman</th>
+                                                <th scope="col">Pk Kembali</th>
+                                                <th scope="col">Angs</th>
+                                                <th scope="col">Pokok + Bunga</th>
+                                                <th scope="col">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($pinjam as $pinj)
+                                                <tr>
+                                                    {{-- <th>{{ $loop->iteration }}</th> --}}
+                                                    <td>{{ $pinj->created_at->format('d M Y') }}</td>
+                                                    <td>@currency($pinj->nilai_pinj)</td>
+                                                    <td>@currency($pinj->pk_kem)</td>
+                                                    <td>@currency($pinj->angsuran)</td>
+                                                    <td>@currency($pinj->pk_marg)</td>
+                                                    <td>
+                                                        <div class="btn-group" role="group"
+                                                            aria-label="Basic mixed styles example">
+                                                            <a href="/dashboard/anggotas/{{ $pinj->id }}">
+                                                                <button class="badge bg-success border-0"><i
+                                                                        class="fa fa-eye fa-lg"
+                                                                        aria-hidden="true"></i></button>
+                                                            </a>
+
+                                                            <a href="/dashboard/anggotas/{{ $pinj->id }}/edit">
+                                                                <button class="badge bg-primary border-0"><i
+                                                                        class="fa fa-pencil fa-lg"
+                                                                        aria-hidden="true"></i></button>
+                                                            </a>
+
+                                                            <form action="/dashboard/anggotas/{{ $pinj->id }}"
+                                                                method="POST">
+                                                                @method('delete')
+                                                                @csrf
+                                                                <button class="badge bg-danger border-0"
+                                                                    onclick="return confirm('Are you sure !!')"><i
+                                                                        class="fa fa-times fa-lg"
+                                                                        aria-hidden="true"></i></button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
 
                         </form>
@@ -809,3 +981,12 @@
         }
     </script>
 @endsection
+@push('scripts')
+    // {{-- dataTables --}}
+    <script>
+        $(document).ready(function() {
+            $('.mytable').DataTable();
+        });
+    </script>
+    {{-- end_dataTables --}}
+@endpush

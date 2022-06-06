@@ -16,14 +16,14 @@ class CreatePinjamsTable extends Migration
         Schema::create('pinjams', function (Blueprint $table) {
             $table->id();
             $table->foreignId('anggota_id');
-            $table->string('nilai_pinj')->nullable();
-            $table->string('pk_kem')->nullable();
+            $table->integer('nilai_pinj')->nullable();
+            $table->integer('pk_kem')->nullable();
             $table->enum('tipe_angs', ['Tetap', 'Musiman'])->nullable();
-            $table->string('jumlah_angs')->nullable();
-            $table->string('periode')->nullable();
+            $table->integer('jumlah_angs')->nullable();
+            $table->integer('periode')->nullable();
             $table->enum('per_p', ['Bulan', 'Tahun'])->nullable();
-            $table->string('angsuran')->nullable();
-            $table->string('admin_total')->nullable();
+            $table->integer('angsuran')->nullable();
+            $table->integer('admin_total')->nullable();
             $table->integer('harga_acuan')->nullable();
             $table->integer('bunga_margin')->nullable();
             $table->integer('pk_marg')->nullable();

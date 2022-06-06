@@ -205,9 +205,7 @@
                                 </label>
                                 <div class="col-sm-4 p-l-0">
                                     <input class="form-control form-control-sm @error('angsuran') is-invalid @enderror"
-                                        name="angsuran" type="text" id="angsuran"
-                                        value="{{ old('angsuran', $order->pinjam->angsuran) }}" type-currency="IDR"
-                                        placeholder="Rp ">
+                                        name="angsuran" type="text" id="angsuran" value="@currency($order->pinjam->angsuran)" disabled>
                                     @error('angsuran')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -271,16 +269,17 @@
                                 <label class="col-sm-6 col-form-label" for="nama">
                                     Pinjaman Terakhir</label>
                                 <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" value=""
-                                        disabled />
+                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                        value="@currency($pinlatest->nilai_pinj)" disabled />
                                 </div>
                             </div>
                             <!-- ****************************************************************************************** -->
                             <div class="row mb-1">
-                                <label class="col-sm-6 col-form-label" for="nama">
+                                <label class="col-sm-6 col-form-label" for="simp_pk">
                                     Simpanan Pokok</label>
                                 <div class="col-sm-6 p-l-0">
-                                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                    <input type="text" class="form-control form-control-sm" id="simp_pk"
+                                        value="@currency($order->anggota->simpkok)" disabled />
                                 </div>
                             </div>
                             <!-- ****************************************************************************************** -->

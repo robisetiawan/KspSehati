@@ -23,7 +23,7 @@ class CreatePenerimaanUangsTable extends Migration
             $table->string('no_rek')->nullable();
             $table->integer('nominal')->nullable();
             $table->integer('angsuran_ke')->nullable();
-            $table->enum('tipe_pu', ['Angsuran + Simp Wajib', 'Simp Wajib'])->nullable();
+            $table->integer('sisa_pj')->nullable();
             $table->timestamps();
         });
     }

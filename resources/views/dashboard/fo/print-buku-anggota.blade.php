@@ -157,7 +157,7 @@
             <div class="row p-1">
                 <div class="col-3">Simpanan Pokok</div>
                 <div class="col">
-                    : {{ $title }}
+                    : @currency($anggotas->simpkok)
                 </div>
             </div>
             <!-- *************** -->
@@ -165,7 +165,7 @@
             <div class="row p-1">
                 <div class="col-3">Simpanan Wajib</div>
                 <div class="col">
-                    : {{ $title }}
+                    : @currency($anggotas->simpwj)
                 </div>
             </div>
             <!-- *************** -->

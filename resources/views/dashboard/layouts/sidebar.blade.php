@@ -105,6 +105,14 @@
                                  </a>
                              </li>
 
+                             <li class="dropdown">
+                                 <a href="/dashboard/tambah-simpanan"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/tambah-simpanan*') ? 'active' : '' }}">
+                                     <i data-feather="book"></i>
+                                     <span>Simpanan</span>
+                                 </a>
+                             </li>
+
 
                              <li class="dropdown">
                                  <a href="/cetak-buku-anggota"

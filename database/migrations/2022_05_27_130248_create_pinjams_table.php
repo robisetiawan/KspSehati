@@ -32,6 +32,7 @@ class CreatePinjamsTable extends Migration
             $table->integer('nilai_terima')->nullable();
             $table->decimal('bunga', $precision = 8, $scale = 3)->nullable();
             $table->integer('persentase')->nullable();
+            $table->integer('sisa_pj')->nullable();
             $table->timestamps();
         });
     }

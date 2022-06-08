@@ -131,6 +131,7 @@ class FoOrderController extends Controller
      */
     public function show(Order $order)
     {
+        dd($order);
         return view('anggota', [
             "title" => "Edit Order",
             "orders" => $order,

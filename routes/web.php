@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BmController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PinjamController;
 use App\Http\Controllers\FoOrderController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PinjamController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SimpananController;
 use App\Http\Controllers\AgAnggotaController;
 use App\Http\Controllers\FoAnggotaController;
 use App\Http\Controllers\CetakBukuAgController;
@@ -82,6 +83,10 @@ Route::name('fo')->middleware('fo')->group(
 
         Route::resource('/dashboard/penerimaan-uang', PenerimaanUangController::class);
         Route::get('/dashboard/penerimaan-uang/{id}/cetak', [PenerimaanUangController::class, 'cetak']);
+
+        Route::resource('/dashboard/tambah-simpanan', SimpananController::class);
+        Route::get('/dashboard/tambah', [SimpananController::class, 'crianggota']);
+        Route::get('/dashboard/tambah/cari', [SimpananController::class, 'cari']);
 
         Route::get('/dashboard/cetak-buku-anggota', [CetakBukuAgController::class, 'cetak']);
         Route::get('/dashboard/cetak-buku-anggota/cari', [CetakBukuAgController::class, 'caricetak']);
@@ -165,3 +170,23 @@ Route::get('/detail-ag', [BmController::class, 'detailag']);
 //         "title" => "Pooling Order"
 //     ]);
 // });
+Route::get('routes', function () {
+    $routeCollection = Route::getRoutes();
+
+    echo "<table style='width:100%'>";
+    echo "<tr>";
+    echo "<td width='10%'><h4>HTTP Method</h4></td>";
+    echo "<td width='10%'><h4>Route</h4></td>";
+    echo "<td width='10%'><h4>Name</h4></td>";
+    echo "<td width='70%'><h4>Corresponding Action</h4></td>";
+    echo "</tr>";
+    foreach ($routeCollection as $value) {
+        echo "<tr>";
+        echo "<td>" . $value->methods()[0] . "</td>";
+        echo "<td>" . $value->uri() . "</td>";
+        echo "<td>" . $value->getName() . "</td>";
+        echo "<td>" . $value->getActionName() . "</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+});

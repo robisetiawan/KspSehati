@@ -5,19 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class History extends Model
+class Simpanan extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $with = ['anggota'];
 
     public function anggota()
     {
         return $this->belongsTo(Anggota::class);
-    }
-
-    public function order()
-    {
-        return $this->hasOne(Order::class);
-        //satu anggota bisa memiliki >= 1 Identity
     }
 }

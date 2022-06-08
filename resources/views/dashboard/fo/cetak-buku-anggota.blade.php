@@ -37,14 +37,6 @@
                                 <button class="btn btn-primary" type="submit" value="CARI"><i class="fa fa-arrow-right"
                                         aria-hidden="true"></i></button>
                             </div>
-                            {{-- <div class="input-group mb-3">
-                                <label class="col-sm-4 col-form-label visually-hidden" for="id">No
-                                    Anggota </label>
-                                <input type="text" class="form-control" placeholder="Nomor Anggota  " name="search"
-                                    value="{{ request('search') }}">
-                                <button class="btn btn-primary" type="submit"><i class="fa fa-arrow-right"
-                                        aria-hidden="true"></i></button>
-                            </div> --}}
 
                         </form>
                     </div>

@@ -18,7 +18,12 @@ class Anggota extends Model
 
     public function pinjaman()
     {
-        return $this->hasMany(Pinjaman::class);
+        return $this->hasMany(Pinjam::class);
+    }
+
+    public function simpanan()
+    {
+        return $this->hasOne(Simpanan::class);
     }
 
     public function user()
@@ -41,8 +46,8 @@ class Anggota extends Model
         return $this->belongsTo(Adddata::class);
     }
 
-    public function history()
-    {
-        return $this->belongsTo(Simpanan::class);
-    }
+    // public function history()
+    // {
+    //     return $this->hasMany(History::class);
+    // }
 }

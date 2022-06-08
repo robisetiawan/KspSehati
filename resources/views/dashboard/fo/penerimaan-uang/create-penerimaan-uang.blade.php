@@ -48,6 +48,7 @@
                                                     <div class="row mb-1">
                                                         <label class="col-sm-3 col-form-label" for="id">No
                                                             Order</label>
+
                                                         <div class="col p-l-0">
                                                             <select class="form-select" name="id">
                                                                 @foreach ($orders as $order)

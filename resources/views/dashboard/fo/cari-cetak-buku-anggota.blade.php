@@ -139,7 +139,8 @@
                                 <div class="mb-1 row">
                                     <label class="col-sm-2 col-form-label">Simpanan Pokok</label>
                                     <div class="col-sm-3">
-                                        <input class="form-control m-input digits" type="text" value="" readonly />
+                                        <input class="form-control m-input digits" type="text" value="@currency($a->simpkok)"
+                                            readonly />
                                     </div>
                                 </div>
                                 <!-- *************** -->
@@ -147,7 +148,8 @@
                                 <div class="mb-1 row">
                                     <label class="col-sm-2 col-form-label">Simpanan Wajib</label>
                                     <div class="col-sm-3">
-                                        <input class="form-control m-input digits" type="text" value="" readonly />
+                                        <input class="form-control m-input digits" type="text" value="@currency($a->simpwj)"
+                                            readonly />
                                     </div>
                                 </div>
                                 <!-- *************** -->

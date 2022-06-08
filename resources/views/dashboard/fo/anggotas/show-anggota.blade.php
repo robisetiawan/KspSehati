@@ -814,38 +814,35 @@
                                             <tr>
                                                 {{-- <th scope="col">No</th> --}}
                                                 <th scope="col">Tgl Simpan</th>
-                                                <th scope="col">Simpanan</th>
-                                                <th scope="col">Pk Kembali</th>
-                                                <th scope="col">Angs</th>
-                                                <th scope="col">Pokok + Bunga</th>
+                                                <th scope="col">Jumlah Simpanan per tgl</th>
+                                                <th scope="col">Nominal</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($pinjam as $pinj)
+                                            @foreach ($simpan as $s)
                                                 <tr>
                                                     {{-- <th>{{ $loop->iteration }}</th> --}}
-                                                    <td>{{ $pinj->created_at->format('d M Y') }}</td>
-                                                    <td>@currency($pinj->nilai_pinj)</td>
-                                                    <td>@currency($pinj->pk_kem)</td>
-                                                    <td>@currency($pinj->angsuran)</td>
-                                                    <td>@currency($pinj->pk_marg)</td>
+                                                    <td>{{ $s->created_at->format('d M Y') }}</td>
+                                                    <td>@currency($s->jmlh_simpwj)</td>
+                                                    <td>@currency($s->pk_kem)</td>
+                                                    <td>@currency($s->simp_wj)</td>
                                                     <td>
                                                         <div class="btn-group" role="group"
                                                             aria-label="Basic mixed styles example">
-                                                            <a href="/dashboard/anggotas/{{ $pinj->id }}">
+                                                            <a href="/dashboard/anggotas/{{ $s->id }}">
                                                                 <button class="badge bg-success border-0"><i
                                                                         class="fa fa-eye fa-lg"
                                                                         aria-hidden="true"></i></button>
                                                             </a>
 
-                                                            <a href="/dashboard/anggotas/{{ $pinj->id }}/edit">
+                                                            <a href="/dashboard/anggotas/{{ $s->id }}/edit">
                                                                 <button class="badge bg-primary border-0"><i
                                                                         class="fa fa-pencil fa-lg"
                                                                         aria-hidden="true"></i></button>
                                                             </a>
 
-                                                            <form action="/dashboard/anggotas/{{ $pinj->id }}"
+                                                            <form action="/dashboard/anggotas/{{ $s->id }}"
                                                                 method="POST">
                                                                 @method('delete')
                                                                 @csrf
@@ -949,6 +946,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+
                                 </div>
                             </div>
 
@@ -985,7 +983,7 @@
     // {{-- dataTables --}}
     <script>
         $(document).ready(function() {
-            $('.mytable').DataTable();
+            $('table.display').DataTable();
         });
     </script>
     {{-- end_dataTables --}}

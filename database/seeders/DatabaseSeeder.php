@@ -8,12 +8,12 @@ use App\Models\Barang;
 use App\Models\Pinjam;
 use App\Models\Adddata;
 use App\Models\Anggota;
-use App\Models\History;
 use App\Models\Jaminan;
 use App\Models\Identity;
 use App\Models\Kondisi_unit;
 use App\Models\Las;
 use App\Models\Profession;
+use App\Models\Simpanan;
 use Illuminate\Database\Seeder;
 
 
@@ -123,7 +123,7 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        History::create([
+        Simpanan::create([
             'anggota_id' => 1,
             'simp_wj' => 5000
         ]);

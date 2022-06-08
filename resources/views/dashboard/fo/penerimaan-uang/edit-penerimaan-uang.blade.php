@@ -105,7 +105,20 @@
                                             </div>
 
                                         </div>
-
+                                        <!-- **************************************************************************************************8******  -->
+                                        <div class="row mb-1">
+                                            <label class="col-sm-3 col-form-label" for="created_at">Tgl
+                                                Terima</label>
+                                            <div class="col-sm-4 p-l-0">
+                                                <input type="text" class="form-control form-control-sm" id="created_at"
+                                                    name="created_at" value="{{ $pene->updated_at->format('d M Y') }}"
+                                                    disabled />
+                                            </div>
+                                            <div class="col-sm-3 p-l-0">
+                                                <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                                    value="Cash-In" disabled />
+                                            </div>
+                                        </div>
                                         <!-- **************************************************************************************************8******  -->
 
                                     </div>
@@ -120,22 +133,6 @@
                                         <!-- **************************************************************************************************8******  -->
                                         <div class="card-body p-1">
                                             <!-- **************************************************************************************************8******  -->
-
-                                            <!-- **************************************************************************************************8******  -->
-                                            <div class="row mb-1">
-                                                <label class="col-sm-3 col-form-label" for="created_at">Tgl
-                                                    Terima</label>
-                                                <div class="col-sm-4 p-l-0">
-                                                    <input type="text" class="form-control form-control-sm" id="created_at"
-                                                        name="created_at" value="{{ $pene->updated_at->format('d M Y') }}"
-                                                        disabled />
-                                                </div>
-                                                <div class="col-sm-3 p-l-0">
-                                                    <input type="text" class="form-control form-control-sm"
-                                                        id="colFormLabelSm" value="Cash-In" disabled />
-                                                </div>
-                                            </div>
-                                            <!-- **************************************************************************************************8******  -->
                                             <div class="row mb-1">
                                                 <label class="col-sm-3 col-form-label" for="nama">Currency</label>
                                                 <div class="col-sm-2 p-l-0">
@@ -144,13 +141,45 @@
                                                 </div>
                                             </div>
                                             <!-- **************************************************************************************************8******  -->
-
+                                            <div class="row mb-1">
+                                                <label class="col-sm-3 col-form-label" for="pk_marg">Pinjaman</label>
+                                                <div class="col-sm-6 p-l-0">
+                                                    <input type="hidden" name="pk_marg"
+                                                        value="{{ $pene->order->pinjam->pk_marg }}">
+                                                    <input
+                                                        class="form-control form-control-sm @error('pk_marg') is-invalid @enderror"
+                                                        name="pk_marg" type="text" id="pk_marg" value="@currency($pene->order->pinjam->pk_marg)"
+                                                        disabled>
+                                                    @error('pk_marg')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <!-- **************************************************************************************************8******  -->
+                                            <div class="row mb-1">
+                                                <label class="col-sm-3 col-form-label" for="sisa_pj">Sisa Pinj</label>
+                                                <div class="col-sm-6 p-l-0">
+                                                    <input
+                                                        class="form-control form-control-sm @error('sisa_pj') is-invalid @enderror"
+                                                        name="sisa_pj" type="text" id="sisa_pj" value="@currency($pene->sisa_pj)"
+                                                        disabled>
+                                                    @error('sisa_pj')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <!-- **************************************************************************************************8******  -->
                                             <div class="row mb-1">
                                                 <label class="col-sm-3 col-form-label" for="nominal">Nominal</label>
                                                 <div class="col-sm-6 p-l-0">
                                                     <input type="hidden"
                                                         class="form-control form-control-sm @error('nominal') is-invalid @enderror"
-                                                        name="nominal" id="nominal" value="@currency($pene->order->pinjam->angsuran)">
+                                                        name="nominal" id="nominal"
+                                                        value="{{ $pene->order->pinjam->angsuran }}">
                                                     <input
                                                         class="form-control form-control-sm @error('nominal') is-invalid @enderror"
                                                         name="nominal" type="text" id="nominal" value="@currency($pene->order->pinjam->angsuran)"
@@ -233,7 +262,6 @@
                 <div class="card-footer text-end f-12">
                     <div>
                         <button class="btn btn-primary" type="submit">Submit</button>
-                        <input class="btn btn-light" type="reset" value="Cancel" />
                     </div>
                 </div>
 

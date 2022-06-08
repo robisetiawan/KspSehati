@@ -12,6 +12,7 @@
                             <li class="breadcrumb-item">KSP Sehati
                             </li>
                             <li class="breadcrumb-item">Penerimaan Uang</li>
+                            <li class="breadcrumb-item">Simpanan</li>
                         </ol>
                     </div>
                 </div>
@@ -40,10 +41,11 @@
                                         aria-hidden="true"></i> Simpan</button>
                             </form> --}}
 
-                            <a href="/dashboard/penerimaan-uang/create" class="btn btn-primary mb-2"><i
-                                    class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
-                            <a href="/dashboard/tambah-simpanan" class="btn btn-warning mb-2"><i class="fa fa-plus"
+                            <a href="/dashboard/penerimaan-uang" class="btn btn-pill btn-outline-primary btn-xs mb-3"><i
+                                    class="fa fa-arrow-left" aria-hidden="true"></i> Back</a> <br>
+                            <a href="/dashboard/tambah" class="btn btn-primary mb-2"><i class="fa fa-plus"
                                     aria-hidden="true"></i> Tambah Simpanan</a>
+
 
                             @if (session()->has('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -63,47 +65,47 @@
                                 <thead>
                                     <tr>
                                         {{-- <th scope="col">No</th> --}}
-                                        <th scope="col">No Terima</th>
-                                        <th scope="col">Tanggal Terima</th>
+                                        <th scope="col">Tanggal</th>
+                                        <th scope="col">No Anggota</th>
                                         <th scope="col">Nama Anggota</th>
-                                        <th scope="col">Angs ke</th>
+                                        <th scope="col">Jumlah Simpanan</th>
                                         <th scope="col">Nominal</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($penugs as $pu)
+                                    @foreach ($simpanans as $s)
                                         <tr>
                                             {{-- <th>{{ $loop->iteration }}</th> --}}
-                                            <td>{{ $pu->no_terima }}</td>
-                                            <td>{{ $pu->created_at->format('d M Y') }}</td>
-                                            <td>{{ $pu->order->anggota->user->name }}</td>
-                                            <td>{{ $pu->angsuran_ke }}</td>
-                                            <td>@currency($pu->nominal)</td>
+                                            <td>{{ $s->created_at->format('d M Y') }}</td>
+                                            <td>{{ $s->anggota->no_anggota }}</td>
+                                            <td>{{ $s->anggota->user->name }}</td>
+                                            <td>@currency($s->jmlh_simpwj) per {{ $s->created_at->format('d M') }}</td>
+                                            <td>@currency($s->simp_wj)</td>
                                             <td>
-                                                {{-- <a href="/dashboard/orders/{{ $pu->id }}" class="badge bg-success"
+                                                {{-- <a href="/dashboard/orders/{{ $s->id }}" class="badge bg-success"
                                                     data-bs-toggle="modal" data-bs-target="#editOrder">
                                                     <i class="fa fa-eye fa-2x" aria-hidden="true"></i>
                                                 </a>
-                                                <a href="/dashboard/orders/{{ $pu->id }}" class="badge bg-primary"><i
+                                                <a href="/dashboard/orders/{{ $s->id }}" class="badge bg-primary"><i
                                                         class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>
-                                                <a href="/dashboard/orders/{{ $pu->id }}" class="badge bg-danger"><i
+                                                <a href="/dashboard/orders/{{ $s->id }}" class="badge bg-danger"><i
                                                         class="fa fa-trash-o fa-2x" aria-hidden="true"></i></span></a> --}}
 
                                                 <div class="btn-group" role="group"
                                                     aria-label="Basic mixed styles example">
-                                                    <a href="/dashboard/penerimaan-uang/{{ $pu->id }}">
+                                                    {{-- <a href="/dashboard/tambah-simpanan/{{ $s->id }}">
                                                         <button class="badge bg-success border-0"><i class="fa fa-eye fa-lg"
                                                                 aria-hidden="true"></i></button>
-                                                    </a>
+                                                    </a> --}}
 
-                                                    <a href="/dashboard/penerimaan-uang/{{ $pu->id }}/edit">
+                                                    <a href="/dashboard/tambah-simpanan/{{ $s->id }}/edit">
                                                         <button class="badge bg-primary border-0"><i
                                                                 class="fa fa-pencil fa-lg" aria-hidden="true"></i></button>
                                                     </a>
 
-                                                    <form action="/dashboard/penerimaan-uang/{{ $pu->id }}"
+                                                    <form action="/dashboard/tambah-simpanan/{{ $s->id }}"
                                                         method="POST">
                                                         @method('delete')
                                                         @csrf
@@ -118,6 +120,8 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
+
                         </div>
 
                     </div>

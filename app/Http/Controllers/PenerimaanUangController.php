@@ -72,6 +72,7 @@ class PenerimaanUangController extends Controller
      */
     public function edit(PenerimaanUang $penerimaanUang)
     {
+        // dd($penerimaanUang);
         return view('dashboard.fo.penerimaan-uang.edit-penerimaan-uang', [
             "title" => "Penerimaan Uang",
             'pene' => $penerimaanUang,
@@ -89,6 +90,7 @@ class PenerimaanUangController extends Controller
     public function update(Request $request, PenerimaanUang $penerimaanUang)
     {
 
+
         if ($request->cr_bayar === 'Transfer')
             $pen = [
                 'trm_dr' => 'required',
@@ -97,6 +99,7 @@ class PenerimaanUangController extends Controller
                 'cr_bayar' => 'required',
                 'kd_bank' => 'required',
                 'no_rek' => 'required',
+                'sisa_pj' => 'nullable'
             ];
         else
             $pen = [
@@ -106,6 +109,7 @@ class PenerimaanUangController extends Controller
                 'cr_bayar' => 'required',
                 'kd_bank' => 'nullable',
                 'no_rek' => 'nullable',
+                'sisa_pj' => 'nullable'
             ];
 
         $validatedData = $request->validate($pen);
@@ -115,10 +119,13 @@ class PenerimaanUangController extends Controller
             "Rp", ".", " "
         );
 
-        $nominal = str_replace($deleteRp, "", $request->nominal);
-        $validatedData['nominal'] = (int)$nominal;
-        //endCurrency
+        $sp = $request->pk_marg - ($request->angsuran_ke * $request->nominal);
 
+        // $nominal = str_replace($deleteRp, "", $request->nominal);
+        // $sisa_pj = str_replace($deleteRp, "", $sp);
+        // $validatedData['nominal'] = (int)$nominal;
+        $validatedData['sisa_pj'] = $sp;
+        //endCurrency
         PenerimaanUang::where('id', $penerimaanUang->id)
             ->update($validatedData);
 

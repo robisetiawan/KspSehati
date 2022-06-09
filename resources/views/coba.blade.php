@@ -1,111 +1,33 @@
-<! DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8">
-    <title> How to Auto Calculate Price in JavaScript </title>
-    </head>
+
+    <title>Users</title>
+
+    <!-- TailwindCSS -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            text-align: center;
-            background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1));
+            font-family: 'Nunito';
         }
-
-        h2 {
-            font-style: italic;
-            font-family: "Playfair Display", "Bookman", serif;
-            color: #999;
-            letter-spacing: - 0.005em;
-            word-spacing: 1px;
-            font-size: 2.75em;
-            font-weight: bold;
-        }
-
-        h4 {
-            font-style: italic;
-            font-family: "Playfair Display", "Bookman", serif;
-            color: black;
-            letter-spacing: - 0.005em;
-            word-spacing: 1px;
-            font-size: 1em;
-            font-weight: bold;
-        }
-
-        h1 {
-            position: relative;
-            padding: 0;
-            margin: 0;
-            font-family: "Raleway", sans-serif;
-            font-weight: 300;
-            font-size: 40px;
-            color: #080808;
-            -webkit-transition: all 0.4s ease 0s;
-            -o-transition: all 0.4s ease 0s;
-            transition: all 0.4s ease 0s;
-            text-align: center;
-        }
-
-        .three h1 {
-            font-size: 28px;
-            font-weight: 500;
-            letter-spacing: 0;
-            line-height: 1.5em;
-            padding-bottom: 15px;
-            position: relative;
-            text-align: center;
-        }
-
-        .three h1:before {
-            content: "";
-            position: absolute;
-            left: 10;
-            bottom: 0;
-            height: 5px;
-            width: 550px;
-            background-color: #111;
-            text-align: center;
-        }
-
-        .three h1:after {
-            content: "";
-            left: 0;
-            bottom: 2px;
-            height: 1px;
-            width: 85%;
-            max-width: 255px;
-            background-color: #333;
-        }
-
     </style>
 
-    <body>
-        <h2> Example </h2>
-        <h1> How to Auto Calculate Price in JavaScript </h1> <br> <br>
-        <fieldset>
-            <form action="#" method="post" name="myform">
-                <h4> Number of People </h4>
-                <input type="text" name="qty"> <br />
-                <h4> Enter Price </h4>
-                <input type="text" name="Cost" onkeyup="calculate(this.value)"> <br />
-                <h4> Total Price </h4> <input type="text" name="textbox5" />
-        </fieldset>
-        </form>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-        <script type="text/javascript">
-            function calculate() {
-                if (isNaN(document.forms["myform"]["qty"].value) || document.forms["myform"]["qty"].value == "") {
-                    var text1 = 0;
-                } else {
-                    var text1 = parseInt(document.forms["myform"]["qty"].value);
-                }
-                if (isNaN(document.forms["myform"]["Cost"].value) || document.forms["myform"]["Cost"].value == "") {
-                    var text2 = 0;
-                } else {
-                    var text2 = parseFloat(document.forms["myform"]["Cost"].value);
-                }
-                document.forms["myform"]["textbox5"].value = (text1 * text2);
-            }
-        </script>
-    </body>
+    @livewireStyles
+</head>
 
-    </html>
+<body>
+    <div class="container mx-auto">
+        <h1 class="text-3xl text-center my-10">Users</h1>
+        <livewire:simpanan-table>
+    </div>
+
+    @livewireScripts
+</body>
+
+</html>

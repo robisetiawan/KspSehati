@@ -12,6 +12,7 @@ use App\Models\Anggota;
 use App\Models\History;
 use App\Models\Jaminan;
 use App\Models\Identity;
+use App\Models\Simpanan;
 use App\Models\Profession;
 use App\Models\Kondisi_unit;
 use Illuminate\Http\Request;
@@ -101,7 +102,7 @@ class FoOrderController extends Controller
                     "anggota_id" => $request->anggota_id
                 ]);
 
-                $history = History::create([
+                $history = Simpanan::create([
                     "id" => $barang->id,
                     "anggota_id" => $request->anggota_id
                 ]);

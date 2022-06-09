@@ -14,6 +14,10 @@
                             <li class="breadcrumb-item">Anggota</li>
                         </ol>
                     </div>
+                    <div class="col-lg-6">
+                        @include('dashboard.fo.bookmark')
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -36,6 +40,7 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endif
+                            {{-- <livewire:anggota-table> --}}
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>

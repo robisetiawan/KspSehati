@@ -15,4 +15,12 @@ class Simpanan extends Model
     {
         return $this->belongsTo(Anggota::class);
     }
+
+    public static function search($search)
+    {
+        return empty($search) ? static::query()
+            : static::query()->where('created_at', 'like', '%' . $search . '%')
+            ->orWhere('jmlh_simpwj', 'like', '%' . $search . '%')
+            ->orWhere('simp_wj', 'like', '%' . $search . '%');
+    }
 }

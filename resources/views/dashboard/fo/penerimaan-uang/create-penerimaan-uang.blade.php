@@ -15,6 +15,9 @@
                             <li class="breadcrumb-item">Tambah Data</li>
                         </ol>
                     </div>
+                    <div class="col-lg-6">
+                        @include('dashboard.fo.bookmark')
+                    </div>
                 </div>
             </div>
         </div>

@@ -46,8 +46,13 @@ class Anggota extends Model
         return $this->belongsTo(Adddata::class);
     }
 
-    // public function history()
-    // {
-    //     return $this->hasMany(History::class);
-    // }
+    public static function search($search)
+    {
+        // $user = User::orWhere('name', 'like', '%' . $search . '%');
+        return empty($search) ? static::query()
+            : static::query()->where('no_anggota', 'like', '%' . $search . '%')
+            // ->orWhere('name', 'like', '%' . $search->user . '%')
+            ->orWhere('tempat_lahir', 'like', '%' . $search . '%')
+            ->orWhere('tanggal_lahir', 'like', '%' . $search . '%');
+    }
 }

@@ -15,6 +15,9 @@
                             <li class="breadcrumb-item">Detail Anggota</li>
                         </ol>
                     </div>
+                    <div class="col-lg-6">
+                        @include('dashboard.fo.bookmark')
+                    </div>
                 </div>
             </div>
         </div>
@@ -805,61 +808,49 @@
                                                     name="simpanan" type="text" id="simpanan" value="@currency($anggotas->simpwj)"
                                                     readonly>
                                             </div>
+                                            {{-- Modal --}}
+                                            <!-- Button trigger modal -->
+                                            {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal">
+                                                    Launch demo modal
+                                                </button> --}}
+                                            <div class="col-sm-2 p-l-0">
+                                                <a href="#" class="btn btn-success btn-sm border-0 px-2"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    <i class="fa fa-eye fa-lg">
+                                                    </i>
+                                                </a>
+                                            </div>
+
+
+
+
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row rounded mx-2">
-                                    <table class="table table-bordered table-xxs text-center table-striped mytable">
-                                        <thead>
-                                            <tr>
-                                                {{-- <th scope="col">No</th> --}}
-                                                <th scope="col">Tgl Simpan</th>
-                                                <th scope="col">Jumlah Simpanan per tgl</th>
-                                                <th scope="col">Nominal</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($simpan as $s)
-                                                <tr>
-                                                    {{-- <th>{{ $loop->iteration }}</th> --}}
-                                                    <td>{{ $s->created_at->format('d M Y') }}</td>
-                                                    <td>@currency($s->jmlh_simpwj)</td>
-                                                    <td>@currency($s->pk_kem)</td>
-                                                    <td>@currency($s->simp_wj)</td>
-                                                    <td>
-                                                        <div class="btn-group" role="group"
-                                                            aria-label="Basic mixed styles example">
-                                                            <a href="/dashboard/anggotas/{{ $s->id }}">
-                                                                <button class="badge bg-success border-0"><i
-                                                                        class="fa fa-eye fa-lg"
-                                                                        aria-hidden="true"></i></button>
-                                                            </a>
-
-                                                            <a href="/dashboard/anggotas/{{ $s->id }}/edit">
-                                                                <button class="badge bg-primary border-0"><i
-                                                                        class="fa fa-pencil fa-lg"
-                                                                        aria-hidden="true"></i></button>
-                                                            </a>
-
-                                                            <form action="/dashboard/anggotas/{{ $s->id }}"
-                                                                method="POST">
-                                                                @method('delete')
-                                                                @csrf
-                                                                <button class="badge bg-danger border-0"
-                                                                    onclick="return confirm('Are you sure !!')"><i
-                                                                        class="fa fa-times fa-lg"
-                                                                        aria-hidden="true"></i></button>
-                                                            </form>
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">History
+                                                Simpanan</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <livewire:simpanan-table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            {{-- endModal --}}
 
                             {{-- Pinjaman --}}
                             <div class="container-fluid mb-2 border">
@@ -867,7 +858,7 @@
                                     <h6> <i class="fa fa-user-md" aria-hidden="true"></i>
                                         Data Pinjaman</h6>
                                 </div>
-                                <div class="row mx-2">
+                                <div class="row mx-2 my-3">
                                     <div class="col px-0">
                                         <!-- ***************************-->
                                         <!-- ***************************-->
@@ -890,65 +881,40 @@
                                                     name="pinlatest" type="text" id="pinlatest" value="@currency($pinlatest->nilai_pinj)"
                                                     readonly>
                                             </div>
+                                            <div class="col-sm-2 p-l-0">
+                                                <a href="#" class="btn btn-success btn-sm border-0 px-2"
+                                                    data-bs-toggle="modal" data-bs-target="#pinjam">
+                                                    <i class="fa fa-eye fa-lg">
+                                                    </i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row rounded mx-2">
-                                    <table class="table table-bordered table-xxs text-center table-striped mytable">
-                                        <thead>
-                                            <tr>
-                                                {{-- <th scope="col">No</th> --}}
-                                                <th scope="col">Tgl Pinj</th>
-                                                <th scope="col">Pinjaman</th>
-                                                <th scope="col">Pk Kembali</th>
-                                                <th scope="col">Angs</th>
-                                                <th scope="col">Pokok + Bunga</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($pinjam as $pinj)
-                                                <tr>
-                                                    {{-- <th>{{ $loop->iteration }}</th> --}}
-                                                    <td>{{ $pinj->created_at->format('d M Y') }}</td>
-                                                    <td>@currency($pinj->nilai_pinj)</td>
-                                                    <td>@currency($pinj->pk_kem)</td>
-                                                    <td>@currency($pinj->angsuran)</td>
-                                                    <td>@currency($pinj->pk_marg)</td>
-                                                    <td>
-                                                        <div class="btn-group" role="group"
-                                                            aria-label="Basic mixed styles example">
-                                                            <a href="/dashboard/anggotas/{{ $pinj->id }}">
-                                                                <button class="badge bg-success border-0"><i
-                                                                        class="fa fa-eye fa-lg"
-                                                                        aria-hidden="true"></i></button>
-                                                            </a>
 
-                                                            <a href="/dashboard/anggotas/{{ $pinj->id }}/edit">
-                                                                <button class="badge bg-primary border-0"><i
-                                                                        class="fa fa-pencil fa-lg"
-                                                                        aria-hidden="true"></i></button>
-                                                            </a>
-
-                                                            <form action="/dashboard/anggotas/{{ $pinj->id }}"
-                                                                method="POST">
-                                                                @method('delete')
-                                                                @csrf
-                                                                <button class="badge bg-danger border-0"
-                                                                    onclick="return confirm('Are you sure !!')"><i
-                                                                        class="fa fa-times fa-lg"
-                                                                        aria-hidden="true"></i></button>
-                                                            </form>
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="pinjam" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">History
+                                                Pinjaman</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <livewire:pinjam-table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            {{-- endModal --}}
 
                         </form>
 

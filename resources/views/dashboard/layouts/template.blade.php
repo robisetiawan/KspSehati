@@ -53,6 +53,10 @@
     {{-- heroes.css-bootstrap --}}
     <link rel="stylesheet" href="/css/heroes.css">
 
+    {{-- Livewire table --}}
+    @livewireStyles
+    {{-- endLivewire table --}}
+
 </head>
 
 <body>
@@ -75,6 +79,7 @@
     @include('dashboard.layouts.footer')
     <!-- Enddashboardoter -->
 
+    @livewireScripts
     <script type="text/javascript">
         // localStorage.clear();
         var div = document.querySelector("div.page-wrapper")

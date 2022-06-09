@@ -20,4 +20,19 @@ class Pinjam extends Model
         return $this->hasOne(Order::class);
         //satu anggota bisa memiliki >= 1 Identity
     }
+
+    public static function search($search)
+    {
+        return empty($search) ? static::query()
+            : static::query()->where('created_at', 'like', '%' . $search . '%')
+            ->orWhere('nilai_pinj', 'like', '%' . $search . '%')
+            ->orWhere('pk_kem', 'like', '%' . $search . '%')
+            ->orWhere('angsuran', 'like', '%' . $search . '%')
+            ->orWhere('bunga', 'like', '%' . $search . '%')
+            ->orWhere('bunga_marg', 'like', '%' . $search . '%')
+            ->orWhere('pk_marg', 'like', '%' . $search . '%')
+            ->orWhere('jumlah_angs', 'like', '%' . $search . '%')
+            ->orWhere('admin', 'like', '%' . $search . '%')
+            ->orWhere('harga_acuan', 'like', '%' . $search . '%');
+    }
 }

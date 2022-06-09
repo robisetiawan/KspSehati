@@ -261,7 +261,7 @@ class FoAnggotaController extends Controller
             "title" => "Detail Anggota",
             "anggotas" => $anggota,
             "pinjam" => Pinjam::where('anggota_id', $anggota->id)->latest()->get(),
-            "simpan" => Simpanan::where('anggota_id', $anggota->id)->latest()->get(),
+            // "simpan" => Simpanan::where('anggota_id', $anggota->id)->latest()->get(),
             "pinlatest" => Pinjam::where('anggota_id', $anggota->id)->latest()->first()
         ]);
     }

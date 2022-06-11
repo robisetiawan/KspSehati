@@ -33,7 +33,7 @@
                             <h5>Cash Out</h5>
                         </div>
 
-                        <div class="card-body pt-3 pb-1 f-12">
+                        {{-- <div class="card-body pt-3 pb-1 f-12">
                             <div class="row">
                                 <div class="col">
                                     <!-- ***************************-->
@@ -54,13 +54,12 @@
                                     <!-- ***************************-->
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="table-responsive card-body pt-3 pb-1 f-12">
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th scope="row">No</th>
                                         <th scope="row">Tanggal</th>
                                         <th scope="row">No Anggota</th>
                                         <th scope="row">Nama</th>
@@ -68,20 +67,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>12-12-2022</td>
-                                        <td>122314211</td>
-                                        <td>Anton</td>
-                                        <td>Rp. 2.000.000</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>12-03-2022</td>
-                                        <td>81261867381</td>
-                                        <td>Sudin</td>
-                                        <td>Rp. 2.000.000</td>
-                                    </tr>
+                                    @foreach ($pinjams as $p)
+                                        <tr>
+                                            <td>{{ $p->created_at->format('d M Y') }}</td>
+                                            <td>{{ $p->anggota->no_anggota }}</td>
+                                            <td>{{ $p->anggota->user->name }}</td>
+                                            <td>@currency($p->nilai_pinj)</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -103,7 +96,7 @@
                             <h5>Cash In</h5>
                         </div>
 
-                        <div class="card-body pt-3 pb-1 f-12">
+                        {{-- <div class="card-body pt-3 pb-1 f-12">
                             <div class="row">
                                 <div class="col">
                                     <!-- ***************************-->
@@ -124,13 +117,12 @@
                                     <!-- ***************************-->
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="table-responsive card-body pt-3 pb-1 f-12">
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable2">
                                 <thead>
                                     <tr>
-                                        <th scope="row">No</th>
                                         <th scope="row">Tanggal</th>
                                         <th scope="row">No Anggota</th>
                                         <th scope="row">Nama</th>
@@ -138,20 +130,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>12-12-2022</td>
-                                        <td>122314211</td>
-                                        <td>Anton</td>
-                                        <td>Rp. 2.000.000</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>12-03-2022</td>
-                                        <td>81261867381</td>
-                                        <td>Sudin</td>
-                                        <td>Rp. 2.000.000</td>
-                                    </tr>
+                                    @foreach ($simpans as $s)
+                                        <tr>
+                                            <td>{{ $s->created_at->format('d M Y') }}</td>
+                                            <td>{{ $s->anggota->no_anggota }}</td>
+                                            <td>{{ $s->anggota->user->name }}</td>
+                                            <td>@currency($s->simp_wj)</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

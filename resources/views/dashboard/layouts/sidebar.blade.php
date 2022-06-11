@@ -170,13 +170,13 @@
                                  </a>
                              </li>
 
-                             <li class="dropdown">
+                             {{-- <li class="dropdown">
                                  <a href="/dashboard/lap-dt-ag"
                                      class="menu-title link-nav nav-link {{ Request::is('/dashboard/lap-dt-ag/false') ? 'active' : '' }}">
                                      <i data-feather="users"></i>
                                      <span>Laporan Data Anggota False</span>
                                  </a>
-                             </li>
+                             </li> --}}
 
                              <li class="dropdown">
                                  <a href="/dashboard/lap-keuangan"

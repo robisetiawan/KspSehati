@@ -81,28 +81,21 @@
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th scope="row">No</th>
                                         <th scope="row">Tanggal</th>
-                                        <th scope="row">Jumlah Angsuran</th>
-                                        <th scope="row">Denda</th>
+                                        <th scope="row">Angsuran</th>
+                                        <th scope="row">Jumlah Angs</th>
                                         <th scope="row">Sisa Pinjaman</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>12-12-2022</td>
-                                        <td>Rp. 230.000</td>
-                                        <td>61</td>
-                                        <td>Rp. 2.000.000</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>12-03-2022</td>
-                                        <td>Rp. 230.000</td>
-                                        <td>-</td>
-                                        <td>Rp. 2.000.000</td>
-                                    </tr>
+                                    @foreach ($pinjams as $o)
+                                        <tr>
+                                            <td>{{ $o->created_at->format('d M Y') }}</td>
+                                            <td>@currency($o->pinjam->angsuran)</td>
+                                            <td>{{ $o->pinjam->jumlah_angsuran }}</td>
+                                            <td></td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

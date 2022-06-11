@@ -50,9 +50,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($simpan as $s)
+            @foreach ($simpan->where('anggota_id', $anggota) as $s)
                 <tr>
-                    <td class="border px-4 py-2">{{ $s->created_at->format('d M') }}</td>
+                    <td class="border px-4 py-2">{{ $s->created_at->format('d M Y') }}</td>
                     <td class="border px-4 py-2"><b>@currency($s->jmlh_simpwj)</b> per {{ $s->created_at->format('d M Y') }}
                     </td>
                     <td class="border px-4 py-2">@currency($s->simp_wj)</td>

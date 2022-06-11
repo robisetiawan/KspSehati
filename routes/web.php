@@ -12,6 +12,7 @@ use App\Http\Controllers\AgAnggotaController;
 use App\Http\Controllers\FoAnggotaController;
 use App\Http\Controllers\CetakBukuAgController;
 use App\Http\Controllers\PenerimaanUangController;
+use App\Http\Livewire\PinjamTable;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +73,7 @@ Route::name('fo')->middleware('fo')->group(
         Route::get('/dashboard/pooling-order', [FoOrderController::class, 'poolingorder']);
         Route::get('/dashboard/pooling-order/cari', [FoOrderController::class, 'caripoolingorder']);
         Route::resource('/dashboard/anggotas', FoAnggotaController::class);
-        // Route::get('/dashboard/anggotas/{id}', [FoAnggotaController::class, 'show']);
+        // Route::get('/dashboard/anggotas/{anggota}', [SimpananTable::class, 'mount']);
 
         Route::resource('/dashboard/orders', FoOrderController::class);
         Route::resource('/dashboard/pinjaman', PinjamController::class);
@@ -121,7 +122,7 @@ Route::name('bm')->middleware('bm')->group(
         Route::get('/dashboard/lap-dt-ag', [BmController::class, 'index']);
         Route::get('/dashboard/lap-dt-ag/{id}', [BmController::class, 'detail']);
         Route::get('/dashboard/lap-dt-ag/false', [BmController::class, 'false']);
-        Route::get('/dashboard/lap-dt-ag/{anggota:id}', [BmController::class, 'show']);
+        // Route::get('/dashboard/lap-dt-ag/{anggota:id}', [BmController::class, 'show']);
         Route::get('/dashboard/lap-keuangan', [BmController::class, 'lapkeuangan']);
     }
 );

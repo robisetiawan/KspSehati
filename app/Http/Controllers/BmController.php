@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pinjam;
 use App\Models\Anggota;
+use App\Models\Simpanan;
 use Illuminate\Http\Request;
 
 class BmController extends Controller
@@ -21,7 +23,8 @@ class BmController extends Controller
         return view('dashboard.bm.detail-anggota', [
             "title" => "Detail Anggota",
             "anggota" => $anggota,
-            "anggotas" => Anggota::find($id)
+            "anggotas" => Anggota::find($id),
+            "pinlatest" => Pinjam::where('anggota_id', $id)->latest()->first()
         ]);
     }
 
@@ -33,19 +36,21 @@ class BmController extends Controller
 
         ]);
     }
-    public function show(Anggota $anggota)
-    {
-        return view('dashboard.fo.anggotas.anggotas', [
-            "title" => "Detail Anggota",
-            "anggotas" => Anggota::all(),
-            "anggota" => $anggota->user,
-        ]);
-    }
+    // public function show(Anggota $anggota)
+    // {
+    //     return view('dashboard.fo.anggotas.anggotas', [
+    //         "title" => "Detail Anggota",
+    //         "anggotas" => Anggota::all(),
+    //         "anggota" => $anggota->user,
+    //     ]);
+    // }
 
     public function lapkeuangan()
     {
         return view('dashboard.bm.lap-keuangan', [
-            "title" => "Lap Keuangan"
+            "title" => "Lap Keuangan",
+            "pinjams" => Pinjam::with(['anggota.user', 'order'])->latest()->get(),
+            "simpans" => Simpanan::with(['anggota.user', 'anggota'])->latest()->get(),
         ]);
     }
 }

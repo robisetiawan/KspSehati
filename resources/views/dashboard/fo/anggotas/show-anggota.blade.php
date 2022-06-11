@@ -841,7 +841,8 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <livewire:simpanan-table>
+                                            {{-- <livewire:simpanan-table> --}}
+                                            @livewire('simpanan-table', ['anggota' => $anggotas->id])
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light"
@@ -905,7 +906,7 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <livewire:pinjam-table>
+                                            @livewire('pinjam-table', ['anggota' => $anggotas->id])
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light"

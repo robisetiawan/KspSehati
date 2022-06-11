@@ -65,7 +65,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($pinjams as $pinj)
+            @foreach ($pinjams->where('anggota_id', $anggota) as $pinj)
                 <tr>
                     {{-- <th>{{ $loop->iteration }}</th> --}}
                     <td>{{ $pinj->created_at->format('d M Y') }}</td>

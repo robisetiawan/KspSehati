@@ -14,7 +14,12 @@ class PinjamTable extends Component
     public $search = '';
     public $orderBy = 'id';
     public $orderAsc = true;
+    public $anggota;
 
+    public function mount($anggota)
+    {
+        $this->anggota = $anggota;
+    }
     public function render()
     {
         return view('livewire.pinjam-table', [

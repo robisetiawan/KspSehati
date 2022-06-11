@@ -21,9 +21,16 @@ class SimpananTable extends Component
     public $search = '';
     public $orderBy = 'id';
     public $orderAsc = true;
+    public $anggota;
+
+    public function mount($anggota)
+    {
+        $this->anggota = $anggota;
+    }
 
     public function render()
     {
+        // dd($anggota);
         return view('livewire.simpanan-table', [
             'simpan' => Simpanan::search($this->search)->latest()
                 ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')

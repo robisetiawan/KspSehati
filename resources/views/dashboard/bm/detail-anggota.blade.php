@@ -763,9 +763,143 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="text-end">
-                                <button class="btn btn-primary text-end" type="submit">Simpan</button>
-                            </div> --}}
+                            {{-- Simpanan --}}
+                            <div class="container-fluid mb-2 border">
+                                <div class="card-header p-1 mt-2">
+                                    <h6> <i class="fa fa-user-md" aria-hidden="true"></i>
+                                        Data Simpanan</h6>
+                                </div>
+                                <div class="row mx-2 my-3">
+                                    <div class="col px-0">
+                                        <!-- ***************************-->
+                                        <!-- ***************************-->
+                                        <div class="row mb-1">
+                                            <label class="col-sm-2 col-form-label" for="simpkok">Simpanan Pokok</label>
+                                            <div class="col-sm-3">
+                                                <input
+                                                    class="form-control form-control-sm @error('simpkok') is-invalid @enderror"
+                                                    name="simpkok" type="text" id="simpkok" value="@currency($anggotas->simpkok)"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                        <!-- ***************************-->
+                                        <!-- ***************************-->
+                                        <div class="row mb-1">
+                                            <label class="col-sm-2 col-form-label" for="simpanan">Simpanan Wajib</label>
+                                            <div class="col-sm-3">
+                                                <input
+                                                    class="form-control form-control-sm @error('simpanan') is-invalid @enderror"
+                                                    name="simpanan" type="text" id="simpanan" value="@currency($anggotas->simpwj)"
+                                                    readonly>
+                                            </div>
+                                            {{-- Modal --}}
+                                            <!-- Button trigger modal -->
+                                            {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal">
+                                                    Launch demo modal
+                                                </button> --}}
+                                            <div class="col-sm-2 p-l-0">
+                                                <a href="#" class="btn btn-success btn-sm border-0 px-2"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    <i class="fa fa-eye fa-lg">
+                                                    </i>
+                                                </a>
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">History
+                                                Simpanan</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {{-- <livewire:simpanan-table> --}}
+                                            @livewire('simpanan-table', ['anggota' => $anggotas->id])
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- endModal --}}
+
+                            {{-- Pinjaman --}}
+                            <div class="container-fluid mb-2 border">
+                                <div class="card-header p-1 mt-2">
+                                    <h6> <i class="fa fa-user-md" aria-hidden="true"></i>
+                                        Data Pinjaman</h6>
+                                </div>
+                                <div class="row mx-2 my-3">
+                                    <div class="col px-0">
+                                        <!-- ***************************-->
+                                        <!-- ***************************-->
+                                        <div class="mb-1 row">
+                                            <label class="col-sm-2 col-form-label" for="pinlatest">Pinjaman
+                                                Terakhir</label>
+                                            <div class="col-sm-3">
+                                                <input
+                                                    class="form-control form-control-sm @error('pinlatest') is-invalid @enderror"
+                                                    name="pinlatest" type="text" id="pinlatest" value="@currency($pinlatest->nilai_pinj)"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                        <div class="mb-1 row">
+                                            <label class="col-sm-2 col-form-label" for="pinlatest">Pinjaman
+                                                Terakhir</label>
+                                            <div class="col-sm-3">
+                                                <input
+                                                    class="form-control form-control-sm @error('pinlatest') is-invalid @enderror"
+                                                    name="pinlatest" type="text" id="pinlatest" value="@currency($pinlatest->nilai_pinj)"
+                                                    readonly>
+                                            </div>
+                                            <div class="col-sm-2 p-l-0">
+                                                <a href="#" class="btn btn-success btn-sm border-0 px-2"
+                                                    data-bs-toggle="modal" data-bs-target="#pinjam">
+                                                    <i class="fa fa-eye fa-lg">
+                                                    </i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="pinjam" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">History
+                                                Pinjaman</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @livewire('pinjam-table', ['anggota' => $anggotas->id])
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- endModal --}}
 
                         </form>
 

@@ -230,7 +230,7 @@ class FoAnggotaController extends Controller
                 "telepon_rumah" => $request->telepon_rumah,
                 "telepon_seluler" => $request->telepon_seluler,
                 "telepon_kantor" => $request->teleponkantorh,
-                "simp_pk" => $intsimpkok
+                "simpkok" => $intsimpkok
 
             ]);
         });

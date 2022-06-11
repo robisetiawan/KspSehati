@@ -65,7 +65,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($pinjams->where('anggota_id', $anggota) as $pinj)
+            @forelse ($pinjams->where('anggota_id', $anggota) as $pinj)
                 <tr>
                     {{-- <th>{{ $loop->iteration }}</th> --}}
                     <td>{{ $pinj->created_at->format('d M Y') }}</td>
@@ -80,7 +80,9 @@
                     <td>@currency($pinj->harga_acuan)</td>
 
                 </tr>
-            @endforeach
+            @empty
+                <p class="text-center">Tidak ada <strong>Pinjaman</strong></p>
+            @endforelse
         </tbody>
     </table>
     {!! $pinjams->links() !!}

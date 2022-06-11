@@ -237,9 +237,9 @@ class FoOrderController extends Controller
         //jaminan
         $jaminan = [
             "ada_jaminan" => 'nullable',
-            "kepemilikan" => 'required',
-            "buss_unit" => 'required',
-            "barang" => 'required',
+            "kepemilikan" => 'nullable',
+            "buss_unit" => 'nullable',
+            "barang" => 'nullable',
             "tipe" => 'nullable',
             "tahun" => 'nullable',
             "awalorakhir" => 'nullable',
@@ -411,9 +411,11 @@ class FoOrderController extends Controller
             $pokokplusmargin = $pokok_kembali + $b_marg;
             $validpinjam['pk_marg'] = $pokokplusmargin;
             $validpinjam['angsuran'] =  $pokokplusmargin / $request->jumlah_angs;
-        } else
-            $validpinjam['pk_marg'] && $validpinjam['pk_marg'] && $validpinjam['angsuran'] = null;
-
+        } elseif ($pokok_kembali == null) {
+            $validpinjam['bunga_margin'] = null;
+            $validpinjam['pk_marg'] = null;
+            $validpinjam['angsuran'] =  null;
+        } else;
 
         // dd($validpinjam);
         //end struktur kredit by angsuran

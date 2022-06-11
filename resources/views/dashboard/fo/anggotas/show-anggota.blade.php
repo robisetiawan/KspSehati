@@ -794,7 +794,9 @@
                                             <div class="col-sm-3">
                                                 <input
                                                     class="form-control form-control-sm @error('simpkok') is-invalid @enderror"
-                                                    name="simpkok" type="text" id="simpkok" value="@currency($anggotas->simpkok)"
+                                                    name="simpkok" type="text" id="simpkok"
+                                                    value="@if ($anggotas->simpkok !== null) @currency($anggotas->simpkok)
+                                                    @else Rp. - @endif"
                                                     readonly>
                                             </div>
                                         </div>
@@ -805,7 +807,9 @@
                                             <div class="col-sm-3">
                                                 <input
                                                     class="form-control form-control-sm @error('simpanan') is-invalid @enderror"
-                                                    name="simpanan" type="text" id="simpanan" value="@currency($anggotas->simpwj)"
+                                                    name="simpanan" type="text" id="simpanan"
+                                                    value="@if ($anggotas->simpwj !== null) @currency($anggotas->simpwj)
+                                                    @else Rp. - @endif"
                                                     readonly>
                                             </div>
                                             {{-- Modal --}}
@@ -863,23 +867,27 @@
                                     <div class="col px-0">
                                         <!-- ***************************-->
                                         <!-- ***************************-->
-                                        <div class="mb-1 row">
+                                        {{-- <div class="mb-1 row">
                                             <label class="col-sm-2 col-form-label" for="pinlatest">Pinjaman
                                                 Terakhir</label>
                                             <div class="col-sm-3">
                                                 <input
                                                     class="form-control form-control-sm @error('pinlatest') is-invalid @enderror"
-                                                    name="pinlatest" type="text" id="pinlatest" value="@currency($pinlatest->nilai_pinj)"
+                                                    name="pinlatest" type="text" id="pinlatest"
+                                                    value="@if ($pinlatest == 1) @currency($pinlatest->nilai_pinj)
+                                                        @else Rp - @endif"
                                                     readonly>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="mb-1 row">
                                             <label class="col-sm-2 col-form-label" for="pinlatest">Pinjaman
                                                 Terakhir</label>
                                             <div class="col-sm-3">
                                                 <input
                                                     class="form-control form-control-sm @error('pinlatest') is-invalid @enderror"
-                                                    name="pinlatest" type="text" id="pinlatest" value="@currency($pinlatest->nilai_pinj)"
+                                                    name="pinlatest" type="text" id="pinlatest"
+                                                    value="@if ($pinlatest == true) @currency($pinlatest->nilai_pinj)
+                                                        @else Rp. - @endif"
                                                     readonly>
                                             </div>
                                             <div class="col-sm-2 p-l-0">

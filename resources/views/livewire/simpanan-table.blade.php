@@ -50,7 +50,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($simpan->where('anggota_id', $anggota) as $s)
+            @forelse ($simpan->where('anggota_id', $anggota) as $s)
                 <tr>
                     <td class="border px-4 py-2">{{ $s->created_at->format('d M Y') }}</td>
                     <td class="border px-4 py-2"><b>@currency($s->jmlh_simpwj)</b> per {{ $s->created_at->format('d M Y') }}
@@ -58,7 +58,9 @@
                     <td class="border px-4 py-2">@currency($s->simp_wj)</td>
                     {{-- <td class="border px-4 py-2">{{ $s->created_at->diffForHumans() }}</td> --}}
                 </tr>
-            @endforeach
+            @empty
+                <p class="text-center">Anggota belum memiliki <strong>Simpanan Wajib</strong></p>
+            @endforelse
         </tbody>
     </table>
     {!! $simpan->links() !!}

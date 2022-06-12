@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cash_in;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\PenerimaanUang;
@@ -47,6 +48,10 @@ class PenerimaanUangController extends Controller
             'order_id' => $request->id,
         ]);
 
+        $cash_in = Cash_in::create([
+            'penerimaan_uang_id' => $pen->id
+        ]);
+
         return redirect('/dashboard/penerimaan-uang')->with('success', 'Berhasil menambahkan order');
     }
 
@@ -89,7 +94,7 @@ class PenerimaanUangController extends Controller
      */
     public function update(Request $request, PenerimaanUang $penerimaanUang)
     {
-
+        // dd($request);
 
         if ($request->cr_bayar === 'Transfer')
             $pen = [
@@ -126,6 +131,8 @@ class PenerimaanUangController extends Controller
         // $validatedData['nominal'] = (int)$nominal;
         $validatedData['sisa_pj'] = $sp;
         //endCurrency
+        Cash_in::where('penerimaan_uang_id', $penerimaanUang->id)
+            ->update(['total' => $request->nominal]);
         PenerimaanUang::where('id', $penerimaanUang->id)
             ->update($validatedData);
 
@@ -141,8 +148,10 @@ class PenerimaanUangController extends Controller
     public function destroy(PenerimaanUang $penerimaanUang)
     {
         PenerimaanUang::destroy($penerimaanUang->id);
+        Cash_in::where('penerimaan_uang_id', $penerimaanUang->id)
+            ->delete();
 
-        return redirect('/dashboard/penerimaan-uang]')->with('success', 'Data Berhasil dihapus');
+        return redirect('/dashboard/penerimaan-uang')->with('success', 'Data Berhasil dihapus');
     }
 
     public function cetak(PenerimaanUang $penerimaanUang, $id)

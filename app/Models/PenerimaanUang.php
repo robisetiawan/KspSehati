@@ -16,4 +16,9 @@ class PenerimaanUang extends Model
         return $this->belongsTo(Order::class);
         //satu anggota bisa memiliki >= 1 Identity
     }
+
+    public function cash_in()
+    {
+        return $this->hasOne(Cash_in::class);
+    }
 }

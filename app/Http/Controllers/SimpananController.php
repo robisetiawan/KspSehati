@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anggota;
+use App\Models\Cash_in;
 use App\Models\Simpanan;
 use Illuminate\Http\Request;
 
@@ -63,7 +64,11 @@ class SimpananController extends Controller
         $simpwj['simpwj'] = $request->simpwj + $simp;
         $validData['jmlh_simpwj'] = $request->simpwj + $simp;
 
-        Simpanan::create($validData);
+        $simpid = Simpanan::create($validData);
+        Cash_in::create([
+            'simpanan_id' => $simpid->id,
+            'total' => $simp
+        ]);
 
         Anggota::where('id', $request->id)
             ->update($simpwj);
@@ -80,7 +85,7 @@ class SimpananController extends Controller
     public function show(Simpanan $simpanan, $id)
     {
 
-        dd($simpanan, $id);
+        // dd($simpanan, $id);
     }
 
     /**
@@ -146,6 +151,9 @@ class SimpananController extends Controller
                 'jmlh_simpwj' => $jmlhsimp
             ]);
 
+        Cash_in::where('simpanan_id', $a->id)
+            ->update(['total' => $simp]);
+
         Anggota::where('id', $request->id_anggota)
             ->update([
                 'simpwj' => $simpwj
@@ -163,6 +171,8 @@ class SimpananController extends Controller
     public function destroy(Simpanan $simpanan, $id)
     {
         Simpanan::destroy($id);
+        Cash_in::where('simpanan_id', $id)
+            ->delete();
 
         return redirect('/dashboard/tambah-simpanan')->with('success', 'Data Berhasil dihapus');
     }

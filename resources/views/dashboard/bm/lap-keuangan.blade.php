@@ -130,12 +130,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($simpans as $s)
+                                    @foreach ($cashin as $c)
                                         <tr>
-                                            <td>{{ $s->created_at->format('d M Y') }}</td>
-                                            <td>{{ $s->anggota->no_anggota }}</td>
-                                            <td>{{ $s->anggota->user->name }}</td>
-                                            <td>@currency($s->simp_wj)</td>
+                                            <td>{{ $c->created_at->format('d M Y') }}</td>
+                                            <td>
+                                                @if ($c->penerimaan_uang_id !== null && $c->simpanan_id == null)
+                                                    {{ $c->penerimaan_uang->order->anggota->no_anggota }}
+                                                @elseif ($c->simpanan_id !== null && $c->penerimaan_uang_id == null)
+                                                    {{ $c->simpanan->anggota->no_anggota }}
+                                                @else
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($c->penerimaan_uang_id !== null && $c->simpanan_id == null)
+                                                    {{ $c->penerimaan_uang->order->anggota->user->name }}
+                                                @elseif ($c->simpanan_id !== null && $c->penerimaan_uang_id == null)
+                                                    {{ $c->simpanan->anggota->user->name }}
+                                                @else
+                                                @endif
+                                            </td>
+                                            <td>@currency($c->total)</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

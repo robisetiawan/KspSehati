@@ -16,6 +16,11 @@ class Simpanan extends Model
         return $this->belongsTo(Anggota::class);
     }
 
+    public function cash_in()
+    {
+        return $this->hasOne(Cash_in::class);
+    }
+
     public static function search($search)
     {
         return empty($search) ? static::query()

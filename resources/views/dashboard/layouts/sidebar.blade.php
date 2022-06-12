@@ -45,16 +45,15 @@
                              </a>
                          </li> --}}
 
+                         <li class="dropdown">
+                             <a href="/dashboard/home"
+                                 class="menu-title link-nav nav-link {{ Request::is('/dashboard/home') ? 'active' : '' }}">
+                                 <i data-feather="home"></i>
+                                 <span>Dashboard</span>
+                             </a>
+                         </li>
                          {{-- FO View --}}
                          @can('fo')
-                             <li class="dropdown">
-                                 <a href="/dashboard/home"
-                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/home') ? 'active' : '' }}">
-                                     <i data-feather="home"></i>
-                                     <span>Dashboard</span>
-                                 </a>
-                             </li>
-
                              <li class="dropdown">
                                  <a href="/dashboard/anggotas" {{-- class="menu-title link-nav nav-link {{ Request::path() === '/order' ? 'active' : '' }}" --}}
                                      class="menu-title link-nav nav-link {{ Request::is('/dashboard/anggotas*') ? 'active' : '' }}">

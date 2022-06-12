@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Pinjam;
 use App\Models\Anggota;
 use App\Models\Cash_in;
@@ -50,7 +51,7 @@ class BmController extends Controller
     {
         return view('dashboard.bm.lap-keuangan', [
             "title" => "Lap Keuangan",
-            "pinjams" => Pinjam::with(['anggota.user', 'order'])->latest()->get(),
+            "orders" => Order::latest()->get(),
             // "simpans" => Simpanan::with(['anggota.user', 'anggota'])->latest()->get(),
             "cashin" => Cash_in::latest()->get()
         ]);

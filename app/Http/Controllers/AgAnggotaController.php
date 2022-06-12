@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Pinjam;
 use App\Models\Anggota;
+use App\Models\Simpanan;
 use Illuminate\Http\Request;
 
 class AgAnggotaController extends Controller
@@ -24,18 +25,22 @@ class AgAnggotaController extends Controller
 
     public function pinjaman()
     {
+        $a = Anggota::where('user_id', auth()->user()->id)->first();
         return view('dashboard.anggota.pinjaman-VAg', [
             "title" => "Pinjaman",
-            'anggotas' => Anggota::where('user_id', auth()->user()->id)->get(),
-            'pinjams' => Order::where('anggota_id', auth()->user()->id)->get()
+            'anggotas' => $a,
+            'pinjams' => Order::where('anggota_id', $a->id)->get()
         ]);
     }
 
     public function simpanan()
     {
+        $a = Anggota::where('user_id', auth()->user()->id)->first();
         return view('dashboard.anggota.simpanan-VAg', [
             "title" => "Simpanan",
-            'anggotas' => Anggota::where('user_id', auth()->user()->id)->get()
+            'anggotas' => $a,
+            'simpans' => Simpanan::where('anggota_id', $a->id)->get()
+
         ]);
     }
 }

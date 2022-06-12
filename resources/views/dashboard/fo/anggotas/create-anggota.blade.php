@@ -209,7 +209,7 @@
                                                             for="tempat_lahir">TTL</label>
                                                         <label class="col-sm-4 col-form-label visually-hidden"
                                                             for="tanggal_lahir">tanggal_lahir</label>
-                                                        <div class="col">
+                                                        <div class="col-sm-4 p-r-0">
                                                             <input
                                                                 class="form-control form-control-sm @error('tempat_lahir') is-invalid @enderror"
                                                                 name="tempat_lahir" type="text" id="tempat_lahir"
@@ -221,7 +221,7 @@
                                                                 </div>
                                                             @enderror
                                                         </div>
-                                                        <div class="col">
+                                                        <div class="col-sm-4 p-l-1">
                                                             <input
                                                                 class="form-control form-control-sm @error('tanggal_lahir') is-invalid @enderror"
                                                                 name="tanggal_lahir" type="date" id="tanggal_lahir"
@@ -1177,8 +1177,8 @@
                                                             <input
                                                                 class="form-control form-control-sm @error('simpkok') is-invalid @enderror"
                                                                 name="simpkok" type="text" id="simpkok"
-                                                                value="{{ old('simpkok') }}" type-currency="IDR"
-                                                                placeholder="Rp ">
+                                                                value="{{ old('simpkok', 'Rp 50.000') }}"
+                                                                type-currency="IDR" placeholder="Rp ">
                                                             @error('simpkok')
                                                                 <div class="invalid-feedback">
                                                                     {{ $message }}

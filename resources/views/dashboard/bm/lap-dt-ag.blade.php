@@ -49,7 +49,8 @@
                                                 <div class="btn-group" role="group"
                                                     aria-label="Basic mixed styles example">
                                                     <a href="/dashboard/lap-dt-ag/{{ $a->id }}">
-                                                        <button class="badge bg-primary border-0">Detail</button>
+                                                        <button class="badge bg-success border-0"><i class="fa fa-eye fa-lg"
+                                                                aria-hidden="true"></i></button>
                                                     </a>
                                                 </div>
                                                 {{-- <button type="button" class="btn btn-pill btn-primary btn-sm"
@@ -64,7 +65,7 @@
                         </div>
 
                         <!-- Modal -->
-                        @include('bm.detail-ag-VBM')
+                        {{-- @include('bm.detail-ag-VBM') --}}
                         <!-- endModal -->
 
 

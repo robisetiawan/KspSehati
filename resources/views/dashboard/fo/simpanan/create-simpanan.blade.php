@@ -7,11 +7,10 @@
             <div class="page-header pt-4 pb-3">
                 <div class="row">
                     <div class="col">
-                        <h3>Penerimaan Uang</h3>
+                        <h3>Simpanan</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">KSP Sehati
                             </li>
-                            <li class="breadcrumb-item">Penerimaan Uang</li>
                             <li class="breadcrumb-item">Simpanan</li>
                             <li class="breadcrumb-item">Tambah Simpanan</li>
                         </ol>

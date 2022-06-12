@@ -45,8 +45,6 @@
 
                             <a href="/dashboard/penerimaan-uang/create" class="btn btn-primary mb-2"><i
                                     class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
-                            <a href="/dashboard/tambah-simpanan" class="btn btn-warning mb-2"><i class="fa fa-plus"
-                                    aria-hidden="true"></i> Tambah Simpanan</a>
 
                             @if (session()->has('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">

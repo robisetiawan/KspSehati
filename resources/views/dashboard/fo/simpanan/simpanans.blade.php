@@ -7,11 +7,10 @@
             <div class="page-header pt-4 pb-3">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3>Penerimaan Uang</h3>
+                        <h3>Simpanan</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">KSP Sehati
                             </li>
-                            <li class="breadcrumb-item">Penerimaan Uang</li>
                             <li class="breadcrumb-item">Simpanan</li>
                         </ol>
                     </div>
@@ -44,8 +43,6 @@
                                         aria-hidden="true"></i> Simpan</button>
                             </form> --}}
 
-                            <a href="/dashboard/penerimaan-uang" class="btn btn-pill btn-outline-primary btn-xs mb-3"><i
-                                    class="fa fa-arrow-left" aria-hidden="true"></i> Back</a> <br>
                             <a href="/dashboard/tambah" class="btn btn-primary mb-2"><i class="fa fa-plus"
                                     aria-hidden="true"></i> Tambah Simpanan</a>
 

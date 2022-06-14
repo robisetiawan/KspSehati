@@ -35,10 +35,17 @@
                                     <!-- ***************************-->
                                     <!-- ***************************-->
                                     <div class="mb-1 row">
-                                        <label class="col-sm-2 col-form-label">Jumlah Simpanan</label>
+                                        <label class="col-sm-2 col-form-label">Simpanan Pokok</label>
                                         <div class="col-sm-3">
                                             <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value=": Rp. {{ $title }}">
+                                                value=": @currency($anggotas->simpkok)">
+                                        </div>
+                                    </div>
+                                    <div class="mb-1 row">
+                                        <label class="col-sm-2 col-form-label">Simpanan Wajib</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                                                value=": @currency($anggotas->simpwj)">
                                         </div>
                                     </div>
                                     <!-- ***************************-->

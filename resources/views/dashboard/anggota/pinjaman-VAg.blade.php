@@ -36,43 +36,9 @@
                                         <label class="col-sm-2 col-form-label">Jumlah Pinjaman</label>
                                         <div class="col-sm-3">
                                             <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value=": {{ $title }}">
-                                        </div>
-                                        <label class="col-sm-2 col-form-label">Periode Pinjaman</label>
-                                        <div class="col-sm-3">
-                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value=": {{ $title }}">
+                                                value=": @currency($pinlatest->nilai_pinj)">
                                         </div>
                                     </div>
-                                    <!-- ***************************-->
-                                    <!-- ***************************-->
-                                    <div class="mb-1 row">
-                                        <label class="col-sm-2 col-form-label">Simpanan Pokok</label>
-                                        <div class="col-sm-3">
-                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value=": {{ $title }}">
-                                        </div>
-                                    </div>
-                                    <!-- ***************************-->
-                                    <!-- ***************************-->
-                                    <div class="mb-1 row">
-                                        <label class="col-sm-2 col-form-label">Simpanan Wajib</label>
-                                        <div class="col-sm-3">
-                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value=": {{ $title }}">
-                                        </div>
-                                    </div>
-                                    <!-- ***************************-->
-                                    <!-- ***************************-->
-                                    <div class="mb-1 row">
-                                        <label class="col-sm-2 col-form-label">Angsuran</label>
-                                        <div class="col-sm-3">
-                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value=": {{ $title }} / bulan">
-                                        </div>
-                                    </div>
-                                    <!-- ***************************-->
-                                    <!-- ***************************-->
                                 </div>
                             </div>
                         </div>
@@ -154,8 +120,8 @@
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('nilai_pinj') is-invalid @enderror"
                                                                                         name="nilai_pinj" type="text"
-                                                                                        id="nilai_pinj"
-                                                                                        value="{{ old('nilai_pinj', $order->pinjam->nilai_pinj) }}"
+                                                                                        id="nilai_pinj" readonly
+                                                                                        value="@currency($order->pinjam->nilai_pinj)"
                                                                                         type-currency="IDR"
                                                                                         placeholder="Rp ">
                                                                                     @error('nilai_pinj')
@@ -174,8 +140,8 @@
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('admin_total') is-invalid @enderror"
                                                                                         name="admin_total" type="text"
-                                                                                        id="admin_total"
-                                                                                        value="{{ old('admin_total', $order->pinjam->admin_total) }}"
+                                                                                        id="admin_total" readonly
+                                                                                        value="@currency($order->pinjam->admin_total)"
                                                                                         type-currency="IDR"
                                                                                         placeholder="Rp ">
                                                                                     @error('admin_total')
@@ -258,7 +224,7 @@
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('jumlah_angs') is-invalid @enderror"
                                                                                         name="jumlah_angs" type="number"
-                                                                                        id="jumlah_angs"
+                                                                                        id="jumlah_angs" readonly
                                                                                         value="{{ old('jumlah_angs', $order->pinjam->jumlah_angs) }}">
                                                                                     @error('jumlah_angs')
                                                                                         <div class="invalid-feedback">
@@ -280,7 +246,7 @@
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('periode') is-invalid @enderror"
                                                                                         name="periode" type="text"
-                                                                                        id="periode"
+                                                                                        id="periode" readonly
                                                                                         value="{{ old('periode', $order->pinjam->periode) }}">
                                                                                     @error('periode')
                                                                                         <div class="invalid-feedback">
@@ -317,6 +283,7 @@
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('bunga') is-invalid @enderror"
                                                                                         name="bunga" type="text" id="bunga"
+                                                                                        readonly
                                                                                         value="{{ old('bunga', $order->pinjam->bunga) }}">
                                                                                     @error('bunga')
                                                                                         <div class="invalid-feedback">

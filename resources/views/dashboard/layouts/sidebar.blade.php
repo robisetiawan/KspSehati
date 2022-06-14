@@ -61,6 +61,13 @@
                                      <span>Anggota</span>
                                  </a>
                              </li>
+                             <li class="dropdown">
+                                 <a href="/dashboard/employee" {{-- class="menu-title link-nav nav-link {{ Request::path() === '/order' ? 'active' : '' }}" --}}
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/employee*') ? 'active' : '' }}">
+                                     <i data-feather="user-check"></i>
+                                     <span>Karyawan</span>
+                                 </a>
+                             </li>
 
                              <li class="dropdown">
                                  <a href="/dashboard/pooling-order"

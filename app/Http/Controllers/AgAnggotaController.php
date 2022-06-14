@@ -29,7 +29,8 @@ class AgAnggotaController extends Controller
         return view('dashboard.anggota.pinjaman-VAg', [
             "title" => "Pinjaman",
             'anggotas' => $a,
-            'pinjams' => Order::where('anggota_id', $a->id)->get()
+            'pinjams' => Order::where('anggota_id', $a->id)->get(),
+            "pinlatest" => Pinjam::where('anggota_id', $a->id)->latest()->first()
         ]);
     }
 

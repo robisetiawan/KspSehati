@@ -6,6 +6,8 @@
                 data-original-title="Tables"><i data-feather="home"></i></a></li>
         <li><a href="/dashboard/anggotas" data-container="body" data-bs-toggle="popover" data-placement="top" title=""
                 data-original-title="Chat"><i data-feather="users"></i></a></li>
+        <li><a href="/dashboard/employee" data-container="body" data-bs-toggle="popover" data-placement="top" title=""
+                data-original-title="Chat"><i data-feather="user-check"></i></a></li>
         <li><a href="/dashboard/pooling-order" data-container="body" data-bs-toggle="popover" data-placement="top"
                 title="" data-original-title="Icons"><i data-feather="monitor"></i></a></li>
         <li><a href="/dashboard/orders" data-container="body" data-bs-toggle="popover" data-placement="top" title=""

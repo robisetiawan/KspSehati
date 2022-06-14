@@ -117,7 +117,7 @@
                                     <label class="col-sm-2 col-form-label">Simpanan Pokok</label>
                                     <div class="col-sm-3">
                                         <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                            value=": {{ $anggota->nama_panggilan }}">
+                                            value=": @currency($anggota->simpkok)">
                                     </div>
 
 
@@ -128,7 +128,7 @@
                                     <label class="col-sm-2 col-form-label">Simpanan Wajib</label>
                                     <div class="col-sm-3">
                                         <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                            value=": {{ $anggota->nama_panggilan }}">
+                                            value=": @currency($anggota->simpwj)">
                                     </div>
                                 </div>
                                 <!-- *************** -->
@@ -137,13 +137,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer f-12">
+                    {{-- <div class="card-footer f-12">
                         <div>
                             <a href="/dashboard/cetak-buku-anggota/cari/{{ $anggota->id }}"
                                 class="btn btn-primary">Cetak</a>
-                            {{-- <button class="btn btn-primary" type="submit">Cetak</button></a> --}}
+                            <button class="btn btn-primary" type="submit">Cetak</button></a>
                         </div>
-                    </div>
+                    </div> --}}
                 @endforeach
             </form>
         </div>

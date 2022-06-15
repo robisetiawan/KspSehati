@@ -1,5 +1,4 @@
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-sm-12 col-xl-6">
             <div class="row">
@@ -423,8 +422,7 @@
                                 <label class="col-sm-4 col-form-label" for="catt_survey">Catt Survey</label>
                                 <div class="col">
                                     <textarea class="form-control form-control-sm @error('catt_survey') is-invalid @enderror" name="catt_survey"
-                                        type="text"
-                                        id="catt_survey">{{ old('catt_survey', $order->catt_survey) }}</textarea>
+                                        type="text" id="catt_survey">{{ old('catt_survey', $order->catt_survey) }}</textarea>
                                     @error('catt_survey')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -528,6 +526,4 @@
 
             </div>
         </div>
-
     </div>
-</div>

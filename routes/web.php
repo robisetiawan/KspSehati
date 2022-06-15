@@ -11,6 +11,7 @@ use App\Http\Controllers\SimpananController;
 use App\Http\Controllers\AgAnggotaController;
 use App\Http\Controllers\FoAnggotaController;
 use App\Http\Controllers\CetakBukuAgController;
+use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PenerimaanUangController;
 // use App\Http\Livewire\PinjamTable;
@@ -73,6 +74,7 @@ Route::name('fo')->middleware('fo')->group(
     function () {
         Route::get('/dashboard/pooling-order', [FoOrderController::class, 'poolingorder']);
         Route::get('/dashboard/pooling-order/cari', [FoOrderController::class, 'caripoolingorder']);
+
         Route::resource('/dashboard/anggotas', FoAnggotaController::class);
         // Route::get('/dashboard/anggotas/{anggota}', [SimpananTable::class, 'mount']);
         Route::resource('/dashboard/employee', EmployeeController::class);
@@ -96,6 +98,15 @@ Route::name('fo')->middleware('fo')->group(
         Route::get('/dashboard/cetak-buku-anggota/cari/{id}', [CetakBukuAgController::class, 'print']);
 
         Route::get('/export-data-anggota', [FoAnggotaController::class, 'AnggotaExport']);
+
+        Route::get('/download/berkas/{berkas}', [DownloadController::class, 'dberkas']);
+        Route::get('/hapus_berkas/{id}', [DownloadController::class, 'hberkas']);
+
+        Route::get('/download/fisik/{fisik}', [DownloadController::class, 'dfisik']);
+        Route::get('/hapus_fisik/{id}', [DownloadController::class, 'hfisik']);
+
+        Route::get('/download/surat/{surat}', [DownloadController::class, 'dsurat']);
+        Route::get('/hapus_surat/{id}', [DownloadController::class, 'hsurat']);
 
         Route::get('/coba', function () {
             return view('coba', [

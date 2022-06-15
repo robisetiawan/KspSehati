@@ -48,8 +48,28 @@ class Order extends Model
         return $this->belongsTo(History::class);
     }
 
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
+
     public function penerimaan_uang()
     {
         return $this->hasOne(PenerimaanUang::class);
+    }
+
+    public function berkas()
+    {
+        return $this->hasMany(Berkas::class);
+    }
+
+    public function fisik_image()
+    {
+        return $this->hasMany(Fisik_image::class);
+    }
+
+    public function surat_image()
+    {
+        return $this->hasMany(Surat_image::class);
     }
 }

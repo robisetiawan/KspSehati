@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class Fisik_image extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
 
     public function order()
     {
-        return $this->hasMany(Order::class);
-        //satu anggota bisa memiliki >= 1 Identity
+        return $this->belongsTo(Order::class);
     }
 }

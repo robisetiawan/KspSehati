@@ -1,8 +1,7 @@
 <div class="container-fluid">
+
     <div class="row">
         <div class="col-sm-12">
-
-
             <div class="table-responsive card-body pt-3 px-1">
                 <table class="table table-bordered table-xxs table-sm align-middle">
                     <!-- ****************** -->
@@ -337,112 +336,139 @@
                 </table>
             </div>
 
-            <div class="card-body p-1 ">
-                <!-- ***************************************************************************************************************** -->
-                <div class="row mb-1">
-                    <label class="col-sm-2 col-form-label text-end" for="bpkb">BPKB</label>
-                    <div class="col-sm-3 p-l-0">
-                        <select class="form-select @error('bpkb') is-invalid @enderror" name="bpkb" id="bpkb">
-                            <option></option>
-                            <option value="Atas Nama Sendiri"
-                                {{ old('bpkb', $order->barang->bpkb) == 'Atas Nama Sendiri' ? 'selected' : '' }}>
-                                Atas Nama Sendiri
-                            </option>
-                            <option value="Atas Nama Orang Lain"
-                                {{ old('bpkb', $order->barang->bpkb) == 'Atas Nama Orang Lain' ? 'selected' : '' }}>
-                                Atas Nama Orang Lain
-                            </option>
-                        </select>
-                        @error('status_order')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
+            <div class="card">
+                <div class="container-fluid text-end px-1 py-3">
+                    <div class="row mb-1">
+                        <div class="col-sm-6"></div>
+                        <label class="col col-form-label" for="employee_id"><strong>Penanggung Jawab</strong></label>
+                        <div class="col">
+                            <select class="form-select @error('employee_id') is-invalid @enderror" name="employee_id"
+                                id="employee_id">
+                                <option></option>
+                                @foreach ($employees as $e)
+                                    @if (old('employee_id', $order->employee_id) == $e->id)
+                                        <option value="{{ $e->id }}" selected>{{ $e->nama }}</option>
+                                    @else
+                                        <option value="{{ $e->id }}">{{ $e->nama }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            @error('employee_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-1 ">
+                    <!-- ***************************************************************************************************************** -->
+                    <div class="row mb-1">
+                        <label class="col-sm-2 col-form-label text-end" for="bpkb">BPKB</label>
+                        <div class="col-sm-3 p-l-0">
+                            <select class="form-select @error('bpkb') is-invalid @enderror" name="bpkb" id="bpkb">
+                                <option></option>
+                                <option value="Atas Nama Sendiri"
+                                    {{ old('bpkb', $order->barang->bpkb) == 'Atas Nama Sendiri' ? 'selected' : '' }}>
+                                    Atas Nama Sendiri
+                                </option>
+                                <option value="Atas Nama Orang Lain"
+                                    {{ old('bpkb', $order->barang->bpkb) == 'Atas Nama Orang Lain' ? 'selected' : '' }}>
+                                    Atas Nama Orang Lain
+                                </option>
+                            </select>
+                            @error('status_order')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <!-- **************************************************************************************************8******  -->
+                        <label class="col-sm-1 col-form-label text-end" for="faktur">Faktur</label>
+                        <div class="col-sm-2 p-l-0">
+                            <select class="form-select @error('faktur') is-invalid @enderror" name="faktur" id="faktur"
+                                value="{{ old('faktur') }}">
+                                <option></option>
+                                <option value="Ada"
+                                    {{ old('faktur', $order->barang->faktur) == 'Ada' ? 'selected' : '' }}>
+                                    Ada
+                                </option>
+                                <option value="Tidak Ada"
+                                    {{ old('faktur', $order->barang->faktur) == 'Tidak Ada' ? 'selected' : '' }}>
+                                    Tidak Ada
+                                </option>
+                            </select>
+                            @error('status_order')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <label class="col-sm-2 col-form-label text-end" for="surat_jual_beli">Surat Jual Beli</label>
+                        <div class="col-sm-2 p-l-0">
+                            <select class="form-select @error('surat_jual_beli') is-invalid @enderror"
+                                name="surat_jual_beli" id="surat_jual_beli" value="{{ old('surat_jual_beli') }}">
+                                <option></option>
+                                <option value="Ada"
+                                    {{ old('surat_jual_beli', $order->barang->surat_jual_beli) == 'Ada' ? 'selected' : '' }}>
+                                    Ada
+                                </option>
+                                <option value="Tidak Ada"
+                                    {{ old('surat_jual_beli', $order->barang->surat_jual_beli) == 'Tidak Ada' ? 'selected' : '' }}>
+                                    Tidak Ada
+                                </option>
+                            </select>
+                            @error('status_order')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                     </div>
                     <!-- **************************************************************************************************8******  -->
-                    <label class="col-sm-1 col-form-label text-end" for="faktur">Faktur</label>
-                    <div class="col-sm-2 p-l-0">
-                        <select class="form-select @error('faktur') is-invalid @enderror" name="faktur" id="faktur"
-                            value="{{ old('faktur') }}">
-                            <option></option>
-                            <option value="Ada"
-                                {{ old('faktur', $order->barang->faktur) == 'Ada' ? 'selected' : '' }}>
-                                Ada
-                            </option>
-                            <option value="Tidak Ada"
-                                {{ old('faktur', $order->barang->faktur) == 'Tidak Ada' ? 'selected' : '' }}>
-                                Tidak Ada
-                            </option>
-                        </select>
-                        @error('status_order')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                    <div class="row mb-1">
+                        <label class="col-sm-2 col-form-label text-end" for="stnk_ada">STNK Ada?</label>
+                        <div class="col-sm-2 p-l-0">
+                            <select class="form-select" disabled>
+                                <option value="Ada">
+                                    Ada
+                                </option>
+                                <option value="Tidak Ada">
+                                    Tidak Ada
+                                </option>
+                            </select>
+                            @error('status_order')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <label class="col-sm-2 col-form-label text-end" for="jatuh_tempo_stnk">Jth Tempo Pajak
+                            STNK</label>
+                        <div class="col-sm-2 p-l-0">
+                            <input class="form-control form-control-sm @error('jatuh_tempo_stnk') is-invalid @enderror"
+                                name="jatuh_tempo_stnk" type="date" id="jatuh_tempo_stnk"
+                                value="{{ old('jatuh_tempo_stnk', $order->barang->jatuh_tempo_stnk) }}">
+                            @error('jatuh_tempo_stnk')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <label class="col-sm-2 col-form-label text-end" for="nama">STNK Mati (Tahun)</label>
+                        <div class="col-sm-2 p-l-0">
+                            <input class="form-control form-control-sm @error('stnk_mati_tahun') is-invalid @enderror"
+                                name="stnk_mati_tahun" type="number" id="stnk_mati_tahun"
+                                value="{{ old('stnk_mati_tahun', $order->barang->stnk_mati_tahun) }}">
+                            @error('stnk_mati_tahun')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                     </div>
-                    <label class="col-sm-2 col-form-label text-end" for="surat_jual_beli">Surat Jual Beli</label>
-                    <div class="col-sm-2 p-l-0">
-                        <select class="form-select @error('surat_jual_beli') is-invalid @enderror"
-                            name="surat_jual_beli" id="surat_jual_beli" value="{{ old('surat_jual_beli') }}">
-                            <option></option>
-                            <option value="Ada"
-                                {{ old('surat_jual_beli', $order->barang->surat_jual_beli) == 'Ada' ? 'selected' : '' }}>
-                                Ada
-                            </option>
-                            <option value="Tidak Ada"
-                                {{ old('surat_jual_beli', $order->barang->surat_jual_beli) == 'Tidak Ada' ? 'selected' : '' }}>
-                                Tidak Ada
-                            </option>
-                        </select>
-                        @error('status_order')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                    <!-- **************************************************************************************************8******  -->
                 </div>
-                <!-- **************************************************************************************************8******  -->
-                <div class="row mb-1">
-                    <label class="col-sm-2 col-form-label text-end" for="stnk_ada">STNK Ada?</label>
-                    <div class="col-sm-2 p-l-0">
-                        <select class="form-select" disabled>
-                            <option value="Ada">
-                                Ada
-                            </option>
-                            <option value="Tidak Ada">
-                                Tidak Ada
-                            </option>
-                        </select>
-                        @error('status_order')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <label class="col-sm-2 col-form-label text-end" for="jatuh_tempo_stnk">Jth Tempo Pajak STNK</label>
-                    <div class="col-sm-2 p-l-0">
-                        <input class="form-control form-control-sm @error('jatuh_tempo_stnk') is-invalid @enderror"
-                            name="jatuh_tempo_stnk" type="date" id="jatuh_tempo_stnk"
-                            value="{{ old('jatuh_tempo_stnk', $order->barang->jatuh_tempo_stnk) }}">
-                        @error('jatuh_tempo_stnk')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <label class="col-sm-2 col-form-label text-end" for="nama">STNK Mati (Tahun)</label>
-                    <div class="col-sm-2 p-l-0">
-                        <input class="form-control form-control-sm @error('stnk_mati_tahun') is-invalid @enderror"
-                            name="stnk_mati_tahun" type="number" id="stnk_mati_tahun"
-                            value="{{ old('stnk_mati_tahun', $order->barang->stnk_mati_tahun) }}">
-                        @error('stnk_mati_tahun')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                </div>
-                <!-- **************************************************************************************************8******  -->
             </div>
 
         </div>

@@ -22,6 +22,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('kondisi_unit_id');
             $table->foreignId('pinjam_id');
             $table->foreignId('history_id');
+            $table->foreignId('employee_id');
             $table->string('no_order')->unique();
             $table->enum('keperluan', ['Sendiri', 'Keluarga', 'Orang Lain'])->nullable();
             $table->text('catatan')->nullable();

@@ -116,65 +116,311 @@
                                             <!-- isi -->
                                             <p>
                                                 @include('dashboard.fo.orders.editorder.dataorder-VFO')
-                                            </p>
-                                            <!-- Endisi -->
-                                        </div>
-                                        <!-- *******************Kondisi Unit*******************-->
-                                        <div class="tab-pane fade" id="pills-kondisiunit" role="tabpanel"
-                                            aria-labelledby="pills-kondisiunit-tab">
-                                            <!-- isi -->
-                                            <p>
-                                                @include('dashboard.fo.orders.editorder.kondisiunit-VFO')
-                                            </p>
-                                            <!-- Endisi -->
-                                        </div>
-                                        <!-- *******************Rekap Transaksi*******************-->
-                                        <div class="tab-pane fade" id="pills-rekaptransaksi" role="tabpanel"
-                                            aria-labelledby="pills-rekaptransaksi-tab">
-                                            <!-- isi -->
-                                            <p>
-                                                @include('dashboard.fo.orders.editorder.rekaptransaksi-VFO')
-                                            </p>
-                                            <!-- Endisi -->
-                                        </div>
-                                        <!-- *******************Data Tambahan*******************-->
-                                        <div class="tab-pane fade" id="pills-datatambahan" role="tabpanel"
-                                            aria-labelledby="pills-datatambahan-tab">
-                                            <!-- isi -->
-                                            <p>
-                                                @include('dashboard.fo.orders.editorder.datatambahan-VFO')
-                                            </p>
-                                            <!-- Endisi -->
+
+                                                <!-- ************************************************************************************************* -->
+                                                <!-- ************************************************************************************************* -->
+                                                {{-- foto Berkas --}}
+                                            <div class="row my-1">
+                                                <div class="col">Foto Berkas</div>
+                                                <div class="col">
+                                                    <input type="file" class="form-control form-control-sm" name="berkas[]"
+                                                        multiple>
+                                                </div>
+                                                <div class="col py-1">
+                                                    <button type="button" class="badge bg-success border-0"
+                                                        data-bs-toggle="modal" data-bs-target="#berkas">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i> Show
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="berkas" tabindex="-1"
+                                                aria-labelledby="berkasLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="berkasLabel">Foto Berkas</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col" class="text-center">No</th>
+                                                                        <th scope="col" class="text-center">Foto</th>
+                                                                        <th scope="col" class="text-center">Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @forelse ($berkas as $b)
+                                                                        <tr>
+                                                                            <th class="text-center align-middle">
+                                                                                {{ $loop->iteration }}</th>
+                                                                            <td class="text-center align-middle">
+                                                                                <img id="image"
+                                                                                    src="/berkas_order/{{ $b->berkas }}"
+                                                                                    onclick="window.open(this.src)"
+                                                                                    class="card-img-top"
+                                                                                    style="max-height: 100px; width:auto">
+                                                                            </td>
+                                                                            <td class="text-center align-middle">
+                                                                                <a href="/download/berkas/{{ $b->berkas }}"
+                                                                                    class="link-success"><i
+                                                                                        class="fa fa-download fa-lg"
+                                                                                        aria-hidden="true"> Download
+                                                                                    </i></a> |
+                                                                                <a href="/hapus_berkas/{{ $b->id }}"
+                                                                                    class="link-danger"><i
+                                                                                        class="fa fa-trash fa-lg"
+                                                                                        aria-hidden="true"
+                                                                                        onclick="return confirm('Are you sure !!')">
+                                                                                        Hapus</i></a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    @empty
+                                                                        <tr>
+                                                                            <td colspan="3" class="text-center">Belum ada
+                                                                                Foto</td>
+                                                                        </tr>
+                                                                    @endforelse
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-light"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- end MOdal --}}
+                                            {{-- end Foto Berkas --}}
+
+                                            <!-- ************************************************************************************************* -->
+                                            <!-- ************************************************************************************************* -->
+
+                                            {{-- foto Fisik --}}
+                                            <div class="row my-1">
+                                                <div class="col">Foto Nasabah & Fisik Jaminan</div>
+                                                <div class="col">
+                                                    <input type="file" class="form-control form-control-sm" name="fisik[]"
+                                                        multiple>
+                                                </div>
+                                                <div class="col py-1">
+                                                    <button type="button" class="badge bg-success border-0"
+                                                        data-bs-toggle="modal" data-bs-target="#fisik">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i> Show
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="fisik" tabindex="-1"
+                                                aria-labelledby="fisikLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="fisikLabel">Foto fisik</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">No</th>
+                                                                        <th scope="col">Foto</th>
+                                                                        <th scope="col">Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @forelse ($fisiks as $f)
+                                                                        <tr>
+                                                                            <th class="text-center align-middle">
+                                                                                {{ $loop->iteration }}</th>
+                                                                            <td class="text-center align-middle">
+                                                                                <img id="image"
+                                                                                    src="/fisik_order/{{ $f->fisik_image }}"
+                                                                                    onclick="window.open(this.src)"
+                                                                                    class="card-img-top"
+                                                                                    style="max-height: 100px; width:auto">
+                                                                            </td>
+                                                                            <td class="text-center align-middle">
+                                                                                <a href="/download/fisik/{{ $f->fisik_image }}"
+                                                                                    class="link-success"><i
+                                                                                        class="fa fa-download fa-lg"
+                                                                                        aria-hidden="true"> Download
+                                                                                    </i></a> |
+                                                                                <a href="/hapus_fisik/{{ $f->id }}"
+                                                                                    class="link-danger"><i
+                                                                                        class="fa fa-trash fa-lg"
+                                                                                        aria-hidden="true"
+                                                                                        onclick="return confirm('Are you sure !!')">
+                                                                                        Hapus</i></a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    @empty
+                                                                        <tr>
+                                                                            <td colspan="3" class="text-center">Belum ada
+                                                                                Foto</td>
+                                                                        </tr>
+                                                                    @endforelse
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-light"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- end MOdal --}}
+                                            {{-- end F_fisik --}}
+
+                                            <!-- ************************************************************************************************* -->
+                                            <!-- ************************************************************************************************* -->
+
+                                            {{-- foto Surat2 --}}
+                                            <div class="row my-1">
+                                                <div class="col">Foto Surat</div>
+                                                <div class="col">
+                                                    <input type="file" class="form-control form-control-sm" name="surat[]"
+                                                        multiple>
+                                                </div>
+                                                <div class="col py-1">
+                                                    <button type="button" class="badge bg-success border-0"
+                                                        data-bs-toggle="modal" data-bs-target="#surat">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i> Show
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="surat" tabindex="-1"
+                                                aria-labelledby="suratLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="suratLabel">Foto surat</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">No</th>
+                                                                        <th scope="col">Foto</th>
+                                                                        <th scope="col">Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @forelse ($surats as $s)
+                                                                        <tr>
+                                                                            <th class="text-center align-middle">
+                                                                                {{ $loop->iteration }}</th>
+                                                                            <td class="text-center align-middle">
+                                                                                <img id="image"
+                                                                                    src="/surat_order/{{ $s->surat_image }}"
+                                                                                    onclick="window.open(this.src)"
+                                                                                    class="card-img-top"
+                                                                                    style="max-height: 100px; width:auto">
+                                                                            </td>
+                                                                            <td class="text-center align-middle">
+                                                                                <a href="/download/surat/{{ $s->surat_image }}"
+                                                                                    class="link-success"><i
+                                                                                        class="fa fa-download fa-lg"
+                                                                                        aria-hidden="true"> Download
+                                                                                    </i></a> |
+                                                                                <a href="/hapus_surat/{{ $s->id }}"
+                                                                                    class="link-danger"><i
+                                                                                        class="fa fa-trash fa-lg"
+                                                                                        aria-hidden="true"
+                                                                                        onclick="return confirm('Are you sure !!')">
+                                                                                        Hapus</i></a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    @empty
+                                                                        <tr>
+                                                                            <td colspan="3" class="text-center">Belum
+                                                                                ada Foto</td>
+                                                                        </tr>
+                                                                    @endforelse
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-light"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- end MOdal --}}
+                                            {{-- end surat --}}
+
+
                                         </div>
 
-                                        <!-- *******************LAS*******************-->
-                                        <div class="tab-pane fade" id="pills-las" role="tabpanel"
-                                            aria-labelledby="pills-las-tab">
-                                            <!-- isi -->
-                                            <p>
-                                                @include('dashboard.fo.orders.editorder.las-VFO')
-                                            </p>
-                                            <!-- Endisi -->
-                                        </div>
-                                        <!-- *************************************************************************-->
+                                        </p>
+                                        <!-- Endisi -->
                                     </div>
+                                    <!-- *******************Kondisi Unit*******************-->
+                                    <div class="tab-pane fade" id="pills-kondisiunit" role="tabpanel"
+                                        aria-labelledby="pills-kondisiunit-tab">
+                                        <!-- isi -->
+                                        <p>
+                                            @include('dashboard.fo.orders.editorder.kondisiunit-VFO')
+                                        </p>
+                                        <!-- Endisi -->
+                                    </div>
+                                    <!-- *******************Rekap Transaksi*******************-->
+                                    <div class="tab-pane fade" id="pills-rekaptransaksi" role="tabpanel"
+                                        aria-labelledby="pills-rekaptransaksi-tab">
+                                        <!-- isi -->
+                                        <p>
+                                            @include('dashboard.fo.orders.editorder.rekaptransaksi-VFO')
+                                        </p>
+                                        <!-- Endisi -->
+                                    </div>
+                                    <!-- *******************Data Tambahan*******************-->
+                                    <div class="tab-pane fade" id="pills-datatambahan" role="tabpanel"
+                                        aria-labelledby="pills-datatambahan-tab">
+                                        <!-- isi -->
+                                        <p>
+                                            @include('dashboard.fo.orders.editorder.datatambahan-VFO')
+                                        </p>
+                                        <!-- Endisi -->
+                                    </div>
+
+                                    <!-- *******************LAS*******************-->
+                                    <div class="tab-pane fade" id="pills-las" role="tabpanel"
+                                        aria-labelledby="pills-las-tab">
+                                        <!-- isi -->
+                                        <p>
+                                            @include('dashboard.fo.orders.editorder.las-VFO')
+                                        </p>
+                                        <!-- Endisi -->
+                                    </div>
+                                    <!-- *************************************************************************-->
                                 </div>
-                                {{-- 00000000000000000000000000000000 End 00000000000000000000000000000000 --}}
                             </div>
-
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                @include('dashboard.fo.orders.strukturkredit.edit-struktur-kredit')
-                            </div>
+                            {{-- 00000000000000000000000000000000 End 00000000000000000000000000000000 --}}
                         </div>
 
-
-                        {{-- cardFooter --}}
-                        <div class="card-footer text-end">
-                            <button class="btn btn-primary" type="submit">Submit</button>
-                            {{-- <input class="btn btn-light" type="reset" value="Cancel" /> --}}
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            @include('dashboard.fo.orders.strukturkredit.edit-struktur-kredit')
                         </div>
-                        {{-- endCardFooter --}}
                     </div>
+
+
+                    {{-- cardFooter --}}
+                    <div class="card-footer text-end">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                        {{-- <input class="btn btn-light" type="reset" value="Cancel" /> --}}
+                    </div>
+                    {{-- endCardFooter --}}
+                </div>
 
 
             </form>

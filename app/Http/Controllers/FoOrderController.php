@@ -6,14 +6,18 @@ use App\Models\Las;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Barang;
+use App\Models\Berkas;
 use App\Models\Pinjam;
 use App\Models\Adddata;
 use App\Models\Anggota;
 use App\Models\History;
 use App\Models\Jaminan;
+use App\Models\Employee;
 use App\Models\Identity;
 use App\Models\Simpanan;
 use App\Models\Profession;
+use App\Models\Fisik_image;
+use App\Models\Surat_image;
 use App\Models\Kondisi_unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -132,7 +136,7 @@ class FoOrderController extends Controller
      */
     public function show(Order $order)
     {
-        dd($order);
+        // dd($order);
         return view('anggota', [
             "title" => "Edit Order",
             "orders" => $order,
@@ -148,11 +152,16 @@ class FoOrderController extends Controller
      */
     public function edit(Order $order)
     {
+
         return view('dashboard.fo.orders.edit-order', [
             'title' => 'Edit Order',
             'order' => $order,
             'orders' => Order::all(),
-            "pinlatest" => Pinjam::where('anggota_id', $order->anggota->id)->latest()->first()
+            "pinlatest" => Pinjam::where('anggota_id', $order->anggota->id)->latest()->first(),
+            'employees' => Employee::all(),
+            'berkas' => Berkas::where('order_id', $order->id)->get(),
+            'fisiks' => Fisik_image::where('order_id', $order->id)->get(),
+            'surats' => Surat_image::where('order_id', $order->id)->get(),
         ]);
     }
 
@@ -329,11 +338,9 @@ class FoOrderController extends Controller
             "platform" => 'nullable',
             "keperluan" => 'nullable',
             "catatan" => 'nullable',
-            "catt_survey" => 'nullable'
+            "catt_survey" => 'nullable',
+            'employee_id' => 'nullable'
         ];
-
-
-
 
         // dd($kondisi_unit);
 
@@ -349,6 +356,7 @@ class FoOrderController extends Controller
         $validorder = $request->validate($orders);
         $validpinjam = $request->validate($pinjam);
 
+        $validorder['employee_id'] = $request->employee_id;
         //Currency
         $deleteRp = array(
             "Rp", ".", " "
@@ -511,6 +519,39 @@ class FoOrderController extends Controller
         $validpinjam['persentase'] = ($pokok_kembali / $harga_kondisi) * 100;
 
         // dd($validkondisi_unit);
+
+        //upload file
+        if ($request->has('berkas')) {
+            foreach ($request->file('berkas') as $b) {
+                $name = 'b' . time() . $request->no_order . rand(1, 999) . '.' . $b->extension();
+                $b->move(public_path('berkas_order'), $name);
+                Berkas::create([
+                    'order_id' => $order->id,
+                    'berkas' => $name
+                ]);
+            }
+        }
+        if ($request->has('fisik')) {
+            foreach ($request->file('fisik') as $f) {
+                $name = 'f' . time() . $request->no_order . rand(1, 999) . '.' . $f->extension();
+                $f->move(public_path('fisik_order'), $name);
+                Fisik_image::create([
+                    'order_id' => $order->id,
+                    'fisik_image' => $name
+                ]);
+            }
+        }
+        if ($request->has('surat')) {
+            foreach ($request->file('surat') as $s) {
+                $name = 's' . time() . $request->no_order . rand(1, 999) . '.' . $s->extension();
+                $s->move(public_path('surat_order'), $name);
+                Surat_image::create([
+                    'order_id' => $order->id,
+                    'surat_image' => $name
+                ]);
+            }
+        }
+        //endUpload file
 
         User::where('id', $order->anggota->user->id)
             ->update($validuser);

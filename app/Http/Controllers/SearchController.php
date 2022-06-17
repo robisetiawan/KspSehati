@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Bpkb_m;
+use App\Models\PenerimaanUang;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -51,5 +52,19 @@ class SearchController extends Controller
             ->get();
 
         return view('dashboard.fo.bpkb-keluar.create-bpkbk-cari', compact('bpkbm', 'title'));
+    }
+
+    public function penusearch(Request $request)
+    {
+
+        $search = $request->input('cari');
+
+        $title = 'Tambah Data Bpkb Keluar';
+        $order = Order::query()
+            ->where('no_order', 'LIKE', "%{$search}%")
+            ->orWhere('nama', 'LIKE', "%{$search}%")
+            ->get();
+
+        return view('dashboard.fo.penerimaan-uang.create-penu-cari', compact('order', 'title'));
     }
 }

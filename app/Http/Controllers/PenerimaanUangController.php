@@ -43,13 +43,41 @@ class PenerimaanUangController extends Controller
      */
     public function store(Request $request)
     {
-        $pen = PenerimaanUang::create([
-            'no_terima' => date('dmy') . "PU" . $request->id,
-            'order_id' => $request->id,
-        ]);
+        if ($request->cr_bayar === 'Transfer')
+            $p = [
+                // 'no_terima' => 'required|unique:penerimaan-uangs',
+                'trm_dr' => 'required',
+                'angsuran_ke' => 'required',
+                'nominal' => 'required',
+                'cr_bayar' => 'required',
+                'kd_bank' => 'required',
+                'no_rek' => 'required',
+                'sisa_pj' => 'nullable'
+            ];
+        else
+            $p = [
+                // 'no_terima' => 'required|unique:penerimaan-uangs',
+                'trm_dr' => 'required',
+                'angsuran_ke' => 'required',
+                'nominal' => 'required',
+                'cr_bayar' => 'required',
+                'kd_bank' => 'nullable',
+                'no_rek' => 'nullable',
+                'sisa_pj' => 'nullable'
+            ];
+
+        $validatedData = $request->validate($p);
+        $validatedData['no_terima'] = date('dmy') . "PU" . $request->id . rand(1, 999);
+        $validatedData['order_id'] = $request->id;
+        $sp = $request->pk_marg - ($request->angsuran_ke * $request->nominal);
+
+        $validatedData['sisa_pj'] = $sp;
+
+        $pen = PenerimaanUang::create($validatedData);
 
         $cash_in = Cash_in::create([
-            'penerimaan_uang_id' => $pen->id
+            'penerimaan_uang_id' => $pen->id,
+            'total' => $request->nominal
         ]);
 
         return redirect('/dashboard/penerimaan-uang')->with('success', 'Berhasil menambahkan order');

@@ -39,6 +39,8 @@
 
                         </form>
 
+                        <small>* Masukan nama anggota</small>
+
                     </div>
                 </div>
 

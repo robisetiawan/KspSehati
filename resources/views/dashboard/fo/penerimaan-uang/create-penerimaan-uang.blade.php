@@ -25,68 +25,49 @@
 
         <div class="card">
 
-            <form method="POST" action="/dashboard/penerimaan-uang" class="form theme-form" enctype="multipart/form-data">
-                @csrf
-                <div class="card-body f-12">
-                    <div class="row">
-                        <div class="col">
+            @csrf
+            <div class="card-body f-12">
+                <div class="row">
+                    <div class="col">
 
 
-                            <div class="row">
-                                <div class="col-sm-12 col-xl-6">
-                                    <div class="row">
-                                        <div class="col-sm-12 p-r-0">
-                                            <div class="card border-0">
+                        <div class="row">
+                            <div class="col-sm-12 col-xl-6">
+                                <div class="row">
+                                    <div class="col-sm-12 p-r-0">
+                                        <div class="card border-0">
+                                            <!-- **************************************************************************************************8******  -->
+                                            <div class="card-body p-1 ">
                                                 <!-- **************************************************************************************************8******  -->
-                                                <div class="card-body p-1 ">
-                                                    <!-- **************************************************************************************************8******  -->
-                                                    <div class="row mb-1">
-                                                        <label class="col-sm-3 col-form-label" for="no_terima">No
-                                                            Terima</label>
-                                                        <div class="col-sm-4 p-l-0">
-                                                            <input type="text" class="form-control form-control-sm"
-                                                                id="colFormLabelSm" readonly value="0000" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-1">
-                                                        <label class="col-sm-3 col-form-label" for="id">No
-                                                            Order</label>
+                                                <form action="/dashboard/penuang/search" method="GET">
 
-                                                        <div class="col p-l-0">
-                                                            <select class="form-select" name="id">
-                                                                @foreach ($orders as $order)
-                                                                    @if (old('no_order') == $order->id)
-                                                                        <option value="{{ $order->id }}" selected>
-                                                                            {{ $order->no_order }} -
-                                                                            {{ $order->anggota->user->name }}
-                                                                        </option>
-                                                                    @else
-                                                                        <option value="{{ $order->id }}">
-                                                                            {{ $order->no_order }} -
-                                                                            {{ $order->anggota->user->name }}
-                                                                        </option>
-                                                                    @endif
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
+                                                    <div class="input-group mb-3">
+                                                        <label class="col-sm-4 col-form-label visually-hidden"
+                                                            for="id">Search</label>
+                                                        <input class="form-control" type="text" name="cari"
+                                                            placeholder="Cari Nama / No Order ..."
+                                                            value="{{ old('cari') }}" required>
+                                                        <button class="btn btn-primary" type="submit" value="CARI"><i
+                                                                class="fa fa-arrow-right" aria-hidden="true"></i></button>
                                                     </div>
-                                                    <!-- **************************************************************************************************8******  -->
-                                                </div>
 
+                                                </form>
+                                                <small>* Masukan nama atau nomor order</small>
+                                                <!-- **************************************************************************************************8******  -->
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
 
+                        </div>
 
-                            <div class="card-footer text-end f-12">
-                                <div>
-                                    <button class="btn btn-primary" type="submit">Submit</button>
-                                </div>
-                            </div>
-            </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </div>
 @endsection

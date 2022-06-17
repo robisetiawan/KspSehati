@@ -16,7 +16,7 @@ class CreatePenerimaanUangsTable extends Migration
         Schema::create('penerimaan_uangs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id');
-            $table->string('no_terima')->unique();
+            $table->string('no_terima');
             $table->string('trm_dr')->nullable();
             $table->enum('cr_bayar', ['Tunai', 'Transfer'])->nullable();
             $table->string('kd_bank')->nullable();

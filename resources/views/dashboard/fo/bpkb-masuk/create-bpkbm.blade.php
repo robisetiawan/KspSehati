@@ -38,6 +38,7 @@
                             </div>
 
                         </form>
+                        <small>* Masukan nama atau nomor order</small>
 
                     </div>
                 </div>

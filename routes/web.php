@@ -61,7 +61,9 @@ Route::get('/dashboard/home', function () {
     return view('dashboard.layouts.dashboard', [
         "title" => "Dashboard",
         "anggotas" => \App\Models\Anggota::count(),
-        "employees" => \App\Models\Employee::count()
+        "employees" => \App\Models\Employee::count(),
+        "order" => \App\Models\Order::where('sisa_angs', '>', 0)->count(),
+        "pinj" => \App\Models\Order::count()
     ]);
 })->middleware('auth');
 

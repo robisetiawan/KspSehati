@@ -39,6 +39,9 @@
                                 <div class="col-sm-12 p-r-0">
                                     <div class="card border-0">
                                         <!-- **************************************************************************************************8******  -->
+
+                                        <input type="hidden" name="order_id" value="{{ $pene->order_id }}">
+                                        <input type="hidden" name="periode" value="{{ $pene->order->pinjam->periode }}">
                                         <!-- **************************************************************************************************8******  -->
                                         <div class="row mb-1">
                                             <label class="col-sm-3 col-form-label" for="no_terima">No
@@ -118,8 +121,8 @@
                                                     disabled />
                                             </div>
                                             <div class="col-sm-3 p-l-0">
-                                                <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                                    value="Cash-In" disabled />
+                                                <input type="text" class="form-control form-control-sm"
+                                                    id="colFormLabelSm" value="Cash-In" disabled />
                                             </div>
                                         </div>
                                         <!-- **************************************************************************************************8******  -->
@@ -151,8 +154,8 @@
                                                         value="{{ $pene->order->pinjam->pk_marg }}">
                                                     <input
                                                         class="form-control form-control-sm @error('pk_marg') is-invalid @enderror"
-                                                        name="pk_marg" type="text" id="pk_marg" value="@currency($pene->order->pinjam->pk_marg)"
-                                                        disabled>
+                                                        name="pk_marg" type="text" id="pk_marg"
+                                                        value="@currency($pene->order->pinjam->pk_marg)" disabled>
                                                     @error('pk_marg')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
@@ -166,8 +169,8 @@
                                                 <div class="col-sm-6 p-l-0">
                                                     <input
                                                         class="form-control form-control-sm @error('sisa_pj') is-invalid @enderror"
-                                                        name="sisa_pj" type="text" id="sisa_pj" value="@currency($pene->sisa_pj)"
-                                                        disabled>
+                                                        name="sisa_pj" type="text" id="sisa_pj"
+                                                        value="@currency($pene->sisa_pj)" disabled>
                                                     @error('sisa_pj')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
@@ -185,8 +188,8 @@
                                                         value="{{ $pene->order->pinjam->angsuran }}">
                                                     <input
                                                         class="form-control form-control-sm @error('nominal') is-invalid @enderror"
-                                                        name="nominal" type="text" id="nominal" value="@currency($pene->order->pinjam->angsuran)"
-                                                        disabled>
+                                                        name="nominal" type="text" id="nominal"
+                                                        value="@currency($pene->order->pinjam->angsuran)" disabled>
                                                     @error('nominal')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}

@@ -106,6 +106,8 @@
                                                         <label class="col-sm-4 col-form-label" for="angsuran_ke">Angsuran Ke
                                                             -</label>
                                                         <div class="col-sm-2 p-l-0">
+                                                            <input type="hidden" name="periode"
+                                                                value="{{ $order->pinjam->periode }}">
                                                             <input type="number"
                                                                 class="form-control form-control-sm @error('angsuran_ke') is-invalid @enderror"
                                                                 id="angsuran_ke" name="angsuran_ke"
@@ -121,24 +123,27 @@
 
                                                     </div>
                                                     <!-- **************************************************************************************************8******  -->
-                                                    {{-- <div class="row mb-1">
-                                                                                <label class="col-sm-3 col-form-label"
-                                                                                    for="created_at">Tgl
-                                                                                    Terima</label>
-                                                                                <div class="col-sm-4 p-l-0">
-                                                                                    <input type="text"
-                                                                                        class="form-control form-control-sm"
-                                                                                        id="created_at" name="created_at"
-                                                                                        value="{{ $updated_at->format('d M Y') }}"
-                                                                                        disabled />
-                                                                                </div>
-                                                                                <div class="col-sm-3 p-l-0">
-                                                                                    <input type="text"
-                                                                                        class="form-control form-control-sm"
-                                                                                        id="colFormLabelSm" value="Cash-In"
-                                                                                        disabled />
-                                                                                </div>
-                                                                            </div> --}}
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="created_at">Tgl
+                                                            Pinjam</label>
+                                                        <div class="col-sm-5 p-l-0">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                id="created_at" name="created_at"
+                                                                value="{{ $order->created_at->format('d M Y') }}"
+                                                                disabled />
+                                                        </div>
+                                                    </div>
+                                                    <!-- **************************************************************************************************8******  -->
+                                                    <div class="row mb-1">
+                                                        <label class="col-sm-4 col-form-label" for="jt_tempo">Jatuh
+                                                            Tempo</label>
+                                                        <div class="col-sm-5 p-l-0">
+                                                            <input type="text" class="form-control form-control-sm"
+                                                                id="jt_tempo" name="jt_tempo"
+                                                                value="Tanggal {{ $order->created_at->format('d') }}"
+                                                                disabled />
+                                                        </div>
+                                                    </div>
                                                     <!-- **************************************************************************************************8******  -->
 
                                                 </div>

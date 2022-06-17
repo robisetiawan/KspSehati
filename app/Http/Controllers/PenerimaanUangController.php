@@ -80,6 +80,9 @@ class PenerimaanUangController extends Controller
             'total' => $request->nominal
         ]);
 
+        Order::where('id', $request->id)
+            ->update(['sisa_angs' => $request->periode - $request->angsuran_ke]);
+
         return redirect('/dashboard/penerimaan-uang')->with('success', 'Berhasil menambahkan order');
     }
 
@@ -161,8 +164,11 @@ class PenerimaanUangController extends Controller
         //endCurrency
         Cash_in::where('penerimaan_uang_id', $penerimaanUang->id)
             ->update(['total' => $request->nominal]);
-        PenerimaanUang::where('id', $penerimaanUang->id)
+        $pene = PenerimaanUang::where('id', $penerimaanUang->id)
             ->update($validatedData);
+
+        Order::where('id', $request->order_id)
+            ->update(['sisa_angs' => $request->periode - $request->angsuran_ke]);
 
         return redirect('/dashboard/penerimaan-uang')->with('success', 'Data Berhadsil diupdate');
     }
@@ -175,9 +181,14 @@ class PenerimaanUangController extends Controller
      */
     public function destroy(PenerimaanUang $penerimaanUang)
     {
+        $s = Order::where('id', $penerimaanUang->order_id)->first();
+        // dd($penerimaanUang->angsuran_ke, $penerimaanUang->order->pinjam->periode, $s->sisa_angs);
         PenerimaanUang::destroy($penerimaanUang->id);
         Cash_in::where('penerimaan_uang_id', $penerimaanUang->id)
             ->delete();
+
+        Order::where('id', $penerimaanUang->order_id)
+            ->update(['sisa_angs' => $penerimaanUang->angsuran_ke + $s->sisa_angs]);
 
         return redirect('/dashboard/penerimaan-uang')->with('success', 'Data Berhasil dihapus');
     }

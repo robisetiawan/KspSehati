@@ -50,6 +50,7 @@
                                         <th scope="col">Tanggal Order</th>
                                         <th scope="col">Nama Pelanggan</th>
                                         <th scope="col">Buss Unit</th>
+                                        <th scope="col">Sisa Angs</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -62,6 +63,13 @@
                                             <td>{{ $o->created_at->format('d M Y') }}</td>
                                             <td>{{ $o->anggota->user->name }}</td>
                                             <td>{{ $o->jaminan->barang }}</td>
+                                            @if ($o->sisa_angs === '0')
+                                                <td class="align-middle">
+                                                    <span class="badge rounded-pill bg-success ">Lunas</span>
+                                                </td>
+                                            @else
+                                                <td>{{ $o->sisa_angs }} Kali</td>
+                                            @endif
                                             <td>
                                                 {{-- <a href="/dashboard/orders/{{ $o->id }}" class="badge bg-success"
                                                     data-bs-toggle="modal" data-bs-target="#editOrder">

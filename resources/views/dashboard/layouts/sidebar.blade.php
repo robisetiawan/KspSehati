@@ -85,7 +85,14 @@
                                  </a>
                              </li>
 
-
+                             <li class="dropdown">
+                                 <a class="nav-link menu-title " href="javascript:void(0)"><i
+                                         data-feather="inbox"></i><span>BPKB</span></a>
+                                 <ul class="nav-submenu menu-content" style="display: none;">
+                                     <li><a href="/dashboard/bpkb-masuk" class="">BPKB Masuk</a></li>
+                                     <li><a href="/dashboard/bpkb-keluar" class="">BPKB Keluar</a></li>
+                                 </ul>
+                             </li>
 
                              {{-- <li class="dropdown">
                              <a href="/edit-order"

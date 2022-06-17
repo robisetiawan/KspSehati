@@ -15,6 +15,74 @@
             </div>
         </div>
         <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 col-xl-3 col-lg-6">
+                    <a href="/dashboard/anggotas">
+                        <div class="card o-hidden border-0">
+                            <div class="bg-primary b-r-4 card-body">
+                                <div class="media static-top-widget">
+                                    <div class="align-self-center text-center"><i data-feather="users"></i></div>
+                                    <div class="media-body">
+                                        <span class="m-0">Anggota</span>
+                                        <h4 class="mb-0 counter">{{ $anggotas }}</h4>
+                                        <i class="icon-bg" data-feather="users"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-xl-3 col-lg-6">
+                    <a href="/dashboard/employee">
+                        <div class="card o-hidden border-0">
+                            <div class="bg-secondary b-r-4 card-body">
+                                <div class="media static-top-widget">
+                                    <div class="align-self-center text-center"><i data-feather="user-check"></i></div>
+                                    <div class="media-body">
+                                        <span class="m-0">Karyawan</span>
+                                        <h4 class="mb-0 counter">{{ $employees }}</h4>
+                                        <i class="icon-bg" data-feather="user-check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-xl-3 col-lg-6">
+                    <a href="#">
+                        <div class="card o-hidden border-0">
+                            <div class="bg-primary b-r-4 card-body">
+                                <div class="media static-top-widget">
+                                    <div class="align-self-center text-center"><i data-feather="message-circle"></i></div>
+                                    <div class="media-body">
+                                        <span class="m-0">Pinjaman</span>
+                                        <h4 class="mb-0 counter">893</h4>
+                                        <i class="icon-bg" data-feather="user-check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-6 col-xl-3 col-lg-6">
+                    <a href="#">
+                        <div class="card o-hidden border-0">
+                            <div class="bg-secondary b-r-4 card-body">
+                                <div class="media static-top-widget">
+                                    <div class="align-self-center text-center"><i data-feather="user-plus"></i></div>
+                                    <div class="media-body">
+                                        <span class="m-0">Simpanan</span>
+                                        <h4 class="mb-0 counter">4531</h4>
+                                        <i class="icon-bg" data-feather="user-check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <div class="container-fluid">
             <div class="row">

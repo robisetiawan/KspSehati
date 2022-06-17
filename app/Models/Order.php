@@ -72,4 +72,14 @@ class Order extends Model
     {
         return $this->hasMany(Surat_image::class);
     }
+
+    public function bpkbm()
+    {
+        return $this->hasOne(Bpkb_m::class);
+    }
+
+    public function bpkbk()
+    {
+        return $this->hasOne(Bpkb_k::class);
+    }
 }

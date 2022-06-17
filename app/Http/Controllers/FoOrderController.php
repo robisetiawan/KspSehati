@@ -121,6 +121,7 @@ class FoOrderController extends Controller
                     "las_id" => $las->id,
                     "pinjam_id" => $pinjam->id,
                     "history_id" => $history->id,
+                    'nama' => $request->name
                 ]);
             }
         );
@@ -339,7 +340,8 @@ class FoOrderController extends Controller
             "keperluan" => 'nullable',
             "catatan" => 'nullable',
             "catt_survey" => 'nullable',
-            'employee_id' => 'nullable'
+            'employee_id' => 'nullable',
+            'nama' => 'nullable'
         ];
 
         // dd($kondisi_unit);
@@ -552,6 +554,8 @@ class FoOrderController extends Controller
             }
         }
         //endUpload file
+
+        $validorders['nama'] = $request->name;
 
         User::where('id', $order->anggota->user->id)
             ->update($validuser);

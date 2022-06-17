@@ -43,8 +43,8 @@
                                         aria-hidden="true"></i> Simpan</button>
                             </form> --}}
 
-                            <a href="/dashboard/penerimaan-uang/create" class="btn btn-primary mb-2"><i
-                                    class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
+                            <a href="/dashboard/penerimaan-uang/create" class="btn btn-primary mb-2"><i class="fa fa-plus"
+                                    aria-hidden="true"></i> Tambah Data</a>
 
                             @if (session()->has('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">

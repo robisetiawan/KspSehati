@@ -2,17 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BmController;
+use App\Http\Controllers\BpkbkController;
+use App\Http\Controllers\BpkbmController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PinjamController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\FoOrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SimpananController;
 use App\Http\Controllers\AgAnggotaController;
 use App\Http\Controllers\FoAnggotaController;
 use App\Http\Controllers\CetakBukuAgController;
-use App\Http\Controllers\DownloadController;
-use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PenerimaanUangController;
 // use App\Http\Livewire\PinjamTable;
 
@@ -57,6 +60,8 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard/home', function () {
     return view('dashboard.layouts.dashboard', [
         "title" => "Dashboard",
+        "anggotas" => \App\Models\Anggota::count(),
+        "employees" => \App\Models\Employee::count()
     ]);
 })->middleware('auth');
 
@@ -80,6 +85,15 @@ Route::name('fo')->middleware('fo')->group(
         Route::resource('/dashboard/employee', EmployeeController::class);
 
         Route::resource('/dashboard/orders', FoOrderController::class);
+
+        Route::resource('/dashboard/bpkb-masuk', BpkbmController::class);
+        Route::get('/dashboard/bpkbm/tambah', [SearchController::class, 'bpkbm']);
+        Route::get('/dashboard/bpkbm/search', [SearchController::class, 'bpkbmcari']);
+
+        Route::resource('/dashboard/bpkb-keluar', BpkbkController::class);
+        Route::get('/dashboard/bpkbk/tambah', [SearchController::class, 'bpkbk']);
+        Route::get('/dashboard/bpkbk/search', [SearchController::class, 'bpkbkcari']);
+
         Route::resource('/dashboard/pinjaman', PinjamController::class);
         // Route::get('/dashboard/orders', [FoOrderController::class, 'index']);
         // Route::get('/dashboard/orders/{order:id}', [FoOrderController::class, 'show']);

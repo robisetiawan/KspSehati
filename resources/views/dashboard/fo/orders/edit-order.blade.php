@@ -42,13 +42,30 @@
                         <a href="/dashboard/orders" class="btn btn-pill btn-outline-primary btn-xs mb-3"><i
                                 class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
 
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>* {{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        {{-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div> --}}
+
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item"><a class="nav-link active" id="contact-tab" data-bs-toggle="tab"
                                     href="#contact" role="tab" aria-controls="contact" aria-selected="false"><i
                                         class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Order</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" id="profile-tabs" data-bs-toggle="tab"
-                                    href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i
+                            <li class="nav-item"><a class="nav-link" id="profile-tabs" data-bs-toggle="tab" href="#profile"
+                                    role="tab" aria-controls="profile" aria-selected="false"><i
                                         class="fa fa-file-text-o" aria-hidden="true"></i>Struktur Kredit
                                     by Angsuran</a>
                             </li>
@@ -81,9 +98,8 @@
                                                     aria-controls="pills-kondisiunit" aria-selected="false">Kondisi
                                                     Unit</a>
                                             </li>
-                                            <li class="nav-item"><a class="nav-link"
-                                                    id="pills-rekaptransaksi-tab" data-bs-toggle="pill"
-                                                    href="#pills-rekaptransaksi" role="tab"
+                                            <li class="nav-item"><a class="nav-link" id="pills-rekaptransaksi-tab"
+                                                    data-bs-toggle="pill" href="#pills-rekaptransaksi" role="tab"
                                                     aria-controls="pills-rekaptransaksi" aria-selected="false">Rekap
                                                     Transaksi</a>
                                             </li>
@@ -123,8 +139,8 @@
                                             <div class="row my-1">
                                                 <div class="col">Foto Berkas</div>
                                                 <div class="col">
-                                                    <input type="file" class="form-control form-control-sm" name="berkas[]"
-                                                        multiple>
+                                                    <input type="file" class="form-control form-control-sm"
+                                                        name="berkas[]" multiple>
                                                 </div>
                                                 <div class="col py-1">
                                                     <button type="button" class="badge bg-success border-0"
@@ -180,7 +196,8 @@
                                                                         </tr>
                                                                     @empty
                                                                         <tr>
-                                                                            <td colspan="3" class="text-center">Belum ada
+                                                                            <td colspan="3" class="text-center">Belum
+                                                                                ada
                                                                                 Foto</td>
                                                                         </tr>
                                                                     @endforelse
@@ -204,8 +221,8 @@
                                             <div class="row my-1">
                                                 <div class="col">Foto Nasabah & Fisik Jaminan</div>
                                                 <div class="col">
-                                                    <input type="file" class="form-control form-control-sm" name="fisik[]"
-                                                        multiple>
+                                                    <input type="file" class="form-control form-control-sm"
+                                                        name="fisik[]" multiple>
                                                 </div>
                                                 <div class="col py-1">
                                                     <button type="button" class="badge bg-success border-0"
@@ -261,7 +278,8 @@
                                                                         </tr>
                                                                     @empty
                                                                         <tr>
-                                                                            <td colspan="3" class="text-center">Belum ada
+                                                                            <td colspan="3" class="text-center">Belum
+                                                                                ada
                                                                                 Foto</td>
                                                                         </tr>
                                                                     @endforelse
@@ -285,8 +303,8 @@
                                             <div class="row my-1">
                                                 <div class="col">Foto Surat</div>
                                                 <div class="col">
-                                                    <input type="file" class="form-control form-control-sm" name="surat[]"
-                                                        multiple>
+                                                    <input type="file" class="form-control form-control-sm"
+                                                        name="surat[]" multiple>
                                                 </div>
                                                 <div class="col py-1">
                                                     <button type="button" class="badge bg-success border-0"

@@ -20,7 +20,9 @@ use App\Models\Fisik_image;
 use App\Models\Surat_image;
 use App\Models\Kondisi_unit;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rules\Enum;
 
 class FoOrderController extends Controller
 {
@@ -175,7 +177,7 @@ class FoOrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-
+        // dd($request->nilai_pinjaman);
         // Users
         $user = [
             'name' => 'required|max:255',
@@ -358,6 +360,7 @@ class FoOrderController extends Controller
         $validorder = $request->validate($orders);
         $validpinjam = $request->validate($pinjam);
 
+        // dd($validpinjam);
         $validorder['employee_id'] = $request->employee_id;
         //Currency
         $deleteRp = array(
@@ -384,26 +387,434 @@ class FoOrderController extends Controller
         //endCurrency
 
         //struktur kredit by angsuran
-        $nilai_pinjRp = str_replace($deleteRp, "", $request->nilai_pinj);
+        // $nilai_pinjRp = str_replace($deleteRp, "", $request->nilai_pinj);
         // $pk_kemRp = str_replace($deleteRp, "", $request->pk_kem);
-        $admin_totalRp = str_replace($deleteRp, "", $request->admin_total);
+        // $admin_totalRp = str_replace($deleteRp, "", $request->admin_total);
 
-        $validpinjam['nilai_pinj'] = (int)$nilai_pinjRp;
-        $validpinjam['admin_total'] = (int)$admin_totalRp;
+        //Admin Total & bunga
+        //
+        if ($request->nilai_pinj && $request->periode) {
+            if ($request->nilai_pinj == 1000000 && $request->periode == 6) {
+                $admin_total = 160000;
+                $bunga = 3.937;
+            } elseif ($request->nilai_pinj == 1000000 && $request->periode == 12) {
+                $admin_total = 160000;
+                $bunga = 3.822;
+            } elseif ($request->nilai_pinj == 1000000 && $request->periode == 18) {
+                $admin_total = 160000;
+                $bunga = 3.841;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 1250000 && $request->periode == 6) {
+                $admin_total = 200000;
+                $bunga = 3.937;
+            } elseif ($request->nilai_pinj == 1250000 && $request->periode == 12) {
+                $admin_total = 200000;
+                $bunga = 3.822;
+            } elseif ($request->nilai_pinj == 1250000 && $request->periode == 18) {
+                $admin_total = 200000;
+                $bunga = 3.841;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 1500000 && $request->periode == 6) {
+                $admin_total = 187500;
+                $bunga = 3.778;
+            } elseif ($request->nilai_pinj == 1500000 && $request->periode == 12) {
+                $admin_total = 187500;
+                $bunga = 3.696;
+            } elseif ($request->nilai_pinj == 1500000 && $request->periode == 18) {
+                $admin_total = 187500;
+                $bunga = 3.689;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 1750000 && $request->periode == 6) {
+                $admin_total = 187500;
+                $bunga = 3.778;
+            } elseif ($request->nilai_pinj == 1750000 && $request->periode == 12) {
+                $admin_total = 187500;
+                $bunga = 3.696;
+            } elseif ($request->nilai_pinj == 1750000 && $request->periode == 18) {
+                $admin_total = 187500;
+                $bunga = 3.689;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 2000000 && $request->periode == 6) {
+                $admin_total = 230000;
+                $bunga = 3.692;
+            } elseif ($request->nilai_pinj == 2000000 && $request->periode == 12) {
+                $admin_total = 230000;
+                $bunga = 3.595;
+            } elseif ($request->nilai_pinj == 2000000 && $request->periode == 18) {
+                $admin_total = 230000;
+                $bunga = 3.637;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 2250000 && $request->periode == 6) {
+                $admin_total = 260000;
+                $bunga = 3.692;
+            } elseif ($request->nilai_pinj == 2250000 && $request->periode == 12) {
+                $admin_total = 260000;
+                $bunga = 3.595;
+            } elseif ($request->nilai_pinj == 2250000 && $request->periode == 18) {
+                $admin_total = 260000;
+                $bunga = 3.637;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 2500000 && $request->periode == 6) {
+                $admin_total = 287500;
+                $bunga = 3.602;
+            } elseif ($request->nilai_pinj == 2500000 && $request->periode == 12) {
+                $admin_total = 287500;
+                $bunga = 3.577;
+            } elseif ($request->nilai_pinj == 2500000 && $request->periode == 18) {
+                $admin_total = 287500;
+                $bunga = 3.628;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 2750000 && $request->periode == 6) {
+                $admin_total = 316250;
+                $bunga = 3.602;
+            } elseif ($request->nilai_pinj == 2750000 && $request->periode == 12) {
+                $admin_total = 316250;
+                $bunga = 3.577;
+            } elseif ($request->nilai_pinj == 2750000 && $request->periode == 18) {
+                $admin_total = 316250;
+                $bunga = 3.628;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 3000000 && $request->periode == 6) {
+                $admin_total = 390000;
+                $bunga = 3.215;
+            } elseif ($request->nilai_pinj == 3000000 && $request->periode == 12) {
+                $admin_total = 390000;
+                $bunga = 3.348;
+            } elseif ($request->nilai_pinj == 3000000 && $request->periode == 18) {
+                $admin_total = 390000;
+                $bunga = 3.324;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 3250000 && $request->periode == 6) {
+                $admin_total = 422500;
+                $bunga = 3.215;
+            } elseif ($request->nilai_pinj == 3250000 && $request->periode == 12) {
+                $admin_total = 422500;
+                $bunga = 3.348;
+            } elseif ($request->nilai_pinj == 3250000 && $request->periode == 18) {
+                $admin_total = 422500;
+                $bunga = 3.324;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 3500000 && $request->periode == 6) {
+                $admin_total = 420000;
+                $bunga = 3.180;
+            } elseif ($request->nilai_pinj == 3500000 && $request->periode == 12) {
+                $admin_total = 420000;
+                $bunga = 3.325;
+            } elseif ($request->nilai_pinj == 3500000 && $request->periode == 18) {
+                $admin_total = 420000;
+                $bunga = 3.296;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 3750000 && $request->periode == 6) {
+                $admin_total = 450000;
+                $bunga = 3.180;
+            } elseif ($request->nilai_pinj == 3750000 && $request->periode == 12) {
+                $admin_total = 450000;
+                $bunga = 3.325;
+            } elseif ($request->nilai_pinj == 3750000 && $request->periode == 18) {
+                $admin_total = 450000;
+                $bunga = 3.296;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 4000000 && $request->periode == 6) {
+                $admin_total = 440000;
+                $bunga = 3.108;
+            } elseif ($request->nilai_pinj == 4000000 && $request->periode == 12) {
+                $admin_total = 440000;
+                $bunga = 3.176;
+            } elseif ($request->nilai_pinj == 4000000 && $request->periode == 18) {
+                $admin_total = 440000;
+                $bunga = 3.296;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 4250000 && $request->periode == 6) {
+                $admin_total = 467500;
+                $bunga = 3.108;
+            } elseif ($request->nilai_pinj == 4250000 && $request->periode == 12) {
+                $admin_total = 467500;
+                $bunga = 3.176;
+            } elseif ($request->nilai_pinj == 4250000 && $request->periode == 18) {
+                $admin_total = 467500;
+                $bunga = 3.296;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 4500000 && $request->periode == 6) {
+                $admin_total = 495000;
+                $bunga = 3.073;
+            } elseif ($request->nilai_pinj == 4500000 && $request->periode == 12) {
+                $admin_total = 495000;
+                $bunga = 3.138;
+            } elseif ($request->nilai_pinj == 4500000 && $request->periode == 18) {
+                $admin_total = 495000;
+                $bunga = 3.273;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 4750000 && $request->periode == 6) {
+                $admin_total = 522500;
+                $bunga = 3.073;
+            } elseif ($request->nilai_pinj == 4750000 && $request->periode == 12) {
+                $admin_total = 522500;
+                $bunga = 3.138;
+            } elseif ($request->nilai_pinj == 4750000 && $request->periode == 18) {
+                $admin_total = 522500;
+                $bunga = 3.273;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 5000000 && $request->periode == 6) {
+                $admin_total = 550000;
+                $bunga = 3.081;
+            } elseif ($request->nilai_pinj == 5000000 && $request->periode == 12) {
+                $admin_total = 550000;
+                $bunga = 3.162;
+            } elseif ($request->nilai_pinj == 5000000 && $request->periode == 18) {
+                $admin_total = 550000;
+                $bunga = 3.291;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 5250000 && $request->periode == 6) {
+                $admin_total = 577500;
+                $bunga = 3.081;
+            } elseif ($request->nilai_pinj == 5250000 && $request->periode == 12) {
+                $admin_total = 577500;
+                $bunga = 3.162;
+            } elseif ($request->nilai_pinj == 5250000 && $request->periode == 18) {
+                $admin_total = 577500;
+                $bunga = 3.291;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 5500000 && $request->periode == 6) {
+                $admin_total = 550000;
+                $bunga = 3.152;
+            } elseif ($request->nilai_pinj == 5500000 && $request->periode == 12) {
+                $admin_total = 550000;
+                $bunga = 3.287;
+            } elseif ($request->nilai_pinj == 5500000 && $request->periode == 18) {
+                $admin_total = 550000;
+                $bunga = 3.370;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 5750000 && $request->periode == 6) {
+                $admin_total = 575000;
+                $bunga = 3.152;
+            } elseif ($request->nilai_pinj == 5750000 && $request->periode == 12) {
+                $admin_total = 575000;
+                $bunga = 3.287;
+            } elseif ($request->nilai_pinj == 5750000 && $request->periode == 18) {
+                $admin_total = 575000;
+                $bunga = 3.370;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 6000000 && $request->periode == 6) {
+                $admin_total = 600000;
+                $bunga = 3.136;
+            } elseif ($request->nilai_pinj == 6000000 && $request->periode == 12) {
+                $admin_total = 600000;
+                $bunga = 3.273;
+            } elseif ($request->nilai_pinj == 6000000 && $request->periode == 18) {
+                $admin_total = 600000;
+                $bunga = 3.369;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 6250000 && $request->periode == 6) {
+                $admin_total = 625000;
+                $bunga = 3.136;
+            } elseif ($request->nilai_pinj == 6250000 && $request->periode == 12) {
+                $admin_total = 625000;
+                $bunga = 3.273;
+            } elseif ($request->nilai_pinj == 6250000 && $request->periode == 18) {
+                $admin_total = 625000;
+                $bunga = 3.369;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 6500000 && $request->periode == 6) {
+                $admin_total = 650000;
+                $bunga = 3.138;
+            } elseif ($request->nilai_pinj == 6500000 && $request->periode == 12) {
+                $admin_total = 650000;
+                $bunga = 3.275;
+            } elseif ($request->nilai_pinj == 6500000 && $request->periode == 18) {
+                $admin_total = 650000;
+                $bunga = 3.382;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 6750000 && $request->periode == 6) {
+                $admin_total = 675000;
+                $bunga = 3.138;
+            } elseif ($request->nilai_pinj == 6750000 && $request->periode == 12) {
+                $admin_total = 675000;
+                $bunga = 3.275;
+            } elseif ($request->nilai_pinj == 6750000 && $request->periode == 18) {
+                $admin_total = 675000;
+                $bunga = 3.382;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 7000000 && $request->periode == 6) {
+                $admin_total = 665000;
+                $bunga = 3.138;
+            } elseif ($request->nilai_pinj == 7000000 && $request->periode == 12) {
+                $admin_total = 665000;
+                $bunga = 3.278;
+            } elseif ($request->nilai_pinj == 7000000 && $request->periode == 18) {
+                $admin_total = 665000;
+                $bunga = 3.381;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 7250000 && $request->periode == 6) {
+                $admin_total = 688750;
+                $bunga = 3.138;
+            } elseif ($request->nilai_pinj == 7250000 && $request->periode == 12) {
+                $admin_total = 688750;
+                $bunga = 3.278;
+            } elseif ($request->nilai_pinj == 7250000 && $request->periode == 18) {
+                $admin_total = 688750;
+                $bunga = 3.381;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 7500000 && $request->periode == 6) {
+                $admin_total = 712500;
+                $bunga = 3.145;
+            } elseif ($request->nilai_pinj == 7500000 && $request->periode == 12) {
+                $admin_total = 712500;
+                $bunga = 3.271;
+            } elseif ($request->nilai_pinj == 7500000 && $request->periode == 18) {
+                $admin_total = 712500;
+                $bunga = 3.382;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 7750000 && $request->periode == 6) {
+                $admin_total = 736250;
+                $bunga = 3.145;
+            } elseif ($request->nilai_pinj == 7750000 && $request->periode == 12) {
+                $admin_total = 736250;
+                $bunga = 3.271;
+            } elseif ($request->nilai_pinj == 7750000 && $request->periode == 18) {
+                $admin_total = 736250;
+                $bunga = 3.382;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 8000000 && $request->periode == 6) {
+                $admin_total = 760000;
+                $bunga = 3.105;
+            } elseif ($request->nilai_pinj == 8000000 && $request->periode == 12) {
+                $admin_total = 760000;
+                $bunga = 3.219;
+            } elseif ($request->nilai_pinj == 8000000 && $request->periode == 18) {
+                $admin_total = 760000;
+                $bunga = 3.337;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 8250000 && $request->periode == 6) {
+                $admin_total = 783750;
+                $bunga = 3.105;
+            } elseif ($request->nilai_pinj == 8250000 && $request->periode == 12) {
+                $admin_total = 783750;
+                $bunga = 3.219;
+            } elseif ($request->nilai_pinj == 8250000 && $request->periode == 18) {
+                $admin_total = 783750;
+                $bunga = 3.337;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 8500000 && $request->periode == 6) {
+                $admin_total = 807500;
+                $bunga = 3.113;
+            } elseif ($request->nilai_pinj == 8500000 && $request->periode == 12) {
+                $admin_total = 807500;
+                $bunga = 3.227;
+            } elseif ($request->nilai_pinj == 8500000 && $request->periode == 18) {
+                $admin_total = 807500;
+                $bunga = 3.340;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 8750000 && $request->periode == 6) {
+                $admin_total = 831250;
+                $bunga = 3.113;
+            } elseif ($request->nilai_pinj == 8750000 && $request->periode == 12) {
+                $admin_total = 831250;
+                $bunga = 3.227;
+            } elseif ($request->nilai_pinj == 8750000 && $request->periode == 18) {
+                $admin_total = 831250;
+                $bunga = 3.340;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 9000000 && $request->periode == 6) {
+                $admin_total = 855000;
+                $bunga = 3.110;
+            } elseif ($request->nilai_pinj == 9000000 && $request->periode == 12) {
+                $admin_total = 855000;
+                $bunga = 3.224;
+            } elseif ($request->nilai_pinj == 9000000 && $request->periode == 18) {
+                $admin_total = 855000;
+                $bunga = 3.333;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 9250000 && $request->periode == 6) {
+                $admin_total = 878750;
+                $bunga = 3.110;
+            } elseif ($request->nilai_pinj == 9250000 && $request->periode == 12) {
+                $admin_total = 878750;
+                $bunga = 3.224;
+            } elseif ($request->nilai_pinj == 9250000 && $request->periode == 18) {
+                $admin_total = 878750;
+                $bunga = 3.333;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 9500000 && $request->periode == 6) {
+                $admin_total = 902500;
+                $bunga = 3.117;
+            } elseif ($request->nilai_pinj == 9500000 && $request->periode == 12) {
+                $admin_total = 902500;
+                $bunga = 3.222;
+            } elseif ($request->nilai_pinj == 9500000 && $request->periode == 18) {
+                $admin_total = 902500;
+                $bunga = 3.327;
+            }
+            //======================================================================
+            elseif ($request->nilai_pinj == 9750000 && $request->periode == 6) {
+                $admin_total = 926250;
+                $bunga = 3.117;
+            } elseif ($request->nilai_pinj == 9750000 && $request->periode == 12) {
+                $admin_total = 926250;
+                $bunga = 3.222;
+            } elseif ($request->nilai_pinj == 9750000 && $request->periode == 18) {
+                $admin_total = 926250;
+                $bunga = 3.327;
+            }
+            //=======================O O O O O O O O O O============================
+            elseif ($request->nilai_pinj == 10000000 && $request->periode == 6) {
+                $admin_total = 950000;
+                $bunga = 3.123;
+            } elseif ($request->nilai_pinj == 10000000 && $request->periode == 12) {
+                $admin_total = 950000;
+                $bunga = 3.219;
+            } elseif ($request->nilai_pinj == 10000000 && $request->periode == 18) {
+                $admin_total = 950000;
+                $bunga = 3.330;
+            }
+            //======================================================================
 
-        $pokok_kembali = (int)$nilai_pinjRp + (int)$admin_totalRp;
+            $validpinjam['nilai_pinj'] = (int)$request->nilai_pinj;
+            $validpinjam['admin_total'] = $admin_total;
 
-        $validpinjam['pk_kem'] = $pokok_kembali;
-        $validpinjam['tipe_angs'] = 'Tetap';
-        $validpinjam['per_p'] = 'Bulan';
+            $pokok_kembali = (int)$request->nilai_pinj + $admin_total;
 
+            $validpinjam['pk_kem'] = $pokok_kembali;
+            $validpinjam['tipe_angs'] = 'Tetap';
+            $validpinjam['per_p'] = 'Bulan';
 
-        $bungafloat = floatval($request->bunga);
-        if ($request->bunga) {
+            $bungafloat = floatval($bunga);
             $validpinjam['bunga'] = $bungafloat;
-        }
 
-        if ($request->bunga && $pokok_kembali !== null && $request->periode && $request->jumlah_angs) {
+
             $b_margin = ($pokok_kembali * $bungafloat / 100) * $request->periode;
 
             if ($b_margin > 100000) {
@@ -420,12 +831,45 @@ class FoOrderController extends Controller
             $validpinjam['bunga_margin'] = $b_marg;
             $pokokplusmargin = $pokok_kembali + $b_marg;
             $validpinjam['pk_marg'] = $pokokplusmargin;
-            $validpinjam['angsuran'] =  $pokokplusmargin / $request->jumlah_angs;
-        } elseif ($pokok_kembali == null) {
+            $validpinjam['angsuran'] =  $pokokplusmargin / $request->periode;
+        } elseif ($request->nilai_pinj == null or $request->periode == null) {
+            $validpinjam['nilai_pinj'] = $request->nilai_pinj or null;
+            $validpinjam['admin_total'] = null;
+            $validpinjam['periode'] = $request->periode or null;
+
+            $validpinjam['pk_kem'] = null;
+            $validpinjam['tipe_angs'] = 'Tetap';
+            $validpinjam['per_p'] = 'Bulan';
+
+            $validpinjam['bunga'] = null;
             $validpinjam['bunga_margin'] = null;
             $validpinjam['pk_marg'] = null;
             $validpinjam['angsuran'] =  null;
         } else;
+        //
+        // if ($request->bunga && $pokok_kembali !== null && $request->periode && $request->jumlah_angs) {
+        //     $b_margin = ($pokok_kembali * $bungafloat / 100) * $request->periode;
+
+        //     if ($b_margin > 100000) {
+        //         $desimal = $b_margin / 100000;
+        //         $b_marg = number_format($desimal, 2) * 100000;
+        //     } elseif ($b_margin > 1000000) {
+        //         $desimal = $b_margin / 1000000;
+        //         $b_marg = number_format($desimal, 2) * 1000000;
+        //     } else {
+        //         $desimal = $b_margin / 10000;
+        //         $b_marg = number_format($desimal, 2) * 10000;
+        //     }
+
+        //     $validpinjam['bunga_margin'] = $b_marg;
+        //     $pokokplusmargin = $pokok_kembali + $b_marg;
+        //     $validpinjam['pk_marg'] = $pokokplusmargin;
+        //     $validpinjam['angsuran'] =  $pokokplusmargin / $request->jumlah_angs;
+        // } elseif ($pokok_kembali == null) {
+        //     $validpinjam['bunga_margin'] = null;
+        //     $validpinjam['pk_marg'] = null;
+        //     $validpinjam['angsuran'] =  null;
+        // } else;
 
         // dd($validpinjam);
         //end struktur kredit by angsuran
@@ -518,7 +962,12 @@ class FoOrderController extends Controller
 
         $harga_kondisi = (int)$harga_pasarRp - ($validkondisi_unit['hrgpk_kondisi'] + $validkondisi_unit['hrgpk_stnk']);
         $validpinjam['harga_acuan'] = $harga_kondisi;
-        $validpinjam['persentase'] = ($pokok_kembali / $harga_kondisi) * 100;
+
+        if ($request->nilai_pinj && $request->periode) {
+            $validpinjam['persentase'] = ($pokok_kembali / $harga_kondisi) * 100;
+        } else {
+            $validpinjam['persentase'] = null;
+        }
 
         // dd($validkondisi_unit);
 

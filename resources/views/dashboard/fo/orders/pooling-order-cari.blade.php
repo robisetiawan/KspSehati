@@ -89,6 +89,7 @@
                                         <div class=" row mb-1">
                                             <label class="col-sm-4 col-form-label" for="name">Nama</label>
                                             <div class="col p-l-0">
+                                                <input type="hidden" name="nama" value="{{ $a->user->name }}">
                                                 <input
                                                     class="form-control form-control-sm @error('name ') is-invalid @enderror"
                                                     name="name" type="text" id="name"
@@ -363,7 +364,7 @@
                                             <div class="col p-l-0">
                                                 <select class="form-select @error('stnk_ada') is-invalid @enderror"
                                                     name="stnk_ada" id="stnk_ada" disabled>
-                                                    <option>Ada Jaminan</option>
+                                                    <option>Ada</option>
                                                 </select>
                                                 @error('stnk_ada')
                                                     <div class="invalid-feedback">

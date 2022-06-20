@@ -52,9 +52,9 @@
                                     <div class="col">
                                         <!-- **************************************************************************************************8******  -->
                                         <div class=" row mb-1">
-                                            <label class="col-sm-3 col-form-label" for="no_order">No Order</label>
-                                            <div class="col-sm-2">
-                                                <input type="hidden" name="order_id" value="{{ $o->id }}">
+                                            <label class="col-sm-5 col-form-label" for="no_order">No Order</label>
+                                            <div class="col-sm-4">
+                                                <input type="hidden" name="order_id" value="{{ $o->jaminan_id }}">
                                                 <input
                                                     class="form-control form-control-sm @error('no_order') is-invalid @enderror"
                                                     name="no_order" type="text" id="no_order"
@@ -67,8 +67,8 @@
                                             </div>
                                         </div>
                                         <div class=" row mb-1">
-                                            <label class="col-sm-3 col-form-label" for="penyerah">Yang Menyerahkan</label>
-                                            <div class="col-sm-4">
+                                            <label class="col-sm-5 col-form-label" for="penyerah">Yang Menyerahkan</label>
+                                            <div class="col-sm-6">
                                                 <input
                                                     class="form-control form-control-sm @error('penyerah') is-invalid @enderror"
                                                     name="penyerah" type="text" id="penyerah"
@@ -81,8 +81,8 @@
                                             </div>
                                         </div>
                                         <div class=" row mb-1">
-                                            <label class="col-sm-3 col-form-label" for="dtrm_olh">Diterima Oleh</label>
-                                            <div class="col-sm-4">
+                                            <label class="col-sm-5 col-form-label" for="dtrm_olh">Diterima Oleh</label>
+                                            <div class="col-sm-6">
                                                 {{-- <input type="hidden" name="dtrm_olh" value="{{ $o->dtrm_olh }}"> --}}
                                                 <input
                                                     class="form-control form-control-sm @error('dtrm_olh') is-invalid @enderror"
@@ -96,8 +96,8 @@
                                             </div>
                                         </div>
                                         <div class="row mb-1">
-                                            <label class="col-sm-3 col-form-label" for="foto">Foto</label>
-                                            <div class="col-sm-4">
+                                            <label class="col-sm-5 col-form-label" for="foto">Foto</label>
+                                            <div class="col-sm-6">
                                                 <input
                                                     class="form-control form-control-sm @error('foto') is-invalid @enderror"
                                                     name="foto" type="file" id="foto" onchange="previewImage()">
@@ -107,6 +107,95 @@
                                                     </div>
                                                 @enderror
                                                 <img class="p-l-2 img-preview img-fluid my-1 col-sm-6 rounded">
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    {{-- Right Coloum --}}
+                                    <div class="col">
+                                        <!-- **************************************************************************************************8******  -->
+                                        <div class=" row mb-1">
+                                            <label class="col-sm-4 col-form-label" for="no_polisi">No Polisi</label>
+                                            <div class="col-sm-4">
+                                                <input
+                                                    class="form-control form-control-sm @error('no_polisi') is-invalid @enderror"
+                                                    name="no_polisi" type="text" id="no_polisi"
+                                                    value="{{ $o->jaminan->no_polisi }}">
+                                                @error('no_polisi')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class=" row mb-1">
+                                            <label class="col-sm-4 col-form-label" for="no_mesin">No Mesin</label>
+                                            <div class="col">
+                                                <input
+                                                    class="form-control form-control-sm @error('no_mesin') is-invalid @enderror"
+                                                    name="no_mesin" type="text" id="no_mesin"
+                                                    value="{{ $o->jaminan->no_mesin }}">
+                                                @error('no_mesin')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class=" row mb-1">
+                                            <label class="col-sm-4 col-form-label" for="no_bpkb">No Bpkb</label>
+                                            <div class="col">
+                                                <input
+                                                    class="form-control form-control-sm @error('no_bpkb') is-invalid @enderror"
+                                                    name="no_bpkb" type="text" id="no_bpkb"
+                                                    value="{{ old('no_bpkb') }}">
+                                                @error('no_bpkb')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class=" row mb-1">
+                                            <label class="col-sm-4 col-form-label" for="nm_bpkb">Nama Bpkb</label>
+                                            <div class="col">
+                                                <input
+                                                    class="form-control form-control-sm @error('nm_bpkb') is-invalid @enderror"
+                                                    name="nm_bpkb" type="text" id="nm_bpkb"
+                                                    value="{{ old('nm_bpkb') }}">
+                                                @error('nm_bpkb')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class=" row mb-1">
+                                            <label class="col-sm-4 col-form-label" for="almt_bpkb">Alamat Bpkb</label>
+                                            <div class="col">
+                                                <textarea class="form-control form-control-sm @error('almt_bpkb') is-invalid @enderror" name="almt_bpkb"
+                                                    type="text" id="almt_bpkb">{{ old('almt_bpkb') }}</textarea>
+                                                @error('almt_bpkb')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class=" row mb-1">
+                                            <label class="col-sm-4 col-form-label" for="no_rangka">No Rangka</label>
+                                            <div class="col">
+                                                <input
+                                                    class="form-control form-control-sm @error('no_rangka') is-invalid @enderror"
+                                                    name="no_rangka" type="text" id="no_rangka"
+                                                    value="{{ old('no_rangka') }}">
+                                                @error('no_rangka')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
 

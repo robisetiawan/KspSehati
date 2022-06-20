@@ -21,6 +21,11 @@ class CreateBpkbMsTable extends Migration
             $table->string('dtrm_olh')->nullable();
             $table->string('foto')->nullable();
             $table->string('status')->nullable();
+            $table->string('no_memo')->nullable();
+            $table->string('no_bpkb')->nullable();
+            $table->string('nm_bpkb')->nullable();
+            $table->string('almt_bpkb')->nullable();
+            $table->string('no_rangka')->nullable();
             $table->timestamps();
         });
     }

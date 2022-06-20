@@ -40,10 +40,12 @@ class BpkbkController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $validatedData = $request->validate([
             'penerima' => 'required',
             'dbrkn_olh' => 'required',
-            'foto' => 'nullable|image'
+            'foto' => 'nullable|image',
+            'order_id' => 'nullable'
         ]);
 
         if ($request->file('foto')) {
@@ -74,10 +76,13 @@ class BpkbkController extends Controller
      */
     public function show($id)
     {
-        // return view('dashboard.fo.bpkb-keluar.show-bpkbk', [
-        //     'title' => 'Detail Bpkb Keluar',
-        //     'bpkbk' => Bpkb_k::where('id', $id)->get()
-        // ]);
+        $a = Bpkb_k::where('id', $id)->first();
+        $b = Bpkb_m::where('bpkbk_id', $a->id)->first();
+        return view('dashboard.fo.bpkb-keluar.show-bpkbk', [
+            'title' => 'Bpkb Keluar',
+            'bpkbk' => $a,
+            'bpkbm' => $b
+        ]);
     }
 
     /**
@@ -142,5 +147,15 @@ class BpkbkController extends Controller
             ->update(['status' => 'Belum Diserahkan Ke Pemilik']);
 
         return redirect('/dashboard/bpkb-keluar')->with('success', 'Data Berhasil dihapus');
+    }
+
+    public function print($id)
+    {
+        // dd($id);
+        return view('dashboard.fo.bpkb-keluar.print-bpkbk', [
+            "title" => "Cetak",
+            "bpkbk" => Bpkb_k::find($id),
+            "bpkbm" => Bpkb_m::where('bpkbk_id', $id)->first()
+        ]);
     }
 }

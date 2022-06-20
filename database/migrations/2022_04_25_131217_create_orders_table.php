@@ -15,14 +15,14 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('anggota_id');
+            $table->foreignId('anggota_id')->nullable();
             $table->foreignId('jaminan_id');
             $table->foreignId('barang_id');
             $table->foreignId('las_id');
             $table->foreignId('kondisi_unit_id');
             $table->foreignId('pinjam_id');
             $table->foreignId('history_id');
-            $table->foreignId('employee_id');
+            $table->foreignId('employee_id')->nullable();
             $table->string('nama')->nullable();
             $table->string('no_order');
             $table->enum('keperluan', ['Sendiri', 'Keluarga', 'Orang Lain'])->nullable();

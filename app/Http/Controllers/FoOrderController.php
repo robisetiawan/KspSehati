@@ -71,16 +71,30 @@ class FoOrderController extends Controller
         $createorder = DB::transaction(
             function () use ($request) {
 
-                $validatedData = $request->validate([
-                    'anggota_id' => 'required|unique:orders',
-                    'buss_unit' => "required",
-                    'barang' => "required",
-                    'ada_jaminan' => "nullable",
-                    'no_polisi' => "required",
-                    'no_mesin' => "required",
-                    'bpkb' => "required",
-                    'stnk_ada' => "nullable",
-                ]);
+                $ord = Order::where('anggota_id', $request->anggota_id)->first();
+                if ($ord->sisa_angs === '0') {
+                    $validatedData = $request->validate([
+                        'anggota_id' => 'nullable',
+                        'buss_unit' => "required",
+                        'barang' => "required",
+                        'ada_jaminan' => "nullable",
+                        'no_polisi' => "required",
+                        'no_mesin' => "required",
+                        'bpkb' => "required",
+                        'stnk_ada' => "nullable",
+                    ]);
+                } else {
+                    $validatedData = $request->validate([
+                        'anggota_id' => 'required|unique:orders',
+                        'buss_unit' => "required",
+                        'barang' => "required",
+                        'ada_jaminan' => "nullable",
+                        'no_polisi' => "required",
+                        'no_mesin' => "required",
+                        'bpkb' => "required",
+                        'stnk_ada' => "nullable",
+                    ]);
+                }
 
                 $jaminan = Jaminan::create([
                     "barang" => $request->barang,
@@ -123,7 +137,7 @@ class FoOrderController extends Controller
                     "las_id" => $las->id,
                     "pinjam_id" => $pinjam->id,
                     "history_id" => $history->id,
-                    'nama' => $request->name
+                    'nama' => $request->nama,
                 ]);
             }
         );
@@ -163,8 +177,11 @@ class FoOrderController extends Controller
             "pinlatest" => Pinjam::where('anggota_id', $order->anggota->id)->latest()->first(),
             'employees' => Employee::all(),
             'berkas' => Berkas::where('order_id', $order->id)->get(),
+            'countberkas' => Berkas::where('order_id', $order->id)->count(),
             'fisiks' => Fisik_image::where('order_id', $order->id)->get(),
+            'countfisik' => Fisik_image::where('order_id', $order->id)->count(),
             'surats' => Surat_image::where('order_id', $order->id)->get(),
+            'countsurat' => Surat_image::where('order_id', $order->id)->count(),
         ]);
     }
 
@@ -343,7 +360,7 @@ class FoOrderController extends Controller
             "catatan" => 'nullable',
             "catt_survey" => 'nullable',
             'employee_id' => 'nullable',
-            'nama' => 'nullable'
+            'nama' => 'nullable',
         ];
 
         // dd($kondisi_unit);
@@ -362,6 +379,7 @@ class FoOrderController extends Controller
 
         // dd($validpinjam);
         $validorder['employee_id'] = $request->employee_id;
+        $validorder['sisa_angs'] = $request->periode;
         //Currency
         $deleteRp = array(
             "Rp", ".", " "

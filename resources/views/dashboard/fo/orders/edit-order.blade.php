@@ -147,6 +147,7 @@
                                                         data-bs-toggle="modal" data-bs-target="#berkas">
                                                         <i class="fa fa-eye" aria-hidden="true"></i> Show
                                                     </button>
+                                                    <small> {{ $countberkas }} file</small>
                                                 </div>
                                             </div>
                                             <!-- Modal -->
@@ -229,6 +230,7 @@
                                                         data-bs-toggle="modal" data-bs-target="#fisik">
                                                         <i class="fa fa-eye" aria-hidden="true"></i> Show
                                                     </button>
+                                                    <small> {{ $countfisik }} file</small>
                                                 </div>
                                             </div>
                                             <!-- Modal -->
@@ -311,6 +313,7 @@
                                                         data-bs-toggle="modal" data-bs-target="#surat">
                                                         <i class="fa fa-eye" aria-hidden="true"></i> Show
                                                     </button>
+                                                    <small> {{ $countsurat }} file</small>
                                                 </div>
                                             </div>
                                             <!-- Modal -->

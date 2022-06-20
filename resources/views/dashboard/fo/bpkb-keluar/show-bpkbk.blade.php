@@ -7,12 +7,12 @@
             <div class="page-header pt-4 pb-3">
                 <div class="row">
                     <div class="col">
-                        <h3>Bpkb Masuk</h3>
+                        <h3>Bpkb Keluar</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">KSP Sehati
                             </li>
-                            <li class="breadcrumb-item">Bpkb Masuk</li>
-                            <li class="breadcrumb-item">Detail Bpkb Masuk</li>
+                            <li class="breadcrumb-item">Bpkb Keluar</li>
+                            <li class="breadcrumb-item">Detail Bpkb Keluar</li>
                         </ol>
                     </div>
                     <div class="col-lg-6">
@@ -34,18 +34,18 @@
                             {{-- Left Coloum --}}
                             <div class="col">
                                 <div class="btn-group">
-                                    <a href="/dashboard/bpkb-masuk">
+                                    <a href="/dashboard/bpkb-keluar">
                                         <button class="btn btn-pill btn-outline-primary btn-xs mb-3"><i
                                                 class="fa fa-arrow-left" aria-hidden="true"></i> Back</button>
                                     </a>
 
-                                    <a href="/dashboard/bpkb-masuk/{{ $bpkbm->id }}/edit">
+                                    <a href="/dashboard/bpkb-keluar/{{ $bpkbk->id }}/edit">
                                         <button class="btn btn-pill btn-outline-success btn-xs mb-3 mx-1"><i
                                                 class="fa fa-pencil fa-lg" aria-hidden="true"></i> Edit</button>
                                     </a>
 
                                     <a href="#">
-                                        <form action="/dashboard/bpkb-masuk/{{ $bpkbm->id }}" method="POST">
+                                        <form action="/dashboard/bpkb-keluar/{{ $bpkbk->id }}" method="POST">
                                             @method('delete')
                                             @csrf
                                             <button class="btn btn-pill btn-outline-danger btn-xs mb-3"
@@ -54,36 +54,21 @@
                                         </form>
                                     </a>
                                 </div>
-                                <form method="POST" action="/dashboard/bpkb-masuk" class="form theme-form"
+                                <form method="POST" action="/dashboard/bpkb-keluar" class="form theme-form"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <!-- **************************************************************************************************8******  -->
-                                    <div class="row my-1 mb-2">
-                                        {{-- <label class="col-sm-2 col-form-label" for="status">Status</label> --}}
-                                        @if ($bpkbm->status === 'Belum Diserahkan Ke Pemilik')
-                                            <div class="col">
-                                                <div class="btn btn-pill btn-danger btn-sm">
-                                                    {{ $bpkbm->status }}</div>
-                                            </div>
-                                        @elseif ($bpkbm->status === 'Sudah Diserahkan Ke Pemilik')
-                                            <div class="col">
-                                                <div class="btn btn-pill btn-success btn-sm">{{ $bpkbm->status }}
-                                                </div>
-                                            </div>
-                                        @else
-                                        @endif
-                                    </div>
                                     <div class="row">
                                         {{-- Left Coloum --}}
                                         <div class="col">
 
                                             <div class=" row mb-1">
-                                                <label class="col-sm-5 col-form-label" for="no_order">No Order</label>
+                                                <label class="col-sm-4 col-form-label" for="no_order">No Order</label>
                                                 <div class="col-sm-6">
                                                     <input
                                                         class="form-control form-control-sm @error('no_order') is-invalid @enderror"
                                                         name="no_order" type="text" id="no_order"
-                                                        value="{{ $bpkbm->order->no_order }}" readonly>
+                                                        value="{{ $bpkbk->order->no_order }}" readonly>
                                                     @error('no_order')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
@@ -92,7 +77,7 @@
                                                 </div>
                                             </div>
                                             <div class=" row mb-1">
-                                                <label class="col-sm-5 col-form-label" for="no_memo">No Memo</label>
+                                                <label class="col-sm-4 col-form-label" for="no_memo">No Memo</label>
                                                 <div class="col-sm-6">
                                                     <input
                                                         class="form-control form-control-sm @error('no_memo') is-invalid @enderror"
@@ -106,14 +91,13 @@
                                                 </div>
                                             </div>
                                             <div class=" row mb-1">
-                                                <label class="col-sm-5 col-form-label" for="penyerah">Yang
-                                                    Menyerahkan</label>
+                                                <label class="col-sm-4 col-form-label" for="penerima">Penerima</label>
                                                 <div class="col-sm-6">
                                                     <input
-                                                        class="form-control form-control-sm @error('penyerah') is-invalid @enderror"
-                                                        name="penyerah" type="text" id="penyerah"
-                                                        value="{{ $bpkbm->penyerah }}" readonly>
-                                                    @error('penyerah')
+                                                        class="form-control form-control-sm @error('penerima') is-invalid @enderror"
+                                                        name="penerima" type="text" id="penerima"
+                                                        value="{{ $bpkbk->penerima }}" readonly>
+                                                    @error('penerima')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
@@ -121,14 +105,27 @@
                                                 </div>
                                             </div>
                                             <div class=" row mb-1">
-                                                <label class="col-sm-5 col-form-label" for="dtrm_olh">Diterima Oleh</label>
+                                                <label class="col-sm-4 col-form-label" for="alamat">Alamat</label>
+                                                <div class="col">
+                                                    <textarea rows='5' class="form-control form-control-sm @error('alamat') is-invalid @enderror" name="alamat"
+                                                        type="text" id="alamat" readonly>{{ old('alamat', $bpkbk->order->anggota->identity->alamat . ' Rt. ' . $bpkbk->order->anggota->identity->rt . ' Rw. ' . $bpkbk->order->anggota->identity->rw . ' Kel. ' . $bpkbk->order->anggota->identity->desa_kel . ' Kec. ' . $bpkbk->order->anggota->identity->kec) }}</textarea>
+                                                    @error('alamat')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class=" row mb-1">
+                                                <label class="col-sm-4 col-form-label" for="dbrkn_olh">Diberikan
+                                                    Oleh</label>
                                                 <div class="col-sm-6">
-                                                    {{-- <input type="hidden" name="dtrm_olh" value="{{ $bpkbm->dtrm_olh }}"> --}}
+                                                    {{-- <input type="hidden" name="dbrkn_olh" value="{{ $bpkbk->dbrkn_olh }}"> --}}
                                                     <input
-                                                        class="form-control form-control-sm @error('dtrm_olh') is-invalid @enderror"
-                                                        name="dtrm_olh" type="text" id="dtrm_olh"
-                                                        value="{{ old('dtrm_olh', $bpkbm->dtrm_olh) }}" readonly>
-                                                    @error('dtrm_olh')
+                                                        class="form-control form-control-sm @error('dbrkn_olh') is-invalid @enderror"
+                                                        name="dbrkn_olh" type="text" id="dbrkn_olh"
+                                                        value="{{ old('dbrkn_olh', $bpkbk->dbrkn_olh) }}" readonly>
+                                                    @error('dbrkn_olh')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
                                                         </div>
@@ -136,9 +133,9 @@
                                                 </div>
                                             </div>
                                             <div class="row mb-1">
-                                                <label class="col-sm-5 col-form-label" for="foto">Foto</label>
+                                                <label class="col-sm-4 col-form-label" for="foto">Foto</label>
                                                 <div class="col-sm-6">
-                                                    <img id="image" src="{{ asset('storage/' . $bpkbm->foto) }}"
+                                                    <img id="image" src="{{ asset('storage/' . $bpkbk->foto) }}"
                                                         onclick="window.open(this.src)" class="card-img-top rounded"
                                                         style="max-height: 100px; width:auto">
                                                 </div>
@@ -154,7 +151,7 @@
                                                     <input
                                                         class="form-control form-control-sm @error('no_polisi') is-invalid @enderror"
                                                         name="no_polisi" type="text" id="no_polisi"
-                                                        value="{{ $bpkbm->order->jaminan->no_polisi }}" readonly>
+                                                        value="{{ $bpkbk->order->jaminan->no_polisi }}" readonly>
                                                     @error('no_polisi')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
@@ -168,7 +165,7 @@
                                                     <input
                                                         class="form-control form-control-sm @error('no_mesin') is-invalid @enderror"
                                                         name="no_mesin" type="text" id="no_mesin"
-                                                        value="{{ $bpkbm->order->jaminan->no_mesin }}" readonly>
+                                                        value="{{ $bpkbk->order->jaminan->no_mesin }}" readonly>
                                                     @error('no_mesin')
                                                         <div class="invalid-feedback">
                                                             {{ $message }}
@@ -237,7 +234,7 @@
 
                                 </form>
                                 <div class="text-end mt-3">
-                                    <a href="/dashboard/bpkbm/{{ $bpkbm->id }}/cetak"
+                                    <a href="/dashboard/bpkbk/{{ $bpkbk->id }}/cetak"
                                         class="btn btn-primary">Cetak</a>
                                 </div>
                             </div>

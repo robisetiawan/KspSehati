@@ -55,11 +55,27 @@
                                             <label class="col-sm-3 col-form-label" for="no_order">No Order</label>
                                             <div class="col-sm-2">
                                                 <input type="hidden" name="bpkbm_id" value="{{ $b->id }}">
+                                                <input type="hidden" name="order_id" value="{{ $b->order->id }}">
                                                 <input
                                                     class="form-control form-control-sm @error('no_order') is-invalid @enderror"
                                                     name="no_order" type="text" id="no_order"
                                                     value="{{ $b->order->no_order }}" readonly>
                                                 @error('no_order')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class=" row mb-1">
+                                            <label class="col-sm-3 col-form-label" for="no_memo">No Memo</label>
+                                            <div class="col-sm-3">
+                                                <input type="hidden" name="bpkbm_id" value="{{ $b->id }}">
+                                                <input
+                                                    class="form-control form-control-sm @error('no_memo') is-invalid @enderror"
+                                                    name="no_memo" type="text" id="no_memo" value="{{ $b->no_memo }}"
+                                                    readonly>
+                                                @error('no_memo')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
@@ -74,6 +90,18 @@
                                                     name="penerima" type="text" id="penerima"
                                                     value="{{ $b->penyerah }}">
                                                 @error('penerima')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class=" row mb-1">
+                                            <label class="col-sm-3 col-form-label" for="alamat">Alamat</label>
+                                            <div class="col">
+                                                <textarea rows='3' class="form-control form-control-sm @error('almt_bpkb') is-invalid @enderror" name="almt_bpkb"
+                                                    type="text" id="almt_bpkb" readonly>{{ old('almt_bpkb', $b->order->anggota->identity->alamat . ' Rt. ' . $b->order->anggota->identity->rt . ' Rw. ' . $b->order->anggota->identity->rw . ' Kel. ' . $b->order->anggota->identity->desa_kel . ' Kec. ' . $b->order->anggota->identity->kec) }}</textarea>
+                                                @error('almt_bpkb')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
@@ -100,7 +128,8 @@
                                             <div class="col-sm-4">
                                                 <input
                                                     class="form-control form-control-sm @error('foto') is-invalid @enderror"
-                                                    name="foto" type="file" id="foto" onchange="previewImage()">
+                                                    name="foto" type="file" id="foto"
+                                                    onchange="previewImage()">
                                                 @error('foto')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}

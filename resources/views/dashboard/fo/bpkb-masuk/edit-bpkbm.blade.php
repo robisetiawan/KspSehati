@@ -42,109 +42,171 @@
                                     @method('PUT')
                                     @csrf
                                     <!-- **************************************************************************************************8******  -->
-                                    <div class="row my-1 mb-2">
-                                        {{-- <label class="col-sm-3 col-form-label" for="status">Status</label>
-                                        <div class="col-sm-5">
-                                            <select class="form-select @error('status') is-invalid @enderror" name="status"
-                                                id="status">
-                                                <option value="Belum Diserahkan Ke Pemilik"
-                                                    {{ old('status', $bpkbm->status) == 'Belum Diserahkan Ke Pemilik' ? 'selected' : '' }}>
-                                                    Belum Diserahkan Ke Pemilik
-                                                </option>
-                                                <option value="Sudah Diserahkan Ke Pemilik"
-                                                    {{ old('status', $bpkbm->status) == 'Sudah Diserahkan Ke Pemilik' ? 'selected' : '' }}>
-                                                    Sudah Diserahkan Ke Pemilik
-                                                </option>
-                                            </select>
-                                            @error('cr_byr')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div> --}}
-
-                                        {{-- @if ($bpkbm->status === 'Belum Diserahkan Ke Pemilik')
-                                            <div class="col-sm-5">
-                                                <div class="btn btn-pill btn-danger btn-sm">
-                                                    {{ $bpkbm->status }}</div>
-                                            </div>
-                                        @elseif ($bpkbm->status === 'Sudah Diserahkan Ke Pemilik')
-                                            <div class="col-sm-5">
-                                                <div class="btn btn-pill btn-success btn-sm">{{ $bpkbm->status }}
+                                    <div class="row">
+                                        {{-- Left Coloum --}}
+                                        <div class="col">
+                                            <div class=" row mb-1">
+                                                <label class="col-sm-5 col-form-label" for="no_memo">No Memo</label>
+                                                <div class="col-sm-6">
+                                                    <input type="hidden" value="{{ $bpkbm->order->jaminan_id }}"
+                                                        name="order_id">
+                                                    <input
+                                                        class="form-control form-control-sm @error('no_memo') is-invalid @enderror"
+                                                        name="no_memo" type="text" id="no_memo"
+                                                        value="{{ $bpkbm->no_memo }}" readonly>
+                                                    @error('no_memo')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
                                                 </div>
                                             </div>
-                                        @else
-                                        @endif --}}
-                                    </div>
-                                    <div class=" row mb-1">
-                                        <label class="col-sm-3 col-form-label" for="no_order">No Order</label>
-                                        <div class="col-sm-2">
-                                            <input
-                                                class="form-control form-control-sm @error('no_order') is-invalid @enderror"
-                                                name="no_order" type="text" id="no_order"
-                                                value="{{ $bpkbm->order->no_order }}" readonly>
-                                            @error('no_order')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
+                                            <div class=" row mb-1">
+                                                <label class="col-sm-5 col-form-label" for="penyerah">Yang
+                                                    Menyerahkan</label>
+                                                <div class="col-sm-6">
+                                                    <input
+                                                        class="form-control form-control-sm @error('penyerah') is-invalid @enderror"
+                                                        name="penyerah" type="text" id="penyerah"
+                                                        value="{{ old('penyerah', $bpkbm->penyerah) }}">
+                                                    @error('penyerah')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
                                                 </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class=" row mb-1">
-                                        <label class="col-sm-3 col-form-label" for="penyerah">Yang Menyerahkan</label>
-                                        <div class="col-sm-4">
-                                            <input
-                                                class="form-control form-control-sm @error('penyerah') is-invalid @enderror"
-                                                name="penyerah" type="text" id="penyerah"
-                                                value="{{ old('penyerah', $bpkbm->penyerah) }}">
-                                            @error('penyerah')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
+                                            </div>
+                                            <div class=" row mb-1">
+                                                <label class="col-sm-5 col-form-label" for="dtrm_olh">Diterima Oleh</label>
+                                                <div class="col-sm-6">
+                                                    {{-- <input type="hidden" name="dtrm_olh" value="{{ $bpkbm->dtrm_olh }}"> --}}
+                                                    <input
+                                                        class="form-control form-control-sm @error('dtrm_olh') is-invalid @enderror"
+                                                        name="dtrm_olh" type="text" id="dtrm_olh"
+                                                        value="{{ old('dtrm_olh', $bpkbm->dtrm_olh) }}">
+                                                    @error('dtrm_olh')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
                                                 </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class=" row mb-1">
-                                        <label class="col-sm-3 col-form-label" for="dtrm_olh">Diterima Oleh</label>
-                                        <div class="col-sm-4">
-                                            {{-- <input type="hidden" name="dtrm_olh" value="{{ $bpkbm->dtrm_olh }}"> --}}
-                                            <input
-                                                class="form-control form-control-sm @error('dtrm_olh') is-invalid @enderror"
-                                                name="dtrm_olh" type="text" id="dtrm_olh"
-                                                value="{{ old('dtrm_olh', $bpkbm->dtrm_olh) }}">
-                                            @error('dtrm_olh')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="row mb-1">
-                                        <label class="col-sm-3 col-form-label" for="foto">Foto</label>
-                                        <div class="col-sm-4">
-                                            <input
-                                                class="form-control form-control-sm @error('foto') is-invalid @enderror mb-2"
-                                                name="foto" type="file" id="foto"
-                                                value="{{ old('foto', $bpkbm->foto) }}" onchange="previewImage()">
-                                            @error('foto')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                            <input type="hidden" name="oldFoto" value="{{ $bpkbm->foto }}">
-                                            @if ($bpkbm->foto)
-                                                <img src="{{ asset('storage/' . $bpkbm->foto) }}"
-                                                    class="p-l-2 img-preview img-fluid mb-3 col-sm-6 rounded">
-                                            @else
-                                                <img class="p-l-2 img-preview img-fluid mb-3 col-sm-6 rounded">
-                                            @endif
-                                            {{-- <img id="image" src="{{ asset('storage/' . $bpkbm->foto) }}"
+                                            </div>
+                                            <div class="row mb-1">
+                                                <label class="col-sm-5 col-form-label" for="foto">Foto</label>
+                                                <div class="col-sm-6">
+                                                    <input
+                                                        class="form-control form-control-sm @error('foto') is-invalid @enderror mb-2"
+                                                        name="foto" type="file" id="foto"
+                                                        value="{{ old('foto', $bpkbm->foto) }}" onchange="previewImage()">
+                                                    @error('foto')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                    <input type="hidden" name="oldFoto" value="{{ $bpkbm->foto }}">
+                                                    @if ($bpkbm->foto)
+                                                        <img src="{{ asset('storage/' . $bpkbm->foto) }}"
+                                                            class="p-l-2 img-preview img-fluid mb-3 col-sm-6 rounded">
+                                                    @else
+                                                        <img class="p-l-2 img-preview img-fluid mb-3 col-sm-6 rounded">
+                                                    @endif
+                                                    {{-- <img id="image" src="{{ asset('storage/' . $bpkbm->foto) }}"
                                                 onclick="window.open(this.src)" class="card-img-top rounded"
                                                 style="max-height: 100px; width:auto"> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- Right Coloum --}}
+                                        <div class="col">
+                                            <!-- **************************************************************************************************8******  -->
+                                            <div class=" row mb-1">
+                                                <label class="col-sm-4 col-form-label" for="no_polisi">No Polisi</label>
+                                                <div class="col-sm-4">
+                                                    <input
+                                                        class="form-control form-control-sm @error('no_polisi') is-invalid @enderror"
+                                                        name="no_polisi" type="text" id="no_polisi"
+                                                        value="{{ $bpkbm->order->jaminan->no_polisi }}">
+                                                    @error('no_polisi')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class=" row mb-1">
+                                                <label class="col-sm-4 col-form-label" for="no_mesin">No Mesin</label>
+                                                <div class="col">
+                                                    <input
+                                                        class="form-control form-control-sm @error('no_mesin') is-invalid @enderror"
+                                                        name="no_mesin" type="text" id="no_mesin"
+                                                        value="{{ $bpkbm->order->jaminan->no_mesin }}">
+                                                    @error('no_mesin')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class=" row mb-1">
+                                                <label class="col-sm-4 col-form-label" for="no_bpkb">No Bpkb</label>
+                                                <div class="col">
+                                                    <input
+                                                        class="form-control form-control-sm @error('no_bpkb') is-invalid @enderror"
+                                                        name="no_bpkb" type="text" id="no_bpkb"
+                                                        value="{{ old('no_bpkb', $bpkbm->no_bpkb) }}">
+                                                    @error('no_bpkb')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class=" row mb-1">
+                                                <label class="col-sm-4 col-form-label" for="nm_bpkb">Nama Bpkb</label>
+                                                <div class="col">
+                                                    <input
+                                                        class="form-control form-control-sm @error('nm_bpkb') is-invalid @enderror"
+                                                        name="nm_bpkb" type="text" id="nm_bpkb"
+                                                        value="{{ old('nm_bpkb', $bpkbm->nm_bpkb) }}">
+                                                    @error('nm_bpkb')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class=" row mb-1">
+                                                <label class="col-sm-4 col-form-label" for="almt_bpkb">Alamat Bpkb</label>
+                                                <div class="col">
+                                                    <textarea class="form-control form-control-sm @error('almt_bpkb') is-invalid @enderror" name="almt_bpkb"
+                                                        type="text" id="almt_bpkb">{{ old('almt_bpkb', $bpkbm->almt_bpkb) }}</textarea>
+                                                    @error('almt_bpkb')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class=" row mb-1">
+                                                <label class="col-sm-4 col-form-label" for="no_rangka">No Rangka</label>
+                                                <div class="col">
+                                                    <input
+                                                        class="form-control form-control-sm @error('no_rangka') is-invalid @enderror"
+                                                        name="no_rangka" type="text" id="no_rangka"
+                                                        value="{{ old('no_rangka', $bpkbm->no_rangka) }}">
+                                                    @error('no_rangka')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+
                                         </div>
                                     </div>
 
-                                    <div class="text-end">
+                                    <div class="text-end mt-3">
                                         <button class="btn btn-primary text-end" type="submit">Simpan</button>
                                     </div>
 

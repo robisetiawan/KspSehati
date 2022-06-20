@@ -312,7 +312,7 @@
                                 </div>
                             </div>
                             <!-- ****************************************************************************************** -->
-                            <div class="row mb-1">
+                            {{-- <div class="row mb-1">
                                 <label class="col-sm-5 col-form-label" for="jumlah_angs">Jml
                                     Angs</label>
                                 <div class="col-sm-3 p-l-0">
@@ -326,7 +326,7 @@
                                         </div>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- ****************************************************************************************** -->
                             <div class="row mb-1">
                                 <label class="col-sm-5 col-form-label" for="periode">Periode

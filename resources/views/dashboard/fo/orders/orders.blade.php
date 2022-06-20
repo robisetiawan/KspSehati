@@ -67,6 +67,8 @@
                                                 <td class="align-middle">
                                                     <span class="badge rounded-pill bg-success ">Lunas</span>
                                                 </td>
+                                            @elseif ($o->sisa_angs === null)
+                                                <td>* lengkapi form order</td>
                                             @else
                                                 <td>{{ $o->sisa_angs }} Kali</td>
                                             @endif

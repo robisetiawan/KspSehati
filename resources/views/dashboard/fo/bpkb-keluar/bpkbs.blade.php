@@ -67,10 +67,10 @@
                                             <td class="align-middle">
                                                 <div class="btn-group" role="group"
                                                     aria-label="Basic mixed styles example">
-                                                    {{-- <a href="/dashboard/bpkb-keluar/{{ $b->id }}">
+                                                    <a href="/dashboard/bpkb-keluar/{{ $b->id }}">
                                                         <button class="badge bg-success border-0"><i class="fa fa-eye fa-lg"
                                                                 aria-hidden="true"></i></button>
-                                                    </a> --}}
+                                                    </a>
 
                                                     <a href="/dashboard/bpkb-keluar/{{ $b->id }}/edit">
                                                         <button class="badge bg-primary border-0"><i

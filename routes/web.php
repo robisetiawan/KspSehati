@@ -91,10 +91,12 @@ Route::name('fo')->middleware('fo')->group(
         Route::resource('/dashboard/bpkb-masuk', BpkbmController::class);
         Route::get('/dashboard/bpkbm/tambah', [SearchController::class, 'bpkbm']);
         Route::get('/dashboard/bpkbm/search', [SearchController::class, 'bpkbmcari']);
+        Route::get('/dashboard/bpkbm/{id}/cetak', [BpkbmController::class, 'print']);
 
         Route::resource('/dashboard/bpkb-keluar', BpkbkController::class);
         Route::get('/dashboard/bpkbk/tambah', [SearchController::class, 'bpkbk']);
         Route::get('/dashboard/bpkbk/search', [SearchController::class, 'bpkbkcari']);
+        Route::get('/dashboard/bpkbk/{id}/cetak', [BpkbkController::class, 'print']);
 
         Route::resource('/dashboard/pinjaman', PinjamController::class);
         // Route::get('/dashboard/orders', [FoOrderController::class, 'index']);

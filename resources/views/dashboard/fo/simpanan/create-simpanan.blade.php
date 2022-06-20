@@ -32,7 +32,7 @@
                             <div class="input-group mb-3">
                                 <label class="col-sm-4 col-form-label visually-hidden" for="id">No Anggota</label>
                                 <input class="form-control" type="text" name="cari"
-                                    placeholder="Masukan Nomor Anggota ..." value="{{ old('cari') }}" required>
+                                    placeholder="Masukan Nama atau Nomor Anggota ..." value="{{ old('cari') }}" required>
                                 <button class="btn btn-primary" type="submit" value="CARI"><i class="fa fa-arrow-right"
                                         aria-hidden="true"></i></button>
                             </div>

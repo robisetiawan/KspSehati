@@ -34,8 +34,8 @@
                                 <label class="col-sm-4 col-form-label visually-hidden" for="id">No Anggota</label>
                                 {{-- <input class="form-control" type="text" name="cari" placeholder="Cari Pegawai .."
                                     value="{{ old('cari') }}"> --}}
-                                <input class="form-control" type="text" name="cari" placeholder="Nomor Anggota ..."
-                                    value="{{ request('cari') }}">
+                                <input class="form-control" type="text" name="cari"
+                                    placeholder="Nama atau Nomor Anggota ..." value="{{ request('cari') }}">
                                 <button class="btn btn-primary" type="submit" value="CARI"><i class="fa fa-arrow-right"
                                         aria-hidden="true"></i></button>
                             </div>
@@ -55,7 +55,8 @@
                                 <div class="mb-1 row">
                                     <label class="col-sm-2 col-form-label">No Anggota</label>
                                     <div class="col-sm-5">
-                                        <input class="form-control" type="text" value="{{ $a->no_anggota }}" readonly />
+                                        <input class="form-control" type="text" value="{{ $a->no_anggota }}"
+                                            readonly />
                                     </div>
                                 </div>
                                 <!-- *************** -->
@@ -63,7 +64,8 @@
                                 <div class="mb-1 row">
                                     <label class="col-sm-2 col-form-label">Nama</label>
                                     <div class="col-sm-5">
-                                        <input class="form-control" type="text" value="{{ $a->user->name }}" readonly />
+                                        <input class="form-control" type="text" value="{{ $a->user->name }}"
+                                            readonly />
                                     </div>
                                 </div>
                                 <!-- *************** -->
@@ -71,8 +73,8 @@
                                 <div class="mb-1 row">
                                     <label class="col-sm-2 col-form-label">No KTP</label>
                                     <div class="col-sm-5">
-                                        <input class="form-control" type="text" value="{{ $a->identity->no_identitas }}"
-                                            readonly />
+                                        <input class="form-control" type="text"
+                                            value="{{ $a->identity->no_identitas }}" readonly />
                                     </div>
                                 </div>
                                 <!-- *************** -->
@@ -148,8 +150,8 @@
                                 <div class="mb-1 row">
                                     <label class="col-sm-2 col-form-label">Simpanan Wajib</label>
                                     <div class="col-sm-3">
-                                        <input class="form-control m-input digits" type="text" value="@currency($a->simpwj)"
-                                            readonly />
+                                        <input class="form-control m-input digits" type="text"
+                                            value="@currency($a->simpwj)" readonly />
                                     </div>
                                 </div>
                                 <!-- *************** -->

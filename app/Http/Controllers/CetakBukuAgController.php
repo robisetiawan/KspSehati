@@ -20,7 +20,10 @@ class CetakBukuAgController extends Controller
     {
         $cari = $request->cari;
 
-        $anggotas = Anggota::where('no_anggota', 'like', "%" . $cari . "%")->get();
+        $anggotas = Anggota::query()
+            ->where('no_anggota', 'LIKE', "%{$cari}%")
+            ->orWhere('nama_panggilan', 'LIKE', "%{$cari}%")
+            ->get();
         // $identities = Identity::where('id', 'like', "%" . $anggotas->identity->id . "%")->get();
 
         $title = "Cetak Buku Anggota";

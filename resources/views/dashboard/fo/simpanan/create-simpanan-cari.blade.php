@@ -32,7 +32,8 @@
                             <div class="input-group mb-3">
                                 <label class="col-sm-4 col-form-label visually-hidden" for="id">No Anggota</label>
                                 <input class="form-control" type="text" name="cari"
-                                    placeholder="Masukan Nomor Anggota ..." value="{{ request('cari') }}" required>
+                                    placeholder="Masukan Nama atau Nomor Anggota ..." value="{{ request('cari') }}"
+                                    required>
                                 <button class="btn btn-primary" type="submit" value="CARI"><i class="fa fa-arrow-right"
                                         aria-hidden="true"></i></button>
                             </div>
@@ -72,8 +73,8 @@
                                             <div class="col-sm-5 p-l-0">
                                                 <input
                                                     class="form-control form-control-sm @error('name') is-invalid @enderror"
-                                                    name="name" type="text" id="name" value="{{ $a->user->name }}"
-                                                    readonly>
+                                                    name="name" type="text" id="name"
+                                                    value="{{ $a->user->name }}" readonly>
                                                 @error('name')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -101,8 +102,8 @@
                                             <div class="col-sm-5 p-l-0">
                                                 <input
                                                     class="form-control form-control-sm @error('simp_wj') is-invalid @enderror"
-                                                    name="simp_wj" type="text" id="simp_wj" value="{{ old('simp_wj') }}"
-                                                    type-currency="IDR" placeholder="Rp ">
+                                                    name="simp_wj" type="text" id="simp_wj"
+                                                    value="{{ old('simp_wj') }}" type-currency="IDR" placeholder="Rp ">
                                                 @error('simp_wj')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}

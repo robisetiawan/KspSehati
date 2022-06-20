@@ -29,21 +29,22 @@
                         <form action="/dashboard/pooling-order/cari" method="GET">
 
                             <div class="input-group mb-3">
-                                <label class="col-sm-4 col-form-label visually-hidden" for="id">No Anggota</label>
+                                <label class="col-sm-4 col-form-label visually-hidden" for="id">No atau Nama
+                                    Anggota</label>
                                 <input class="form-control" type="text" name="cari"
-                                    placeholder="Masukan Nomor Anggota ..." value="{{ old('cari') }}" required>
+                                    placeholder="Masukan Nomor atau Nama Anggota ..." value="{{ old('cari') }}" required>
                                 <button class="btn btn-primary" type="submit" value="CARI"><i class="fa fa-arrow-right"
                                         aria-hidden="true"></i></button>
                             </div>
 
                         </form>
-
+                        <small>* Masukan nama atau nomor anggota</small>
                     </div>
                 </div>
 
                 <form class="form theme-form">
 
-                    <div class="card">
+                    <div class="card mt-3">
                         <div class="card-body f-12">
                             <div class="row">
                                 {{-- Left Coloum --}}
@@ -251,7 +252,8 @@
                                         <label class="col-sm-4 col-form-label" for="nama">No
                                             Polisi</label>
                                         <div class="col p-l-0">
-                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                            <input type="text" class="form-control form-control-sm"
+                                                id="colFormLabelSm" />
                                         </div>
                                     </div>
                                     <!-- **************************************************************************************************8******  -->
@@ -259,7 +261,8 @@
                                         <label class="col-sm-4 col-form-label" for="nama">No
                                             Mesin</label>
                                         <div class="col p-l-0">
-                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" />
+                                            <input type="text" class="form-control form-control-sm"
+                                                id="colFormLabelSm" />
                                         </div>
                                     </div>
                                     <!-- **************************************************************************************************8******  -->
@@ -314,11 +317,6 @@
                                 {{-- EndRight Coloum --}}
                             </div>
                         </div>
-                        {{-- cardFooter --}}
-                        <div class="card-footer text-end">
-                            <button class="btn btn-primary" type="submit">Submit</button>
-                        </div>
-                        {{-- endCardFooter --}}
                     </div>
                     {{-- endCardBody --}}
 

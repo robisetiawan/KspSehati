@@ -36,12 +36,13 @@
                                         aria-hidden="true"></i></button>
                             </div>
                         </form>
+                        <small>* Masukan nama atau nomor anggota</small>
                     </div>
                 </div>
 
                 <form class="form theme-form" method="POST" action="/dashboard/orders" enctype="multipart/form-data">
                     @csrf
-                    <div class="card">
+                    <div class="card mt-3">
                         <div class="card-body f-12">
                             @forelse ($anggotas as $a)
                                 <div class="row mb-3">
@@ -90,8 +91,8 @@
                                             <div class="col p-l-0">
                                                 <input
                                                     class="form-control form-control-sm @error('name ') is-invalid @enderror"
-                                                    name="name" type="text" id="name" value="{{ $a->user->name }}"
-                                                    disabled>
+                                                    name="name" type="text" id="name"
+                                                    value="{{ $a->user->name }}" disabled>
                                                 @error('name')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -107,7 +108,8 @@
                                             <div class="col-sm-4 p-l-0">
                                                 <input
                                                     class="form-control form-control-sm @error('barang') is-invalid @enderror"
-                                                    name="barang" type="text" id="barang" value="{{ old('barang') }}">
+                                                    name="barang" type="text" id="barang"
+                                                    value="{{ old('barang') }}">
                                                 @error('barang')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -145,8 +147,8 @@
                                             <div class="col p-l-0">
                                                 <input type="text"
                                                     class="form-control form-control-sm @error('tempat_lahir ') is-invalid @enderror"
-                                                    id="tempat_lahir" name="tempat_lahir" value="{{ $a->tempat_lahir }}"
-                                                    disabled />
+                                                    id="tempat_lahir" name="tempat_lahir"
+                                                    value="{{ $a->tempat_lahir }}" disabled />
                                             </div>
                                             <div class="col-sm-3 p-l-0">
                                                 <input type="text"
@@ -161,8 +163,8 @@
                                             <div class="col p-l-0">
                                                 <input
                                                     class="form-control form-control-sm @error('nama_ibu ') is-invalid @enderror"
-                                                    name="nama_ibu" type="text" id="nama_ibu" value="{{ $a->nama_ibu }}"
-                                                    disabled>
+                                                    name="nama_ibu" type="text" id="nama_ibu"
+                                                    value="{{ $a->nama_ibu }}" disabled>
                                                 @error('nama_ibu')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}

@@ -82,158 +82,232 @@
                                 <label for="nilai_pinj" class="col-sm-5 col-form-label">Nilai
                                     Pinjaman</label>
                                 <div class="col p-l-0">
-                                    <select class="form-select form-select-sm @error('nilai_pinj') is-invalid @enderror"
-                                        name="nilai_pinj" id="nilai_pinj">
-                                        <option value=""></option>
-                                        <option value="1000000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 1000000 ? 'selected' : '' }}>
-                                            Rp. 1.000.000 *
-                                        </option>
-                                        <option value="1250000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 1250000 ? 'selected' : '' }}>
-                                            Rp. 1.250.000
-                                        </option>
-                                        <option value="1500000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 1500000 ? 'selected' : '' }}>
-                                            Rp. 1.500.000
-                                        </option>
-                                        <option value="1750000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 1750000 ? 'selected' : '' }}>
-                                            Rp. 1.750.000
-                                        </option>
-                                        <option value="2000000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 2000000 ? 'selected' : '' }}>
-                                            Rp. 2.000.000 *
-                                        </option>
-                                        <option value="2250000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 2250000 ? 'selected' : '' }}>
-                                            Rp. 2.250.000
-                                        </option>
-                                        <option value="2500000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 2500000 ? 'selected' : '' }}>
-                                            Rp. 2.500.000
-                                        </option>
-                                        <option value="2750000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 2750000 ? 'selected' : '' }}>
-                                            Rp. 2.750.000
-                                        </option>
-                                        <option value="3000000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 3000000 ? 'selected' : '' }}>
-                                            Rp. 3.000.000 *
-                                        </option>
-                                        <option value="3250000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 3250000 ? 'selected' : '' }}>
-                                            Rp. 3.250.000
-                                        </option>
-                                        <option value="3500000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 3500000 ? 'selected' : '' }}>
-                                            Rp. 3.500.000
-                                        </option>
-                                        <option value="3750000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 3750000 ? 'selected' : '' }}>
-                                            Rp. 3.750.000
-                                        </option>
-                                        <option value="4000000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 4000000 ? 'selected' : '' }}>
-                                            Rp. 4.000.000 *
-                                        </option>
-                                        <option value="4250000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 4250000 ? 'selected' : '' }}>
-                                            Rp. 4.250.000
-                                        </option>
-                                        <option value="4500000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 4500000 ? 'selected' : '' }}>
-                                            Rp. 4.500.000
-                                        </option>
-                                        <option value="4750000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 4750000 ? 'selected' : '' }}>
-                                            Rp. 4.750.000
-                                        </option>
-                                        <option value="5000000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 5000000 ? 'selected' : '' }}>
-                                            Rp. 5.000.000 *
-                                        </option>
-                                        <option value="5250000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 5250000 ? 'selected' : '' }}>
-                                            Rp. 5.250.000
-                                        </option>
-                                        <option value="5500000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 5500000 ? 'selected' : '' }}>
-                                            Rp. 5.500.000
-                                        </option>
-                                        <option value="5750000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 5750000 ? 'selected' : '' }}>
-                                            Rp. 5.750.000
-                                        </option>
-                                        <option value="6000000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 6000000 ? 'selected' : '' }}>
-                                            Rp. 6.000.000 *
-                                        </option>
-                                        <option value="6250000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 6250000 ? 'selected' : '' }}>
-                                            Rp. 6.250.000
-                                        </option>
-                                        <option value="6500000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 6500000 ? 'selected' : '' }}>
-                                            Rp. 6.500.000
-                                        </option>
-                                        <option value="6750000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 6750000 ? 'selected' : '' }}>
-                                            Rp. 6.750.000
-                                        </option>
-                                        <option value="7000000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 7000000 ? 'selected' : '' }}>
-                                            Rp. 7.000.000
-                                        </option>
-                                        <option value="7250000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 7250000 ? 'selected' : '' }}>
-                                            Rp. 7.250.000
-                                        </option>
-                                        <option value="7500000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 7500000 ? 'selected' : '' }}>
-                                            Rp. 7.500.000
-                                        </option>
-                                        <option value="7750000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 7750000 ? 'selected' : '' }}>
-                                            Rp. 7.750.000
-                                        </option>
-                                        <option value="8000000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 8000000 ? 'selected' : '' }}>
-                                            Rp. 8.000.000 *
-                                        </option>
-                                        <option value="8250000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 8250000 ? 'selected' : '' }}>
-                                            Rp. 8.250.000
-                                        </option>
-                                        <option value="8500000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 8500000 ? 'selected' : '' }}>
-                                            Rp. 8.500.000
-                                        </option>
-                                        <option value="8750000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 8750000 ? 'selected' : '' }}>
-                                            Rp. 8.750.000
-                                        </option>
-                                        <option value="9000000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 9000000 ? 'selected' : '' }}>
-                                            Rp. 9.000.000 *
-                                        </option>
-                                        <option value="9250000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 9250000 ? 'selected' : '' }}>
-                                            Rp. 9.250.000
-                                        </option>
-                                        <option value="9500000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 9500000 ? 'selected' : '' }}>
-                                            Rp. 9.500.000
-                                        </option>
-                                        <option value="9750000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 9750000 ? 'selected' : '' }}>
-                                            Rp. 9.750.000
-                                        </option>
-                                        <option value="10000000"
-                                            {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 10000000 ? 'selected' : '' }}>
-                                            Rp. 10.000.000 *
-                                        </option>
-                                    </select>
+                                    @if ($order->jaminan->buss_unit === '01 - Pinjaman Jaminan Motor')
+                                        <select
+                                            class="form-select form-select-sm @error('nilai_pinj') is-invalid @enderror"
+                                            name="nilai_pinj" id="nilai_pinj">
+                                            <option value=""></option>
+                                            <option value="1000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 1000000 ? 'selected' : '' }}>
+                                                Rp. 1.000.000 *
+                                            </option>
+                                            <option value="1250000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 1250000 ? 'selected' : '' }}>
+                                                Rp. 1.250.000
+                                            </option>
+                                            <option value="1500000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 1500000 ? 'selected' : '' }}>
+                                                Rp. 1.500.000
+                                            </option>
+                                            <option value="1750000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 1750000 ? 'selected' : '' }}>
+                                                Rp. 1.750.000
+                                            </option>
+                                            <option value="2000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 2000000 ? 'selected' : '' }}>
+                                                Rp. 2.000.000 *
+                                            </option>
+                                            <option value="2250000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 2250000 ? 'selected' : '' }}>
+                                                Rp. 2.250.000
+                                            </option>
+                                            <option value="2500000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 2500000 ? 'selected' : '' }}>
+                                                Rp. 2.500.000
+                                            </option>
+                                            <option value="2750000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 2750000 ? 'selected' : '' }}>
+                                                Rp. 2.750.000
+                                            </option>
+                                            <option value="3000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 3000000 ? 'selected' : '' }}>
+                                                Rp. 3.000.000 *
+                                            </option>
+                                            <option value="3250000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 3250000 ? 'selected' : '' }}>
+                                                Rp. 3.250.000
+                                            </option>
+                                            <option value="3500000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 3500000 ? 'selected' : '' }}>
+                                                Rp. 3.500.000
+                                            </option>
+                                            <option value="3750000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 3750000 ? 'selected' : '' }}>
+                                                Rp. 3.750.000
+                                            </option>
+                                            <option value="4000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 4000000 ? 'selected' : '' }}>
+                                                Rp. 4.000.000 *
+                                            </option>
+                                            <option value="4250000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 4250000 ? 'selected' : '' }}>
+                                                Rp. 4.250.000
+                                            </option>
+                                            <option value="4500000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 4500000 ? 'selected' : '' }}>
+                                                Rp. 4.500.000
+                                            </option>
+                                            <option value="4750000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 4750000 ? 'selected' : '' }}>
+                                                Rp. 4.750.000
+                                            </option>
+                                            <option value="5000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 5000000 ? 'selected' : '' }}>
+                                                Rp. 5.000.000 *
+                                            </option>
+                                            <option value="5250000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 5250000 ? 'selected' : '' }}>
+                                                Rp. 5.250.000
+                                            </option>
+                                            <option value="5500000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 5500000 ? 'selected' : '' }}>
+                                                Rp. 5.500.000
+                                            </option>
+                                            <option value="5750000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 5750000 ? 'selected' : '' }}>
+                                                Rp. 5.750.000
+                                            </option>
+                                            <option value="6000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 6000000 ? 'selected' : '' }}>
+                                                Rp. 6.000.000 *
+                                            </option>
+                                            <option value="6250000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 6250000 ? 'selected' : '' }}>
+                                                Rp. 6.250.000
+                                            </option>
+                                            <option value="6500000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 6500000 ? 'selected' : '' }}>
+                                                Rp. 6.500.000
+                                            </option>
+                                            <option value="6750000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 6750000 ? 'selected' : '' }}>
+                                                Rp. 6.750.000
+                                            </option>
+                                            <option value="7000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 7000000 ? 'selected' : '' }}>
+                                                Rp. 7.000.000
+                                            </option>
+                                            <option value="7250000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 7250000 ? 'selected' : '' }}>
+                                                Rp. 7.250.000
+                                            </option>
+                                            <option value="7500000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 7500000 ? 'selected' : '' }}>
+                                                Rp. 7.500.000
+                                            </option>
+                                            <option value="7750000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 7750000 ? 'selected' : '' }}>
+                                                Rp. 7.750.000
+                                            </option>
+                                            <option value="8000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 8000000 ? 'selected' : '' }}>
+                                                Rp. 8.000.000 *
+                                            </option>
+                                            <option value="8250000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 8250000 ? 'selected' : '' }}>
+                                                Rp. 8.250.000
+                                            </option>
+                                            <option value="8500000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 8500000 ? 'selected' : '' }}>
+                                                Rp. 8.500.000
+                                            </option>
+                                            <option value="8750000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 8750000 ? 'selected' : '' }}>
+                                                Rp. 8.750.000
+                                            </option>
+                                            <option value="9000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 9000000 ? 'selected' : '' }}>
+                                                Rp. 9.000.000 *
+                                            </option>
+                                            <option value="9250000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 9250000 ? 'selected' : '' }}>
+                                                Rp. 9.250.000
+                                            </option>
+                                            <option value="9500000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 9500000 ? 'selected' : '' }}>
+                                                Rp. 9.500.000
+                                            </option>
+                                            <option value="9750000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 9750000 ? 'selected' : '' }}>
+                                                Rp. 9.750.000
+                                            </option>
+                                            <option value="10000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 10000000 ? 'selected' : '' }}>
+                                                Rp. 10.000.000 *
+                                            </option>
+                                        </select>
+                                    @elseif($order->jaminan->buss_unit === '02 - Pinjaman Jaminan Mobil')
+                                        <select
+                                            class="form-select form-select-sm @error('nilai_pinj') is-invalid @enderror"
+                                            name="nilai_pinj" id="nilai_pinj">
+                                            <option value=""></option>
+                                            <option value="10000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 10000000 ? 'selected' : '' }}>
+                                                Rp. 10.000.000 *
+                                            </option>
+                                            <option value="11000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 11000000 ? 'selected' : '' }}>
+                                                Rp. 11.000.000
+                                            </option>
+                                            <option value="12000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 12000000 ? 'selected' : '' }}>
+                                                Rp. 12.000.000
+                                            </option>
+                                            <option value="13000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 13000000 ? 'selected' : '' }}>
+                                                Rp. 13.000.000
+                                            </option>
+                                            <option value="14000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 14000000 ? 'selected' : '' }}>
+                                                Rp. 14.000.000
+                                            </option>
+                                            <option value="15000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 15000000 ? 'selected' : '' }}>
+                                                Rp. 15.000.000 *
+                                            </option>
+                                            <option value="16000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 16000000 ? 'selected' : '' }}>
+                                                Rp. 16.000.000
+                                            </option>
+                                            <option value="17000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 17000000 ? 'selected' : '' }}>
+                                                Rp. 17.000.000
+                                            </option>
+                                            <option value="18000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 18000000 ? 'selected' : '' }}>
+                                                Rp. 18.000.000
+                                            </option>
+                                            <option value="19000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 19000000 ? 'selected' : '' }}>
+                                                Rp. 19.000.000
+                                            </option>
+                                            <option value="20000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 20000000 ? 'selected' : '' }}>
+                                                Rp. 20.000.000 *
+                                            </option>
+                                            <option value="21000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 21000000 ? 'selected' : '' }}>
+                                                Rp. 21.000.000
+                                            </option>
+                                            <option value="22000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 22000000 ? 'selected' : '' }}>
+                                                Rp. 22.000.000
+                                            </option>
+                                            <option value="23000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 23000000 ? 'selected' : '' }}>
+                                                Rp. 23.000.000
+                                            </option>
+                                            <option value="24000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 24000000 ? 'selected' : '' }}>
+                                                Rp. 24.000.000
+                                            </option>
+                                            <option value="25000000"
+                                                {{ old('nilai_pinj', $order->pinjam->nilai_pinj) == 25000000 ? 'selected' : '' }}>
+                                                Rp. 25.000.000 *
+                                            </option>
+                                        </select>
+                                    @else
+                                    @endif
                                     @error('nilai_pinj')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -334,22 +408,40 @@
                                 <label class="col-sm-5 col-form-label visually-hidden" for="per_p">Per
                                 </label>
                                 <div class="col-sm-2 p-l-0">
-                                    <select class="form-select form-select-sm @error('periode') is-invalid @enderror"
-                                        name="periode" id="periode">
-                                        <option value=""></option>
-                                        <option value="6"
-                                            {{ old('periode', $order->pinjam->periode) == 6 ? 'selected' : '' }}>
-                                            6
-                                        </option>
-                                        <option value="12"
-                                            {{ old('periode', $order->pinjam->periode) == 12 ? 'selected' : '' }}>
-                                            12
-                                        </option>
-                                        <option value="18"
-                                            {{ old('periode', $order->pinjam->periode) == 18 ? 'selected' : '' }}>
-                                            18
-                                        </option>
-                                    </select>
+                                    @if ($order->jaminan->buss_unit === '01 - Pinjaman Jaminan Motor')
+                                        <select
+                                            class="form-select form-select-sm @error('periode') is-invalid @enderror"
+                                            name="periode" id="periode">
+                                            <option value=""></option>
+                                            <option value="6"
+                                                {{ old('periode', $order->pinjam->periode) == 6 ? 'selected' : '' }}>
+                                                6
+                                            </option>
+                                            <option value="12"
+                                                {{ old('periode', $order->pinjam->periode) == 12 ? 'selected' : '' }}>
+                                                12
+                                            </option>
+                                            <option value="18"
+                                                {{ old('periode', $order->pinjam->periode) == 18 ? 'selected' : '' }}>
+                                                18
+                                            </option>
+                                        </select>
+                                    @elseif ($order->jaminan->buss_unit === '02 - Pinjaman Jaminan Mobil')
+                                        <select
+                                            class="form-select form-select-sm @error('periode') is-invalid @enderror"
+                                            name="periode" id="periode">
+                                            <option value=""></option>
+                                            <option value="6"
+                                                {{ old('periode', $order->pinjam->periode) == 6 ? 'selected' : '' }}>
+                                                6
+                                            </option>
+                                            <option value="12"
+                                                {{ old('periode', $order->pinjam->periode) == 12 ? 'selected' : '' }}>
+                                                12
+                                            </option>
+                                        </select>
+                                    @else
+                                    @endif
                                     @error('periode')
                                         <div class="invalid-feedback">
                                             {{ $message }}

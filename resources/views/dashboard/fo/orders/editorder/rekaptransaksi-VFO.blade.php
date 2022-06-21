@@ -59,7 +59,8 @@
                                     <div class="row mb-1">
                                         <label class="col-sm-3 col-form-label" for="nama">Grade Desc</label>
                                         <div class="col-sm-9 p-l-0">
-                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                            <input type="text" class="form-control form-control-sm"
+                                                id="colFormLabelSm"
                                                 value="@if ($order->kondisi_unit->grade_desc >= 80) Diatas 80 % @elseif ($order->kondisi_unit->grade_desc == null) @else Dibawah 80 % @endif"
                                                 disabled />
                                         </div>
@@ -69,11 +70,13 @@
                                         <label class="col-sm-3 col-form-label" for="stnk_mati_tahun">Kondisi
                                             STNK</label>
                                         <div class="col-sm-2 p-l-0">
-                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
-                                                value="{{ $order->barang->stnk_mati_tahun }}" disabled />
+                                            <input type="text" class="form-control form-control-sm"
+                                                id="colFormLabelSm" value="{{ $order->barang->stnk_mati_tahun }}"
+                                                disabled />
                                         </div>
                                         <div class="col p-l-0">
-                                            <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
+                                            <input type="text" class="form-control form-control-sm"
+                                                id="colFormLabelSm"
                                                 value="@if ($order->barang->stnk_mati_tahun >= 5) Mati diatas 5 tahun @elseif ($order->barang->stnk_mati_tahun == null) @else Mati dibawah 5 tahun @endif"
                                                 disabled />
                                         </div>
@@ -100,14 +103,14 @@
                         <div class="card-body p-t-0">
                             <!-- ***************** -->
                             <!-- ***************** -->
-                            <div class="container p-l-0">
+                            <div class="container px-0">
                                 <div class="row mb-1">
                                     <label class="col-sm-6 col-form-label" for="nama">Tahun</label>
-                                    <div class="col-sm-3 p-l-0">
+                                    <div class="col-sm-3 px-0">
                                         <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
                                             value="{{ $order->jaminan->tahun }}" disabled />
                                     </div>
-                                    <div class="col-sm-3 p-l-0">
+                                    <div class="col px-0">
                                         <select class="form-select form-select-sm" disabled>
                                             <option value="Awal"
                                                 {{ old('awaloeakhir', $order->jaminan->awaloeakhir) == 'Awal' ? 'selected' : '' }}>
@@ -124,7 +127,7 @@
                                 <!-- ***************** -->
                                 <div class="row mb-1">
                                     <label class="col-sm-6 col-form-label" for="nama">Harga Pasar (IDR)</label>
-                                    <div class="col-sm-6 p-l-0">
+                                    <div class="col px-0">
                                         <input type="text" class="form-control form-control-sm" id="colFormLabelSm"
                                             value="@currency($order->jaminan->harga_pasar)" disabled />
                                     </div>
@@ -133,11 +136,11 @@
                                 <!-- ***************** -->
                                 <div class="row mb-1">
                                     <label class="col-sm-6 col-form-label">Pengurangan Kond.Unit</label>
-                                    <div class="col-sm-2 p-l-0">
+                                    <div class="col-sm-2 px-0">
                                         <input type="text" class="form-control form-control-sm" disabled
                                             value="{{ $order->kondisi_unit->pk_kondisi }} %" />
                                     </div>
-                                    <div class="col-sm-4 p-l-0">
+                                    <div class="col px-0">
                                         <input type="text" class="form-control form-control-sm" disabled
                                             value="@currency($order->kondisi_unit->hrgpk_kondisi)" />
                                     </div>
@@ -146,11 +149,11 @@
                                 <!-- ***************** -->
                                 <div class="row mb-1">
                                     <label class="col-sm-6 col-form-label">Pengurangan Kond.STNK</label>
-                                    <div class="col-sm-2 p-l-0">
+                                    <div class="col-sm-2 px-0">
                                         <input type="text" class="form-control form-control-sm" disabled
                                             value="{{ $order->kondisi_unit->pk_stnk }} %" />
                                     </div>
-                                    <div class="col-sm-4 p-l-0">
+                                    <div class="col px-0">
                                         <input type="text" class="form-control form-control-sm" disabled
                                             value="@currency($order->kondisi_unit->hrgpk_stnk)" />
                                     </div>
@@ -159,7 +162,7 @@
                                 <!-- ***************** -->
                                 <div class="row mb-1">
                                     <label class="col-sm-8 col-form-label">Harga Acuan Pinjaman (IDR)</label>
-                                    <div class="col-sm-4 p-l-0">
+                                    <div class="col px-0">
                                         <input type="text" class="form-control form-control-sm" disabled
                                             value="@currency($order->pinjam->harga_acuan)" />
                                     </div>

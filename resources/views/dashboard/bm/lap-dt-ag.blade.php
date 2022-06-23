@@ -43,7 +43,7 @@
                                             <td>{{ $a->no_anggota }}</td>
                                             <td>{{ $a->created_at->format('d M Y') }}</td>
                                             <td>{{ $a->user->name }}</td>
-                                            <td>Rp. 1000.000</td>
+                                            <td>@currency($a->simpwj + $a->simpkok)</td>
                                             <td>Rp. 500.000</td>
                                             <td>
                                                 <div class="btn-group" role="group"

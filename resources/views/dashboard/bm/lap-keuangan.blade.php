@@ -88,8 +88,8 @@
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="cashoutLabel">Cash Out
                                                             </h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="card mb-1">
@@ -108,7 +108,8 @@
                                                                                         <div class="col p-l-0">
                                                                                             <input
                                                                                                 class="form-control form-control-sm @error('noorder ') is-invalid @enderror"
-                                                                                                name="noorder" type="text"
+                                                                                                name="noorder"
+                                                                                                type="text"
                                                                                                 id="noorder"
                                                                                                 value="{{ $order->no_order }}"
                                                                                                 readonly>
@@ -170,9 +171,7 @@
                                                                                         class="form-control form-control-sm @error('nilai_pinj') is-invalid @enderror"
                                                                                         name="nilai_pinj" type="text"
                                                                                         id="nilai_pinj"
-                                                                                        value="{{ old('nilai_pinj', $order->pinjam->nilai_pinj) }}"
-                                                                                        type-currency="IDR"
-                                                                                        placeholder="Rp ">
+                                                                                        value="@currency($order->pinjam->nilai_pinj)" readonly>
                                                                                     @error('nilai_pinj')
                                                                                         <div class="invalid-feedback">
                                                                                             {{ $message }}
@@ -190,9 +189,7 @@
                                                                                         class="form-control form-control-sm @error('admin_total') is-invalid @enderror"
                                                                                         name="admin_total" type="text"
                                                                                         id="admin_total"
-                                                                                        value="{{ old('admin_total', $order->pinjam->admin_total) }}"
-                                                                                        type-currency="IDR"
-                                                                                        placeholder="Rp ">
+                                                                                        value="@currency($order->pinjam->admin_total)" readonly>
                                                                                     @error('admin_total')
                                                                                         <div class="invalid-feedback">
                                                                                             {{ $message }}
@@ -211,7 +208,7 @@
                                                                                         class="form-control form-control-sm @error('pk_kem') is-invalid @enderror"
                                                                                         name="pk_kem" type="text"
                                                                                         id="pk_kem"
-                                                                                        value="@currency($order->pinjam->pk_kem)" disabled>
+                                                                                        value="@currency($order->pinjam->pk_kem)" readonly>
                                                                                     @error('pk_kem')
                                                                                         <div class="invalid-feedback">
                                                                                             {{ $message }}
@@ -223,13 +220,13 @@
                                                                             <div class="row mb-1">
                                                                                 <label for="persentase"
                                                                                     class="col-sm-6 col-form-label">Persentase</label>
-                                                                                <div class="col-sm-2 p-l-0">
+                                                                                <div class="col-sm-3 p-l-0">
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('persentase') is-invalid @enderror"
                                                                                         name="persentase" type="text"
                                                                                         id="persentase"
                                                                                         value="{{ $order->pinjam->persentase }} %"
-                                                                                        disabled>
+                                                                                        readonly>
                                                                                     @error('persentase')
                                                                                         <div class="invalid-feedback">
                                                                                             {{ $message }}
@@ -265,7 +262,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <!-- ****************************************************************************************** -->
-                                                                            <div class="row mb-1">
+                                                                            {{-- <div class="row mb-1">
                                                                                 <label class="col-sm-6 col-form-label"
                                                                                     for="jumlah_angs">Jml
                                                                                     Angs</label>
@@ -281,7 +278,7 @@
                                                                                         </div>
                                                                                     @enderror
                                                                                 </div>
-                                                                            </div>
+                                                                            </div> --}}
                                                                             <!-- ****************************************************************************************** -->
                                                                             <div class="row mb-1">
                                                                                 <label class="col-sm-6 col-form-label"
@@ -296,7 +293,8 @@
                                                                                         class="form-control form-control-sm @error('periode') is-invalid @enderror"
                                                                                         name="periode" type="text"
                                                                                         id="periode"
-                                                                                        value="{{ old('periode', $order->pinjam->periode) }}">
+                                                                                        value="{{ old('periode', $order->pinjam->periode) }}"
+                                                                                        readonly>
                                                                                     @error('periode')
                                                                                         <div class="invalid-feedback">
                                                                                             {{ $message }}
@@ -306,7 +304,8 @@
                                                                                 <div class="col p-l-0">
                                                                                     <select
                                                                                         class="form-select form-select-sm @error('per_p') is-invalid @enderror"
-                                                                                        name="per_p" id="per_p" disabled>
+                                                                                        name="per_p" id="per_p"
+                                                                                        disabled>
                                                                                         <option value="Bulan"
                                                                                             {{ old('per_p') == 'Bulan' ? 'selected' : '' }}>
                                                                                             Bulan
@@ -328,20 +327,19 @@
                                                                                 <label class="col-sm-6 col-form-label"
                                                                                     for="bunga">Bunga
                                                                                 </label>
-                                                                                <div class="col-sm-2 px-0">
+                                                                                <div class="col-sm-3 px-0">
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('bunga') is-invalid @enderror"
-                                                                                        name="bunga" type="text" id="bunga"
-                                                                                        value="{{ old('bunga', $order->pinjam->bunga) }}">
+                                                                                        name="bunga" type="text"
+                                                                                        id="bunga"
+                                                                                        value="{{ old('bunga', $order->pinjam->bunga) }} %"
+                                                                                        readonly>
                                                                                     @error('bunga')
                                                                                         <div class="invalid-feedback">
                                                                                             {{ $message }}
                                                                                         </div>
                                                                                     @enderror
                                                                                 </div>
-                                                                                <label class="col col-form-label p-l-1">
-                                                                                    %
-                                                                                </label>
                                                                             </div>
 
 
@@ -669,10 +667,10 @@
                                                                                                         name="angsuran_ke"
                                                                                                         value="{{ old('angsuran_ke', $c->penerimaan_uang->angsuran_ke) }}"
                                                                                                         max="{{ $c->penerimaan_uang->order->pinjam->periode }}"
-                                                                                                        min="1" readonly />
+                                                                                                        min="1"
+                                                                                                        readonly />
                                                                                                 </div>
-                                                                                                <div
-                                                                                                    class="col-sm-4">
+                                                                                                <div class="col-sm-4">
                                                                                                     <input type="text"
                                                                                                         class="form-control form-control-sm @error('periode') is-invalid @enderror"
                                                                                                         id="periode"
@@ -723,14 +721,14 @@
 
 
                                                                                                 <!-- **************************************************************************************************8******  -->
-                                                                                                <div
-                                                                                                    class="row mb-1">
+                                                                                                <div class="row mb-1">
                                                                                                     <label
                                                                                                         class="col-sm-4 col-form-label"
                                                                                                         for="nama">Currency</label>
                                                                                                     <div
                                                                                                         class="col-sm-2 p-l-0">
-                                                                                                        <input type="text"
+                                                                                                        <input
+                                                                                                            type="text"
                                                                                                             class="form-control form-control-sm"
                                                                                                             id="colFormLabelSm"
                                                                                                             value="IDR"
@@ -738,14 +736,14 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <!-- **************************************************************************************************8******  -->
-                                                                                                <div
-                                                                                                    class="row mb-1">
+                                                                                                <div class="row mb-1">
                                                                                                     <label
                                                                                                         class="col-sm-4 col-form-label"
                                                                                                         for="pk_marg">Pinjaman</label>
                                                                                                     <div
                                                                                                         class="col-sm-6 p-l-0">
-                                                                                                        <input type="hidden"
+                                                                                                        <input
+                                                                                                            type="hidden"
                                                                                                             name="pk_marg"
                                                                                                             value="{{ $c->penerimaan_uang->order->pinjam->pk_marg }}">
                                                                                                         <input
@@ -764,8 +762,7 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <!-- **************************************************************************************************8******  -->
-                                                                                                <div
-                                                                                                    class="row mb-1">
+                                                                                                <div class="row mb-1">
                                                                                                     <label
                                                                                                         class="col-sm-4 col-form-label"
                                                                                                         for="sisa_pj">Sisa
@@ -789,14 +786,14 @@
                                                                                                 </div>
                                                                                                 <!-- **************************************************************************************************8******  -->
 
-                                                                                                <div
-                                                                                                    class="row mb-1">
+                                                                                                <div class="row mb-1">
                                                                                                     <label
                                                                                                         class="col-sm-4 col-form-label"
                                                                                                         for="nominal">Nominal</label>
                                                                                                     <div
                                                                                                         class="col-sm-6 p-l-0">
-                                                                                                        <input type="hidden"
+                                                                                                        <input
+                                                                                                            type="hidden"
                                                                                                             class="form-control form-control-sm @error('nominal') is-invalid @enderror"
                                                                                                             name="nominal"
                                                                                                             id="nominal"
@@ -817,8 +814,7 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <!-- **************************************************************************************************8******  -->
-                                                                                                <div
-                                                                                                    class="row mb-1">
+                                                                                                <div class="row mb-1">
                                                                                                     <label
                                                                                                         class="col-sm-4 col-form-label"
                                                                                                         for="cr_bayar">Cara
@@ -851,8 +847,7 @@
                                                                                                 </div>
                                                                                                 <!-- **************************************************************************************************8******  -->
                                                                                                 @if ($c->penerimaan_uang->cr_bayar === 'Transfer')
-                                                                                                    <div
-                                                                                                        class="row mb-1">
+                                                                                                    <div class="row mb-1">
                                                                                                         <label
                                                                                                             class="col-sm-4 col-form-label"
                                                                                                             for="kd_bank">Kode
@@ -869,8 +864,7 @@
                                                                                                         </div>
                                                                                                     </div>
                                                                                                     <!-- **************************************************************************************************8******  -->
-                                                                                                    <div
-                                                                                                        class="row mb-1">
+                                                                                                    <div class="row mb-1">
                                                                                                         <label
                                                                                                             class="col-sm-4 col-form-label"
                                                                                                             for="no_rek">No.
@@ -920,8 +914,8 @@
                                                                                             <input
                                                                                                 class="form-control form-control-sm @error('no_anggota') is-invalid @enderror"
                                                                                                 name="no_anggota"
-                                                                                                type="text" id="no_anggota"
-                                                                                                readonly
+                                                                                                type="text"
+                                                                                                id="no_anggota" readonly
                                                                                                 value="{{ old('no_anggota', $c->simpanan->anggota->no_anggota) }}">
                                                                                             @error('no_anggota')
                                                                                                 <div class="invalid-feedback">
@@ -940,8 +934,8 @@
                                                                                             <input
                                                                                                 class="form-control form-control-sm @error('created_at') is-invalid @enderror"
                                                                                                 name="created_at"
-                                                                                                type="text" id="created_at"
-                                                                                                readonly
+                                                                                                type="text"
+                                                                                                id="created_at" readonly
                                                                                                 value="{{ old('created_at', $c->simpanan->created_at->format('d M Y')) }}">
                                                                                             @error('created_at')
                                                                                                 <div class="invalid-feedback">
@@ -958,8 +952,8 @@
                                                                                         <div class="col-sm-4 p-l-0">
                                                                                             <input type="text"
                                                                                                 class="form-control form-control-sm @error('name') is-invalid @enderror"
-                                                                                                id="name" name="name"
-                                                                                                readonly
+                                                                                                id="name"
+                                                                                                name="name" readonly
                                                                                                 value="{{ old('name', $c->simpanan->anggota->user->name) }}" />
                                                                                         </div>
 
@@ -973,7 +967,8 @@
                                                                                         <div class="col-sm-2 p-l-0">
                                                                                             <input
                                                                                                 class="form-control form-control-sm @error('simpwj') is-invalid @enderror"
-                                                                                                name="simpwj" type="text"
+                                                                                                name="simpwj"
+                                                                                                type="text"
                                                                                                 id="simpwj"
                                                                                                 value="@currency($c->simpanan->anggota->simpwj)"
                                                                                                 readonly>
@@ -999,7 +994,8 @@
                                                                                             <input
                                                                                                 class="form-control form-control-sm @error('jmlh_simpwj') is-invalid @enderror"
                                                                                                 name="jmlh_simpwj"
-                                                                                                type="text" id="jmlh_simpwj"
+                                                                                                type="text"
+                                                                                                id="jmlh_simpwj"
                                                                                                 value="@currency($c->simpanan->jmlh_simpwj)"
                                                                                                 readonly>
                                                                                             @error('jmlh_simpwj')
@@ -1018,7 +1014,8 @@
                                                                                         <div class="col-sm-2 p-l-0">
                                                                                             <input
                                                                                                 class="form-control form-control-sm @error('simp_wj') is-invalid @enderror"
-                                                                                                name="simp_wj" type="text"
+                                                                                                name="simp_wj"
+                                                                                                type="text"
                                                                                                 id="simp_wj" readonly
                                                                                                 value="@currency($c->simpanan->simp_wj)"
                                                                                                 type-currency="IDR"

@@ -51,7 +51,7 @@
                         </a>
                     </div>
                     <div class="col-sm-6 col-xl-3 col-lg-6">
-                        <a href="#">
+                        <a href="/dashboard/orders">
                             <div class="card o-hidden border-0">
                                 <div class="bg-primary b-r-4 card-body">
                                     <div class="media static-top-widget">
@@ -67,7 +67,7 @@
                         </a>
                     </div>
                     <div class="col-sm-6 col-xl-3 col-lg-6">
-                        <a href="#">
+                        <a href="/dashboard/orders">
                             <div class="card o-hidden border-0">
                                 <div class="bg-secondary b-r-4 card-body">
                                     <div class="media static-top-widget">
@@ -85,6 +85,7 @@
                 </div>
             </div>
         @endcan
+
 
 
         <div class="container-fluid">
@@ -115,6 +116,8 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 
     </div>

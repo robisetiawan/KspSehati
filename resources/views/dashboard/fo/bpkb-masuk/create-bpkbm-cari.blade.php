@@ -54,7 +54,7 @@
                                         <div class=" row mb-1">
                                             <label class="col-sm-5 col-form-label" for="no_order">No Order</label>
                                             <div class="col-sm-4">
-                                                <input type="hidden" name="order_id" value="{{ $o->jaminan_id }}">
+                                                <input type="hidden" name="order_id" value="{{ $o->id }}">
                                                 <input
                                                     class="form-control form-control-sm @error('no_order') is-invalid @enderror"
                                                     name="no_order" type="text" id="no_order"

@@ -49,11 +49,16 @@ class BmController extends Controller
 
     public function lapkeuangan()
     {
+        $d = Pinjam::sum('nilai_pinj');
+        $i = Cash_in::sum('total');
+        // dd($d, $i);
         return view('dashboard.bm.lap-keuangan', [
             "title" => "Lap Keuangan",
             "orders" => Order::latest()->get(),
             // "simpans" => Simpanan::with(['anggota.user', 'anggota'])->latest()->get(),
-            "cashin" => Cash_in::latest()->get()
+            "cashin" => Cash_in::latest()->get(),
+            "jmlhcashout" => $d,
+            "jmlhcashin" => $i
         ]);
     }
 }

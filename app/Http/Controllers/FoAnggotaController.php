@@ -55,6 +55,7 @@ class FoAnggotaController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         // $a = "Rp 8.000.000";
         // $deleteRp = array("Rp", ".", " ");
 
@@ -114,8 +115,8 @@ class FoAnggotaController extends Controller
                 "kab_kota_add" => 'nullable',
                 "provinsi_add" => 'nullable',
                 "kode_pos_add" => 'nullable',
-                "telepon_rumah_add" => 'nullable',
-                "telepon_seluler_add" => 'nullable',
+                "telepon_rumah_add" => 'nullable|min:10|max:12',
+                "telepon_seluler_add" => 'nullable|min:10|max:12',
                 //anggota
                 "nama_panggilan" => 'required',
                 "jenis_kelamin" => 'required',
@@ -229,7 +230,7 @@ class FoAnggotaController extends Controller
                 "nama_ibu" => $request->nama_ibu,
                 "telepon_rumah" => $request->telepon_rumah,
                 "telepon_seluler" => $request->telepon_seluler,
-                "telepon_kantor" => $request->teleponkantorh,
+                "telepon_kantor" => $request->telepon_kantor,
                 "simpkok" => $intsimpkok
 
             ]);

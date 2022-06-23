@@ -12,7 +12,7 @@
                 <option value="bunga">Bunga</option>
                 <option value="bunga_margin">Bunga Margin</option>
                 <option value="pk_marg">Pokok + Margin</option>
-                <option value="jumlah_angs">Jumlah Angs</option>
+                <option value="periode">Periode</option>
                 <option value="admin_total">Admin</option>
                 <option value="harga_acuan">Harga Acuan</option>
             </select>
@@ -59,7 +59,7 @@
                 <th scope="col">Bunga</th>
                 <th scope="col">Bunga Margin</th>
                 <th scope="col">Pokok + Bunga</th>
-                <th scope="col">Jml Angs</th>
+                <th scope="col">Periode</th>
                 <th scope="col">Admin</th>
                 <th scope="col">Harga Acuan</th>
             </tr>
@@ -75,7 +75,7 @@
                     <td>{{ $pinj->bunga }} %</td>
                     <td>@currency($pinj->bunga_margin)</td>
                     <td>@currency($pinj->pk_marg)</td>
-                    <td>{{ $pinj->jumlah_angs }}</td>
+                    <td>{{ $pinj->periode }}</td>
                     <td>@currency($pinj->admin_total)</td>
                     <td>@currency($pinj->harga_acuan)</td>
 

@@ -31,7 +31,7 @@ class Pinjam extends Model
             ->orWhere('bunga', 'like', '%' . $search . '%')
             ->orWhere('bunga_marg', 'like', '%' . $search . '%')
             ->orWhere('pk_marg', 'like', '%' . $search . '%')
-            ->orWhere('jumlah_angs', 'like', '%' . $search . '%')
+            ->orWhere('periode', 'like', '%' . $search . '%')
             ->orWhere('admin', 'like', '%' . $search . '%')
             ->orWhere('harga_acuan', 'like', '%' . $search . '%');
     }

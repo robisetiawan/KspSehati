@@ -340,21 +340,20 @@
                 <div class="container-fluid text-end px-1 py-3">
                     <div class="row mb-1">
                         <div class="col-sm-6"></div>
-                        <label class="col col-form-label" for="penanggung_jawab"><strong>Penanggung
-                                Jawab</strong></label>
+                        <label class="col col-form-label" for="employee_id"><strong>Penanggung Jawab</strong></label>
                         <div class="col">
-                            <select class="form-select @error('penanggung_jawab') is-invalid @enderror"
-                                name="penanggung_jawab" id="penanggung_jawab">
+                            <select class="form-select @error('employee_id') is-invalid @enderror" name="employee_id"
+                                id="employee_id">
                                 <option></option>
                                 @foreach ($employees as $e)
-                                    @if (old('penanggung_jawab', $order->employee_id) == $e->id)
+                                    @if (old('employee_id', $order->employee_id) == $e->id)
                                         <option value="{{ $e->id }}" selected>{{ $e->nama }}</option>
                                     @else
                                         <option value="{{ $e->id }}">{{ $e->nama }}</option>
                                     @endif
                                 @endforeach
                             </select>
-                            @error('penanggung_jawab')
+                            @error('employee_id')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -367,8 +366,7 @@
                     <div class="row mb-1">
                         <label class="col-sm-2 col-form-label text-end" for="bpkb">BPKB</label>
                         <div class="col-sm-3 p-l-0">
-                            <select class="form-select @error('bpkb') is-invalid @enderror" name="bpkb"
-                                id="bpkb">
+                            <select class="form-select @error('bpkb') is-invalid @enderror" name="bpkb" id="bpkb">
                                 <option></option>
                                 <option value="Atas Nama Sendiri"
                                     {{ old('bpkb', $order->barang->bpkb) == 'Atas Nama Sendiri' ? 'selected' : '' }}>
@@ -388,8 +386,8 @@
                         <!-- **************************************************************************************************8******  -->
                         <label class="col-sm-1 col-form-label text-end" for="faktur">Faktur</label>
                         <div class="col-sm-2 p-l-0">
-                            <select class="form-select @error('faktur') is-invalid @enderror" name="faktur"
-                                id="faktur" value="{{ old('faktur') }}">
+                            <select class="form-select @error('faktur') is-invalid @enderror" name="faktur" id="faktur"
+                                value="{{ old('faktur') }}">
                                 <option></option>
                                 <option value="Ada"
                                     {{ old('faktur', $order->barang->faktur) == 'Ada' ? 'selected' : '' }}>
@@ -448,8 +446,7 @@
                         <label class="col-sm-2 col-form-label text-end" for="jatuh_tempo_stnk">Jth Tempo Pajak
                             STNK</label>
                         <div class="col-sm-2 p-l-0">
-                            <input
-                                class="form-control form-control-sm @error('jatuh_tempo_stnk') is-invalid @enderror"
+                            <input class="form-control form-control-sm @error('jatuh_tempo_stnk') is-invalid @enderror"
                                 name="jatuh_tempo_stnk" type="date" id="jatuh_tempo_stnk"
                                 value="{{ old('jatuh_tempo_stnk', $order->barang->jatuh_tempo_stnk) }}">
                             @error('jatuh_tempo_stnk')
@@ -462,8 +459,7 @@
                         <div class="col-sm-2 p-l-0">
                             <input class="form-control form-control-sm @error('stnk_mati_tahun') is-invalid @enderror"
                                 name="stnk_mati_tahun" type="number" id="stnk_mati_tahun"
-                                value="{{ old('stnk_mati_tahun', $order->barang->stnk_mati_tahun) }}"
-                                min="1">
+                                value="{{ old('stnk_mati_tahun', $order->barang->stnk_mati_tahun) }}">
                             @error('stnk_mati_tahun')
                                 <div class="invalid-feedback">
                                     {{ $message }}

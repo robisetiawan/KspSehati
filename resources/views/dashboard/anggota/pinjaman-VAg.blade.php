@@ -49,9 +49,8 @@
                                     <tr>
                                         <th scope="row">Tanggal</th>
                                         <th scope="row">Angsuran</th>
-                                        <th scope="row">Periode</th>
+                                        <th scope="row">Jumlah Angs</th>
                                         <th scope="row">Nilai Pinj</th>
-                                        <th scope="row">Sisa Angs</th>
                                         <th scope="row">Action</th>
                                     </tr>
                                 </thead>
@@ -60,17 +59,8 @@
                                         <tr>
                                             <td>{{ $order->created_at->format('d M Y') }}</td>
                                             <td>@currency($order->pinjam->angsuran)</td>
-                                            <td>{{ $order->pinjam->periode }}</td>
+                                            <td>{{ $order->pinjam->jumlah_angs }}</td>
                                             <td>@currency($order->pinjam->nilai_pinj)</td>
-                                            @if ($order->sisa_angs === '0')
-                                                <td class="align-middle">
-                                                    <span class="badge rounded-pill bg-success ">Lunas</span>
-                                                </td>
-                                            @elseif ($order->sisa_angs === null)
-                                                <td>* form belum diisi oleh admin</td>
-                                            @else
-                                                <td>{{ $order->sisa_angs }} Kali</td>
-                                            @endif
                                             <td>
                                                 <button type="button" class="badege bg-success border-0"
                                                     data-bs-toggle="modal" data-bs-target="#detail{{ $order->id }}"><i
@@ -85,8 +75,8 @@
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="detailLabel">Pinjaman
                                                             </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
 
@@ -226,7 +216,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <!-- ****************************************************************************************** -->
-                                                                            {{-- <div class="row mb-1">
+                                                                            <div class="row mb-1">
                                                                                 <label class="col-sm-6 col-form-label"
                                                                                     for="jumlah_angs">Jml
                                                                                     Angs</label>
@@ -242,7 +232,7 @@
                                                                                         </div>
                                                                                     @enderror
                                                                                 </div>
-                                                                            </div> --}}
+                                                                            </div>
                                                                             <!-- ****************************************************************************************** -->
                                                                             <div class="row mb-1">
                                                                                 <label class="col-sm-6 col-form-label"
@@ -267,8 +257,7 @@
                                                                                 <div class="col p-l-0">
                                                                                     <select
                                                                                         class="form-select form-select-sm @error('per_p') is-invalid @enderror"
-                                                                                        name="per_p" id="per_p"
-                                                                                        disabled>
+                                                                                        name="per_p" id="per_p" disabled>
                                                                                         <option value="Bulan"
                                                                                             {{ old('per_p') == 'Bulan' ? 'selected' : '' }}>
                                                                                             Bulan
@@ -293,8 +282,8 @@
                                                                                 <div class="col-sm-2 px-0">
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('bunga') is-invalid @enderror"
-                                                                                        name="bunga" type="text"
-                                                                                        id="bunga" readonly
+                                                                                        name="bunga" type="text" id="bunga"
+                                                                                        readonly
                                                                                         value="{{ old('bunga', $order->pinjam->bunga) }}">
                                                                                     @error('bunga')
                                                                                         <div class="invalid-feedback">

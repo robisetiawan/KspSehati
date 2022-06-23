@@ -43,10 +43,10 @@ class Order extends Model
         return $this->belongsTo(Pinjam::class);
     }
 
-    // public function history()
-    // {
-    //     return $this->belongsTo(History::class);
-    // }
+    public function history()
+    {
+        return $this->belongsTo(History::class);
+    }
 
     public function employee()
     {

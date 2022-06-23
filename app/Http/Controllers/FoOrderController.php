@@ -10,6 +10,7 @@ use App\Models\Berkas;
 use App\Models\Pinjam;
 use App\Models\Adddata;
 use App\Models\Anggota;
+use App\Models\History;
 use App\Models\Jaminan;
 use App\Models\Employee;
 use App\Models\Identity;
@@ -136,10 +137,10 @@ class FoOrderController extends Controller
                     "anggota_id" => $request->anggota_id
                 ]);
 
-                // $history = Simpanan::create([
-                //     "id" => $barang->id,
-                //     "anggota_id" => $request->anggota_id
-                // ]);
+                $history = Simpanan::create([
+                    "id" => $barang->id,
+                    "anggota_id" => $request->anggota_id
+                ]);
 
 
                 $order = Order::create([
@@ -150,7 +151,7 @@ class FoOrderController extends Controller
                     "kondisi_unit_id" => $kondisi_unit->id,
                     "las_id" => $las->id,
                     "pinjam_id" => $pinjam->id,
-                    // "history_id" => $history->id,
+                    "history_id" => $history->id,
                     'nama' => $request->nama,
                 ]);
             }
@@ -374,10 +375,9 @@ class FoOrderController extends Controller
             "catatan" => 'nullable',
             "catt_survey" => 'nullable',
             'employee_id' => 'nullable',
+            'nama' => 'nullable',
         ];
 
-
-        $penangung_jawab = $request->validate(['penanggung_jawab' => 'required',]);
         // dd($kondisi_unit);
 
         $validuser = $request->validate($user);
@@ -392,8 +392,8 @@ class FoOrderController extends Controller
         $validorder = $request->validate($orders);
         $validpinjam = $request->validate($pinjam);
 
-
-        $validorder['employee_id'] = $request->penanggung_jawab;
+        // dd($validpinjam);
+        $validorder['employee_id'] = $request->employee_id;
         $validorder['sisa_angs'] = $request->periode;
         //Currency
         $deleteRp = array(
@@ -1167,8 +1167,6 @@ class FoOrderController extends Controller
             $pk_stnk = 16;
         elseif ($request->stnk_mati_tahun == 4)
             $pk_stnk = 20;
-        elseif ($request->stnk_mati_tahun == null)
-            $pk_stnk = null;
         else
             $pk_stnk = 25;
 
@@ -1264,7 +1262,6 @@ class FoOrderController extends Controller
         Barang::destroy($order->barang->id);
         Kondisi_unit::destroy($order->kondisi_unit->id);
         Las::destroy($order->las->id);
-        Pinjam::destroy($order->pinjam->id);
 
         return redirect('/dashboard/orders')->with('success', 'Data Berhasil dihapus');
     }

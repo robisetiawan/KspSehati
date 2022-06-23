@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('las_id');
             $table->foreignId('kondisi_unit_id');
             $table->foreignId('pinjam_id');
-            // $table->foreignId('history_id');
+            $table->foreignId('history_id');
             $table->foreignId('employee_id')->nullable();
             $table->string('nama')->nullable();
             $table->string('no_order');

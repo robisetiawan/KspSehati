@@ -343,6 +343,7 @@
                         <label class="col col-form-label" for="penanggung_jawab"><strong>Penanggung
                                 Jawab</strong></label>
                         <div class="col">
+                            <input type="hidden" name="oldPj" value="{{ $order->employee_id }}">
                             <select class="form-select @error('penanggung_jawab') is-invalid @enderror"
                                 name="penanggung_jawab" id="penanggung_jawab">
                                 <option></option>

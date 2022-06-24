@@ -183,13 +183,13 @@
                                  </a>
                              </li>
 
-                             {{-- <li class="dropdown">
-                                 <a href="/dashboard/lap-dt-ag"
-                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/lap-dt-ag/false') ? 'active' : '' }}">
-                                     <i data-feather="users"></i>
-                                     <span>Laporan Data Anggota False</span>
+                             <li class="dropdown">
+                                 <a href="/dashboard/lap-dt-employee"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/lap-dt-employee') ? 'active' : '' }}">
+                                     <i data-feather="star"></i>
+                                     <span>Laporan Data Karyawan</span>
                                  </a>
-                             </li> --}}
+                             </li>
 
                              <li class="dropdown">
                                  <a href="/dashboard/lap-keuangan"

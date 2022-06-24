@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Pinjam;
 use App\Models\Anggota;
 use App\Models\Cash_in;
+use App\Models\Employee;
 use App\Models\Simpanan;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,7 @@ class BmController extends Controller
     {
         return view('dashboard.bm.lap-dt-ag', [
             "title" => "Lap Data Anggota",
-            "anggotas" => Anggota::with(['user', 'order'])->latest()->get() //tambahkn with agar tidk bnyk melakukan query (fiture=eager loading)
-
+            "anggotas" => Anggota::with(['user', 'order'])->latest()->get(), //tambahkn with agar tidk bnyk melakukan query (fiture=eager loading)
         ]);
     }
 
@@ -30,11 +30,11 @@ class BmController extends Controller
         ]);
     }
 
-    public function false()
+    public function employee()
     {
-        return view('dashboard.bm.lap-dt-agFalse', [
-            "title" => "Lap Data Anggota",
-            "anggotas" => Anggota::with(['user', 'order'])->latest()->get() //tambahkn with agar tidk bnyk melakukan query (fiture=eager loading)
+        return view('dashboard.bm.lap-dt-employee', [
+            "title" => "Lap Data Karyawan",
+            "emp" => Employee::orderBy('bawa_ag', 'DESC')->get() //tambahkn with agar tidk bnyk melakukan query (fiture=eager loading)
 
         ]);
     }
@@ -60,5 +60,32 @@ class BmController extends Controller
             "jmlhcashout" => $d,
             "jmlhcashin" => $i
         ]);
+    }
+
+    public function bawaag($id)
+    {
+        $anggota = Order::where('employee_id', $id)->get();
+        $emp = Employee::where('id', $id)->first();
+        $title = 'Anggota dari ' . $emp->nama;
+
+        return view('dashboard.bm.bawa-ag', compact('anggota', 'title', 'emp'));
+    }
+
+    public function detailemployee($id)
+    {
+        $employee = Employee::where('id', $id)->first();
+        $title  = 'Detail Karyawan';
+
+        return view('dashboard.bm.show-employee', compact('employee', 'title'));
+    }
+
+    public function detailag($idemp, $idag)
+    {
+        $anggotas = Anggota::where('id', $idag)->first();
+        $emp = Employee::where('id', $idemp)->first();
+        $pinlatest = Pinjam::where('anggota_id', $idag)->latest()->first();
+        $title = 'Detail Anggota';
+        // dd($anggotas, $emp, $idemp);
+        return view('dashboard.bm.detail-ag-for-emp', compact('anggotas', 'title', 'emp', 'pinlatest'));
     }
 }

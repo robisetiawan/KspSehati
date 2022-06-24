@@ -14,6 +14,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SimpananController;
 use App\Http\Controllers\AgAnggotaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FoAnggotaController;
 use App\Http\Controllers\CetakBukuAgController;
 use App\Http\Controllers\PenerimaanUangController;
@@ -57,15 +58,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('auth');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard/home', function () {
-    return view('dashboard.layouts.dashboard', [
-        "title" => "Dashboard",
-        "anggotas" => \App\Models\Anggota::count(),
-        "employees" => \App\Models\Employee::count(),
-        "order" => \App\Models\Order::where('sisa_angs', '>', 0)->count(),
-        "pinj" => \App\Models\Order::count()
-    ]);
-})->middleware('auth');
+Route::get('/dashboard/home', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/dashboard/profile', [ProfileController::class, 'index'])->middleware('auth');
 Route::put('/dashboard/update-profile/{user}', [ProfileController::class, 'updateprofile'])->name('update-profile');
@@ -153,7 +146,10 @@ Route::name('bm')->middleware('bm')->group(
     function () {
         Route::get('/dashboard/lap-dt-ag', [BmController::class, 'index']);
         Route::get('/dashboard/lap-dt-ag/{id}', [BmController::class, 'detail']);
-        Route::get('/dashboard/lap-dt-ag/false', [BmController::class, 'false']);
+        Route::get('/dashboard/lap-dt-employee', [BmController::class, 'employee']);
+        Route::get('/dashboard/lap-dt-employee/{id}', [BmController::class, 'detailemployee']);
+        Route::get('/dashboard/lap-dt-employee/bawa_ag/{id}', [BmController::class, 'bawaag']);
+        Route::get('/dashboard/lap-dt-employee/detail_ag/{idemp}/{idag}', [BmController::class, 'detailag']);
         // Route::get('/dashboard/lap-dt-ag/{anggota:id}', [BmController::class, 'show']);
         Route::get('/dashboard/lap-keuangan', [BmController::class, 'lapkeuangan']);
     }

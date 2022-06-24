@@ -208,7 +208,21 @@ class FoOrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        // dd($request->periode);
+        $penangung_jawab = $request->validate(['penanggung_jawab' => 'required',]);
+        // dd($request->penanggung_jawab, $request->oldPj);
+        if ($order->employee_id !== $request->penanggung_jawab) {
+            if ($request->oldPj) {
+                $pickEmp = Employee::where('id', $request->oldPj)->first();
+                $a = $pickEmp->bawa_ag - 1;
+                Employee::where('id', $request->oldPj)->update(['bawa_ag' => $a]);
+            }
+
+            $pickEbru = Employee::where('id', $request->penanggung_jawab)->first();
+            $b = $pickEbru->bawa_ag + 1;
+            Employee::where('id', $request->penanggung_jawab)->update(['bawa_ag' => $b]);
+        } else;
+
+        // dd($a, $b);
         // Users
         $user = [
             'name' => 'required|max:255',
@@ -377,7 +391,7 @@ class FoOrderController extends Controller
         ];
 
 
-        $penangung_jawab = $request->validate(['penanggung_jawab' => 'required',]);
+
         // dd($kondisi_unit);
 
         $validuser = $request->validate($user);
@@ -392,7 +406,7 @@ class FoOrderController extends Controller
         $validorder = $request->validate($orders);
         $validpinjam = $request->validate($pinjam);
 
-
+        $validanggotas['pinj'] = $request->nilai_pinj;
         $validorder['employee_id'] = $request->penanggung_jawab;
         $validorder['sisa_angs'] = $request->periode;
         //Currency

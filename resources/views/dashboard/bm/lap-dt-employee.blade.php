@@ -8,11 +8,11 @@
             <div class="page-header pt-4 pb-3">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3>Laporan Data Anggota</h3>
+                        <h3>Laporan Data Karyawan</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">KSP Sehati
                             </li>
-                            <li class="breadcrumb-item">Laporan Data Anggota</li>
+                            <li class="breadcrumb-item">Laporan Data Karyawan</li>
                         </ol>
                     </div>
                 </div>
@@ -29,34 +29,48 @@
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">No Anggota</th>
-                                        <th scope="col">Tanggal Gabung</th>
+                                        <th scope="col">Rangking</th>
                                         <th scope="col">Nama Anggota</th>
-                                        <th scope="col">Simpanan</th>
-                                        <th scope="col">Pinjaman</th>
+                                        <th scope="col">Anggota yg dibawa</th>
+                                        <th scope="col">No Telepon</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($anggotas as $a)
+                                    {{-- <input type="hidden" value="{{ $no = 0 }}"> --}}
+                                    @foreach ($emp as $no => $a)
+                                        <input type="hidden" value="{{ $no++ }}">
                                         <tr>
-                                            <td>{{ $a->no_anggota }}</td>
-                                            <td>{{ $a->created_at->format('d M Y') }}</td>
-                                            <td>{{ $a->user->name }}</td>
-                                            <td>@currency($a->simpwj + $a->simpkok)</td>
-                                            <td>@currency($a->nilai_pinj)</td>
+                                            <td class="align-items-center">
+                                                @if ($no == 1)
+                                                    <i class="fa fa-trophy fa-fw fa-2x" aria-hidden="true"
+                                                        style="color:rgb(255, 174, 0);"></i>
+                                                    {{ $no }}
+                                                @elseif($no == 2)
+                                                    <i class="fa fa-trophy fa-fw fa-lg" aria-hidden="true"
+                                                        style="color:silver;"></i>
+                                                    {{ $no }}
+                                                @elseif ($no == 3)
+                                                    <i class="fa fa-trophy fa-fw" aria-hidden="true"
+                                                        style="color:brown;"></i>
+                                                    {{ $no }}
+                                                @else
+                                                    {{ $no }}
+                                                @endif
+                                            </td>
+                                            <td>{{ $a->nama }}</td>
+                                            <td><a
+                                                    href="/dashboard/lap-dt-employee/bawa_ag/{{ $a->id }}">{{ $a->bawa_ag }}</a>
+                                            </td>
+                                            <td>{{ $a->no_tel }}</td>
                                             <td>
                                                 <div class="btn-group" role="group"
                                                     aria-label="Basic mixed styles example">
-                                                    <a href="/dashboard/lap-dt-ag/{{ $a->id }}">
+                                                    <a href="/dashboard/lap-dt-employee/{{ $a->id }}">
                                                         <button class="badge bg-success border-0"><i class="fa fa-eye fa-lg"
                                                                 aria-hidden="true"></i></button>
                                                     </a>
                                                 </div>
-                                                {{-- <button type="button" class="btn btn-pill btn-primary btn-sm"
-                                                    data-bs-toggle="modal" data-bs-target="#detailAnggota">
-                                                    Detail
-                                                </button> --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -65,7 +79,7 @@
                         </div>
 
                         <!-- Modal -->
-                        {{-- @include('bm.detail-ag-VBM') --}}
+                        @include('bm.detail-ag-VBM')
                         <!-- endModal -->
 
 

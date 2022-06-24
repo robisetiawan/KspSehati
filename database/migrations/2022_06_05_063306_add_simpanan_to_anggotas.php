@@ -16,6 +16,7 @@ class AddSimpananToAnggotas extends Migration
         Schema::table('anggotas', function (Blueprint $table) {
             $table->integer('simpkok')->nullable();
             $table->integer('simpwj')->nullable();
+            $table->integer('pinj')->nullable();
         });
     }
 

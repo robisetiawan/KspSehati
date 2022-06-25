@@ -160,7 +160,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
     {{-- end_dataTables --}}
 
-
+    @stack('chart')
 
 </body>
 

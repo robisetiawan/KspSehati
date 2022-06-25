@@ -109,16 +109,14 @@
                                         </p>
                                     </div>
                                 </div>
+                            </main>
                         </div>
 
-                        </main>
                     </div>
                 </div>
             </div>
         </div>
 
-
-    </div>
 
     </div>
 @endsection

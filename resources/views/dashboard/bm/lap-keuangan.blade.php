@@ -24,14 +24,13 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-
-                        <!-- ***************************-->
-                        <!-- ********* Cash Out ********-->
-                        <!-- ***************************-->
-
                         <div class="card-header pb-0">
                             <h5>Cash Out</h5>
                         </div>
+                        <div id="grafik" class="card-body"></div>
+                        <!-- ***************************-->
+                        <!-- ********* Cash Out ********-->
+                        <!-- ***************************-->
 
                         {{-- <div class="card-body pt-3 pb-1 f-12">
                             <div class="row">
@@ -497,7 +496,7 @@
                         <div class="card-header pb-0">
                             <h5>Cash In</h5>
                         </div>
-
+                        <div id="grafikcashin" class="card-body"></div>
                         {{-- <div class="card-body pt-3 pb-1 f-12">
                             <div class="row">
                                 <div class="col">
@@ -1073,4 +1072,74 @@
         });
     </script>
     {{-- end_dataTables --}}
+@endpush
+@push('chart')
+    <script src="/js/highcharts.js"></script>
+    <script>
+        var total = {{ $total }};
+        var bulan = {!! $bulan !!};
+        var cashin = {{ $masuk }};
+        var moon = {!! $moon !!};
+        Highcharts.chart('grafik', {
+            title: {
+                text: 'Laporan Keuangan'
+            },
+            xAxis: {
+                categories: bulan
+            },
+            yAxis: {
+                title: {
+                    text: 'Nominal'
+                },
+                labels: {
+                    format: 'Rp. {value}'
+                }
+                // accessibility: {
+                //     rangeDescription: 'Range: 1000000 to 25000000'
+                // }
+            },
+            plotOptions: {
+                series: {
+                    allowPointSelect: true
+                }
+            },
+            series: [{
+                name: 'Cash Out',
+                color: '#dc3545',
+                data: total
+            }],
+
+        });
+
+        Highcharts.chart('grafikcashin', {
+            title: {
+                text: 'Laporan Keuangan'
+            },
+            xAxis: {
+                categories: moon
+            },
+            yAxis: {
+                title: {
+                    text: 'Nominal'
+                },
+                labels: {
+                    format: 'Rp. {value}'
+                }
+                // accessibility: {
+                //     rangeDescription: 'Range: 1000000 to 25000000'
+                // }
+            },
+            plotOptions: {
+                series: {
+                    allowPointSelect: true
+                }
+            },
+            series: [{
+                name: 'Cash In',
+                color: '#008199',
+                data: cashin
+            }],
+
+        });
+    </script>
 @endpush

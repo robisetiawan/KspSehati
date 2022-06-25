@@ -9,6 +9,7 @@ use App\Models\Cash_in;
 use App\Models\Employee;
 use App\Models\Simpanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BmController extends Controller
 {
@@ -51,6 +52,27 @@ class BmController extends Controller
     {
         $d = Pinjam::sum('nilai_pinj');
         $i = Cash_in::sum('total');
+
+        $total = Pinjam::select(DB::raw("CAST(SUM(nilai_pinj) as int) as nominal"))
+            ->GroupBy(DB::raw("Month(created_at)"))
+            ->pluck('nominal');
+
+        $bulan = Pinjam::select(DB::raw('DATE_FORMAT(created_at, "%M %y") as bulan'))
+            ->GroupBy(DB::raw('DATE_FORMAT(created_at, "%M %y")'))
+            ->OrderBy(DB::raw('date(created_at)'))
+            ->pluck('bulan');
+
+        //cashin
+        $cashin = Cash_in::select(DB::raw("CAST(SUM(total) as int) as cashin"))
+            ->GroupBy(DB::raw("Month(created_at)"))
+            ->pluck('cashin');
+
+        $moon = Cash_in::select(DB::raw('DATE_FORMAT(created_at, "%M %y") as moon'))
+            ->GroupBy(DB::raw('DATE_FORMAT(created_at, "%M %y")'))
+            ->OrderBy(DB::raw('date(created_at)'))
+            ->pluck('moon');
+        // dd($cashin, $moon);
+
         // dd($d, $i);
         return view('dashboard.bm.lap-keuangan', [
             "title" => "Lap Keuangan",
@@ -58,7 +80,11 @@ class BmController extends Controller
             // "simpans" => Simpanan::with(['anggota.user', 'anggota'])->latest()->get(),
             "cashin" => Cash_in::latest()->get(),
             "jmlhcashout" => $d,
-            "jmlhcashin" => $i
+            "jmlhcashin" => $i,
+            "total" => $total,
+            "bulan" => $bulan,
+            "masuk" => $cashin,
+            "moon" => $moon
         ]);
     }
 

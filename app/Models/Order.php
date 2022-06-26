@@ -38,6 +38,11 @@ class Order extends Model
         return $this->belongsTo(Las::class);
     }
 
+    public function lingkungan()
+    {
+        return $this->belongsTo(Lingkungan::class);
+    }
+
     public function pinjam()
     {
         return $this->belongsTo(Pinjam::class);

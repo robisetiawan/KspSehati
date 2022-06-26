@@ -10,6 +10,8 @@ use App\Models\Berkas;
 use App\Models\Pinjam;
 use App\Models\Adddata;
 use App\Models\Anggota;
+use App\Models\Bpkb_k;
+use App\Models\Bpkb_m;
 use App\Models\Jaminan;
 use App\Models\Employee;
 use App\Models\Identity;
@@ -18,6 +20,8 @@ use App\Models\Profession;
 use App\Models\Fisik_image;
 use App\Models\Surat_image;
 use App\Models\Kondisi_unit;
+use App\Models\Lingkungan;
+use App\Models\PenerimaanUang;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
@@ -32,9 +36,10 @@ class FoOrderController extends Controller
      */
     public function index()
     {
+        // dd(Order::latest()->get());
         return view('dashboard.fo.orders.orders', [
             "title" => "Orders",
-            "orders" => Order::latest()->get(),
+            "orders" => Order::orderBy('created_at', 'DESC')->get(),
             // "anggotas" => Anggota::with(['user', 'order'])->latest()->get()
         ]);
     }
@@ -136,6 +141,10 @@ class FoOrderController extends Controller
                     "anggota_id" => $request->anggota_id
                 ]);
 
+                $lingkungan = Lingkungan::create([
+                    "id" => $barang->id,
+                ]);
+
                 // $history = Simpanan::create([
                 //     "id" => $barang->id,
                 //     "anggota_id" => $request->anggota_id
@@ -150,6 +159,7 @@ class FoOrderController extends Controller
                     "kondisi_unit_id" => $kondisi_unit->id,
                     "las_id" => $las->id,
                     "pinjam_id" => $pinjam->id,
+                    "lingkungan_id" => $lingkungan->id,
                     // "history_id" => $history->id,
                     'nama' => $request->nama,
                 ]);
@@ -210,17 +220,7 @@ class FoOrderController extends Controller
     {
         $penangung_jawab = $request->validate(['penanggung_jawab' => 'required',]);
         // dd($request->penanggung_jawab, $request->oldPj);
-        if ($order->employee_id !== $request->penanggung_jawab) {
-            if ($request->oldPj) {
-                $pickEmp = Employee::where('id', $request->oldPj)->first();
-                $a = $pickEmp->bawa_ag - 1;
-                Employee::where('id', $request->oldPj)->update(['bawa_ag' => $a]);
-            }
 
-            $pickEbru = Employee::where('id', $request->penanggung_jawab)->first();
-            $b = $pickEbru->bawa_ag + 1;
-            Employee::where('id', $request->penanggung_jawab)->update(['bawa_ag' => $b]);
-        } else;
 
         // dd($a, $b);
         // Users
@@ -379,6 +379,27 @@ class FoOrderController extends Controller
             "bunga" => 'nullable',
         ];
 
+        $lingkungan = [
+            "wrg_a1" => 'nullable',
+            "wrg_a2" => 'nullable',
+            "wrg_a3" => 'nullable',
+            "pkm1" => 'nullable',
+            "pkm2" => 'nullable',
+            "pkm3" => 'nullable',
+            "rdl1" => 'nullable',
+            "rdl2" => 'nullable',
+            "rdl3" => 'nullable',
+            "nm_nr1" => 'nullable',
+            "nm_nr2" => 'nullable',
+            "nm_nr3" => 'nullable',
+            "tlp_nr1" => 'nullable',
+            "tlp_nr2" => 'nullable',
+            "tlp_nr3" => 'nullable',
+            "hbng1" => 'nullable',
+            "hbng2" => 'nullable',
+            "hbng3" => 'nullable',
+        ];
+
         //order
         $orders = [
             "status" => 'nullable',
@@ -405,10 +426,32 @@ class FoOrderController extends Controller
         $validlas = $request->validate($las);
         $validorder = $request->validate($orders);
         $validpinjam = $request->validate($pinjam);
+        $validlingkungan = $request->validate($lingkungan);
+
+
+        // dd($validlingkungan);
+        if ($order->employee_id !== $request->penanggung_jawab) {
+            if ($request->oldPj) {
+                $pickEmp = Employee::where('id', $request->oldPj)->first();
+                $a = $pickEmp->bawa_ag - 1;
+                Employee::where('id', $request->oldPj)->update(['bawa_ag' => $a]);
+            }
+
+            $pickEbru = Employee::where('id', $request->penanggung_jawab)->first();
+            $b = $pickEbru->bawa_ag + 1;
+            Employee::where('id', $request->penanggung_jawab)->update(['bawa_ag' => $b]);
+        } else;
 
         $validanggotas['pinj'] = $request->nilai_pinj;
         $validorder['employee_id'] = $request->penanggung_jawab;
-        $validorder['sisa_angs'] = $request->periode;
+        // dd($order->pinjam->periode, $request->periode);
+        $r = (int)$request->periode;
+        if ($order->pinjam->periode !== $r) {
+            $validorder['sisa_angs'] = $request->periode;
+        } else {
+            $validorder['sisa_angs'] = $order->sisa_angs;
+        }
+        // dd($order->pinjam->periode, $request->periode, $validorder['sisa_angs']);
         //Currency
         $deleteRp = array(
             "Rp", ".", " "
@@ -1236,26 +1279,28 @@ class FoOrderController extends Controller
 
         $validorders['nama'] = $request->name;
 
-        User::where('id', $order->anggota->user->id)
+        User::where('id', $order->anggota->user_id)
             ->update($validuser);
-        Identity::where('id', $order->anggota->identity->id)
+        Identity::where('id', $order->anggota->identity_id)
             ->update($valididentity);
-        Profession::where('id', $order->anggota->profession->id)
+        Profession::where('id', $order->anggota->profession_id)
             ->update($validprofession);
-        Adddata::where('id', $order->anggota->adddata->id)
+        Adddata::where('id', $order->anggota->adddata_id)
             ->update($validadddata);
-        Anggota::where('id', $order->anggota->id)
+        Anggota::where('id', $order->anggota_id)
             ->update($validanggotas);
-        Jaminan::where('id', $order->jaminan->id)
+        Jaminan::where('id', $order->jaminan_id)
             ->update($validjaminan);
-        Barang::where('id', $order->barang->id)
+        Barang::where('id', $order->barang_id)
             ->update($validbarang);
-        Kondisi_unit::where('id', $order->kondisi_unit->id)
+        Kondisi_unit::where('id', $order->kondisi_unit_id)
             ->update($validkondisi_unit);
-        Las::where('id', $order->las->id)
+        Las::where('id', $order->las_id)
             ->update($validlas);
-        Pinjam::where('id', $order->pinjam->id)
+        Pinjam::where('id', $order->pinjam_id)
             ->update($validpinjam);
+        Lingkungan::where('id', $order->lingkungan_id)
+            ->update($validlingkungan);
         Order::where('id', $order->id)
             ->update($validorder);
 
@@ -1273,12 +1318,26 @@ class FoOrderController extends Controller
      */
     public function destroy(Order $order)
     {
+        $s = Surat_image::where('order_id', $order->id)->first();
+        $fisik = Fisik_image::where('order_id', $order->id)->first();
+        $berkas = Berkas::where('order_id', $order->id)->first();
+        $pene = PenerimaanUang::where('order_id', $order->id)->first();
+        $ms = Bpkb_m::where('order_id', $order->id)->first();
+        $kl = Bpkb_k::where('order_id', $order->id)->first();
+        // dd($s, $pene);
         Order::destroy($order->id);
         Jaminan::destroy($order->jaminan->id);
         Barang::destroy($order->barang->id);
         Kondisi_unit::destroy($order->kondisi_unit->id);
         Las::destroy($order->las->id);
         Pinjam::destroy($order->pinjam->id);
+        Lingkungan::destroy($order->lingkungan->id);
+        Surat_image::destroy($s->id);
+        Fisik_image::destroy($fisik->id);
+        Bpkb_m::destroy($ms->id);
+        Bpkb_k::destroy($kl->id);
+        Berkas::destroy($berkas->id);
+        PenerimaanUang::destroy($pene->id);
 
         return redirect('/dashboard/orders')->with('success', 'Data Berhasil dihapus');
     }

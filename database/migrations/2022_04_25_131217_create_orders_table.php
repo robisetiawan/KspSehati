@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('pinjam_id');
             // $table->foreignId('history_id');
             $table->foreignId('employee_id')->nullable();
+            $table->foreignId('lingkungan_id')->nullable();
             $table->string('nama')->nullable();
             $table->string('no_order');
             $table->enum('keperluan', ['Sendiri', 'Keluarga', 'Orang Lain'])->nullable();

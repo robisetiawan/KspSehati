@@ -161,7 +161,9 @@
     // {{-- dataTables --}}
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable();
+            $('#myTable').DataTable({
+                order: true
+            });
         });
     </script>
     {{-- end_dataTables --}}

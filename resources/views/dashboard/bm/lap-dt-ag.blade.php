@@ -32,8 +32,7 @@
                                         <th scope="col">No Anggota</th>
                                         <th scope="col">Tanggal Gabung</th>
                                         <th scope="col">Nama Anggota</th>
-                                        <th scope="col">Simpanan</th>
-                                        <th scope="col">Pinjaman</th>
+                                        <th scope="col">No Telp</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
@@ -43,8 +42,7 @@
                                             <td>{{ $a->no_anggota }}</td>
                                             <td>{{ $a->created_at->format('d M Y') }}</td>
                                             <td>{{ $a->user->name }}</td>
-                                            <td>@currency($a->simpwj + $a->simpkok)</td>
-                                            <td>@currency($a->nilai_pinj)</td>
+                                            <td>{{ $a->telepon_seluler }}</td>
                                             <td>
                                                 <div class="btn-group" role="group"
                                                     aria-label="Basic mixed styles example">

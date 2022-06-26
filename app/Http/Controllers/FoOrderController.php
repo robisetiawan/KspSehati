@@ -7,22 +7,23 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Barang;
 use App\Models\Berkas;
+use App\Models\Bpkb_k;
+use App\Models\Bpkb_m;
 use App\Models\Pinjam;
 use App\Models\Adddata;
 use App\Models\Anggota;
-use App\Models\Bpkb_k;
-use App\Models\Bpkb_m;
+use App\Models\Cash_in;
 use App\Models\Jaminan;
 use App\Models\Employee;
 use App\Models\Identity;
 use App\Models\Simpanan;
+use App\Models\Lingkungan;
 use App\Models\Profession;
 use App\Models\Fisik_image;
 use App\Models\Surat_image;
 use App\Models\Kondisi_unit;
-use App\Models\Lingkungan;
-use App\Models\PenerimaanUang;
 use Illuminate\Http\Request;
+use App\Models\PenerimaanUang;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
@@ -447,9 +448,9 @@ class FoOrderController extends Controller
         // dd($order->pinjam->periode, $request->periode);
         $r = (int)$request->periode;
         if ($order->pinjam->periode !== $r) {
-            $validorder['sisa_angs'] = $request->periode;
+            $validpinjam['sisa_angs'] = $request->periode;
         } else {
-            $validorder['sisa_angs'] = $order->sisa_angs;
+            $validpinjam['sisa_angs'] = $order->pinjam->sisa_angs;
         }
         // dd($order->pinjam->periode, $request->periode, $validorder['sisa_angs']);
         //Currency
@@ -1318,13 +1319,21 @@ class FoOrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        $s = Surat_image::where('order_id', $order->id)->first();
-        $fisik = Fisik_image::where('order_id', $order->id)->first();
-        $berkas = Berkas::where('order_id', $order->id)->first();
-        $pene = PenerimaanUang::where('order_id', $order->id)->first();
-        $ms = Bpkb_m::where('order_id', $order->id)->first();
-        $kl = Bpkb_k::where('order_id', $order->id)->first();
-        // dd($s, $pene);
+        $a = Surat_image::where('order_id', $order->id)
+            ->delete();
+
+        $fisik = Fisik_image::where('order_id', $order->id)->delete();
+        Berkas::where('order_id', $order->id)->delete();
+        $pene = PenerimaanUang::where('order_id', $order->id)->delete();
+        Bpkb_m::where('order_id', $order->id)->delete();
+        Bpkb_k::where('order_id', $order->id)->delete();
+
+
+        if ($pene == 1) {
+            Cash_in::where('penerimaan_uang_id', $pene->id)
+                ->delete();
+        }
+        // dd($fisik, $a, $pene);
         Order::destroy($order->id);
         Jaminan::destroy($order->jaminan->id);
         Barang::destroy($order->barang->id);
@@ -1332,12 +1341,8 @@ class FoOrderController extends Controller
         Las::destroy($order->las->id);
         Pinjam::destroy($order->pinjam->id);
         Lingkungan::destroy($order->lingkungan->id);
-        Surat_image::destroy($s->id);
-        Fisik_image::destroy($fisik->id);
-        Bpkb_m::destroy($ms->id);
-        Bpkb_k::destroy($kl->id);
-        Berkas::destroy($berkas->id);
-        PenerimaanUang::destroy($pene->id);
+
+
 
         return redirect('/dashboard/orders')->with('success', 'Data Berhasil dihapus');
     }

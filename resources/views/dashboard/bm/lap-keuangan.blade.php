@@ -24,9 +24,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-                        <div class="card-header pb-0">
+                        {{-- <div class="card-header pb-0">
                             <h5>Cash Out</h5>
-                        </div>
+                        </div> --}}
                         <div id="grafik" class="card-body"></div>
                         <!-- ***************************-->
                         <!-- ********* Cash Out ********-->
@@ -493,9 +493,9 @@
                         <!-- ********* Cash In *********-->
                         <!-- ***************************-->
 
-                        <div class="card-header pb-0">
+                        {{-- <div class="card-header pb-0">
                             <h5>Cash In</h5>
-                        </div>
+                        </div> --}}
                         <div id="grafikcashin" class="card-body"></div>
                         {{-- <div class="card-body pt-3 pb-1 f-12">
                             <div class="row">
@@ -1082,7 +1082,7 @@
         var moon = {!! $moon !!};
         Highcharts.chart('grafik', {
             title: {
-                text: 'Laporan Keuangan'
+                text: 'Cash Out'
             },
             xAxis: {
                 categories: bulan
@@ -1113,7 +1113,7 @@
 
         Highcharts.chart('grafikcashin', {
             title: {
-                text: 'Laporan Keuangan'
+                text: 'Cash in'
             },
             xAxis: {
                 categories: moon

@@ -59,7 +59,7 @@
                     {{-- <td class="border px-4 py-2">{{ $s->created_at->diffForHumans() }}</td> --}}
                 </tr>
             @empty
-                <p class="text-center">Anggota belum memiliki <strong>Simpanan Wajib</strong></p>
+                <td colspan="10">Anggota belum memiliki <strong>Simpanan Wajib</strong></td>
             @endforelse
         </tbody>
     </table>

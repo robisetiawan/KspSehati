@@ -54,13 +54,13 @@
                 {{-- <th scope="col">No</th> --}}
                 <th scope="col">Tgl Pinj</th>
                 <th scope="col">Pinjaman</th>
+                <th scope="col">Admin</th>
                 <th scope="col">Pk Kembali</th>
-                <th scope="col">Angs</th>
                 <th scope="col">Bunga</th>
                 <th scope="col">Bunga Margin</th>
                 <th scope="col">Pokok + Bunga</th>
-                <th scope="col">Periode</th>
-                <th scope="col">Admin</th>
+                <th scope="col">Angs</th>
+                <th scope="col">Sisa Angs</th>
                 <th scope="col">Harga Acuan</th>
             </tr>
         </thead>
@@ -70,18 +70,26 @@
                     {{-- <th>{{ $loop->iteration }}</th> --}}
                     <td>{{ $pinj->created_at->format('d M Y') }}</td>
                     <td>@currency($pinj->nilai_pinj)</td>
+                    <td>@currency($pinj->admin_total)</td>
                     <td>@currency($pinj->pk_kem)</td>
-                    <td>@currency($pinj->angsuran)</td>
                     <td>{{ $pinj->bunga }} %</td>
                     <td>@currency($pinj->bunga_margin)</td>
                     <td>@currency($pinj->pk_marg)</td>
-                    <td>{{ $pinj->periode }}</td>
-                    <td>@currency($pinj->admin_total)</td>
+                    <td>@currency($pinj->angsuran)</td>
+                    @if ($pinj->sisa_angs === 0)
+                        <td class="align-middle">
+                            <span class="badge rounded-pill bg-success ">Lunas</span>
+                        </td>
+                    @elseif ($pinj->sisa_angs === null)
+                        <td>* form belum dilengkapi fo</td>
+                    @else
+                        <td>{{ $pinj->sisa_angs }} dari {{ $pinj->periode }} angsuran</td>
+                    @endif
                     <td>@currency($pinj->harga_acuan)</td>
 
                 </tr>
             @empty
-                <p class="text-center">Tidak ada <strong>Pinjaman</strong></p>
+                <td colspan="10">Tidak ada <strong>Pinjaman</strong></td>
             @endforelse
         </tbody>
     </table>

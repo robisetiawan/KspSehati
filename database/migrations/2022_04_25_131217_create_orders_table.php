@@ -29,7 +29,6 @@ class CreateOrdersTable extends Migration
             $table->enum('keperluan', ['Sendiri', 'Keluarga', 'Orang Lain'])->nullable();
             $table->text('catatan')->nullable();
             $table->text('catt_survey')->nullable();
-            $table->string('sisa_angs')->nullable();
             $table->timestamps();
         });
     }

@@ -28,11 +28,11 @@ class CreatePinjamsTable extends Migration
             $table->integer('bunga_margin')->nullable();
             $table->integer('pk_marg')->nullable();
             $table->integer('pinj_terakhir')->nullable();
-            $table->integer('simp_kok')->nullable();
             $table->integer('nilai_terima')->nullable();
             $table->decimal('bunga', $precision = 8, $scale = 3)->nullable();
             $table->integer('persentase')->nullable();
             $table->integer('sisa_pj')->nullable();
+            $table->integer('sisa_angs')->nullable();
             $table->timestamps();
         });
     }

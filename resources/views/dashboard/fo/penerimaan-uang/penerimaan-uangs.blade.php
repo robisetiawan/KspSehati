@@ -60,16 +60,49 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endif --}}
+                            {{-- <table cellspacing="5" cellpadding="5">
+                                <tbody>
+                                    <tr>
+                                        <td class="p-l-0">Start date:</td>
+                                        <td><input type="text" id="min" name="min"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-l-0">End date:</td>
+                                        <td><input type="text" id="max" name="max"></td>
+                                    </tr>
+                                </tbody>
+                            </table> --}}
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar-o"
+                                                aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" placeholder="Start Date"
+                                            aria-label="Start Date" aria-describedby="basic-addon1" id="min"
+                                            name="min">
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar-o"
+                                                aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" placeholder="End Date"
+                                            aria-label="End Date" aria-describedby="basic-addon1" id="max"
+                                            name="max">
+                                    </div>
+                                </div>
+                            </div>
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
                                         {{-- <th scope="col">No</th> --}}
-                                        <th scope="col">No Terima</th>
-                                        <th scope="col">Tanggal Terima</th>
-                                        <th scope="col">Nama Anggota</th>
-                                        <th scope="col">Angs ke</th>
-                                        <th scope="col">Nominal</th>
-                                        <th scope="col">Action</th>
+                                        <th class="text-center">Tanggal Terima</th>
+                                        <th class="text-center">No Terima</th>
+                                        <th class="text-center">Nama Anggota</th>
+                                        <th class="text-center">Angs ke</th>
+                                        <th class="text-center">Nominal</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
 
@@ -77,8 +110,8 @@
                                     @foreach ($penugs as $pu)
                                         <tr>
                                             {{-- <th>{{ $loop->iteration }}</th> --}}
-                                            <td>{{ $pu->no_terima }}</td>
                                             <td>{{ $pu->created_at->format('d M Y') }}</td>
+                                            <td>{{ $pu->no_terima }}</td>
                                             <td>{{ $pu->order->anggota->user->name }}</td>
                                             <td>{{ $pu->angsuran_ke }}</td>
                                             <td>@currency($pu->nominal)</td>
@@ -130,12 +163,6 @@
 
 @push('scripts')
     // {{-- dataTables --}}
-    <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable({
-                order: true
-            });
-        });
-    </script>
+    <script src="/js/datatables.js"></script>
     {{-- end_dataTables --}}
 @endpush

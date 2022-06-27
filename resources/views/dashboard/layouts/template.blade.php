@@ -26,6 +26,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
     <!-- Font Awesome-->
     <link rel="stylesheet" type="text/css"
         href="{{ asset('templates/assets/font-awesome-4.7.0/css/font-awesome.css ') }}">
@@ -52,6 +55,7 @@
     {{-- endDataTabels --}}
     {{-- heroes.css-bootstrap --}}
     <link rel="stylesheet" href="/css/heroes.css">
+
 
     {{-- Livewire table --}}
     @livewireStyles
@@ -114,9 +118,15 @@
     </script>
     {{-- End --}}
 
-    <script src="{{ asset('templates/assets/js/jquery-3.5.1.min.js ') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+    <script src="{{ asset('templates/assets/jsadd/dataTables.bootstrap4.min.js') }}"></script>
+
+    @stack('scripts')
     <!-- feather icon js-->
-    <script src="{{ asset('templates/assets/js/icons/feather-icon/feather.min.js ') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
     <script src="{{ asset('templates/assets/js/icons/feather-icon/feather-icon.js ') }}"></script>
     <!-- Sidebar jquery-->
     <script src="{{ asset('templates/assets/js/sidebar-menu.js ') }}"></script>
@@ -126,8 +136,8 @@
     <script src="{{ asset('templates/assets/js/bootstrap/bootstrap.min.js ') }}"></script>
     <!-- Plugins JS start-->
 
-    <script src="{{ asset('templates/assets/js/prism/prism.min.js ') }}"></script>
-    <script src="{{ asset('templates/assets/js/clipboard/clipboard.min.js ') }}"></script>
+    {{-- <script src="{{ asset('templates/assets/js/prism/prism.min.js ') }}"></script> --}}
+    {{-- <script src="{{ asset('templates/assets/js/clipboard/clipboard.min.js ') }}"></script>
     <script src="{{ asset('templates/assets/js/counter/jquery.waypoints.min.js ') }}"></script>
     <script src="{{ asset('templates/assets/js/counter/jquery.counterup.min.js ') }}"></script>
     <script src="{{ asset('templates/assets/js/counter/counter-custom.js ') }}"></script>
@@ -138,26 +148,25 @@
     <script src="{{ asset('templates/assets/js/owlcarousel/owl.carousel.js ') }}"></script>
     <script src="{{ asset('templates/assets/js/general-widget.js ') }}"></script>
     <script src="{{ asset('templates/assets/js/height-equal.js ') }}"></script>
-    <script src="{{ asset('templates/assets/js/tooltip-init.js ') }}"></script>
+    <script src="{{ asset('templates/assets/js/tooltip-init.js ') }}"></script> --}}
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="{{ asset('templates/assets/js/script.js ') }}"></script>
 
     <!-- dataTable.js-->
 
-    <script src="{{ asset('templates/assets/jsadd/jquery-3.5.1.js') }}"></script>
-    <script src="{{ asset('templates/assets/jsadd/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('templates/assets/jsadd/dataTables.bootstrap4.min.js') }}"></script>
+    {{-- <script src="{{ asset('templates/assets/jsadd/jquery-3.5.1.js') }}"></script> --}}
+
     <script src="{{ asset('templates/assets/jsadd/jsshowhide.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+    {{-- <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
         integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous">
-    </script>
+    </script> --}}
 
     {{-- dataTables --}}
     @stack('prepend-script')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    @stack('scripts')
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
+
+    {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script> --}}
     {{-- end_dataTables --}}
 
     @stack('chart')

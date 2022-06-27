@@ -2,32 +2,52 @@
 
 @section('content')
     <!-- content -->
-    <div class="page-body p-t-0">
+    <div class="page-body">
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="page-header pt-4 pb-3">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3>Pinjaman</h3>
+                        <h3>Laporan Keuangan</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">KSP Sehati
                             </li>
-                            <li class="breadcrumb-item">Pinjaman</li>
+                            <li class="breadcrumb-item">Laporan Keuangan</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
         <!-- Container-fluid starts-->
 
         <div class="container-fluid">
             <div class="row">
+
                 <div class="col-sm-12">
                     <div class="card">
+                        <ul class="nav nav-pills nav-justified">
+                            <li class="nav-item">
+                                <a class="nav-link {{ $title === 'Lap Uang Masuk' ? 'active' : '' }}" aria-current="page"
+                                    href="/dashboard/lap-keuangan/in">Cash In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ $title === 'Lap Uang Keluar' ? 'active' : '' }}" aria-current="page"
+                                    href="/dashboard/lap-keuangan/in/out">Cash
+                                    Out</a>
+                            </li>
+                        </ul>
+                        {{-- <div class="card-header pb-0">
+                            <h5>Cash Out</h5>
+                        </div> --}}
+                        <div id="grafik" class="card-body"></div>
+                        <!-- ***************************-->
+                        <!-- ********* Cash Out ********-->
+                        <!-- ***************************-->
 
-
-
-                        <div class="card-body pt-3 pb-1 f-12">
+                        {{-- <div class="card-body pt-3 pb-1 f-12">
                             <div class="row">
                                 <div class="col">
                                     <!-- ***************************-->
@@ -36,59 +56,114 @@
                                         <label class="col-sm-2 col-form-label">Jumlah Pinjaman</label>
                                         <div class="col-sm-3">
                                             <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                                value=": @currency($pinlatest->nilai_pinj)">
+                                                value=": {{ $title }}">
                                         </div>
+                                        <label class="col-sm-2 col-form-label">Periode Pinjaman</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                                                value=": {{ $title }}">
+                                        </div>
+                                    </div>
+                                    <!-- ***************************-->
+                                    <!-- ***************************-->
+                                </div>
+                            </div>
+                        </div> --}}
+
+                        <div class="table-responsive card-body pt-3 pb-1 f-12">
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar-o"
+                                                aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" placeholder="Start Date"
+                                            aria-label="Start Date" aria-describedby="basic-addon1" id="min"
+                                            name="min">
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar-o"
+                                                aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" placeholder="End Date"
+                                            aria-label="End Date" aria-describedby="basic-addon1" id="max"
+                                            name="max">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="table-responsive card-body pt-3 pb-1 f-12">
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
                                         <th class="text-center">Tanggal</th>
-                                        <th class="text-center">Angsuran</th>
-                                        <th class="text-center">Periode</th>
-                                        <th class="text-center">Nilai Pinj</th>
-                                        <th class="text-center">Sisa Angs</th>
+                                        <th class="text-center">No Anggota</th>
+                                        <th class="text-center">Nama</th>
+                                        <th class="text-center">Jumlah</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($pinjams as $order)
+                                    @foreach ($orders as $order)
                                         <tr>
-                                            <td>{{ $order->created_at->format('d M Y') }}</td>
-                                            <td>@currency($order->pinjam->angsuran)</td>
-                                            <td>{{ $order->pinjam->periode }}</td>
+                                            <td>{{ $order->pinjam->created_at->format('d M Y') }}</td>
+                                            <td>{{ $order->anggota->no_anggota }}</td>
+                                            <td>{{ $order->anggota->user->name }}</td>
                                             <td>@currency($order->pinjam->nilai_pinj)</td>
-                                            @if ($order->pinjam->sisa_angs === '0')
-                                                <td class="align-middle">
-                                                    <span class="badge rounded-pill bg-success ">Lunas</span>
-                                                </td>
-                                            @elseif ($order->pinjam->sisa_angs === null)
-                                                <td>* form belum dilengkapi oleh admin</td>
-                                            @else
-                                                <td>{{ $order->pinjam->sisa_angs }} Kali</td>
-                                            @endif
                                             <td>
                                                 <button type="button" class="badege bg-success border-0"
-                                                    data-bs-toggle="modal" data-bs-target="#detail{{ $order->id }}"><i
+                                                    data-bs-toggle="modal" data-bs-target="#cashout{{ $order->id }}"><i
                                                         class="fa fa-eye fa-lg" aria-hidden="true"></i>
                                                 </button>
                                             </td>
                                             <!-- Modal -->
-                                            <div class="modal fade" id="detail{{ $order->id }}" tabindex="-1"
-                                                aria-labelledby="detailLabel" aria-hidden="true">
+                                            <div class="modal fade" id="cashout{{ $order->id }}" tabindex="-1"
+                                                aria-labelledby="cashoutLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="detailLabel">Pinjaman
+                                                            <h5 class="modal-title" id="cashoutLabel">Cash Out
                                                             </h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
+                                                            <div class="card mb-1">
+
+                                                                {{-- cardBody --}}
+                                                                <div class="card-body">
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <!-- ****************************************************************************************** -->
+                                                                            <div class="row justify-content-md-center">
+                                                                                <div class="col-sm-5">
+                                                                                    <div class="row mb-1">
+                                                                                        <label for="noorder"
+                                                                                            class="col-sm-5 col-form-label text-end">No
+                                                                                            Order</label>
+                                                                                        <div class="col p-l-0">
+                                                                                            <input
+                                                                                                class="form-control form-control-sm @error('noorder ') is-invalid @enderror"
+                                                                                                name="noorder"
+                                                                                                type="text"
+                                                                                                id="noorder"
+                                                                                                value="{{ $order->no_order }}"
+                                                                                                readonly>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-5 p-l-0">
+                                                                                    <input
+                                                                                        class="form-control form-control-sm @error('nama_ang ') is-invalid @enderror"
+                                                                                        name="nama_ang" type="text"
+                                                                                        id="nama_ang"
+                                                                                        value="{{ $order->anggota->user->name }}"
+                                                                                        readonly>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
                                                             <div class="card mb-0">
                                                                 <div class="card-body f-12">
@@ -130,10 +205,8 @@
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('nilai_pinj') is-invalid @enderror"
                                                                                         name="nilai_pinj" type="text"
-                                                                                        id="nilai_pinj" readonly
-                                                                                        value="@currency($order->pinjam->nilai_pinj)"
-                                                                                        type-currency="IDR"
-                                                                                        placeholder="Rp ">
+                                                                                        id="nilai_pinj"
+                                                                                        value="@currency($order->pinjam->nilai_pinj)" readonly>
                                                                                     @error('nilai_pinj')
                                                                                         <div class="invalid-feedback">
                                                                                             {{ $message }}
@@ -150,10 +223,8 @@
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('admin_total') is-invalid @enderror"
                                                                                         name="admin_total" type="text"
-                                                                                        id="admin_total" readonly
-                                                                                        value="@currency($order->pinjam->admin_total)"
-                                                                                        type-currency="IDR"
-                                                                                        placeholder="Rp ">
+                                                                                        id="admin_total"
+                                                                                        value="@currency($order->pinjam->admin_total)" readonly>
                                                                                     @error('admin_total')
                                                                                         <div class="invalid-feedback">
                                                                                             {{ $message }}
@@ -172,7 +243,7 @@
                                                                                         class="form-control form-control-sm @error('pk_kem') is-invalid @enderror"
                                                                                         name="pk_kem" type="text"
                                                                                         id="pk_kem"
-                                                                                        value="@currency($order->pinjam->pk_kem)" disabled>
+                                                                                        value="@currency($order->pinjam->pk_kem)" readonly>
                                                                                     @error('pk_kem')
                                                                                         <div class="invalid-feedback">
                                                                                             {{ $message }}
@@ -184,13 +255,13 @@
                                                                             <div class="row mb-1">
                                                                                 <label for="persentase"
                                                                                     class="col-sm-6 col-form-label">Persentase</label>
-                                                                                <div class="col-sm-2 p-l-0">
+                                                                                <div class="col-sm-3 p-l-0">
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('persentase') is-invalid @enderror"
                                                                                         name="persentase" type="text"
                                                                                         id="persentase"
                                                                                         value="{{ $order->pinjam->persentase }} %"
-                                                                                        disabled>
+                                                                                        readonly>
                                                                                     @error('persentase')
                                                                                         <div class="invalid-feedback">
                                                                                             {{ $message }}
@@ -234,7 +305,7 @@
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('jumlah_angs') is-invalid @enderror"
                                                                                         name="jumlah_angs" type="number"
-                                                                                        id="jumlah_angs" readonly
+                                                                                        id="jumlah_angs"
                                                                                         value="{{ old('jumlah_angs', $order->pinjam->jumlah_angs) }}">
                                                                                     @error('jumlah_angs')
                                                                                         <div class="invalid-feedback">
@@ -256,8 +327,9 @@
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('periode') is-invalid @enderror"
                                                                                         name="periode" type="text"
-                                                                                        id="periode" readonly
-                                                                                        value="{{ old('periode', $order->pinjam->periode) }}">
+                                                                                        id="periode"
+                                                                                        value="{{ old('periode', $order->pinjam->periode) }}"
+                                                                                        readonly>
                                                                                     @error('periode')
                                                                                         <div class="invalid-feedback">
                                                                                             {{ $message }}
@@ -290,21 +362,19 @@
                                                                                 <label class="col-sm-6 col-form-label"
                                                                                     for="bunga">Bunga
                                                                                 </label>
-                                                                                <div class="col-sm-2 px-0">
+                                                                                <div class="col-sm-3 px-0">
                                                                                     <input
                                                                                         class="form-control form-control-sm @error('bunga') is-invalid @enderror"
                                                                                         name="bunga" type="text"
-                                                                                        id="bunga" readonly
-                                                                                        value="{{ old('bunga', $order->pinjam->bunga) }}">
+                                                                                        id="bunga"
+                                                                                        value="{{ old('bunga', $order->pinjam->bunga) }} %"
+                                                                                        readonly>
                                                                                     @error('bunga')
                                                                                         <div class="invalid-feedback">
                                                                                             {{ $message }}
                                                                                         </div>
                                                                                     @enderror
                                                                                 </div>
-                                                                                <label class="col col-form-label p-l-1">
-                                                                                    %
-                                                                                </label>
                                                                             </div>
 
 
@@ -450,11 +520,49 @@
                 </div>
             </div>
         </div>
+
+
     </div>
-    <!-- EndContent -->
 @endsection
 @push('scripts')
     // {{-- dataTables --}}
     <script src="/js/datatables.js"></script>
     {{-- end_dataTables --}}
+@endpush
+@push('chart')
+    <script src="/js/highcharts.js"></script>
+    <script>
+        var total = {{ $total }};
+        var bulan = {!! $bulan !!};
+        Highcharts.chart('grafik', {
+            title: {
+                text: 'Cash Out'
+            },
+            xAxis: {
+                categories: bulan
+            },
+            yAxis: {
+                title: {
+                    text: 'Nominal'
+                },
+                labels: {
+                    format: 'Rp. {value}'
+                }
+                // accessibility: {
+                //     rangeDescription: 'Range: 1000000 to 25000000'
+                // }
+            },
+            plotOptions: {
+                series: {
+                    allowPointSelect: true
+                }
+            },
+            series: [{
+                name: 'Cash Out',
+                color: '#dc3545',
+                data: total
+            }],
+
+        });
+    </script>
 @endpush

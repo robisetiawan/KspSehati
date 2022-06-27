@@ -192,7 +192,7 @@
                              </li>
 
                              <li class="dropdown">
-                                 <a href="/dashboard/lap-keuangan"
+                                 <a href="/dashboard/lap-keuangan/in"
                                      class="menu-title link-nav nav-link {{ Request::is('/dashboard/lap-keuangan*') ? 'active' : '' }}">
                                      <i data-feather="file-text"></i>
                                      <span>Laporan Keuangan</span>

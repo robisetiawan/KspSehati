@@ -151,7 +151,8 @@ Route::name('bm')->middleware('bm')->group(
         Route::get('/dashboard/lap-dt-employee/bawa_ag/{id}', [BmController::class, 'bawaag']);
         Route::get('/dashboard/lap-dt-employee/detail_ag/{idemp}/{idag}', [BmController::class, 'detailag']);
         // Route::get('/dashboard/lap-dt-ag/{anggota:id}', [BmController::class, 'show']);
-        Route::get('/dashboard/lap-keuangan', [BmController::class, 'lapkeuangan']);
+        Route::get('/dashboard/lap-keuangan/in', [BmController::class, 'in']);
+        Route::get('/dashboard/lap-keuangan/in/out', [BmController::class, 'out']);
     }
 );
 //endRoute BM

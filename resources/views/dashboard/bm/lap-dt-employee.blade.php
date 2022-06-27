@@ -26,14 +26,35 @@
                     <div class="card">
 
                         <div class="table-responsive card-body f-12">
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar-o"
+                                                aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" placeholder="Start Date"
+                                            aria-label="Start Date" aria-describedby="basic-addon1" id="min"
+                                            name="min">
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar-o"
+                                                aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" placeholder="End Date"
+                                            aria-label="End Date" aria-describedby="basic-addon1" id="max"
+                                            name="max">
+                                    </div>
+                                </div>
+                            </div>
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Rangking</th>
-                                        <th scope="col">Nama Anggota</th>
-                                        <th scope="col">Anggota yg dibawa</th>
-                                        <th scope="col">No Telepon</th>
-                                        <th scope="col">Action</th>
+                                        <th class="text-center">Rangking</th>
+                                        <th class="text-center">Nama Anggota</th>
+                                        <th class="text-center">Anggota yg dibawa</th>
+                                        <th class="text-center">No Telepon</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -91,10 +112,6 @@
 @endsection
 @push('scripts')
     // {{-- dataTables --}}
-    <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-        });
-    </script>
+    <script src="/js/datatables.js"></script>
     {{-- end_dataTables --}}
 @endpush

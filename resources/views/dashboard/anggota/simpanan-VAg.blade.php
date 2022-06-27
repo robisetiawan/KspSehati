@@ -60,9 +60,9 @@
                                 <thead>
                                     <tr>
 
-                                        <th scope="row">Tanggal</th>
-                                        <th scope="row">Jumlah Simpanan</th>
-                                        <th scope="row">Action</th>
+                                        <th class="text-center">Tanggal</th>
+                                        <th class="text-center">Jumlah Simpanan</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -84,8 +84,8 @@
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="detailLabel">Simpanan
                                                             </h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="card mb-0">
@@ -140,7 +140,8 @@
                                                                                     <div class="col-sm-4 p-l-0">
                                                                                         <input type="text"
                                                                                             class="form-control form-control-sm @error('name') is-invalid @enderror"
-                                                                                            id="name" name="name" readonly
+                                                                                            id="name" name="name"
+                                                                                            readonly
                                                                                             value="{{ old('name', $s->anggota->user->name) }}" />
                                                                                     </div>
 
@@ -177,7 +178,8 @@
                                                                                     <div class="col-sm-2 p-l-0">
                                                                                         <input
                                                                                             class="form-control form-control-sm @error('jmlh_simpwj') is-invalid @enderror"
-                                                                                            name="jmlh_simpwj" type="text"
+                                                                                            name="jmlh_simpwj"
+                                                                                            type="text"
                                                                                             id="jmlh_simpwj"
                                                                                             value="@currency($s->jmlh_simpwj)"
                                                                                             readonly>
@@ -240,10 +242,11 @@
 @endsection
 @push('scripts')
     // {{-- dataTables --}}
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#myTable').DataTable();
         });
-    </script>
+    </script> --}}
+    <script src="/js/datatables.js"></script>
     {{-- end_dataTables --}}
 @endpush

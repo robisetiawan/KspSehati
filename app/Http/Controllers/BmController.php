@@ -48,19 +48,19 @@ class BmController extends Controller
     //     ]);
     // }
 
-    public function lapkeuangan()
+    public function in()
     {
-        $d = Pinjam::sum('nilai_pinj');
+        // $d = Pinjam::sum('nilai_pinj');
         $i = Cash_in::sum('total');
 
-        $total = Pinjam::select(DB::raw("CAST(SUM(nilai_pinj) as int) as nominal"))
-            ->GroupBy(DB::raw("Month(created_at)"))
-            ->pluck('nominal');
+        // $total = Pinjam::select(DB::raw("CAST(SUM(nilai_pinj) as int) as nominal"))
+        //     ->GroupBy(DB::raw("Month(created_at)"))
+        //     ->pluck('nominal');
 
-        $bulan = Pinjam::select(DB::raw('DATE_FORMAT(created_at, "%M %y") as bulan'))
-            ->GroupBy(DB::raw('DATE_FORMAT(created_at, "%M %y")'))
-            ->OrderBy(DB::raw('date(created_at)'))
-            ->pluck('bulan');
+        // $bulan = Pinjam::select(DB::raw('DATE_FORMAT(created_at, "%M %y") as bulan'))
+        //     ->GroupBy(DB::raw('DATE_FORMAT(created_at, "%M %y")'))
+        //     ->OrderBy(DB::raw('date(created_at)'))
+        //     ->pluck('bulan');
 
         //cashin
         $cashin = Cash_in::select(DB::raw("CAST(SUM(total) as int) as cashin"))
@@ -74,17 +74,50 @@ class BmController extends Controller
         // dd($cashin, $moon);
 
         // dd($d, $i);
-        return view('dashboard.bm.lap-keuangan', [
-            "title" => "Lap Keuangan",
+        return view('dashboard.bm.lap-keuangan-in', [
+            "title" => "Lap Uang Masuk",
+            "orders" => Order::latest()->get(),
+            // "simpans" => Simpanan::with(['anggota.user', 'anggota'])->latest()->get(),
+            "cashin" => Cash_in::latest()->get(),
+            "jmlhcashin" => $i,
+            "masuk" => $cashin,
+            "moon" => $moon
+        ]);
+    }
+    public function Out()
+    {
+        $d = Pinjam::sum('nilai_pinj');
+        // $i = Cash_in::sum('total');
+
+        $total = Pinjam::select(DB::raw("CAST(SUM(nilai_pinj) as int) as nominal"))
+            ->GroupBy(DB::raw("Month(created_at)"))
+            ->pluck('nominal');
+
+        $bulan = Pinjam::select(DB::raw('DATE_FORMAT(created_at, "%M %y") as bulan'))
+            ->GroupBy(DB::raw('DATE_FORMAT(created_at, "%M %y")'))
+            ->OrderBy(DB::raw('date(created_at)'))
+            ->pluck('bulan');
+
+        //cashin
+        // $cashin = Cash_in::select(DB::raw("CAST(SUM(total) as int) as cashin"))
+        //     ->GroupBy(DB::raw("Month(created_at)"))
+        //     ->pluck('cashin');
+
+        // $moon = Cash_in::select(DB::raw('DATE_FORMAT(created_at, "%M %y") as moon'))
+        //     ->GroupBy(DB::raw('DATE_FORMAT(created_at, "%M %y")'))
+        //     ->OrderBy(DB::raw('date(created_at)'))
+        //     ->pluck('moon');
+        // dd($cashin, $moon);
+
+        // dd($d, $i);
+        return view('dashboard.bm.lap-keuangan-out', [
+            "title" => "Lap Uang Keluar",
             "orders" => Order::latest()->get(),
             // "simpans" => Simpanan::with(['anggota.user', 'anggota'])->latest()->get(),
             "cashin" => Cash_in::latest()->get(),
             "jmlhcashout" => $d,
-            "jmlhcashin" => $i,
             "total" => $total,
             "bulan" => $bulan,
-            "masuk" => $cashin,
-            "moon" => $moon
         ]);
     }
 

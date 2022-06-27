@@ -41,15 +41,36 @@
                                 </div>
                             @endif
                             {{-- <livewire:anggota-table> --}}
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar-o"
+                                                aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" placeholder="Start Date"
+                                            aria-label="Start Date" aria-describedby="basic-addon1" id="min"
+                                            name="min">
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar-o"
+                                                aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" placeholder="End Date"
+                                            aria-label="End Date" aria-describedby="basic-addon1" id="max"
+                                            name="max">
+                                    </div>
+                                </div>
+                            </div>
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
                                         {{-- <th scope="col">No</th> --}}
-                                        <th scope="col">Tanggal Keluar</th>
-                                        <th scope="col">Penerima</th>
-                                        <th scope="col">Dibrkn Oleh</th>
-                                        <th scope="col">Foto</th>
-                                        <th scope="col">Action</th>
+                                        <th class="text-center">Tanggal Keluar</th>
+                                        <th class="text-center">Penerima</th>
+                                        <th class="text-center">Dibrkn Oleh</th>
+                                        <th class="text-center">Foto</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -101,12 +122,6 @@
 @endsection
 @push('scripts')
     // {{-- dataTables --}}
-    <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable({
-                order: true
-            });
-        });
-    </script>
+    <script src="/js/datatables.js"></script>
     {{-- end_dataTables --}}
 @endpush

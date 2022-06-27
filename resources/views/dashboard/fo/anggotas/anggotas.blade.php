@@ -41,26 +41,48 @@
                                 </div>
                             @endif
                             {{-- <livewire:anggota-table> --}}
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar-o"
+                                                aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" placeholder="Start Date"
+                                            aria-label="Start Date" aria-describedby="basic-addon1" id="min"
+                                            name="min">
+
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar-o"
+                                                aria-hidden="true"></i></span>
+                                        <input type="text" class="form-control" placeholder="End Date"
+                                            aria-label="End Date" aria-describedby="basic-addon1" id="max"
+                                            name="max">
+                                    </div>
+                                </div>
+                            </div>
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
                                         {{-- <th scope="col">No</th> --}}
-                                        <th scope="col">No Anggota</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">TTL</th>
-                                        <th scope="col">Telepon</th>
-                                        <th scope="col">Action</th>
+                                        <th class="text-center">Tgl Gabung</th>
+                                        <th class="text-center">No Anggota</th>
+                                        <th class="text-center">Nama</th>
+                                        <th class="text-center">TTL</th>
+                                        <th class="text-center">Telepon</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($anggotas as $a)
                                         <tr>
-                                            {{-- <th>{{ $loop->iteration }}</th> --}}
-                                            <td>{{ $a->no_anggota }}</td>
-                                            <td>{{ $a->user->name }}</td>
-                                            <td>{{ $a->tempat_lahir }}, {{ $a->tanggal_lahir }}</td>
-                                            <td>{{ $a->telepon_seluler }}</td>
-                                            <td>
+                                            <td class="text-center">{{ $a->created_at->format('d M Y') }}</td>
+                                            <td class="text-center">{{ $a->no_anggota }}</td>
+                                            <td class="text-center">{{ $a->user->name }}</td>
+                                            <td class="text-center">{{ $a->tempat_lahir }}, {{ $a->tanggal_lahir }}</td>
+                                            <td class="text-center">{{ $a->telepon_seluler }}</td>
+                                            <td class="text-center">
                                                 <div class="btn-group" role="group"
                                                     aria-label="Basic mixed styles example">
                                                     <a href="/dashboard/anggotas/{{ $a->id }}">
@@ -96,12 +118,13 @@
 @endsection
 @push('scripts')
     // {{-- dataTables --}}
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#myTable').DataTable({
                 order: true
             });
         });
-    </script>
+    </script> --}}
+    <script src="/js/datatables.js"></script>
     {{-- end_dataTables --}}
 @endpush

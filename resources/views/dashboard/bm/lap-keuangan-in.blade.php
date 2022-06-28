@@ -29,7 +29,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <ul class="nav nav-pills nav-justified">
-                            <li class="nav-item">
+                            <li class="nav-item nav-success">
                                 <a class="nav-link {{ $title === 'Lap Uang Masuk' ? 'active' : '' }}" aria-current="page"
                                     href="/dashboard/lap-keuangan/in">Cash In</a>
                             </li>
@@ -42,7 +42,19 @@
                         {{-- <div class="card-header pb-0">
                             <h5>Cash Out</h5>
                         </div> --}}
-                        <div id="grafik" class="card-body"></div>
+                        <div class="row pb-0 card-body justify-content-md-center">
+                            <div class="col-sm-3">
+                                <label class="form-label">Start Date</label>
+                                <input class="form-control" onchange="filterData()" type="date" id="startdate"
+                                    placeholder="Start Date">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="form-label">End Date</label>
+                                <input class="form-control" onchange="filterData()" type="date" id="enddate"
+                                    placeholder="End Date">
+                            </div>
+                        </div>
+                        <canvas id="myChart" class="card-body"></canvas>
                         <!-- ***************************-->
                         <!-- ********* Cash Out ********-->
                         <!-- ***************************-->
@@ -141,7 +153,8 @@
                                                                                                     class="col-sm-4 col-form-label"
                                                                                                     for="no_terima">No
                                                                                                     Terima</label>
-                                                                                                <div class="col-sm-4 p-l-0">
+                                                                                                <div
+                                                                                                    class="col-sm-4 p-l-0">
                                                                                                     <input
                                                                                                         class="form-control form-control-sm @error('no_terima') is-invalid @enderror"
                                                                                                         name="no_terima"
@@ -163,7 +176,8 @@
                                                                                                     class="col-sm-4 col-form-label"
                                                                                                     for="no_anggota">No
                                                                                                     Anggota</label>
-                                                                                                <div class="col-sm-4 p-l-0">
+                                                                                                <div
+                                                                                                    class="col-sm-4 p-l-0">
                                                                                                     <input
                                                                                                         class="form-control form-control-sm @error('no_anggota') is-invalid @enderror"
                                                                                                         name="no_anggota"
@@ -611,40 +625,57 @@
     {{-- end_dataTables --}}
 @endpush
 @push('chart')
-    <script src="/js/highcharts.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         var cashin = {{ $masuk }};
-        var moon = {!! $moon !!};
+        var month = {!! $moon !!};
+        const data = {
+            labels: month,
+            datasets: [{
+                label: 'Cash In',
+                data: cashin,
+                backgroundColor: '#1b4c43',
+                borderColor: '#1b4c43',
+                borderWidth: 3
+            }]
+        };
 
-        Highcharts.chart('grafik', {
-            title: {
-                text: 'Cash in'
-            },
-            xAxis: {
-                categories: moon
-            },
-            yAxis: {
-                title: {
-                    text: 'Nominal'
-                },
-                labels: {
-                    format: 'Rp. {value}'
+        // config
+        const config = {
+            type: 'line',
+            data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
-                // accessibility: {
-                //     rangeDescription: 'Range: 1000000 to 25000000'
-                // }
-            },
-            plotOptions: {
-                series: {
-                    allowPointSelect: true
-                }
-            },
-            series: [{
-                name: 'Cash In',
-                color: '#008199',
-                data: cashin
-            }],
+            }
+        };
 
-        });
+        // render init block
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        function filterData() {
+            const month2 = [...month];
+            console.log(month2);
+            const startdate = document.getElementById('startdate');
+            const enddate = document.getElementById('enddate');
+
+            //get index number in array
+            const indexstartdate = month2.indexOf(startdate.value);
+            const indexenddate = month2.indexOf(enddate.value);
+            console.log(indexstartdate);
+
+            // slice the array only showing the selected section / slice
+            const filterDate = month2.slice(indexstartdate, indexenddate + 1);
+
+            //replace the labels in the chart
+            myChart.config.data.labels = filterDate;
+            myChart.update();
+        }
     </script>
 @endpush

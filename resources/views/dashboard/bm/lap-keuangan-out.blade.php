@@ -33,7 +33,7 @@
                                 <a class="nav-link {{ $title === 'Lap Uang Masuk' ? 'active' : '' }}" aria-current="page"
                                     href="/dashboard/lap-keuangan/in">Cash In</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item nav-danger">
                                 <a class="nav-link {{ $title === 'Lap Uang Keluar' ? 'active' : '' }}" aria-current="page"
                                     href="/dashboard/lap-keuangan/in/out">Cash
                                     Out</a>
@@ -42,7 +42,19 @@
                         {{-- <div class="card-header pb-0">
                             <h5>Cash Out</h5>
                         </div> --}}
-                        <div id="grafik" class="card-body"></div>
+                        <div class="row pb-0 card-body justify-content-md-center">
+                            <div class="col-sm-3">
+                                <label class="form-label">Start Date</label>
+                                <input class="form-control" onchange="filterData()" type="date" id="startdate"
+                                    placeholder="Start Date">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="form-label">End Date</label>
+                                <input class="form-control" onchange="filterData()" type="date" id="enddate"
+                                    placeholder="End Date">
+                            </div>
+                        </div>
+                        <canvas id="myChart" class="card-body"></canvas>
                         <!-- ***************************-->
                         <!-- ********* Cash Out ********-->
                         <!-- ***************************-->
@@ -530,39 +542,57 @@
     {{-- end_dataTables --}}
 @endpush
 @push('chart')
-    <script src="/js/highcharts.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         var total = {{ $total }};
         var bulan = {!! $bulan !!};
-        Highcharts.chart('grafik', {
-            title: {
-                text: 'Cash Out'
-            },
-            xAxis: {
-                categories: bulan
-            },
-            yAxis: {
-                title: {
-                    text: 'Nominal'
-                },
-                labels: {
-                    format: 'Rp. {value}'
-                }
-                // accessibility: {
-                //     rangeDescription: 'Range: 1000000 to 25000000'
-                // }
-            },
-            plotOptions: {
-                series: {
-                    allowPointSelect: true
-                }
-            },
-            series: [{
-                name: 'Cash Out',
-                color: '#dc3545',
-                data: total
-            }],
+        const data = {
+            labels: bulan,
+            datasets: [{
+                label: 'Cash Out',
+                data: total,
+                backgroundColor: '#d22d3d',
+                borderColor: '#d22d3d',
+                borderWidth: 3
+            }]
+        };
 
-        });
+        // config
+        const config = {
+            type: 'line',
+            data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // render init block
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        function filterData() {
+            const bulan2 = [...bulan];
+            console.log(bulan2);
+            const startdate = document.getElementById('startdate');
+            const enddate = document.getElementById('enddate');
+
+            //get index number in array
+            const indexstartdate = bulan2.indexOf(startdate.value);
+            const indexenddate = bulan2.indexOf(enddate.value);
+            console.log(indexstartdate);
+
+            // slice the array only showing the selected section / slice
+            const filterDate = bulan2.slice(indexstartdate, indexenddate + 1);
+
+            //replace the labels in the chart
+            myChart.config.data.labels = filterDate;
+            myChart.update();
+        }
     </script>
 @endpush

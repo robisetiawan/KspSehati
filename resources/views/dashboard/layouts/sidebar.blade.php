@@ -131,7 +131,7 @@
                                  <a href="/cetak-buku-anggota"
                                      class="menu-title link-nav nav-link {{ $title === 'Cetak Buku Anggota' ? 'active' : '' }}">
                                      <i data-feather="printer"></i>
-                                     <span>Cetak Buku Anggota</span>
+                                     <span>Cetak Kartu Anggota</span>
                                  </a>
                              </li>
 

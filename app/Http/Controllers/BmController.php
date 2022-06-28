@@ -64,16 +64,33 @@ class BmController extends Controller
 
         //cashin
         $cashin = Cash_in::select(DB::raw("CAST(SUM(total) as int) as cashin"))
-            ->GroupBy(DB::raw("Month(created_at)"))
+            ->GroupBy(DB::raw("Date(created_at)"))
             ->pluck('cashin');
 
-        $moon = Cash_in::select(DB::raw('DATE_FORMAT(created_at, "%M %y") as moon'))
-            ->GroupBy(DB::raw('DATE_FORMAT(created_at, "%M %y")'))
+        $moon = Cash_in::select(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as moon'))
+            ->GroupBy(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'))
             ->OrderBy(DB::raw('date(created_at)'))
             ->pluck('moon');
-        // dd($cashin, $moon);
+        // $a = array_merge(array($cashin), array($moon));
+        // $c = array();
+        // dd($moon);
+        // // $a = Cash_in::all();
+        // // dd($cashin, $moon);
+        // foreach ($cashin as $a => $value) {
 
-        // dd($d, $i);
+
+        //     // print($moon[$a] . " " . $cashin[$a] . ",");
+        //     $b = array_merge(array($moon[$a]), array($cashin[$a]));
+        //     $d = array_merge($c, $b);
+        //     $c = $d;
+
+        //     //     // return $b;
+        // }
+        // foreach ($d as $d) {
+        //     $as = [$d[0] . "," . $d[1]];
+        // }
+        // dd([$d[0] . "," . $d[1]]);
+        // dd($d);
         return view('dashboard.bm.lap-keuangan-in', [
             "title" => "Lap Uang Masuk",
             "orders" => Order::latest()->get(),
@@ -90,11 +107,11 @@ class BmController extends Controller
         // $i = Cash_in::sum('total');
 
         $total = Pinjam::select(DB::raw("CAST(SUM(nilai_pinj) as int) as nominal"))
-            ->GroupBy(DB::raw("Month(created_at)"))
+            ->GroupBy(DB::raw("Date(created_at)"))
             ->pluck('nominal');
 
-        $bulan = Pinjam::select(DB::raw('DATE_FORMAT(created_at, "%M %y") as bulan'))
-            ->GroupBy(DB::raw('DATE_FORMAT(created_at, "%M %y")'))
+        $bulan = Pinjam::select(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as bulan'))
+            ->GroupBy(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'))
             ->OrderBy(DB::raw('date(created_at)'))
             ->pluck('bulan');
 

@@ -7,11 +7,11 @@
             <div class="page-header pt-4 pb-3">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h3>Cetak Buku Anggota</h3>
+                        <h3>Cetak Kartu Anggota</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">KSP Sehati
                             </li>
-                            <li class="breadcrumb-item">Cetak Buku Anggota</li>
+                            <li class="breadcrumb-item">Cetak Kartu Anggota</li>
                         </ol>
                     </div>
                     <div class="col-lg-6">
@@ -24,7 +24,7 @@
 
         <div class="card">
             <div class="card-header pb-0 text-center">
-                <h5>Buku Anggota</h5>
+                <h5>Kartu Anggota</h5>
                 <h6>Koperasi Sehati Makmur Abadi</h6>
             </div>
 

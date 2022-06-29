@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profession extends Model
+class Ag_Berhenti extends Model
 {
     use HasFactory;
-    protected $guarded = [''];
+    protected $guarded = ['id'];
+
+    protected $with = ['anggota', 'anggota.user'];
 
     public function anggota()
     {
-        return $this->hasOne(Anggota::class);
-        //satu anggota bisa memiliki >= 1 Identity
+        return $this->belongsTo(Anggota::class);
     }
 }

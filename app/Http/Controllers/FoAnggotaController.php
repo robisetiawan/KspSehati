@@ -10,6 +10,7 @@ use App\Models\Identity;
 use App\Models\Profession;
 use Illuminate\Http\Request;
 use App\Exports\AnggotaExport;
+use App\Models\Ag_Berhenti;
 use App\Models\Simpanan;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -127,9 +128,11 @@ class FoAnggotaController extends Controller
                 "telepon_seluler" => 'nullable|min:10|max:12',
                 "telepon_kantor" => 'nullable|min:10|max:12',
                 //simp_pk
-                "simpkok" => 'required'
+                "simpkok" => 'required',
+                "status" => 'nullable'
 
             ]);
+
 
 
             if ($request->file('image')) {
@@ -231,7 +234,8 @@ class FoAnggotaController extends Controller
                 "telepon_rumah" => $request->telepon_rumah,
                 "telepon_seluler" => $request->telepon_seluler,
                 "telepon_kantor" => $request->telepon_kantor,
-                "simpkok" => $intsimpkok
+                "simpkok" => $intsimpkok,
+                "status" => 'Aktif'
 
             ]);
         });
@@ -464,6 +468,8 @@ class FoAnggotaController extends Controller
         Identity::destroy($anggota->identity->id);
         Profession::destroy($anggota->profession->id);
         Adddata::destroy($anggota->adddata->id);
+        Ag_Berhenti::where('anggota_id', $anggota->id)
+            ->delete();
 
         return redirect('/dashboard/anggotas')->with('success', 'Anggota Berhasil dihapus');
     }

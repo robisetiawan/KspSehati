@@ -443,7 +443,7 @@ class FoOrderController extends Controller
             Employee::where('id', $request->penanggung_jawab)->update(['bawa_ag' => $b]);
         } else;
 
-        $validanggotas['pinj'] = $request->nilai_pinj;
+        // $validanggotas['pinj'] = $request->nilai_pinj;
         $validorder['employee_id'] = $request->penanggung_jawab;
         // dd($order->pinjam->periode, $request->periode);
         $r = (int)$request->periode;

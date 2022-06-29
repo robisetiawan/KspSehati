@@ -31,8 +31,8 @@
                             <a href="/dashboard/anggotas/create" class="btn btn-primary mb-2"><i class="fa fa-plus"
                                     aria-hidden="true"></i> Tambah anggota</a>
 
-                            <a href="/export-data-anggota" class="btn btn-success mb-2"><i class="fa fa-file-excel-o"
-                                    aria-hidden="true"></i> Excel</a>
+                            {{-- <a href="/export-data-anggota" class="btn btn-success mb-2"><i class="fa fa-file-excel-o"
+                                    aria-hidden="true"></i> Excel</a> --}}
                             @if (session()->has('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     {{ session('success') }}
@@ -70,40 +70,113 @@
                                         <th class="text-center">No Anggota</th>
                                         <th class="text-center">Nama</th>
                                         <th class="text-center">TTL</th>
-                                        <th class="text-center">Telepon</th>
+                                        <th class="text-center">Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($anggotas as $a)
                                         <tr>
-                                            <td class="text-center">{{ $a->created_at->format('d M Y') }}</td>
-                                            <td class="text-center">{{ $a->no_anggota }}</td>
-                                            <td class="text-center">{{ $a->user->name }}</td>
-                                            <td class="text-center">{{ $a->tempat_lahir }}, {{ $a->tanggal_lahir }}</td>
-                                            <td class="text-center">{{ $a->telepon_seluler }}</td>
-                                            <td class="text-center">
-                                                <div class="btn-group" role="group"
-                                                    aria-label="Basic mixed styles example">
-                                                    <a href="/dashboard/anggotas/{{ $a->id }}">
-                                                        <button class="badge bg-success border-0"><i class="fa fa-eye fa-lg"
-                                                                aria-hidden="true"></i></button>
-                                                    </a>
+                                            {{-- Nonaktif --}}
+                                            @if ($a->status === 'Nonaktif')
+                                                <td class="align-middle" style="background-color: #f8d7da;">
+                                                    {{ $a->created_at->format('d M Y') }}
+                                                </td>
+                                                <td class="align-middle" style="background-color: #f8d7da;">
+                                                    {{ $a->no_anggota }}</td>
+                                                <td class="align-middle" style="background-color: #f8d7da;">
+                                                    {{ $a->nama_panggilan }}</td>
+                                                <td class="align-middle" style="background-color: #f8d7da;">
+                                                    {{ $a->tempat_lahir }},
+                                                    {{ $a->tanggal_lahir }}
+                                                </td>
+                                                @if ($a->status === 'Nonaktif')
+                                                    <td class="align-middle" style="background-color: #f8d7da;">
+                                                        <span
+                                                            class="badge rounded-pill bg-danger ">{{ $a->status }}</span>
+                                                    </td>
+                                                @elseif ($a->status === 'Aktif')
+                                                    <td class="align-middle" style="background-color: #f8d7da;">
+                                                        <span
+                                                            class="badge rounded-pill bg-success ">{{ $a->status }}</span>
+                                                    </td>
+                                                @else
+                                                @endif
+                                                <td class="align-middle" style="background-color: #f8d7da;">
+                                                    <div class="btn-group" role="group"
+                                                        aria-label="Basic mixed styles example">
+                                                        <a href="/dashboard/anggotas/{{ $a->id }}">
+                                                            <button class="badge bg-success border-0"><i
+                                                                    class="fa fa-eye fa-lg" aria-hidden="true"></i></button>
+                                                        </a>
 
-                                                    <a href="/dashboard/anggotas/{{ $a->id }}/edit">
-                                                        <button class="badge bg-primary border-0"><i
-                                                                class="fa fa-pencil fa-lg" aria-hidden="true"></i></button>
-                                                    </a>
+                                                        <a href="/dashboard/anggotas/{{ $a->id }}/edit">
+                                                            <button class="badge bg-primary border-0"><i
+                                                                    class="fa fa-pencil fa-lg"
+                                                                    aria-hidden="true"></i></button>
+                                                        </a>
 
-                                                    <form action="/dashboard/anggotas/{{ $a->id }}" method="POST">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <button class="badge bg-danger border-0"
-                                                            onclick="return confirm('Are you sure !!')"><i
-                                                                class="fa fa-times fa-lg" aria-hidden="true"></i></button>
-                                                    </form>
-                                                </div>
-                                            </td>
+                                                        <form action="/dashboard/anggotas/{{ $a->id }}"
+                                                            method="POST">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <button class="badge bg-danger border-0"
+                                                                onclick="return confirm('Are you sure !!')"><i
+                                                                    class="fa fa-times fa-lg"
+                                                                    aria-hidden="true"></i></button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+
+                                                {{-- Aktif --}}
+                                            @elseif ($a->status === 'Aktif')
+                                                <td class="align-middle">{{ $a->created_at->format('d M Y') }}</td>
+                                                <td class="align-middle">{{ $a->no_anggota }}</td>
+                                                <td class="align-middle">{{ $a->nama_panggilan }}</td>
+                                                <td class="align-middle">{{ $a->tempat_lahir }},
+                                                    {{ $a->tanggal_lahir }}</td>
+                                                @if ($a->status === 'Nonaktif')
+                                                    <td class="align-middle">
+                                                        <span
+                                                            class="badge rounded-pill bg-danger ">{{ $a->status }}</span>
+                                                    </td>
+                                                @elseif ($a->status === 'Aktif')
+                                                    <td class="align-middle">
+                                                        <span
+                                                            class="badge rounded-pill bg-success ">{{ $a->status }}</span>
+                                                    </td>
+                                                @else
+                                                @endif
+                                                <td class="align-middle">
+                                                    <div class="btn-group" role="group"
+                                                        aria-label="Basic mixed styles example">
+                                                        <a href="/dashboard/anggotas/{{ $a->id }}">
+                                                            <button class="badge bg-success border-0"><i
+                                                                    class="fa fa-eye fa-lg"
+                                                                    aria-hidden="true"></i></button>
+                                                        </a>
+
+                                                        <a href="/dashboard/anggotas/{{ $a->id }}/edit">
+                                                            <button class="badge bg-primary border-0"><i
+                                                                    class="fa fa-pencil fa-lg"
+                                                                    aria-hidden="true"></i></button>
+                                                        </a>
+
+                                                        <form action="/dashboard/anggotas/{{ $a->id }}"
+                                                            method="POST">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <button class="badge bg-danger border-0"
+                                                                onclick="return confirm('Are you sure !!')"><i
+                                                                    class="fa fa-times fa-lg"
+                                                                    aria-hidden="true"></i></button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            @else
+                                            @endif
+
+
 
                                         </tr>
                                     @endforeach

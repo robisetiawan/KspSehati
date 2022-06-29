@@ -125,6 +125,13 @@
                                      <span>Simpanan</span>
                                  </a>
                              </li>
+                             <li class="dropdown">
+                                 <a href="/dashboard/stop-out"
+                                     class="menu-title link-nav nav-link {{ Request::is('/dashboard/stop-out*') ? 'active' : '' }}">
+                                     <i data-feather="stop-circle"></i>
+                                     <span>Anggota Berhenti</span>
+                                 </a>
+                             </li>
 
 
                              <li class="dropdown">

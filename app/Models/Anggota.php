@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Anggota extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    protected $guarded = [''];
 
     public function order()
     {
         return $this->hasOne(Order::class);
+        //satu anggota bisa memiliki >= 1 Order
+    }
+    public function agberhenti()
+    {
+        return $this->hasOne(Ag_Berhenti::class);
         //satu anggota bisa memiliki >= 1 Order
     }
 

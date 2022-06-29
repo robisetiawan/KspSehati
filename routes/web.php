@@ -16,6 +16,7 @@ use App\Http\Controllers\SimpananController;
 use App\Http\Controllers\AgAnggotaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FoAnggotaController;
+use App\Http\Controllers\AgBerhentiController;
 use App\Http\Controllers\CetakBukuAgController;
 use App\Http\Controllers\PenerimaanUangController;
 // use App\Http\Livewire\PinjamTable;
@@ -76,6 +77,8 @@ Route::name('fo')->middleware('fo')->group(
         Route::get('/dashboard/pooling-order/cari', [FoOrderController::class, 'caripoolingorder']);
 
         Route::resource('/dashboard/anggotas', FoAnggotaController::class);
+        Route::resource('/dashboard/stop-out', AgBerhentiController::class);
+        Route::get('/dashboard/stopout/search', [SearchController::class, 'agcari']);
         // Route::get('/dashboard/anggotas/{anggota}', [SimpananTable::class, 'mount']);
         Route::resource('/dashboard/employee', EmployeeController::class);
 

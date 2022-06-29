@@ -28,6 +28,7 @@ class CreateAnggotasTable extends Migration
             $table->char('telepon_rumah', 12)->nullable();
             $table->char('telepon_seluler', 12)->nullable();
             $table->char('telepon_kantor', 12)->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cash_in;
 use App\Models\Order;
+use App\Models\Pinjam;
+use App\Models\Cash_in;
 use Illuminate\Http\Request;
 use App\Models\PenerimaanUang;
 
@@ -31,7 +32,8 @@ class PenerimaanUangController extends Controller
     {
         return view('dashboard.fo.penerimaan-uang.create-penerimaan-uang', [
             'title' => 'Tambah Anggota',
-            'orders' => Order::all()
+            'orders' => Order::all(),
+
         ]);
     }
 
@@ -80,7 +82,7 @@ class PenerimaanUangController extends Controller
             'total' => $request->nominal
         ]);
 
-        Order::where('id', $request->id)
+        Pinjam::where('id', $request->pinjam_id)
             ->update(['sisa_angs' => $request->periode - $request->angsuran_ke]);
 
         return redirect('/dashboard/penerimaan-uang')->with('success', 'Berhasil menambahkan order');
@@ -167,7 +169,7 @@ class PenerimaanUangController extends Controller
         $pene = PenerimaanUang::where('id', $penerimaanUang->id)
             ->update($validatedData);
 
-        Order::where('id', $request->order_id)
+        Pinjam::where('id', $request->pinjam_id)
             ->update(['sisa_angs' => $request->periode - $request->angsuran_ke]);
 
         return redirect('/dashboard/penerimaan-uang')->with('success', 'Data Berhadsil diupdate');
@@ -181,14 +183,17 @@ class PenerimaanUangController extends Controller
      */
     public function destroy(PenerimaanUang $penerimaanUang)
     {
-        $s = Order::where('id', $penerimaanUang->order_id)->first();
+        // $s = Order::where('id', $penerimaanUang->order_id)->first();
         // dd($penerimaanUang->angsuran_ke, $penerimaanUang->order->pinjam->periode, $s->sisa_angs);
+        $p = Pinjam::where('id', $penerimaanUang->order->pinjam->id)->first();
+        // dd($penerimaanUang->angsuran_ke, $p->id);
         PenerimaanUang::destroy($penerimaanUang->id);
         Cash_in::where('penerimaan_uang_id', $penerimaanUang->id)
             ->delete();
 
-        Order::where('id', $penerimaanUang->order_id)
-            ->update(['sisa_angs' => $penerimaanUang->angsuran_ke + $s->sisa_angs]);
+
+        Pinjam::where('id', $penerimaanUang->order->pinjam->id)
+            ->update(['sisa_angs' => $penerimaanUang->angsuran_ke - $penerimaanUang->angsuran_ke + $p->sisa_angs + 1]);
 
         return redirect('/dashboard/penerimaan-uang')->with('success', 'Data Berhasil dihapus');
     }

@@ -23,6 +23,7 @@ use App\Models\Profession;
 use App\Models\Fisik_image;
 use App\Models\Surat_image;
 use App\Models\Kondisi_unit;
+use App\Models\PencEmp;
 use Illuminate\Http\Request;
 use App\Models\PenerimaanUang;
 use Illuminate\Validation\Rule;
@@ -437,11 +438,18 @@ class FoOrderController extends Controller
                 $pickEmp = Employee::where('id', $request->oldPj)->first();
                 $a = $pickEmp->bawa_ag - 1;
                 Employee::where('id', $request->oldPj)->update(['bawa_ag' => $a]);
+
+                PencEmp::where('employee_id', $pickEmp->id)->delete();
             }
 
             $pickEbru = Employee::where('id', $request->penanggung_jawab)->first();
             $b = $pickEbru->bawa_ag + 1;
             Employee::where('id', $request->penanggung_jawab)->update(['bawa_ag' => $b]);
+
+            PencEmp::create([
+                'employee_id' => $pickEbru->id,
+                'bawa_ag' => 1
+            ]);
         } else;
 
         // $validanggotas['pinj'] = $request->nilai_pinj;
@@ -1307,7 +1315,10 @@ class FoOrderController extends Controller
             ->update($validorder);
 
         Cash_out::where('pinjam_id', $order->pinjam->id)
-            ->update(['total' => $request->nilai_pinj]);
+            ->update([
+                'total' => $request->nilai_pinj,
+                'order_id' => $order->id
+            ]);
 
 
         // return redirect('/dashboard/orders/1/edit')->with('success', 'Data Berhasil diupdate');
@@ -1323,6 +1334,14 @@ class FoOrderController extends Controller
      */
     public function destroy(Order $order)
     {
+
+        $pickEmp = Employee::find($order->employee_id);
+        $a = $pickEmp->bawa_ag - 1;
+        Employee::where('id', $order->employee_id)->update(['bawa_ag' => $a]);
+
+        PencEmp::where('employee_id', $pickEmp->id)->delete();
+
+
         $a = Surat_image::where('order_id', $order->id)
             ->delete();
 

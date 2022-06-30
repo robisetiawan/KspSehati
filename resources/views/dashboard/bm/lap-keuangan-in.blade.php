@@ -86,6 +86,7 @@
                                         <th class="text-center">Tanggal</th>
                                         <th class="text-center">No Anggota</th>
                                         <th class="text-center">Nama</th>
+                                        <th class="text-center">Angs ke</th>
                                         <th class="text-center">Jumlah</th>
                                         <th class="text-center">Action</th>
                                     </tr>

@@ -87,4 +87,9 @@ class Order extends Model
     {
         return $this->hasOne(Bpkb_k::class);
     }
+
+    public function cash_out()
+    {
+        return $this->hasOne(Cash_out::class);
+    }
 }

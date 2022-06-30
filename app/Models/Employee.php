@@ -15,4 +15,9 @@ class Employee extends Model
         return $this->hasMany(Order::class);
         //satu anggota bisa memiliki >= 1 Identity
     }
+
+    public function pencemp()
+    {
+        return $this->hasMany(PencEmp::class);
+    }
 }

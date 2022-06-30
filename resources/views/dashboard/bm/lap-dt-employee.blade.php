@@ -52,7 +52,7 @@
                                             <thead>
                                                 <tr>
                                                     <th class="text-center">Rangking</th>
-                                                    <th class="text-center">Nama Anggota</th>
+                                                    <th class="text-center">Nama</th>
                                                     <th class="text-center">Anggota yg dibawa</th>
                                                     <th class="text-center">No Telepon</th>
                                                     <th class="text-center">Action</th>
@@ -128,6 +128,39 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <table class="table table-bordered table-xxs text-center table-striped"
+                                            id="myTable">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">Tgl Gbng</th>
+                                                    <th class="text-center">Nama</th>
+                                                    <th class="text-center">Anggota yg dibawa</th>
+                                                    <th class="text-center">No Telepon</th>
+                                                    {{-- <th class="text-center">Action</th> --}}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{-- <input type="hidden" value="{{ $no = 0 }}"> --}}
+                                                @foreach ($penc as $p)
+                                                    <tr>
+                                                        <td>{{ $p->created_at->format('d M Y') }}</td>
+                                                        <td>{{ $p->employee->nama }}</td>
+                                                        <td>{{ $p->employee->bawa_ag }}</td>
+                                                        <td>{{ $p->employee->no_tel }}</td>
+                                                        {{-- <td>
+                                                            <div class="btn-group" role="group"
+                                                                aria-label="Basic mixed styles example">
+                                                                <a href="/dashboard/lap-dt-employee/{{ $a->id }}">
+                                                                    <button class="badge bg-success border-0"><i
+                                                                            class="fa fa-eye fa-lg"
+                                                                            aria-hidden="true"></i></button>
+                                                                </a>
+                                                            </div>
+                                                        </td> --}}
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                         </p>
                                         {{-- =========================================================== --}}
 

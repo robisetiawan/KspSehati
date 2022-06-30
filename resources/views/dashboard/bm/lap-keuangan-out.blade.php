@@ -143,13 +143,13 @@
                                                         class="fa fa-eye fa-lg" aria-hidden="true"></i>
                                                 </button>
                                             </td>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="cashout{{ $cashout->id }}" tabindex="-1"
-                                                aria-labelledby="cashoutLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg">
+
+                                            <div class="modal fade" id="cashout{{ $cashout->id }}" aria-hidden="true"
+                                                aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                                <div class="modal-dialog modal-dialog-centered modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="cashoutLabel">Cash Out
+                                                            <h5 class="modal-title" id="exampleModalToggleLabel">Pinjaman
                                                             </h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
@@ -665,13 +665,159 @@
                                                             {{-- endCard --}}
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-light"
-                                                                data-bs-dismiss="modal">Close</button>
+                                                            @if ($cashout->pinjam_id !== null && $cashout->agberhenti_id == null)
+                                                                <button class="btn btn-primary"
+                                                                    data-bs-target="#history{{ $cashout->id }}"
+                                                                    data-bs-toggle="modal" data-bs-dismiss="modal"
+                                                                    aria-label="Close">History Angsuran</button>
+                                                            @elseif ($cashout->agberhenti_id !== null && $cashout->pinjam_id == null)
+                                                                <button type="button" class="btn btn-light"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                            @else
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{-- endModal --}}
+
+                                            <div class="modal fade" id="history{{ $cashout->id }}" aria-hidden="true"
+                                                aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                                                <div
+                                                    class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalToggleLabel2">History
+                                                                Angsuran
+                                                            </h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                @forelse ($penu->where('order_id', $cashout->order_id) as $p)
+                                                                    <div class="col-sm-6">
+                                                                        <div class="card">
+                                                                            <div class="card-header py-3">
+                                                                                <h6>Angsuran ke
+                                                                                    {{ $p->angsuran_ke }}
+                                                                                </h6>
+                                                                            </div>
+                                                                            <hr class="my-0">
+                                                                            <div class="card-body pt-1">
+                                                                                <p class="card-text">
+                                                                                <div class="row g-3 align-items-center">
+                                                                                    {{-- ==================================== --}}
+                                                                                    <div class="col">
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-5">
+                                                                                                <label for="inputPassword6"
+                                                                                                    class="col-form-label">Tanggal
+                                                                                                    Terima</label>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <input type="text"
+                                                                                                    id="inputPassword6"
+                                                                                                    class="form-control-plaintext"
+                                                                                                    readonly
+                                                                                                    value=": {{ $p->created_at->format('d M Y') }}">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        {{-- ==================================== --}}
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-5">
+                                                                                                <label for="inputPassword6"
+                                                                                                    class="col-form-label">No
+                                                                                                    Terima</label>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <input type="text"
+                                                                                                    id="inputPassword6"
+                                                                                                    class="form-control-plaintext"
+                                                                                                    readonly
+                                                                                                    value=": {{ $p->no_terima }}">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        {{-- ==================================== --}}
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-5">
+                                                                                                <label for="inputPassword6"
+                                                                                                    class="col-form-label">Nominal</label>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <input type="text"
+                                                                                                    id="inputPassword6"
+                                                                                                    class="form-control-plaintext"
+                                                                                                    readonly
+                                                                                                    value=": @currency($p->nominal)">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        {{-- ==================================== --}}
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-5">
+                                                                                                <label for="inputPassword6"
+                                                                                                    class="col-form-label">Terima
+                                                                                                    Dari</label>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <input type="text"
+                                                                                                    id="inputPassword6"
+                                                                                                    class="form-control-plaintext"
+                                                                                                    readonly
+                                                                                                    value=": {{ $p->trm_dr }}">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        {{-- ==================================== --}}
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-5">
+                                                                                                <label for="inputPassword6"
+                                                                                                    class="col-form-label">Cara
+                                                                                                    Bayar</label>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <input type="text"
+                                                                                                    id="inputPassword6"
+                                                                                                    class="form-control-plaintext"
+                                                                                                    readonly
+                                                                                                    value=": {{ $p->cr_bayar }}">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        {{-- ==================================== --}}
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-5">
+                                                                                                <label for="inputPassword6"
+                                                                                                    class="col-form-label">Sisa
+                                                                                                    Pinj</label>
+                                                                                            </div>
+                                                                                            <div class="col-auto">
+                                                                                                <input type="text"
+                                                                                                    id="inputPassword6"
+                                                                                                    class="form-control-plaintext"
+                                                                                                    readonly
+                                                                                                    value=": @currency($p->sisa_pj)">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        {{-- ==================================== --}}
+                                                                                    </div>
+                                                                                </div>
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @empty
+                                                                    <strong class="text-center">Belum ada angsuran
+                                                                        !!!</strong>
+                                                                @endforelse
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-primary"
+                                                                data-bs-target="#cashout{{ $cashout->id }}"
+                                                                data-bs-toggle="modal" data-bs-dismiss="modal"
+                                                                aria-label="Close">Pinjaman</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </tr>
                                     @endforeach
                                 </tbody>

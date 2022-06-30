@@ -20,4 +20,9 @@ class Cash_out extends Model
     {
         return $this->belongsTo(Ag_Berhenti::class);
     }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

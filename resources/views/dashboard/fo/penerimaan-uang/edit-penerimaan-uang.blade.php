@@ -41,6 +41,7 @@
                                         <!-- **************************************************************************************************8******  -->
 
                                         <input type="hidden" name="order_id" value="{{ $pene->order_id }}">
+                                        <input type="hidden" name="pinjam_id" value="{{ $pene->order->pinjam->id }}">
                                         <input type="hidden" name="periode" value="{{ $pene->order->pinjam->periode }}">
                                         <!-- **************************************************************************************************8******  -->
                                         <div class="row mb-1">

@@ -21,6 +21,11 @@ class Pinjam extends Model
         //satu anggota bisa memiliki >= 1 Identity
     }
 
+    public function cash_out()
+    {
+        return $this->hasOne(Cash_out::class);
+    }
+
     public static function search($search)
     {
         return empty($search) ? static::query()

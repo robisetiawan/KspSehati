@@ -14,6 +14,7 @@ use App\Models\Adddata;
 use App\Models\Anggota;
 use App\Models\Cash_in;
 use App\Models\Jaminan;
+use App\Models\Cash_out;
 use App\Models\Employee;
 use App\Models\Identity;
 use App\Models\Simpanan;
@@ -1305,6 +1306,9 @@ class FoOrderController extends Controller
         Order::where('id', $order->id)
             ->update($validorder);
 
+        Cash_out::where('pinjam_id', $order->pinjam->id)
+            ->update(['total' => $request->nilai_pinj]);
+
 
         // return redirect('/dashboard/orders/1/edit')->with('success', 'Data Berhasil diupdate');
         // return redirect()->route('dashboard/orders/{{$order->id}}/edit', $order->id);
@@ -1342,6 +1346,8 @@ class FoOrderController extends Controller
         Pinjam::destroy($order->pinjam->id);
         Lingkungan::destroy($order->lingkungan->id);
 
+        Cash_out::where('pinjam_id', $order->pinjam->id)
+            ->delete();
 
 
         return redirect('/dashboard/orders')->with('success', 'Data Berhasil dihapus');

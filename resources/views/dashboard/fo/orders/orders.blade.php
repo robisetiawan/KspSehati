@@ -82,7 +82,7 @@
                                             {{-- <th>{{ $loop->iteration }}</th> --}}
                                             <td>{{ $o->created_at->format('d M Y') }}</td>
                                             <td>{{ $o->no_order }}</td>
-                                            <td>{{ $o->anggota->user->name }}</td>
+                                            <td>{{ $o->anggota->nama_panggilan }}</td>
                                             <td>{{ $o->jaminan->barang }}</td>
                                             @if ($o->pinjam->sisa_angs === 0)
                                                 <td class="align-middle">

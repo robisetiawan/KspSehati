@@ -56,6 +56,8 @@
                                             <label class="col-sm-3 col-form-label" for="no_order">No Order</label>
                                             <div class="col-sm-2">
                                                 <input type="hidden" name="anggota_id" value="{{ $a->id }}">
+                                                <input type="hidden" name="simpkok" value="{{ $a->simpkok }}">
+                                                <input type="hidden" name="simpwj" value="{{ $a->simpwj }}">
                                                 <input
                                                     class="form-control form-control-sm @error('no_order') is-invalid @enderror"
                                                     name="no_order" type="text" id="no_order"
@@ -104,8 +106,8 @@
                                                                     class="card-img-top mt-3"> --}}
                                                     <div style="overflow: hidden">
                                                         <img class="rounded"
-                                                            src="{{ asset('storage/' . $a->user->image) }}" width="200px"
-                                                            height="200px" />
+                                                            src="{{ asset('storage/' . $a->user->image) }}"
+                                                            width="200px" height="200px" />
                                                     </div>
                                                 @else
                                                     <img src="{{ asset('templates/assets/images/dashboard/2.png ') }}"

@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Pinjam;
 use App\Models\Anggota;
 use App\Models\Cash_in;
+use App\Models\Cash_out;
 use App\Models\Employee;
 use App\Models\Simpanan;
 use Illuminate\Http\Request;
@@ -103,35 +104,23 @@ class BmController extends Controller
     }
     public function Out()
     {
-        $d = Pinjam::sum('nilai_pinj');
+        $d = Cash_out::sum('total');
         // $i = Cash_in::sum('total');
 
-        $total = Pinjam::select(DB::raw("CAST(SUM(nilai_pinj) as int) as nominal"))
+        $total = Cash_out::select(DB::raw("CAST(SUM(total) as int) as nominal"))
             ->GroupBy(DB::raw("Date(created_at)"))
             ->pluck('nominal');
 
-        $bulan = Pinjam::select(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as bulan'))
+        $bulan = Cash_out::select(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d") as bulan'))
             ->GroupBy(DB::raw('DATE_FORMAT(created_at, "%Y-%m-%d")'))
             ->OrderBy(DB::raw('date(created_at)'))
             ->pluck('bulan');
 
-        //cashin
-        // $cashin = Cash_in::select(DB::raw("CAST(SUM(total) as int) as cashin"))
-        //     ->GroupBy(DB::raw("Month(created_at)"))
-        //     ->pluck('cashin');
-
-        // $moon = Cash_in::select(DB::raw('DATE_FORMAT(created_at, "%M %y") as moon'))
-        //     ->GroupBy(DB::raw('DATE_FORMAT(created_at, "%M %y")'))
-        //     ->OrderBy(DB::raw('date(created_at)'))
-        //     ->pluck('moon');
-        // dd($cashin, $moon);
-
-        // dd($d, $i);
         return view('dashboard.bm.lap-keuangan-out', [
             "title" => "Lap Uang Keluar",
             "orders" => Order::latest()->get(),
             // "simpans" => Simpanan::with(['anggota.user', 'anggota'])->latest()->get(),
-            "cashin" => Cash_in::latest()->get(),
+            "cashout" => Cash_out::latest()->get(),
             "jmlhcashout" => $d,
             "total" => $total,
             "bulan" => $bulan,

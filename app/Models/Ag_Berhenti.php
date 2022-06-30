@@ -16,4 +16,9 @@ class Ag_Berhenti extends Model
     {
         return $this->belongsTo(Anggota::class);
     }
+
+    public function cash_out()
+    {
+        return $this->hasOne(Cash_out::class);
+    }
 }

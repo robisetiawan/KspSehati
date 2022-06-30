@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pinjam;
 use App\Models\Anggota;
 use App\Models\Ag_Berhenti;
+use App\Models\Cash_out;
 use Illuminate\Http\Request;
 
 class AgBerhentiController extends Controller
@@ -44,8 +45,14 @@ class AgBerhentiController extends Controller
      */
     public function store(Request $request)
     {
-        Ag_Berhenti::create([
+        // dd($request);
+        $ab = Ag_Berhenti::create([
             'anggota_id' => $request->anggota_id,
+        ]);
+
+        Cash_out::create([
+            'agberhenti_id' => $ab->id,
+            'total' => $request->simpkok + $request->simpwj
         ]);
 
         Anggota::where('id', $request->anggota_id)
@@ -111,6 +118,9 @@ class AgBerhentiController extends Controller
 
         Anggota::where('id', $ag->anggota_id)
             ->update(['status' => 'Aktif']);
+
+        Cash_out::where('agberhenti_id', $ag->id)
+            ->delete();
 
         return redirect('/dashboard/stop-out')->with('success', 'Data berhasil dihapus');
     }

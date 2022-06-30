@@ -83,11 +83,11 @@
                             <table class="table table-bordered table-xxs text-center table-striped" id="myTable">
                                 <thead>
                                     <tr>
-                                        <th scope="row">Tanggal</th>
-                                        <th scope="row">No Anggota</th>
-                                        <th scope="row">Nama</th>
-                                        <th scope="row">Jumlah</th>
-                                        <th scope="row">Action</th>
+                                        <th class="text-center">Tanggal</th>
+                                        <th class="text-center">No Anggota</th>
+                                        <th class="text-center">Nama</th>
+                                        <th class="text-center">Jumlah</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
